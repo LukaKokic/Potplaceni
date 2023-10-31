@@ -17,10 +17,11 @@ TO DO                                                               <br/>
 -- 4.1 Baza podataka                                               <br/>
 ✔ shema                                                            <br/>
 --- 4.1.1 Opis tablica........................✖                    <br/>
-✔ tablice i opis <br/>                                                        
+✔ tablice i opis                                                       
 ✖ latex <br/>
 --- 4.1.2 Dijagram baze podataka..............✖                    <br/>
-✖ dijagram                                                         <br/>
+✔ dijagram                                                        <br/>
+✖ latex <br/>
 -- 4.2 Dijagram razreda.......................✖                    <br/>
 ✖ dijagram                                                         <br/>
 -- 4.3 Dijagram stanja........................✖                    <br/>
