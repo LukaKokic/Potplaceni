@@ -1,13 +1,13 @@
 TO DO                                                               <br/>
                                                                     <br/>
 --- DOKUMENTACIJA:                                                  <br/>
-2. Opis projektnog zadatka--------------------------✖              <br/>
+2. Opis projektnog zadatka--------------------------✔              <br/>
 ✔ content (recheck when implementation done)                       <br/>
-✖ latex                                                            <br/>
+✔ latex                                                            <br/>
                                                                     <br/>
                                                                     <br/>
 3. Specifikacija programske potpore-----------------✖              <br/>
--- 3.1 Funkcionalni zahtjevi..................✖                    <br/>
+-- 3.1 Funkcionalni zahtjevi..................✔                    <br/>
 --- 3.1.1 Obrasci uporabe.....................✖                    <br/>
 --- 3.1.2 Sekvencijski dijagrami..............✖                    <br/>
 -- 3.2 Ostali zahtjevi........................✖                    <br/>
