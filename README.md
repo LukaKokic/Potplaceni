@@ -15,13 +15,14 @@ TO DO                                                               <br/>
                                                                     <br/>
 4 Arhitektura i dizajn sustava----------------------✖              <br/>
 -- 4.1 Baza podataka                                               <br/>
-✔ shema                                                            <br/>
+✔ opis                                                            <br/>
+✔ latex  <br/>
 --- 4.1.1 Opis tablica........................✖                    <br/>
 ✔ tablice i opis                                                       
-✖ latex <br/>
+✔ latex <br/>
 --- 4.1.2 Dijagram baze podataka..............✖                    <br/>
 ✔ dijagram                                                        <br/>
-✖ latex <br/>
+✔ latex <br/>
 -- 4.2 Dijagram razreda.......................✖                    <br/>
 ✖ dijagram                                                         <br/>
 -- 4.3 Dijagram stanja........................✖                    <br/>
