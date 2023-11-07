@@ -53,15 +53,16 @@
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Clinic}}	 \\ \hline[3pt]
-					ClinicID & INT	& Jedinstveni brojčani identifikator klinike,automatski generiran \\ \hline
+					\SetCell{LightGreen}ClinicID & INT	& Jedinstveni brojčani identifikator klinike,automatski generiran \\ \hline
 					clinicName & VARCHAR & Ime klinike	\\ \hline 
 					clinicAddress & VARCHAR & Adresa klinike  \\ \hline 
 					Latitude & DECIMAL	& Geografska širina	\\ \hline 
 					Longitude & DECIMAL & Geografska dužina \\ \hline
+					\SetCell{LightBlue}TownID & INT & Grad u kojem se klinika nalazi \\ \hline
 				\end{longtblr}
 				
 				%Town
@@ -72,11 +73,11 @@
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Town}}	 \\ \hline[3pt]
-					TownID & INT & Jedinstveni brojčani identifikator grada, automatski generiran \\ \hline
+					\SetCell{LightGreen}TownID & INT & Jedinstveni brojčani identifikator grada, automatski generiran \\ \hline
 					townName & VARCHAR & Ime grada	\\ \hline 
 				\end{longtblr}
 				
@@ -88,11 +89,11 @@
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{User}}	 \\ \hline[3pt]
-					UserID & INT & Jedinstveni brojčani identifikator korisnika, automatski generiran \\ \hline
+					\SetCell{LightGreen}UserID & INT & Jedinstveni brojčani identifikator korisnika, automatski generiran \\ \hline
 					PIN & INT & Identifikacijski broj korisnika	\\ \hline 
 					name & VARCHAR & Ime korisnika  \\ \hline 
 					surname & VARCHAR & Prezime korisnika	\\ \hline 
@@ -108,12 +109,13 @@
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Credentials}}	 \\ \hline[3pt]
 					username & VARCHAR & Jedinstveno korisničko ime \\ \hline
 					password & BINARY & Lozinka korisnika za prijavu u aplikaciju	\\ \hline 
+					\SetCell{LightBlue}UserID & INT & ID korisnika kojem pripadaju korisničko ime i lozinka \\ \hline
 				\end{longtblr}
 				
 				%Patient
@@ -124,17 +126,18 @@
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Patient}}	 \\ \hline[3pt]
-					PatientID & INT & Jedinstveni brojčani identifikator pacijenta, automatski generiran \\ \hline
+					\SetCell{LightGreen}PatientID & INT & Jedinstveni brojčani identifikator pacijenta, automatski generiran \\ \hline
 					PIN & INT & Identifikacijski broj pacijenta	\\ \hline 
 					name & VARCHAR & Ime pacijenta  \\ \hline 
 					surname & VARCHAR & Prezime pacijenta	\\ \hline 
 					phone & VARCHAR & Broj mobitela pacijenta \\ \hline
 					email & VARCHAR & Elektronička pošta pacijenta \\ \hline
 					residenceAddress & VARCHAR & Mjesto prebivališta pacijenta \\ \hline
+					\SetCell{LightBlue}AccomodationID & INT & ID smještaja u kojem je smješten pacijent \\ \hline
 				\end{longtblr}
 				
 				%Accomodation
@@ -145,15 +148,18 @@
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Accomodation}}	 \\ \hline[3pt]
-					AccomodationID & INT & Jedinstveni brojčani identifikator smještaja, automatski generiran \\ \hline
+					\SetCell{LightGreen}AccomodationID & INT & Jedinstveni brojčani identifikator smještaja, automatski generiran \\ \hline
 					address & VARCHAR & Adresa smještaja	\\ \hline 
 					latitude & DECIMAL & Geografska širina  \\ \hline 
 					longitude & DECIMAL & Geografska dužina	\\ \hline 
 					active & BIT & Je li smještaj upotrebljiv \\ \hline
+					\SetCell{LightBlue} TypeID & INT & ID vrste smještaja \\ \hline
+					\SetCell{LightBlue} EquippedID & INT & ID opremljenosti smještaja \\ \hline
+					\SetCell{LightBlue} TownID & INT & ID grada u kojem se smještaj nalazi \\ \hline
 				\end{longtblr}
 				
 				%AccomodationType
@@ -164,11 +170,11 @@
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{AccomodationType}}	 \\ \hline[3pt]
-					TypeID & INT & Jedinstveni brojčani identifikator vrste smještaja, automatski generiran \\ \hline
+					\SetCell{LightGreen}TypeID & INT & Jedinstveni brojčani identifikator vrste smještaja, automatski generiran \\ \hline
 					description & TEXT & Opis vrste smještaja (stan u kući, stan u zgradi, soba u hotelu ili motelu)	\\ \hline 
 				\end{longtblr}
 				
@@ -180,11 +186,11 @@
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Equipped}}	 \\ \hline[3pt]
-					EquippedID & INT & Jedinstveni brojčani identifikator opremljenosti smještaja, automatski generiran \\ \hline
+					\SetCell{LightGreen}EquippedID & INT & Jedinstveni brojčani identifikator opremljenosti smještaja, automatski generiran \\ \hline
 					equipment & TEXT & Opis opremljenosti smještaja (potpuno opremljen, djelomično opremljen)	\\ \hline 
 				\end{longtblr}
 				
@@ -196,12 +202,13 @@
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{AccomodationAvaliability}}	 \\ \hline[3pt]
 					since & DATE & Datum od kojeg je smještaj dostupan \\ \hline
-					till & DATE & Datum do kojeg je smještaj dostupan \\ \hline 
+					till & DATE & Datum do kojeg je smještaj dostupan \\ \hline
+					\SetCell{LightBlue}AccomodationID & ID & ID smještaja \\ \hline 
 				\end{longtblr}
 				
 				%Transporter
@@ -212,11 +219,11 @@
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Transporter}}	 \\ \hline[3pt]
-					TransporterID & INT & Jedinstveni brojčani identifikator prijevoznika, automatski generiran \\ \hline
+					\SetCell{LightGreen}TransporterID & INT & Jedinstveni brojčani identifikator prijevoznika, automatski generiran \\ \hline
 					organisationName & VARCHAR & Ime prijevoznika \\ \hline
 					phone & VARCHAR & Broj mobitela prijevoznika \\ \hline
 					address & VARCHAR & Adresa baze prijevoznika \\ \hline
@@ -231,14 +238,15 @@
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Vehicle}}	 \\ \hline[3pt]
-					VehicleID & INT & Jedinstveni brojčani identifikator vozila, automatski generiran \\ \hline
+					\SetCell{LightGreen}VehicleID & INT & Jedinstveni brojčani identifikator vozila, automatski generiran \\ \hline
 					typeOf & VARCHAR & Vrsta vozila (kombi, auto) \\ \hline
 					capacity & SMALLINT & Kapacitet vozila (2 osobe, 4 osobe, 5 osoba….) \\ \hline
 					active & BIT & Je li vozilo u funkciji \\ \hline
+					\SetCell{LightBlue}TransporterID & INT & ID prijevoznika kojem vozilo pripada \\ \hline
 				\end{longtblr}
 				
 				%VehicleOccupied
@@ -249,12 +257,14 @@
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{VehicleOccupied}}	 \\ \hline[3pt]
 					timeStart & TIME & Vrijem od kada je vozilo zauzeto \\ \hline
 					timeEnd & TIME & Vrijeme do kada je vozilo zauzeto \\ \hline
+					\SetCell{LightBlue}PatientID & INT & ID pacijenta kojem je vozilo dodijeljeno \\ \hline
+					\SetCell{LightBlue}VehicleID & INT & ID vozila koje je zauzeto \\ \hline
 				\end{longtblr}
 				
 				%VehicleAvaliability
@@ -265,19 +275,20 @@
 					entry=none
 					]{
 						width = \textwidth,
-						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{VehicleAvaliability}}	 \\ \hline[3pt]
 					DOW & SMALLINT & Dan u tjednu u kojem je vozilo slobodno \\ \hline
 					timeStart & TIME & Vrijem od kada je vozilo slobodno \\ \hline
 					timeEnd & TIME & Vrijeme do kada je vozilo slobodno \\ \hline
+					\SetCell{LightBlue}VehicleID & INT & ID vozila koje zauzeto u vremenskom razdoblju \\ \hline
 				\end{longtblr}
 				
 			\subsection{Dijagram baze podataka}
 				\begin{figure}[H]
 					\includegraphics[width=\textwidth]{slike/DB_shema.PNG} %veličina u odnosu na širinu linije
-					\caption{Slika sheme baze podataka}
+					\caption{Sheme baze podataka}
 					\label{fig:db_scheme} %label mora biti drugaciji za svaku sliku
 				\end{figure}
 			%Beskorisni komentar ....... :) MUAHHAHAHAH
