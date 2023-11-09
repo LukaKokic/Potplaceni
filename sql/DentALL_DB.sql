@@ -1,98 +1,146 @@
-CREATE TABLE Clinic(
+CREATE TABLE Clinic( --table
 	ClinicID bigserial primary key,
 	clinicName varchar(90),
-	clinicAddress varchar (95),
 	latitude decimal(8,6),
 	longitude decimal(9,6),
-	TownID foreign key (Town)
+	clinicAddress varchar (95),
+	foreign key (TownID) references Town(TownID)
 ),
 
-CREATE TABLE Town(
+CREATE TABLE clinicAccomodation( --relation
+	foreign key (ClinicID) references Clinic(ClinicID),
+	foreign key (AccomodationID) references Accomodation(AccomodationID)
+),
+
+CREATE TABLE clinicTransporter( --relation
+	foreign key (ClinicID) references Clinic(ClinicID),
+	foreign key (TransporterID) references Transporter(TransporterID)
+),
+
+CREATE TABLE Town( --table
 	TownID bigserial primary key,
 	townName varchar(35)
 ),
 
-CREATE TABLE AdminUser(
+CREATE TABLE AdminUser( --table
 	UserID bigserial primary key,
 	PIN int,
 	firstname varchar(30),
-	surname varchar(30),
+	lastname varchar(30),
 	phone varchar(20),
 	email varchar(60)
 ),
 
-CREATE TABLE Credentials(
+CREATE TABLE Credentials( --table
 	username varchar(50),
 	pass BINARY(64),
-	UserID foreign key (AdminUser)
+	foreign key (UserID) references AdminUser(UserID)
 ),
 
-CREATE TABLE Patient(
+CREATE TABLE assignedRole( --relation
+	foreign key(UserID) references AdminUser(UserID),
+	foreign key(RoleID) references Role(RoleID)
+),
+
+CREATE TABLE UserRole( --table
+	RoleID smallint primary key,
+	roleName varchar(30)
+),
+
+CREATE TABLE Patient( --table
 	PatientID bigserial primary key,
 	PIN int,
 	firstname varchar(30),
-	surname varchar(30),
+	lastname varchar(30),
 	phone varchar(20),
 	email varchar(60),
 	redidenceAddress varchar(95),
-	AccomodationID foreign key(Accomodation)
 ),
 
-CREATE TABLE Accomodation(
+CREATE TABLE Treatment( --table
+	TreatmentID bigserial primary key,
+	description text
+),
+
+CREATE TABLE assigned( --realtion
+	foreign key (TreatmentID) references Treatment(TreatmentID),
+	foreign key (PatientID) references Patient(PatiendID)
+),
+
+CREATE TABLE PatientPlan( --relation
+	foreign key (TreatmentID) references Treatment(TreatmentID),
+	foreign key	(ClinicID) references Clinic(ClinicID),
+	foreign key (PatientID) references Patient(PatientID)
+),
+
+CREATE TABLE PatientPreferences( --table
+	foreign key (PatientID) references Patient(PatientID),
+	foreign key (TyepID) references AccomodationType(TypeID),
+	foreign key (EquippedID) references Equipped(EquippedID)
+),
+
+CREATE TABLE Accomodation( --table
 	AccomodationID bigserial primary key,
-	address varchar(95),
+	foreign key (TypeID) references AccomodationType(TypeID),
+	foreign key (EquippedID) references Equipped(EquippedID),
 	latitude decimal(9,6),
 	longitude decimal(9,6),
-	active bit,
-	TypeID foreign key(AccomodationType),
-	EquippedID foreign key(Equipped),
-	TownID foreign key(Town)
+	address varchar(95),
+	foreign key (TownID) references Town(TownID),
+	active bit
 ),
 
-CREATE TABLE AccomodationType(
+CREATE TABLE AccomodationType( --table
 	TypeID smallint primary key,
 	desciption text
 ),
 
-CREATE TABLE Equipped(
+CREATE TABLE Equipped( --table
 	EquippedID smallint primary key,
-	equipment text
+	description text
 ),
 
-CREATE TABLE AccomodationAvaliability(
-	since date,
-	till date,
-	AccomodationID foreign key (Accomodation)
+CREATE TABLE AccomodationOccupied( --table
+	foreign key (PatientID) references Patient(PatientID),
+	foreign key (AccomodationID) references Accomodation(AccomodationID),
+	datoFrom date,
+	dateTo date
 ),
 
-CREATE TABLE Transporter(
+CREATE TABLE Transporter( --table
 	TransporterID bigserial primary key,
 	organisationName varchar(70),
 	phone varchar(20),
 	address varchar(95),
+	foreign key(TownID) references Town(TownID),
 	active bit
 ),
 
-CREATE TABLE Vehicle(
+CREATE TABLE Vehicle( --table
 	VehicleID bigserial primary key,
-	typeOf varchar(20),
 	capacity smallint,
-	active bit,
-	TransporterID foreign key (Transporter)
+	foreign key (TypeID) references VehicleType(TypeID),
+	foreign key (TransporterID) references Transporter(TransporterID),
+	active bit	
 ),
 
-CREATE TABLE VehicleOccupied(
+CREATE TABLE VehicleType( --table
+	TypeID smallint primary key,
+	description text
+),
+
+CREATE TABLE VehicleOccupied( --table
+	foreign key (VehicleID) references Vehicle(VehicleID),
+	foreign key (PatiendID) references Patient(PatientID),
 	timeStart time,
-	timeEnd time,
-	PatientID foreign key (Patient),
-	VaehicleID foreign key (Vehicle)
+	timeEnd time
 ),
 
-CREATE TABLE VehicleAvaliability(
+CREATE TABLE VehicleAvaliability( --table
+	foreign key (VehicleID) references Vehicle(VehicleID),
 	DOW smallint,
 	timeStart time,
-	timeEnd time,
-	VehicleID foreign key (Vehicle)
+	timeEnd time	
 )
 
 --create users and groups
