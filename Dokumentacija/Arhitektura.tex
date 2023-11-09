@@ -57,7 +57,7 @@
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Clinic}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}ClinicID & INT	& Jedinstveni brojčani identifikator klinike,automatski generiran \\ \hline
+					\SetCell{LightGreen}ClinicID & BIGSERIAL & Jedinstveni brojčani identifikator klinike,automatski generiran \\ \hline
 					clinicName & VARCHAR & Ime klinike	\\ \hline 
 					clinicAddress & VARCHAR & Adresa klinike  \\ \hline 
 					Latitude & DECIMAL	& Geografska širina	\\ \hline 
@@ -77,7 +77,7 @@
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Town}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}TownID & INT & Jedinstveni brojčani identifikator grada, automatski generiran \\ \hline
+					\SetCell{LightGreen}TownID & BIGSERIAL & Jedinstveni brojčani identifikator grada, automatski generiran \\ \hline
 					townName & VARCHAR & Ime grada	\\ \hline 
 				\end{longtblr}
 				
@@ -93,7 +93,7 @@
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{User}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}UserID & INT & Jedinstveni brojčani identifikator korisnika, automatski generiran \\ \hline
+					\SetCell{LightGreen}UserID & BIGSERIAL & Jedinstveni brojčani identifikator korisnika, automatski generiran \\ \hline
 					PIN & INT & Identifikacijski broj korisnika	\\ \hline 
 					name & VARCHAR & Ime korisnika  \\ \hline 
 					surname & VARCHAR & Prezime korisnika	\\ \hline 
@@ -130,7 +130,7 @@
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Patient}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}PatientID & INT & Jedinstveni brojčani identifikator pacijenta, automatski generiran \\ \hline
+					\SetCell{LightGreen}PatientID & BIGSERIAL & Jedinstveni brojčani identifikator pacijenta, automatski generiran \\ \hline
 					PIN & INT & Identifikacijski broj pacijenta	\\ \hline 
 					name & VARCHAR & Ime pacijenta  \\ \hline 
 					surname & VARCHAR & Prezime pacijenta	\\ \hline 
@@ -152,7 +152,7 @@
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Accomodation}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}AccomodationID & INT & Jedinstveni brojčani identifikator smještaja, automatski generiran \\ \hline
+					\SetCell{LightGreen}AccomodationID & BIGSERIAL & Jedinstveni brojčani identifikator smještaja, automatski generiran \\ \hline
 					address & VARCHAR & Adresa smještaja	\\ \hline 
 					latitude & DECIMAL & Geografska širina  \\ \hline 
 					longitude & DECIMAL & Geografska dužina	\\ \hline 
@@ -174,7 +174,7 @@
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{AccomodationType}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}TypeID & INT & Jedinstveni brojčani identifikator vrste smještaja, automatski generiran \\ \hline
+					\SetCell{LightGreen}TypeID & SMALLINT & Jedinstveni brojčani identifikator vrste smještaja, automatski generiran \\ \hline
 					description & TEXT & Opis vrste smještaja (stan u kući, stan u zgradi, soba u hotelu ili motelu)	\\ \hline 
 				\end{longtblr}
 				
@@ -190,7 +190,7 @@
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Equipped}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}EquippedID & INT & Jedinstveni brojčani identifikator opremljenosti smještaja, automatski generiran \\ \hline
+					\SetCell{LightGreen}EquippedID & SMALLINT & Jedinstveni brojčani identifikator opremljenosti smještaja, automatski generiran \\ \hline
 					equipment & TEXT & Opis opremljenosti smještaja (potpuno opremljen, djelomično opremljen)	\\ \hline 
 				\end{longtblr}
 				
@@ -223,7 +223,7 @@
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Transporter}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}TransporterID & INT & Jedinstveni brojčani identifikator prijevoznika, automatski generiran \\ \hline
+					\SetCell{LightGreen}TransporterID & BIGSERIAL & Jedinstveni brojčani identifikator prijevoznika, automatski generiran \\ \hline
 					organisationName & VARCHAR & Ime prijevoznika \\ \hline
 					phone & VARCHAR & Broj mobitela prijevoznika \\ \hline
 					address & VARCHAR & Adresa baze prijevoznika \\ \hline
@@ -242,7 +242,7 @@
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{Vehicle}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}VehicleID & INT & Jedinstveni brojčani identifikator vozila, automatski generiran \\ \hline
+					\SetCell{LightGreen}VehicleID & BIGSERIAL & Jedinstveni brojčani identifikator vozila, automatski generiran \\ \hline
 					typeOf & VARCHAR & Vrsta vozila (kombi, auto) \\ \hline
 					capacity & SMALLINT & Kapacitet vozila (2 osobe, 4 osobe, 5 osoba….) \\ \hline
 					active & BIT & Je li vozilo u funkciji \\ \hline
