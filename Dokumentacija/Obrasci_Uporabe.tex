@@ -1,0 +1,391 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\begin{document}
+	
+	\section*{3.1.1 Obrasci Uporabe}
+	\section*{\underline{UC1 – Pregled dostupnih tretmana i klinika}}
+	\textbf{Glavni sudionik:} Neregistrirani korisnik \\
+	\textbf{Cilj:} Pregledati informacije o dostupnim tretmanima i klinikama u odabranoj državi i gradu te vidjeti raspoloživost tih usluga. \\
+	\textbf{Sudionici:} Baza podataka \\
+	\textbf{Preduvjet:} - \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Neregistrirani korisnik pristupa glavnom ekranu aplikacije
+		\item Korisnik pregledava dostupne tretmane i klinike u odabranoj državi i gradu
+		\item Korisnik može odabrati tretman ili kliniku za daljnje istraživanje
+	\end{enumerate}
+	
+	
+	\section*{\underline {UC2 – Odabir tretmana}}
+	\textbf{Glavni sudionik:} Neregistrirani korisnik \\
+	\textbf{Cilj:} Odabrati dostupan tretman \\
+	\textbf{Sudionici:} Baza podataka \\
+	\textbf{Preduvjet:} Korisnik je pristupio aplikaciji i pregledao dostupne tretmane \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Korisnik odabire željeni tretman
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Ako nema dostupnih termina za odabrani tretman, korisnik će dobiti obavijest o nedostupnosti
+	\end{enumerate}
+	
+	\section*{\underline{UC3 – Slanje zahtjeva za primanje tretmana}}
+	\textbf{Glavni sudionik:} Neregistrirani korisnik \\
+	\textbf{Cilj:} Poslati zahtjev za primanje tretmana \\
+	\textbf{Sudionici:} Baza podataka \\
+	\textbf{Preduvjet:} Korisnik je odabrao željeni tretman \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Korisnik odabire željeni tretman
+		\item Aplikacija prikazuje detaljne informacije o odabranom tretmanu
+		\item Korisnik odabire opciju za slanje zahtjeva za primanje tretmana
+		\item Aplikacija prikazuje obrazac za unos potrebnih informacija
+		\item Korisnik popunjava obrazac i šalje zahtjev
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Neispravno popunjen obrazac
+		\item Sustav obavještava korisnika o neuspjelom upisu i traži od korisnika da pokuša ponovno
+	\end{enumerate}
+	
+	\section*{\underline{UC4 – Prijava}}
+	\textbf{Glavni sudionik:} Neregistrirani korisnik \\
+	\textbf{Cilj:} Dobiti pristup korisničkom sučelju \\
+	\textbf{Sudionici:} Baza podataka \\
+	\textbf{Preduvjet:} Korisnik je već registriran i ima korisnički račun spremljen u bazi \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Korisnik odabire opciju prijave na korisnički račun
+		\item Korisnik unosi svoje korisničko ime i lozinku
+		\item Sustav provjerava ispravnost unesenih podataka
+		\item Sustav omogućava pristup korisničkim funkcijama
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Neispravno uneseno korisničko ime/lozinka
+		\item Sustav obavještava korisnika o neuspješnoj prijavi i javlja poruku „Username or password incorrect“
+	\end{enumerate}
+	
+	\section*{\underline{UC5 – Unos podataka o smještaju}}
+	\textbf{Glavni sudionik:} Administrator smještaja \\
+	\textbf{Cilj:} Unijet podatke o smještaju \\
+	\textbf{Sudionici:} Baza podataka \\
+	\textbf{Preduvjet:} Administrator smještaja je prijavljen na svoj korisnički račun \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator smještaja odabire opciju „Unos podataka“
+		\item Administrator smještaja unosi podatke o smještaju
+		\item Baza podataka se ažurira
+	\end{enumerate}
+	
+	\section*{\underline{UC6 – Modifikacija smještaja}}
+	\textbf{Glavni sudionik:} Administrator smještaja \\
+	\textbf{Cilj:} Modificirati podatke o smještaju \\
+	\textbf{Sudionici:} Baza podataka \\
+	\textbf{Preduvjet:} Administrator smještaja je prijavljen na svoj korisnički račun i postoje podaci o smještaju za izmjenu \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator smještaja odabire postojeći smještaj koji želi modificirati
+		\item Administrator smještaja mijenja podatke o smještaju
+		\item Baza podataka se ažurira
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Administrator smještaja modificira podatke, ali ne odabere opciju „Spremi“
+		\item Sustav obavještava administratora smještaja da nije spremio podatke prije izlaska iz prozora
+	\end{enumerate}
+	\section*{\underline{UC7 – Brisanje smještaja}}
+	\textbf{Glavni sudionik:} Administrator smještaja \\
+	\textbf{Cilj:} Izbrisati podatke o smještaju \\
+	\textbf{Sudionici:} Baza podataka \\
+	\textbf{Preduvjet:} Administrator smještaja je prijavljen na svoj korisnički račun i postoje podaci o smještaju za brisanje \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator smještaja odabire smještaj koji želi izbrisati
+		\item Administrator smještaja tipkom „Potvrdi“ potvrđuje brisanje podataka o smještaju
+		\item Baza podataka se ažurira
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Administrator smještaja modificira podatke, ali ne odabere opciju „Spremi“
+		\item Sustav obavještava administratora smještaja da nije spremio podatke prije izlaska iz prozora
+	\end{enumerate}
+	
+	\section* {\underline{UC8 - Pregled postojećih smještaja}}
+	\textbf{Glavni sudionik:} Administrator smještaja \\
+	\textbf{Cilj:} Pregledati postojeće smještaje \\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Administrator smještaja je prijavljen na svoj korisnički račun \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator smještaja odabire opciju "Pregled postojećih smještaja"
+		\item Sustav prikazuje listu postojećih smještaja
+	\end{enumerate}
+	
+	\section* {\underline{UC9 - Pregled podataka smještaja}}
+	\textbf{Glavni sudionik:} Administrator smještaja \\
+	\textbf{Cilj:} Pregledati podatke smještaja \\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Administrator smještaja je prijavljen na svoj korisnički račun \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator smještaja odabire opciju "Pregled podataka smještaja"
+		\item Sustav prikazuje podatke o odabranom smještaju
+	\end{enumerate}
+	
+	\section* {\underline{UC10 - Pregled raspoloživosti smještaja}}
+	\textbf{Glavni sudionik:} Administrator smještaja \\
+	\textbf{Cilj:} Pregledati raspoloživost smještaja \\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Administrator smještaja je prijavljen na svoj korisnički račun \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator smještaja odabire opciju "Pregled raspoloživosti smještaja"
+		\item Sustav prikazuje grafički prikaz raspoloživosti smještaja
+	\end{enumerate}
+	
+	\section* {\underline{UC11 -Unos podataka o pružateljima medicinskih usluga}}
+	\textbf{Glavni sudionik:} Administrator smještaja \\
+	\textbf{Cilj:} Unijeti podatke o prijavljenim pružateljima medicinskih usluga \\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Administrator smještaja je prijavljen na svoj korisnički račun \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator smještaja odabire opciju "Unos podataka o prijavljenim pružateljima medicinskih usluga"
+		\item Administrator smještaja unosi potrebne podatke o pružateljima medicinskih usluga
+		\item Baza podataka se ažurira
+	\end{enumerate}
+	
+	\section* {\underline{UC12 -Brisanje podataka o pružateljima medicinskih usluga}}
+	\textbf{Glavni sudionik:} Administrator smještaja \\
+	\textbf{Cilj:} Obrisati podatke o prijavljenim pružateljima medicinskih usluga \\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Administrator smještaja je prijavljen na svoj korisnički račun \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator smještaja odabire opciju "Brisanje podataka o prijavljenim pružateljima medicinskih usluga"
+		\item Administrator smještaja odabire pružatelja medicinskih usluga za brisanje
+		\item Baza podataka se ažurira
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Administrator odabire pružatelja za brisanje, ali odustane od brisanja kod potvrde
+		\begin{itemize}
+			\item 1.1 Sustav obavještava administratora smještaja da se brisanje nije dogodilo
+		\end{itemize}
+	\end{enumerate}
+	
+	\section* {\underline{UC13 -Pregled postojećih pružatelja medicinskih usluga}}
+	\textbf{Glavni sudionik:} Administrator smještaja \\
+	\textbf{Cilj:} Pregled postojećih prijavljenih pružatelja medicinskih usluga\\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Administrator smještaja je prijavljen na svoj korisnički račun \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator smještaja odabire opciju "Pregled postojećih pružatelja medicinskih usluga"
+		\item Sustav prikazuje listu prijavljenih pružatelja medicinskih usluga
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Nema prijavljenih pružatelja medicinskih usluga
+		\item Sustav obavještava administratora smještaja o nedostatku prijavljenih pružatelja
+	\end{enumerate}
+	
+	\section* {\underline{UC14 - Pregled postojećih korisnika}}
+	\textbf{Glavni sudionik:} Administrator smještaja \\
+	\textbf{Cilj:} Vidjeti postojeće korisnike\\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Administrator smještaja je prijavljen na svoj korisnički račun \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator smještaja odabire opciju "Pregled korisnika"
+		\item Sustav prikazuje listu postojećih korisnika
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Nema postojećih korisnika
+		\item Sustav obavještava administratora smještaja o nedostatku korisnika
+	\end{enumerate}
+	
+	\section* {\underline{UC15 - Registracija korisnika}}
+	\textbf{Glavni sudionik:} Administrator smještaja \\
+	\textbf{Cilj:} Registrirati nove korisnike\\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Administrator smještaja je prijavljen na svoj korisnički račun \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator smještaja odabire opciju "Registracija korisnika"
+		\item Unosi potrebne podatke o korisniku
+		\item Sustav ažurira bazu podataka
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Administrator smještaja unosi pogrešne podatke o korisniku
+		\item Sustav obavještava o neuspješnoj registraciji
+	\end{enumerate}
+	
+	\section* {\underline{UC16 - Dodavanje uloga}}
+	\textbf{Glavni sudionik:} Administrator smještaja \\
+	\textbf{Cilj:} Dodjeljivanje uloga korisnicima\\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Administrator smještaja je prijavljen na svoj korisnički račun \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator smještaja odabire opciju "Dodjela uloga korisnicima"
+		\item Odabire korisnika kojem želi dodijeliti ulogu
+		\item Dodjeljuje odgovarajuću ulogu korisniku
+		\item Sustav ažurira bazu podataka
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Odabrani korisnik već ima dodijeljenu traženu ulogu
+		\item Sustav obavještava administratora smještaja o postojećoj ulozi
+	\end{enumerate}
+	
+	\section* {\underline{UC17 - Brisanje korisnika}}
+	\textbf{Glavni sudionik:} Administrator smještaja \\
+	\textbf{Cilj:} Brisanje postojećih korisnika\\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Administrator smještaja je prijavljen na svoj korisnički račun \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator smještaja odabire opciju "Brisanje postojećih korisnika"
+		\item Odabire korisnika kojeg želi obrisati
+		\item Potvrđuje brisanje korisnika
+		\item Sustav ažurira bazu podataka
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Administrator odabire korisnika za brisanje, ali odustane kod potvrde brisanja
+		\item Sustav obavještava administratora da se brisanje nije dogodilo
+	\end{enumerate}
+	
+	\section* {\underline{UC18 - Unos podataka o prijevoznicima}}
+	\textbf{Glavni sudionik:} Administrator prijevoznih usluga \\
+	\textbf{Cilj:} Unos podataka o prijevoznicima\\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Administrator prijevoznih usluga je prijavljen na svoj korisnički račun \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator prijevoznih usluga odabire opciju "Unos podataka o prijevoznicima"
+		\item Unosi podatke o prijevoznicima
+		\item Sustav ažurira bazu podataka
+	\end{enumerate}
+	
+	\section* {\underline{UC19 - Brisanje podataka o prijevoznicima}}
+	\textbf{Glavni sudionik:} Administrator prijevoznih usluga \\
+	\textbf{Cilj:} Obrisati podatke o prijevoznicima\\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Administrator prijevoznih usluga je prijavljen na svoj korisnički račun \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator prijevoznih usluga odabire opciju "Brisanje podataka po prijevoznicima
+		\item Odabire prijevoznika kojeg želi obrisati
+		\item Potvrđuje brisanje podataka o odabranom prijevozniku
+		\item Sustav ažurira bazu podataka uklanjanjem odabranog prijevoznika
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Administrator odabire prijevoznika za brisanje, ali ne potvrđuje brisanje
+		\item Sustav obavještava administratora da se brisanje nije dogodilo
+	\end{enumerate}
+	
+	\section* {\underline{UC20 - Modifikacija raspoloživosti prijevoznika}}
+	\textbf{Glavni sudionik:} Administrator prijevoznih usluga \\
+	\textbf{Cilj:} Modificirati podatke o raspoloživosti prijevoznika\\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Administrator prijevoznih usluga je prijavljen na svoj korisnički račun i postoje podaci o raspoloživosti prijevoznika za izmjenu \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator prijevoznih usluga odabire postojećeg prijevoznika čije podatke želi modificirati
+		\item Administrator prijevoznih usluga mijenja podatke o raspoloživosti prijevoznika
+		\item Baza podataka se ažurira
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Administrator prijevoznih usluga modificira podatke, ali ne odabire opciju "Spremi"
+		\item Sustav obavještava administratora prijevoznih usluga da nije spremio podatke prije izlaska iz prozora
+	\end{enumerate}
+	
+	\section* {\underline{UC21 - Pregled podataka prijevoznika}}
+	\textbf{Glavni sudionik:} Administrator prijevoznih usluga \\
+	\textbf{Cilj:} Vidjeti postojeće podatke prijevoznika i njihove raspoloživosti\\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Administrator prijevoznih usluga je prijavljen na svoj korisnički račun \\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Administrator prijevoznih usluga odabire opciju "Pregled podataka prijevoznika"
+		\item Sustav prikazuje postojeće podatke o prijevoznicima i njihovu raspoloživost
+	\end{enumerate}
+	
+	\section* {\underline{UC22 - Unos korisnika medicinskih usluga}}
+	\textbf{Glavni sudionik:} Korisnički administrator \\
+	\textbf{Cilj:} Unijeti podatke o korisnicima medicinskih usluga\\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Korisnički administrator je prijavljen na svoj korisnički račun\\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Korisnički administrator odabire opciju "Unos podataka o korisnicima medicinskih usluga
+		\item Unosi potrebne podatke o korisnicima medicinskih usluga
+		\item Baza podataka se ažurira
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Uneseni podatci nisu ispravni
+		\item Sustav obavještava korisničkog administratora o neuspješnom unosu
+	\end{enumerate}
+	
+	\section* {\underline{UC23 - Brisanje korisnika medicinskih usluga}}
+	\textbf{Glavni sudionik:} Korisnički administrator \\
+	\textbf{Cilj:} Obrisati podatke o korisnicima medicinskih usluga\\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Korisnički administrator je prijavljen na svoj korisnički račun\\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Korisnički administrator odabire opciju "Brisanje podataka o korisnicima medicinskih usluga"
+		\item Odabire korisnika medicinskih usluga kojeg želi izbrisati
+		\item Potvrđuje brisanje podataka o odabranom korisniku
+		\item Baza podataka se ažurira
+	\end{enumerate}
+	\textbf{Opis mogućih odstupanja:}
+	\begin{enumerate}
+		\item Administrator odustaje od brisanja kod potvrde brisanja
+		\item Sustav obavještava administratora da se brisanje nije dogodilo
+	\end{enumerate}
+	
+	\section* {\underline{UC24 -Pregled korisnika medicinskih usluga}}
+	\textbf{Glavni sudionik:} Korisnički administrator \\
+	\textbf{Cilj:} Vidjeti postojeće korisnike medicinskih usluga i njihove podatke\\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Korisnički administrator je prijavljen na svoj korisnički račun\\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Korisnički administrator odabire opciju "Pregled postojećih korisnika medicinskih usluga"
+		\item Sustav prikazuje popis postojećih korisnika medicinskih usluga i njihove podatke
+	\end{enumerate}
+	
+	\section* {\underline{UC25 - Preuzimanje detalja tretmana}}
+	\textbf{Glavni sudionik:} Korisnički administrator \\
+	\textbf{Cilj:} Preuzeti detalje tretmana klinika u kontekstu korisnika medicinskih usluga\\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Korisnički administrator je prijavljen na svoj korisnički račun\\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Korisnički administrator odabire opciju "Preuzimanje detalja tretmana"
+		\item Sustav prikazuje detalje tretmana klinika povezane s korisnikom medicinskih usluga
+	\end{enumerate}
+	
+	\section* {\underline{UC26 - Pregled detalja tretmana}}
+	\textbf{Glavni sudionik:} Korisnički administrator \\
+	\textbf{Cilj:} Vidjeti detalje tretmana klinika u kontekstu korisnika medicinskih usluga\\
+	\textbf{Sudionici} Baza podataka \\
+	\textbf{Preduvjet:} Korisnički administrator je prijavljen na svoj korisnički račun\\
+	\textbf{Opis osnovnog tijeka:}
+	\begin{enumerate}
+		\item Korisnički administrator odabire opciju "Pregled detalja tretmana"
+		\item Sustav prikazuje detalje tretmana klinika povezane s korisnikom medicinskih usluga
+	\end{enumerate}
+\end{document}
+
