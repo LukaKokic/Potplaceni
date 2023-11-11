@@ -8,9 +8,9 @@ TO DO                                                               <br/>
                                                                     <br/>
 3. Specifikacija programske potpore-----------------✖              <br/>
 -- 3.1 Funkcionalni zahtjevi..................✔                    <br/>
---- 3.1.1 Obrasci uporabe.....................✖                    <br/>
+--- 3.1.1 Obrasci uporabe.....................✔                    <br/>
 --- 3.1.2 Sekvencijski dijagrami..............✖                    <br/>
--- 3.2 Ostali zahtjevi........................✖                    <br/>
+-- 3.2 Ostali zahtjevi........................✔                    <br/>
                                                                     <br/>
                                                                     <br/>
 4 Arhitektura i dizajn sustava----------------------✖              <br/>
