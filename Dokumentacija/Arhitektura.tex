@@ -6,9 +6,9 @@
 		\item 	\textbf{Web poslužitelj} – glavni je dio web aplikacije. To je most koji povezuje korisnika i bazu podataka koji se temelji na protokolu HTTP. Na zahtjeve korisnika dohvaća tražene podatke (resurse) ili obrađuje i sprema poslane podatke od korisnika.
 		\item 	\textbf{Baza podataka} – srce je sustava. U njoj su pospremljeni svi podaci. Skoro ne postoji sustav u kojem nema komunikacije između aplikacije i baze.	
 	\end{itemize}
-		Aplikacije je izgrađena na modelu MVC (Model – View - Controller) softverske arhitekture uz male modifikacije. Controller dio strukture je ostvaren tako što je integriran unutar same baze. Shodno tome aplikaciju onda dijelimo na tri komponente:
+		Aplikacije je izgrađena na modelu MVC (Model – View - Controller) softverske arhitekture uz male modifikacije. Controller dio strukture je ostvaren tako što je integriran unutar same baze, tj. funkcije koje manipuliraju podacima se nalaze unutar baze. Shodno tome aplikaciju onda dijelimo na tri komponente:
 	\begin{itemize}
-		\item	\textbf{Model} – glavna komponenta sustava. Čuva razrede čiji se objekti obrađuju.
+		\item	\textbf{Model} – glavna komponenta sustava. Reprezentira strukturu podataka.
 		\item	\textbf{View} – komponenta zaslužna za reprezentaciju podataka.
 		\item	\textbf{Controller} – komponenta koja odrađuje svu logiku i komunikaciju između sučelja i baze.
 	\end{itemize}
@@ -385,6 +385,8 @@
 					timeEnd & TIME & Vrijeme do kada je vozilo slobodno \\ \hline
 				\end{longtblr}
 				
+			\newpage
+				
 			\subsection{Dijagram baze podataka}
 				\begin{figure}[H]
 					\includegraphics[width=\textwidth]{slike/DB_shema.PNG} %veličina u odnosu na širinu linije
@@ -394,13 +396,22 @@
 			%Beskorisni komentar ....... :) MUAHHAHAHAH
 			\eject
 			
-			\newpage
 			
 		\section{Dijagram razreda}
 		
-			\textit{Potrebno je priložiti dijagram razreda s pripadajućim opisom. Zbog preglednosti je moguće dijagram razlomiti na više njih, ali moraju biti grupirani prema sličnim razinama apstrakcije i srodnim funkcionalnostima.}\\
+			Na slikama 4.2 i 4.3 su prikazani razredi \textit{Model} i \textit{Controller} iz MVC arhitekture. Razredi prikazani slikom 4.2 nasljeđuju razred Controller. Metode koje smo definirali unutar tih razreda pripremaju podatke i šalju ih bazi koja ih onda obrađuje. Baza manipulira modelima te na kraju vraća podatke kako bi ih \textit{View} mogao prikazati. Model razredi, prikazani slikom 4.3, prikazuju strukturu baze podataka te integrirane funkcije koje služe za obradu, slanje ili primanje podataka.
 			
-			\textbf{\textit{dio 1. revizije}}\\
+			\begin{figure}[H]
+				\includegraphics[width=\textwidth]{slike/UML_controller.PNG} %veličina u odnosu na širinu linije
+				\caption{Dijagram razreda Controller}
+				\label{fig:uml_controller} %label mora biti drugaciji za svaku sliku
+			\end{figure}
+			
+			\begin{figure}[H]
+				\includegraphics[width=\textwidth]{slike/UML_model.PNG} %veličina u odnosu na širinu linije
+				\caption{Dijagram razreda Model}
+				\label{fig:uml_model} %label mora biti drugaciji za svaku sliku
+			\end{figure}
 			
 			\textit{Prilikom prve predaje projekta, potrebno je priložiti potpuno razrađen dijagram razreda vezan uz \textbf{generičku funkcionalnost} sustava. Ostale funkcionalnosti trebaju biti idejno razrađene u dijagramu sa sljedećim komponentama: nazivi razreda, nazivi metoda i vrste pristupa metodama (npr. javni, zaštićeni), nazivi atributa razreda, veze i odnosi između razreda.}\\
 			
