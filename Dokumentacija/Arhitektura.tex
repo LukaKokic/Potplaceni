@@ -35,6 +35,7 @@
 				\item Patient
 				\item Treatment
 				\item PatientPreferences
+				\item PatientArrival
 				\item Accomodation
 				\item AccomodationType
 				\item Equipped
@@ -43,7 +44,7 @@
 				\item Vehicle
 				\item VehicleType
 				\item VehicleOccupied
-				\item VehicleAvaliability
+				\item VehicleSchedule
 			\end{itemize}
 		
 			\subsection{Opis tablica}
@@ -180,7 +181,7 @@
 					description & text & opsi tretmana \\ \hline 
 				\end{longtblr}
 				
-					%PatientPreferences
+				%PatientPreferences
 				\textbf{PatientPreferences} Ovaj entitet sadrži podatke o preferencijama pacijenta vezanih za smještaj. Atributi su: PatientID (foreign key), TypeID (foreign key), EquippedID (foreign key). Ovaj je entite u Many-to-One vezi sa entitetom Patient preko atributa PatientID, u One-to-One vezi sa entitetom AccomodationType preko atributa AccomodationID te u One-to-One vezi sa entitetom Equipped preko atributa EquippedID.
 				
 				\begin{longtblr}[
@@ -197,8 +198,27 @@
 					\SetCell{LightBlue}EquippedID & SMALLINT & Jedinstveni indentifikator opremljenosti smještaja, automatski generiran \\ \hline
 				\end{longtblr}
 				
+				%PatientArrival
+				\textbf{PatientArrival} Ovaj entitet sadrži podatke o vremenu dolaska/odlaska pacijenta te također i gradu u kojem se liječi. Atributi su: ArrivalID(piramy key), PatientID (foreign key), TownID (foreign key), dateOfArrival, dateOfDeparture. Ovaj je entite u One-to-One vezi sa entitetom Patient preko atributa PatientID, u One-to-One vezi sa entitetom Town preko atributa TownID.
+				
+				\begin{longtblr}[
+					label=none,
+					entry=none
+					]{
+						width = \textwidth,
+						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
+						rowhead = 1,
+					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
+					\hline \SetCell[c=3]{c}{\textbf{PatientArrival}}	 \\ \hline[3pt]
+					\SetCell{LightGreen}ArrivalID & BIGSERIAL & Jedinstveni identifikator rekorda dolaska/odlaska pacijenta\\ \hline
+					\SetCell{LightBlue}PatientID & BIGSERIAL & Jedinstveni indentifikator pacijenta \\ \hline
+					\SetCell{LightBlue}TownID & SMALLINT & Grad u koji pacijent dolazi \\ \hline
+					dateOfArrival & DATETIME & Vrijeme i datum dolaska pacijenta \\ \hline
+					dateOfDeparture & DATETIME & Vrijeme i datum odlaska pacijenta \\ \hline
+				\end{longtblr}
+				
 				%Accomodation
-				\textbf{Accomodation} Ovaj entitet sadrži podatke o smještaju, vrsti smještaja, njegovoj opremljenosti te adresi na kojoj se nalazi kao i koordinatama. Atributi su: AccomodationID (primary key), TypeID (foreign key), EquippedID (foreing key), latitude, longitude, address, TownID (foreign key), active. Ovaj je entitet u vezi Many-to-One sa entitetom Town preko atributa TownID, nadalje u vezi Many-to-One sa entitetom AccomodationType preko atributa TypeID, u vezi Many-to-One sa entitetom Equipped preko atributa EquippedID, u vezi One-to-One sa entitetom Patient preko atributa AccomodationID i PatientID.
+				\textbf{Accomodation} Ovaj entitet sadrži podatke o smještaju, vrsti smještaja, njegovoj opremljenosti te adresi na kojoj se nalazi kao i koordinatama. Atributi su: AccomodationID (primary key), TypeID (foreign key), EquippedID (foreing key), latitude, longitude, address, TownID (foreign key), activem dateAdded. Ovaj je entitet u vezi Many-to-One sa entitetom Town preko atributa TownID, nadalje u vezi Many-to-One sa entitetom AccomodationType preko atributa TypeID, u vezi Many-to-One sa entitetom Equipped preko atributa EquippedID, u vezi One-to-One sa entitetom Patient preko atributa AccomodationID i PatientID.
 				
 				\begin{longtblr}[
 					label=none,
@@ -217,6 +237,7 @@
 					address & VARCHAR & Adresa smještaja	\\ \hline
 					\SetCell{LightBlue} TownID & INT & ID grada u kojem se smještaj nalazi \\ \hline
 					active & BIT & Je li smještaj upotrebljiv \\ \hline
+					dateAdded & DATE & Verijeme dodavanja smještaja u sustav \\ \hline
 				\end{longtblr}
 				
 				%AccomodationType
@@ -263,11 +284,14 @@
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{AccomodationOccupied}}	 \\ \hline[3pt]
+					\SetCell{LightGreen}ID & BIGSERIAL & Jedinstveni identifikator rekorda zauzeća smještaja \\ \hline
 					\SetCell{LightBlue}PatientID & BIGSERIAL & Jedinstveni identifikator pacijenta \\ \hline
 					\SetCell{LightBlue}AccomodationID & BIGSERIAL & Jedinstveni identifikator smještaja \\ \hline
 					dateFrom & DATE & Datum od kojeg je smještaj dostupan \\ \hline
 					dateTo & DATE & Datum do kojeg je smještaj dostupan \\ \hline 
 				\end{longtblr}
+				
+				\newpage
 				
 				%Transporter
 				\textbf{Transporter} Ovaj entitet sadrži podatke o prijevoznicima s kojima klinika ima ugovore za prijevoz pacijenata. Atributi su: TransporterID (primary key), organisationName, phone, address, TownID (foreign key), active. Ovaj je entitet u Many-to-Many vezi sa entitetom Town preko atributa TownID, u Many-to-Many vezi sa entitetom Clinic preko atributa ClincID te u One-to-Many vezi sa entitetom Vehicle preko atributa TransporterID.
@@ -323,9 +347,7 @@
 					\SetCell{LightGreen}TypeID & SMALLINT & Jedinstveni identifikator vrste vozila, automatski generiran \\ \hline
 					description & TEXT & Opis vrste vozila (auto, kombi, min-bus...) \\ \hline
 				\end{longtblr}
-				
-				\newpage
-				
+								
 				%VehicleOccupied
 				\textbf{VehicleOccupied} Ovaj entitet sadrži podatke o vremenima kada je koje vozilo zauzeto, tj. kada prevozi pacijente od smještaja do klinike te natrag. Atributi su: VehicleID (foreign key), PatientID (foreign key), timeStart, timeEnd. Ovaj je entitet u One-to-Many vezi sa entitetom Vehicle preko atributa VehicleID te u One-to-One vezi sa entitetom Patient preko atributa PatientID.
 				
@@ -338,14 +360,15 @@
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
 					\hline \SetCell[c=3]{c}{\textbf{VehicleOccupied}}	 \\ \hline[3pt]
-					\SetCell{LightBlue}VehicleID & INT & Jedinstveni identifikator vozila koje je zauzeto \\ \hline
-					\SetCell{LightBlue}PatientID & INT & Jedinstveni identifikator pacijenta kojem je vozilo dodijeljeno \\ \hline
+					\SetCell{LightGreen}OrderID & BIGSERIAL & Jedinstveni identifikator rekorda zauzeća vozila \\ \hline
+					\SetCell{LightBlue}VehicleID & BIGSERIAL & Jedinstveni identifikator vozila koje je zauzeto \\ \hline
+					\SetCell{LightBlue}PatientID & BIGSERIAL & Jedinstveni identifikator pacijenta kojem je vozilo dodijeljeno \\ \hline
 					timeStart & TIME & Vrijem od kada je vozilo zauzeto \\ \hline
 					timeEnd & TIME & Vrijeme do kada je vozilo zauzeto \\ \hline
 				\end{longtblr}
 				
-				%VehicleAvaliability
-				\textbf{VehicleAvaliability} Ovaj entitet sadrži podatke o vremenima kada je koje vozilo dostupno, tj. radno vrijeme radnih dana. Atributi su: VehicelID (foreign key), DOW (day of the week), tiemStart, timeEnd. Ovaj je entitet u Many-to-Many vezi sa entitetom Vehicle preko atributa VehicleID.
+				%VehicleSchedule
+				\textbf{VehicleSchedule} Ovaj entitet sadrži podatke o vremenima kada je koje vozilo dostupno, tj. radno vrijeme radnih dana. Atributi su: VehicelID (foreign key), DOW (day of the week), tiemStart, timeEnd. Ovaj je entitet u Many-to-Many vezi sa entitetom Vehicle preko atributa VehicleID.
 				
 				\begin{longtblr}[
 					label=none,
@@ -355,7 +378,7 @@
 						colspec={|X[8,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
-					\hline \SetCell[c=3]{c}{\textbf{VehicleAvaliability}}	 \\ \hline[3pt]
+					\hline \SetCell[c=3]{c}{\textbf{VehicleSchedule}}	 \\ \hline[3pt]
 					\SetCell{LightBlue}VehicleID & INT & Jedinstveni identifikator vozila \\ \hline
 					DOW & SMALLINT & Dan u tjednu u kojem je vozilo slobodno \\ \hline
 					timeStart & TIME & Vrijem od kada je vozilo slobodno \\ \hline
@@ -371,6 +394,7 @@
 			%Beskorisni komentar ....... :) MUAHHAHAHAH
 			\eject
 			
+			\newpage
 			
 		\section{Dijagram razreda}
 		
