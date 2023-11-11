@@ -1,0 +1,14 @@
+BAZA -> FUNKCIJE FRONTA:
+fn_login -> validate_input(), check_credentials()
+fn_user -> {class User} -> addUser(), updateUser(), deleteUser()
+fn_get_user -> {class User} -> viewUsers()
+fn_accomodation -> {class Accomodation} addAccomodation(), updateAccomodation(), deleteAccomodation()
+fn_get_accomodation -> {class Accomodation} -> viewAccomodation()
+fn_transporter -> {class Transporter} -> addTransporter(), updateTransporter(), delteTransporter()
+fn_get_transporter -> {class Transporter} -> viewTransporter()
+fn_vehicle -> {class Vehicle} -> addVehicle(), updateVehicle(), deleteVehicle()
+fn_get_vehicle -> viewVehicle()
+fn_patient -> {class Patient} -> addPatient(), updatePatient(), deletePatient()
+fn_get_patient -> viewPatient()
+fn_get_combination => funkcija koja pridjeljuje smjestaj i prijevoz
+fn_get_treatment -> viewTreatemnt()
