@@ -60,9 +60,6 @@
 			
 			
 			\subsection{Obrasci uporabe}
-				
-				\subsubsection{Opis obrazaca uporabe}
-					\textit{Funkcionalne zahtjeve razraditi u obliku obrazaca uporabe. Svaki obrazac je potrebno razraditi prema donjem predlošku. Ukoliko u nekom koraku može doći do odstupanja, potrebno je to odstupanje opisati i po mogućnosti ponuditi rješenje kojim bi se tijek obrasca vratio na osnovni tijek.}\\
 					
 					% Prijava u sustav
 					\noindent \underbar{\textbf{UC1 - Prijava u sustav}}
@@ -289,7 +286,7 @@
 					
 					% ---- Prijevoznici
 					% Dodavanje novog prijevoznika
-					\noindent \underbar{\textbf{UC10 - Dodavanje novog smještaja}}
+					\noindent \underbar{\textbf{UC10 - Dodavanje prijevoznika}}
 					\begin{packed_item}
 						\item \textbf{Glavni sudionik:} Administrator prijevoznih usluga
 						\item  \textbf{Cilj:} Kreiranje i dodavanje novog prijevoznika
@@ -317,7 +314,7 @@
 					\end{packed_item}
 					
 					% Pregled prijevoznika
-					\noindent \underbar{\textbf{UC11 - Pregled smještaja}}
+					\noindent \underbar{\textbf{UC11 - Pregled prijevoznika}}
 					\begin{packed_item}
 						\item \textbf{Glavni sudionik:} Administrator prijevoznih usluga
 						\item  \textbf{Cilj:} Pregled unesenih prijevoznika
@@ -335,7 +332,7 @@
 					\end{packed_item}
 					
 					% Brisanje postojećeg korisnika
-					\noindent \underbar{\textbf{UC12 - Brisanje postojećeg smještaja}}
+					\noindent \underbar{\textbf{UC12 - Brisanje prijevoznika}}
 					\begin{packed_item}
 						\item \textbf{Glavni sudionik:} Administrator prijevoznih usluga
 						\item  \textbf{Cilj:} Brisanje ciljanog prijevoznika
@@ -476,7 +473,7 @@
 					\end{packed_item}
 					
 					% Pregled pacijenata
-					\noindent \underbar{\textbf{UC18 - Pregled pacijenataa}}
+					\noindent \underbar{\textbf{UC18 - Pregled pacijenata}}
 					\begin{packed_item}
 						\item \textbf{Glavni sudionik:} Korisnički administrator
 						\item  \textbf{Cilj:} Pregled postojećih pacijenata
@@ -551,10 +548,10 @@
 					
 					% ---- Ostalo
 					% Periodičko pridjeljivanje smještaja i prijevoza pacijentima
-					\noindent \underbar{\textbf{UC21 - Periodičko pridjeljivanje smještaja i prijevoza pacijentima}}
+					\noindent \underbar{\textbf{UC21 - Periodičko pridijeljivanje smještaja i prijevoza pacijentima}}
 					\begin{packed_item}
 						\item \textbf{Glavni sudionik:} Korisnički administrator
-						\item  \textbf{Cilj:} Pridjeljivanje adekvatnog smještaja i prijevoza upisanim pacijentima te obavještavanje pacijenta o uspješnom pridjeljenju
+						\item  \textbf{Cilj:} Pridijeljivanje adekvatnog smještaja i prijevoza upisanim pacijentima te obavještavanje pacijenta o uspješnom pridijeljenju
 						\item  \textbf{Sudionici:} Baza podataka
 						\item  \textbf{Preduvjeti:}
 						\item[] \begin{packed_enum}
@@ -565,8 +562,8 @@
 						\item  \textbf{Opis osnovnog tijeka:}
 						\item[] \begin{packed_enum}
 							\item Sustav provjerava unesene podatke za pacijente bez smještaja
-							\item Sustav (ako je moguće) pridjeljuje adekvatni smještaj pacijentu
-							\item Sustav (ako je moguće) pridjeljuje adekvatni prijevoz pacijentu pri zaključenju medicinskog plana
+							\item Sustav (ako je moguće) pridijeljuje adekvatni smještaj pacijentu
+							\item Sustav (ako je moguće) pridijeljuje adekvatni prijevoz pacijentu pri zaključenju medicinskog plana
 						\end{packed_enum}
 						
 						\item  \textbf{Opis mogućih odstupanja:}
@@ -587,7 +584,7 @@
 						\item  \textbf{Preduvjeti:}
 						\item[] \begin{packed_enum}
 							\item Baza sadrži potrebne podatke o pacijentima, smještajima i prijevoznicima
-							\item Sustav je uspješno zaključio medicinski plan pacijenta pridjeljivanjem smještaja i prijevoza pacijentu
+							\item Sustav je uspješno zaključio medicinski plan pacijenta pridijeljivanjem smještaja i prijevoza pacijentu
 						\end{packed_enum}
 						
 						\item  \textbf{Opis osnovnog tijeka:}
@@ -620,8 +617,8 @@
 					\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/DOU_FunkcionalnostiUpravljanjaSmjestajima.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
-					\caption{Dijagram obrasca uporabe, funkcionalnosti upravljanja smjestajima}
-					\label{fig:funkcionalnosti upravljanja smjestajima}
+					\caption{Dijagram obrasca uporabe, funkcionalnosti upravljanja smještajima}
+					\label{fig:funkcionalnosti upravljanja smještajima}
 				\end{figure}
 				\eject		
 				
@@ -658,11 +655,8 @@
 				\eject		
 				
 			\subsection{Sekvencijski dijagrami}
-				
-				\textbf{\textit{dio 1. revizije}}\\
-				
-				\textit{Nacrtati sekvencijske dijagrame koji modeliraju najvažnije dijelove sustava (max. 4 dijagrama). Ukoliko postoji nedoumica oko odabira, razjasniti s asistentom. Uz svaki dijagram napisati detaljni opis dijagrama.}
-				\eject
+			
+			\eject	
 	
 		\section{Ostali zahtjevi}
 		
@@ -670,18 +664,10 @@
 				\item Sustav treba omogućiti rad više korisnika u stvarnom vremenu
 				\item Korisničko sučelje i sustav moraju podržavati hrvatsku abecedu (dijakritičke znakove) pri unosu i prikazu tekstualnog sadržaja
 				\item Izvršavanje dijela programa u kojem se pristupa bazi podataka ne smije trajati duže od nekoliko sekundi
-				\item Sustav treba biti implementiran kao web aplikacija koristeći objektno-orijentirane jezike
 				\item Neispravno korištenje korisničkog sučelja ne smije narušiti funkcionalnost i rad sustava
 				\item Aplikacija treba biti jednostavna za korištenje, korisnici se moraju znati koristiti sučeljem bez opširnih uputa
 				\item Nadogradnja sustava ne smije narušavati postojeće funkcionalnosti sustava
 				\item Aplikacija kao valutu koristi EUR
 				\item Veza s bazom podataka mora biti kvalitetno zaštićena, brza i otporna na vanjske greške
 				\item Pristup sustavu mora biti omogućen iz javne mreže pomoću HTTPS.
-			\end{packed_item}
-			
-		 
-			 \textit{Nefunkcionalni zahtjevi i zahtjevi domene primjene dopunjuju funkcionalne zahtjeve. Oni opisuju \textbf{kako se sustav treba ponašati} i koja \textbf{ograničenja} treba poštivati (performanse, korisničko iskustvo, pouzdanost, standardi kvalitete, sigurnost...). Primjeri takvih zahtjeva u Vašem projektu mogu biti: podržani jezici korisničkog sučelja, vrijeme odziva, najveći mogući podržani broj korisnika, podržane web/mobilne platforme, razina zaštite (protokoli komunikacije, kriptiranje...)... Svaki takav zahtjev potrebno je navesti u jednoj ili dvije rečenice.}
-			 
-			 
-			 
-	
+			\end{packed_item}			 
