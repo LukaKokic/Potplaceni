@@ -1,5 +1,5 @@
 *.aux
-
+./node_modules
 *.lof
 *.log
 
