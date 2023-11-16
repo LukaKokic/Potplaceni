@@ -1,1 +1,1 @@
-FROM openjdk:17-alpine AS builder
+FROM nixos/nix:latest
