@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const pool = require('./DBConfig');
 const cors = require('cors');
+const homepage = require('../frontend/')
 dotenv.config();
 //const poolParameters = require('databaseConnection.json')
 const app = express();
@@ -11,12 +12,12 @@ const port = 8080;
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.render('../frontend/index.html')
 });
 
 app.get('/useradmin', async(req, res) => {
     try{
-        const data = await pool.query('SELECT now()');
+        const data = await pool.query('SELECT * FROM useradmin');
         res.json({data});
     }catch (err){
         console.error(err);
