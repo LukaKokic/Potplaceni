@@ -1,1 +1,1 @@
-FROM postgrest/postgrest:latest
+FROM nixos/nix:latest
