@@ -26,7 +26,7 @@ function loginFunction(username, password){
   hashedPassword = passwordHasher(password);
   //console.log('Sending these parameters to function; username: '+ username + ' password: '+ hashedPassword);
   creds['username'] = username;
-  creds['passwrod'] = hashedPassword;
+  creds['password'] = hashedPassword;
   //console.log('JSON stringify of credentials: ', JSON.stringify(credentials));
   console.log(creds);
   //console.log('Username: ', JSON.parse(JSON.stringify(credentials))['username']);
