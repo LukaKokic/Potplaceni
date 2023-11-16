@@ -20,12 +20,14 @@ app.get('/', (req, res) => {
 function loginFunction(username, password){
   hashedPassword = passwordHasher(password);
   //console.log('Sending these parameters to function; username: '+ username + ' password: '+ hashedPassword);
-  credentials = {'username': username, 'password': hashedPassword}
+  creds = {'username': username, 'password': hashedPassword}
   //console.log('JSON stringify of credentials: ', JSON.stringify(credentials));
+  console.log(creds);
+  //console.log('Username: ', JSON.parse(JSON.stringify(credentials))['username']);
   app.get('/login', async(req, res) => {
     try{
       //parameters for calling DB function must be in format username:<username> password:<password> in json format
-        const data = await pool.query(`SELECT api.fn_login(${JSON.stringify(credentials)})`);
+        const data = await pool.query(`SELECT api.fn_login('${JSON.stringify(creds)}'::json)`);
         res.json({data});
     }catch (err){
         console.error(err);
