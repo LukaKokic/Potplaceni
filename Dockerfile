@@ -1,1 +1,0 @@
-FROM nixos/nix:latest
