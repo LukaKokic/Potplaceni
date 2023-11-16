@@ -1,10 +1,21 @@
 services:
-  - name: postgrest
-    type: web
-    runtime: postgrest
+  - type: web
+    name: postgrest
+    runtime: image
+    image:
+      url: docker.io/postgrest/postgrest:latest
     envVars:
       - key: POSTGREST_DB_URI
         value: "postgres://dentall_rmm2_user:ULoPI4NBThHB77kWvua20vkQ61GuHNgF@dpg-claj19rmot1c7392cnvg-a.frankfurt-postgres.render.com/dentall_rmm2"
+
+
+
+  # - name: postgrest
+  #   type: web
+  #   runtime: postgrest
+  #   envVars:
+  #     - key: POSTGREST_DB_URI
+  #       value: "postgres://dentall_rmm2_user:ULoPI4NBThHB77kWvua20vkQ61GuHNgF@dpg-claj19rmot1c7392cnvg-a.frankfurt-postgres.render.com/dentall_rmm2"
     # restimage:
     #   url: docker.io/postgrest/postgrest
 
