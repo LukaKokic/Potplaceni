@@ -655,8 +655,45 @@
 				\eject		
 				
 			\subsection{Sekvencijski dijagrami}
+			\subsubsection{Obrazac uporabe 2 - Dodavanje novog korisnika}
+			Kada korisnik koji ima ovlasti smještajnog administratora klikne na gumb "Add new user", pojavi mu se forma za ispunjavanje informacija o novom korisniku kojeg želi napraviti. Nakon što su podaci uneseni, oni se pošalju u bazu podataka koja potom javlja rezultat dodavanja novog korisnika u sustav, tj. ako nema nikakvih problema, novi korisnik je uspješno dodan u bazu podataka, no može doći do greške poput unošenja imena već postojećeg korisnika ili do unesenih neispravnih podataka kao što je krivi format e-mail-a, broja mobitela ili PIN-a.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{slike/uc2.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\caption{Sekvencijski dijagram za UC2}
+				\label{fig:Sekvencijski dijagram za UC2}
+			\end{figure}
+			\eject		
 			
-			\eject	
+			\subsubsection{Obrazac uporabe 19 - Dohvaćanje informacija o tretmanu}
+			Nakon što je dodan novi pacijent, možemo iz vanjske baze podataka povući podatke o njegovom tretmanu. Prvotno sustav pokuša uspostaviti kontakt s vanjskom bazom podataka nakon čega može doći do dva slučaja: da se veza uspješno uspostavi, ili da se iz nekog razloga(npr. nedostatak interneta) ne uspije uspostaviti. Ako sustav uspije uspostaviti vezu, onda povuče tražene podatke te ih potom spremi u vlastitu bazu podataka.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{slike/uc19.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\caption{Sekvencijski dijagram za UC19}
+				\label{fig:Sekvencijski dijagram za UC19}
+			\end{figure}
+			\eject		
+			
+			\subsubsection{Obrazac uporabe 21 - Periodičko pridijeljivanje smještaja i prijevoza pacijentima}
+			Svako malo sustav će pokušati dodijeliti postojećim pacijentima u bazi podataka koji još nemaju dodijeljen smještaj adekvatni smještaj. Ako sustav uspije pronaći adekvatan smještaj za pacijenta, onda se pacijentu dodijeli taj smještaj, a ako ne onda će se to ponovno pokušati nakon nekog vremena sve dok se ne uspije.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{slike/uc21.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\caption{Sekvencijski dijagram za UC21}
+				\label{fig:Sekvencijski dijagram za UC21}
+			\end{figure}
+			\eject		
+			
+			\subsubsection{Obrazac uporabe 22 - Obavještavanje klijenata o uspješnom zaključenju plana}
+			Nakon što se plan za nekog pacijenta zaključi, on se provjeri te se mijenjaju podaci u bazu podataka u vezi raspoloživosti smještaja i vozila prijevoznika. Potom se pacijentu šalje mail u kojemu ga se obavještava o datumu tretmana te smještaju i prijevozu tijekom plana tretmana te se prijevozniku šalje mail o zauzetosti vozila koje će se koristiti za pridjeljeni medicinski plan.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{slike/uc22.png} %veličina slike u odnosu na originalnu datoteku i pozicija slike
+				\caption{Sekvencijski dijagram za UC22}
+				\label{fig:Sekvencijski dijagram za UC22}
+			\end{figure}
+			\eject		
 	
 		\section{Ostali zahtjevi}
 		
