@@ -37,7 +37,7 @@ function loginFunction(username, password){
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-  loginFunction('Drek', '56789012');
+  loginFunction('KB9012', '56789012');
 });
 
 //exporting function, so it can be called in front-end
