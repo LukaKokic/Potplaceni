@@ -2,7 +2,6 @@ const express = require('express');
 const dotenv = require('dotenv');
 const pool = require('./DBConfig');
 const cors = require('cors');
-const homepage = require('../frontend/')
 dotenv.config();
 //const poolParameters = require('databaseConnection.json')
 const app = express();
@@ -12,7 +11,7 @@ const port = 8080;
 
 
 app.get('/', (req, res) => {
-  res.render('../frontend/index.html')
+  res.send('Hello World')
 });
 
 app.get('/useradmin', async(req, res) => {
