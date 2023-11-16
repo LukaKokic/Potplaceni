@@ -1,11 +1,12 @@
 const express = require('express');
-const dotenv = require('dotenv');
+require('dotenv').config();
 const pool = require('./DBConfig');
 const passwordHasher = require('./passwordhassher');
 const cors = require('cors');
 const app = express();
 
-dotenv.config();
+
+
 app.use(express.json());
 app.use(cors());
 
@@ -43,6 +44,7 @@ app.get('/fn_login', async(req, res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
+  //console.log('Pool: ', pool);
   loginFunction('KB9012', '56789012');
 });
 
