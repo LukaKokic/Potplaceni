@@ -14,9 +14,9 @@ app.get('/', (req, res) => {
   res.send('Hello World')
 });
 
-app.get('/useradmin', async(req, res) => {
+app.get('/adminuser', async(req, res) => {
     try{
-        const data = await pool.query('SELECT * FROM useradmin');
+        const data = await pool.query('SELECT * FROM adminuser');
         res.json({data});
     }catch (err){
         console.error(err);
