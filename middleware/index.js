@@ -24,15 +24,12 @@ app.get('/', (req, res) => {
 //function do be called when login button has been pressed
 function loginFunction(username, password){
   hashedPassword = passwordHasher(password);
-  //console.log('Sending these parameters to function; username: '+ username + ' password: '+ hashedPassword);
   creds['username'] = username;
   creds['password'] = hashedPassword;
-  //console.log('JSON stringify of credentials: ', JSON.stringify(credentials));
   console.log(creds);
-  //console.log('Username: ', JSON.parse(JSON.stringify(credentials))['username']);
 }
 
-app.get('/login', async(req, res) => {
+app.get('/fn_login', async(req, res) => {
   try{
     //parameters for calling DB function must be in format username:<username> password:<password> in json format
       const data = await pool.query(`SELECT api.fn_login('${JSON.stringify(creds)}'::json)`);
