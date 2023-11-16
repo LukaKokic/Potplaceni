@@ -11,6 +11,11 @@ app.use(cors());
 
 const port = 8080;
 
+var creds = {
+  'username' : '',
+  'password' : ''
+};
+
 //TODO connect this to front and greet user with login page
 app.get('/', (req, res) => {
   res.send('Hello World')
@@ -20,21 +25,23 @@ app.get('/', (req, res) => {
 function loginFunction(username, password){
   hashedPassword = passwordHasher(password);
   //console.log('Sending these parameters to function; username: '+ username + ' password: '+ hashedPassword);
-  creds = {'username': username, 'password': hashedPassword}
+  creds['username'] = username;
+  creds['passwrod'] = hashedPassword;
   //console.log('JSON stringify of credentials: ', JSON.stringify(credentials));
   console.log(creds);
   //console.log('Username: ', JSON.parse(JSON.stringify(credentials))['username']);
-  app.get('/login', async(req, res) => {
-    try{
-      //parameters for calling DB function must be in format username:<username> password:<password> in json format
-        const data = await pool.query(`SELECT api.fn_login('${JSON.stringify(creds)}'::json)`);
-        res.json({data});
-    }catch (err){
-        console.error(err);
-        res.status(500).send(err.message);
-    }
-  });
 }
+
+app.get('/login', async(req, res) => {
+  try{
+    //parameters for calling DB function must be in format username:<username> password:<password> in json format
+      const data = await pool.query(`SELECT api.fn_login('${JSON.stringify(creds)}'::json)`);
+      res.json({data});
+  }catch (err){
+      console.error(err);
+      res.status(500).send(err.message);
+  }
+});
 
 
 app.listen(port, () => {
