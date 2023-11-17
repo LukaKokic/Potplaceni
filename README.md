@@ -1,8 +1,8 @@
 # Programsko inženjerstvo
 #### Deploy aplikacije
-URL: [Link Text](https://potplaceni.onrender.com)
-##### Login
-Za login u aplikaciju se može koristiti neki od sljedećih credentialsa:
+###### URL: https://potplaceni.onrender.com
+#### Login
+###### Za login u aplikaciju se može koristiti neki od sljedećih credentialsa:
 ```markdown
 | Username |  Password  |
 | -------- | ---------- |
