@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {useNavigate} from 'react-router-dom'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -43,6 +43,7 @@ async function getData(uName, pssssswd){
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const dataFromForm = new FormData(event.currentTarget);
@@ -56,6 +57,11 @@ export default function SignIn() {
         console.log("ID: ", userID);
         console.log("Username: ", username);
         console.log("Message: ", msg);
+        if (success){
+          navigate('/dashboard');
+        }else{
+          navigate('/wrongCredentials');
+        }
       });
   };
 
