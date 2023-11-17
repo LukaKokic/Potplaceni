@@ -52,10 +52,10 @@ export default function SignIn() {
         var userID = response.data['user_id'];
         var username = response.data['username'];
         var msg = response.data['msg'];
-        //console.log("Success: ", success);
-        //console.log("ID: ", userID);
-        //console.log("Username: ", username);
-        //console.log("Message: ", msg);
+        console.log("Success: ", success);
+        console.log("ID: ", userID);
+        console.log("Username: ", username);
+        console.log("Message: ", msg);
       });
   };
 

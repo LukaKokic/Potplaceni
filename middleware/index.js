@@ -28,7 +28,7 @@ function loginFunction(username, password){
   hashedPassword = passwordHasher(password);
   creds['username'] = username;
   creds['password'] = hashedPassword;
-  console.log(creds);
+  //console.log(creds);
   return creds;
 }
 
@@ -37,7 +37,7 @@ app.get('/fn_login', async(req, res) => {
   var creds = loginFunction(usr, psswd);
   try{
     //parameters for calling DB function must be in format username:<username> password:<password> in json format
-      console.log("Creds bedfore call: ", JSON.stringify(creds));
+      //console.log("Creds bedfore call: ", JSON.stringify(creds));
       const data = await pool.query(`SELECT api.fn_login('${JSON.stringify(creds)}'::json)`);
       //console.log('DB: ', data.rows[0]['fn_login']);
       res.json(data.rows[0]['fn_login']);
