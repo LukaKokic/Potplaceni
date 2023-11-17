@@ -2,7 +2,7 @@
 #### Deploy aplikacije
 ###### URL: https://potplaceni.onrender.com
 #### Login
-###### Za login u aplikaciju se može koristiti neki od sljedećih credentialsa:
+######   Za login u aplikaciju se može koristiti neki od sljedećih credentialsa:
 ```markdown
 | Username |  Password  |
 | -------- | ---------- |
@@ -13,4 +13,4 @@
 | MW8901   | 0ada7258   |
 | KB9012   | a4942cc5   |
 ```
-Ako se želi postići nevaljali login može se unijeti bilo koja kombinacija username i password.
+######  Ako se želi postići nevaljali login može se unijeti bilo koja kombinacija suername i password osim navedenih.
