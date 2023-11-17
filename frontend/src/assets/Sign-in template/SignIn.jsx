@@ -29,7 +29,7 @@ function Copyright(props) {
 }
 
 async function getData(uName, pssssswd){
-  let shit = await axios.get('http://localhost:8080/fn_login', {
+  let shit = await axios.get('https://expressware.onrender.com/fn_login', {
     params: {
       usr: uName,
       psswd: pssssswd,
