@@ -1,0 +1,25 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff; /* Set the background color to white */
+  }
+  
+  .dashboard-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Align items in a column */
+    height: 100vh; /* Make the container take the full height of the viewport */
+  }
+  
+  .congratulations-text {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-image {
+    max-width: 100%;
+    height: auto;
+  }
