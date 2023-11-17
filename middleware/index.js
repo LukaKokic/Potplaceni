@@ -32,25 +32,15 @@ function loginFunction(username, password){
   return creds;
 }
 
-app.post("/temp_login", async (req, res) => {
-  //let receivedData = req.body['data'];
-  //console.log(receivedData);
-  //var temp = JSON.parse(receivedData['data'])
-  //console.log(temp['username']);
-  res.redirect(req, '/fn_login');
-})
-
 app.get('/fn_login', async(req, res) => {
-  // let receivedData = req.body['data'];
-  // var temp = JSON.parse(receivedData);
-  //var creds = loginFunction(temp['username'], temp['password']);
-  var creds = loginFunction('KB9012', '56789012');
-  //console.log("GET: ", receivedData);
+  const {usr, psswd} = req.query;
+  var creds = loginFunction(usr, psswd);
   try{
     //parameters for calling DB function must be in format username:<username> password:<password> in json format
+      console.log("Creds bedfore call: ", JSON.stringify(creds));
       const data = await pool.query(`SELECT api.fn_login('${JSON.stringify(creds)}'::json)`);
-      //console.log('DB response: ', data);
-      res.json({data});
+      //console.log('DB: ', data.rows[0]['fn_login']);
+      res.json(data.rows[0]['fn_login']);
   }catch (err){
       console.error(err);
       res.status(500).send(err.message);
@@ -60,8 +50,6 @@ app.get('/fn_login', async(req, res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-  //console.log('Pool: ', pool);
-  //loginFunction('KB9012', '56789012');
 });
 
 //exporting function, so it can be called in front-end
