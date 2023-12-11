@@ -28,7 +28,6 @@ function loginFunction(username, password){
   hashedPassword = passwordHasher(password);
   creds['username'] = username;
   creds['password'] = hashedPassword;
-  //console.log(creds);
   return creds;
 }
 
@@ -38,9 +37,7 @@ app.get('/fn_login', async(req, res) => {
   var creds = loginFunction(usr, psswd);
   try{
     //parameters for calling DB function must be in format username:<username> password:<password> in json format
-      //console.log("Creds before call: ", JSON.stringify(creds));
       const data = await pool.query(`SELECT api.fn_login('${JSON.stringify(creds)}'::json)`);
-      //console.log('DB: ', data.rows[0]['fn_login']);
       res.json(data.rows[0]['fn_login']);
   }catch (err){
       console.error(err);
@@ -63,7 +60,6 @@ app.post('/fn_add_admin', async(req, res) => {
   try{
     var response = await pool.query(`SELECT api.fn_add_admin('${JSON.stringify(reqBody)}'::json)`)
     res.json(response.rows[0]['fn_add_admin']);
-    //console.log(response.rows[0]['add_admin']);
   }catch (err){
     res.json(response.rows[0]['fn_add_admin']);
     res.status(400).send("Bad request");
