@@ -1,12 +1,11 @@
-*.aux
 node_modules
+package-lock.json
+
+*.aux
 *.lof
 *.log
 *.env
 *.lot
-
 *.out
-
 *.synctex.gz
-
 *.toc
