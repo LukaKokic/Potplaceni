@@ -58,7 +58,7 @@ app.post('/add_admin', async(req, res) => {
   }
   */
   try{
-    var response = await pool.query(`SELECT api.fn_add_admin('${JSON.stringify(reqBody)}'::json)`)
+    var response = await pool.query(`SELECT api.fn_add_admin('${JSON.stringify(reqBody)}'::json)`);
     res.json(response.rows[0]['fn_add_admin']);
   }catch (err){
     res.json(response.rows[0]['fn_add_admin']);
@@ -66,11 +66,50 @@ app.post('/add_admin', async(req, res) => {
   }
 });
 
+//Sends JSON containing all entries in useradmin table
 app.get('/view_admins', async(req, res) => {
   try{
     var response = await pool.query('SELECT api.fn_view_admins()');
     res.json(response.rows[0]['fn_view_admins']);
   }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
+//Updates phone, email and role/roles of a selected user, selected by userID
+app.post('/update_admin_info', async(req, res) => {
+  var new_admin_info = req.body;
+  /*  expected body content
+  {
+    "userID": "",
+    "phone": "",
+    "email": "",
+    "roleList": []
+  }
+  */
+  try{
+    var response = await pool.query(`SELECT api.fn_update_admin_info('${JSON.stringify(new_admin_info)}')::json`);
+    res.json(response.rows[0]['fn_update_admin_info']);
+  }catch(err){
+    console.log(err.message);
+    res.status(400).send(err.message);
+  }
+});
+
+//Changes the password of selected user, selected by userID
+app.post('/change_password', async(req, res) => {
+  var new_password = req.body;
+  /*  expected body content
+  {
+    "userID": "",
+    "pass": ""
+  }
+  */
+  try{
+    var response = await pool.query(`SELECT api.fn_change_password('${JSON.stringify(new_password)}')::json`);
+    res.json(response.rows[0]);
+  }catch(err){
+    console.log(err.message);
     res.status(400).send(err.message);
   }
 });
