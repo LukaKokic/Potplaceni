@@ -29,13 +29,13 @@
   ### UC4 - Modificiranje podataka korisnika
   BAZA:
   - napraviti funkciju u bazi za promjenu podataka postojećeg administratora, **fn_update_admin_account** (phone number, e-mail, role)
-  - napraviti funkciju u bazi za promjenu zaporke za prijavljivanje u sustav, **fn_update_password**
+  - napraviti funkciju u bazi za promjenu zaporke za prijavljivanje u sustav, **fn_change_password**
 
   API:
-  -  definirati POST rutu za ažuriranje osobnih podataka o administratoru te njegove uloge, **../update_admin_info/<int:userID>**
-  - definirati POST rutu za promjenu zaporke za prijavljivanje u sustav, **../change_password/<int:userID>**
+  - definirati POST rutu za ažuriranje osobnih podataka o administratoru te njegove uloge, **../update_admin_info**
+  - definirati POST rutu za promjenu zaporke za prijavljivanje u sustav, **../change_password**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
 
   ### UC5 - Brisanje postojećeg korisnika
   BAZA:
