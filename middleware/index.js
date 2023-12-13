@@ -32,7 +32,7 @@ function loginFunction(username, password){
 }
 
 //Sing into application
-app.get('/fn_login', async(req, res) => {
+app.get('/login', async(req, res) => {
   const {usr, psswd} = req.query;
   var creds = loginFunction(usr, psswd);
   try{
@@ -46,7 +46,7 @@ app.get('/fn_login', async(req, res) => {
 });
 
 //Add new user
-app.post('/fn_add_admin', async(req, res) => {
+app.post('/add_admin', async(req, res) => {
   var reqBody = req.body;
   /* expected body content 
   {

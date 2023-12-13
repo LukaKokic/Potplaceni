@@ -17,15 +17,15 @@ begin
 end;
 $BODY$;
 
-ALTER FUNCTION public."fn_createCredentials"()
+ALTER FUNCTION public."fn_create_credentials"()
     OWNER TO dentall_rmm2_user;
 
-GRANT EXECUTE ON FUNCTION public."fn_createCredentials"() TO PUBLIC;
+GRANT EXECUTE ON FUNCTION public."fn_create_credentials"() TO PUBLIC;
 
-GRANT EXECUTE ON FUNCTION public."fn_createCredentials"() TO app_api;
+GRANT EXECUTE ON FUNCTION public."fn_create_credentials"() TO app_api;
 
-GRANT EXECUTE ON FUNCTION public."fn_createCredentials"() TO auth_api;
+GRANT EXECUTE ON FUNCTION public."fn_create_credentials"() TO auth_api;
 
-GRANT EXECUTE ON FUNCTION public."fn_createCredentials"() TO dentall_rmm2_user;
+GRANT EXECUTE ON FUNCTION public."fn_create_credentials"() TO dentall_rmm2_user;
 
-GRANT EXECUTE ON FUNCTION public."fn_createCredentials"() TO postgres;
+GRANT EXECUTE ON FUNCTION public."fn_create_credentials"() TO postgres;

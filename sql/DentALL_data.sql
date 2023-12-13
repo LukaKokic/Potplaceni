@@ -23,7 +23,7 @@ INSERT INTO public.userrole(
 	roleid, rolename)
 	VALUES (1, 'accomodation_admin'),
 	(2, 'transporter_admin'),
-	(3, 'user_admin')
+	(3, 'user_admin');
 	
 --TEST pridjeljivanja, driver query
 /*
