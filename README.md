@@ -19,11 +19,12 @@
   ### UC3 - Pregled korisnika
   BAZA:
   - napraviti funkciju za pregeledavanje podataka o svim administratorima registriranim u sustavu, **fn_view_admins**
+    - pregled uloga svakog korisnika?
 
   API:
-  - definirati GET rutu za pregledavanje svih administratora, **../view_admins/**
+  - definirati GET rutu za pregledavanje svih administratora, **../view_admins**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
 
   ### UC4 - Modificiranje podataka korisnika
   BAZA:
