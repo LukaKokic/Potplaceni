@@ -37,8 +37,8 @@ app.get('/login', async(req, res) => {
   var creds = loginFunction(usr, psswd);
   try{
     //parameters for calling DB function must be in format username:<username> password:<password> in json format
-      const data = await pool.query(`SELECT api.fn_login('${JSON.stringify(creds)}'::json)`);
-      res.json(data.rows[0]['fn_login']);
+      var data = await pool.query(`SELECT api.fn_login('${JSON.stringify(creds)}'::json)`);
+      res.json(data.rows[0]['fn_login']); //data from response of a function is always stored in <variableName>.rows[0]['name-of-function-in-DB']
   }catch (err){
       console.error(err);
       res.status(400).send(err.message);
@@ -50,11 +50,11 @@ app.post('/add_admin', async(req, res) => {
   var reqBody = req.body;
   /* expected body content 
   {
-    PIN: '',
-    firstname: '',
-    lastname: '',
-    phone: '',
-    email: ''
+    "PIN": "",
+    "firstname": "",
+    "lastname": "",
+    "phone": "",
+    "email": ""
   }
   */
   try{
@@ -63,6 +63,15 @@ app.post('/add_admin', async(req, res) => {
   }catch (err){
     res.json(response.rows[0]['fn_add_admin']);
     res.status(400).send("Bad request");
+  }
+});
+
+app.get('/view_admins', async(req, res) => {
+  try{
+    var response = await pool.query('SELECT api.fn_view_admins()');
+    res.json(response.rows[0]['fn_view_admins']);
+  }catch (err){
+    res.status(400).send(err.message);
   }
 });
 
