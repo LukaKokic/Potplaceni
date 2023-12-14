@@ -63,15 +63,15 @@ CREATE TABLE PatientArrival( --table
 	TownID bigserial,
 	dateOfArrival timestamp,
 	dateOfDeparture timestamp,
-	foreign key (PatientID) references Patient(PatientID),
+	constraint PatientID foreign key (PatientID) references Patient(PatientID) on delete cascade,
 	foreign key (TownID) references Town(TownID)
 );
 
-CREATE TABLE Credentials( --table
+CREATE TABLE auth.Credentials( --table
 	username varchar(50),
 	pass varchar(25),
 	UserID bigserial,
-	foreign key (UserID) references AdminUser(UserID)
+	constraint UserID foreign key (UserID) references AdminUser(UserID) on delete cascade
 );
 
 CREATE TABLE Accomodation( --table
@@ -139,8 +139,8 @@ CREATE TABLE VehicleSchedule( --table
 CREATE TABLE assignedRole( --relation
 	UserID bigserial,
 	RoleID bigserial,
-	foreign key(UserID) references AdminUser(UserID),
-	foreign key(RoleID) references UserRole(RoleID)
+	constraint UserID foreign key(UserID) references AdminUser(UserID) on delete cascade,
+	constraint RoleID foreign key(RoleID) references UserRole(RoleID) on delete cascade
 );
 
 CREATE TABLE clinicAccomodation( --relation
