@@ -12,7 +12,7 @@
   - popunjavanje tablice assignedrole sa dodijeljenom/dodjeljenim ulogama novom administratoru
 
   API:
-  - definirati POST rutu za dodavanje novog administratora, **../add_admin/**
+  - definirati POST rutu za dodavanje novog administratora, **../add_admin**
   <br/>
   COMPLETED ✔
 
@@ -43,9 +43,9 @@
     - također se brišu vjerodajnice u tablici credentials te n-torke u tablici assignedrole
 
   API:
-  - definirati DELETE rutu za brisanje administratora, **../delete_admin/<int:userID>**
+  - definirati POST rutu za brisanje administratora, **../delete_admin**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
 
   ### UC6 - Dodavanje novog smještaja
   BAZA:
