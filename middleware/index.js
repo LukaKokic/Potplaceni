@@ -107,7 +107,24 @@ app.post('/change_password', async(req, res) => {
   */
   try{
     var response = await pool.query(`SELECT api.fn_change_password('${JSON.stringify(new_password)}')::json`);
-    res.json(response.rows[0]);
+    res.json(response.rows[0]['fn_change_password']);
+  }catch(err){
+    console.log(err.message);
+    res.status(400).send(err.message);
+  }
+});
+
+//Deletes selected user, selected by userID
+app.post('/delete_admin', async(req, res) => {
+  var userID = req.body;
+  /*  expected body content
+  {
+    "userID": ""
+  }
+  */
+  try{
+    var response = await pool.query(`SELECT api.fn_delete_admin('${JSON.stringify(userID)}')::json`);
+    res.json(response.rows[0]['fn_delete_admin']);
   }catch(err){
     console.log(err.message);
     res.status(400).send(err.message);
