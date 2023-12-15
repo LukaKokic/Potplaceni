@@ -13,7 +13,7 @@ CREATE TABLE Treatment( --table
 	description text
 );
 
-CREATE TABLE AccomodationType( --table
+CREATE TABLE AccommodationType( --table
 	TypeID smallint primary key,
 	desciption text
 );
@@ -74,8 +74,9 @@ CREATE TABLE auth.Credentials( --table
 	constraint UserID foreign key (UserID) references AdminUser(UserID) on delete cascade
 );
 
-CREATE TABLE Accomodation( --table
-	AccomodationID bigserial primary key,
+CREATE TABLE Accommodation( --table
+	AccommodationID bigserial primary key,
+	realEstateID varchar(8) unique,
 	TypeID smallint,
 	EquippedID smallint,
 	latitude decimal(9,6),
@@ -83,19 +84,19 @@ CREATE TABLE Accomodation( --table
 	address varchar(95),
 	TownID bigserial,
 	active bit,
-	foreign key (TypeID) references AccomodationType(TypeID),
+	foreign key (TypeID) references AccommodationType(TypeID),
 	foreign key (EquippedID) references Equipped(EquippedID),
 	foreign key (TownID) references Town(TownID)
 );
 
-CREATE TABLE AccomodationOccupied( --table
+CREATE TABLE AccommodationOccupied( --table
 	ID bigserial primary key,
 	PatientID bigserial,
-	AccomodationID bigserial,
+	AccommodationID bigserial,
 	datoFrom date,
 	dateTo date,
 	foreign key (PatientID) references Patient(PatientID),
-	foreign key (AccomodationID) references Accomodation(AccomodationID)
+	foreign key (AccommodationID) references Accommodation(AccommodationID)
 );
 
 CREATE TABLE Transporter( --table
@@ -143,11 +144,11 @@ CREATE TABLE assignedRole( --relation
 	constraint RoleID foreign key(RoleID) references UserRole(RoleID) on delete cascade
 );
 
-CREATE TABLE clinicAccomodation( --relation
+CREATE TABLE clinicAccommodation( --relation
 	ClinicID bigserial,
-	AccomodationID bigserial,
+	AccommodationID bigserial,
 	foreign key (ClinicID) references Clinic(ClinicID),
-	foreign key (AccomodationID) references Accomodation(AccomodationID)
+	foreign key (AccommodationID) references Accommodation(AccommodationID)
 );
 
 CREATE TABLE clinicTransporter( --relation
@@ -178,10 +179,9 @@ CREATE TABLE PatientPreferences( --table
 	TypeID smallint,
 	EquippedID smallint,
 	foreign key (PatientID) references Patient(PatientID),
-	foreign key (TypeID) references AccomodationType(TypeID),
+	foreign key (TypeID) references AccommodationType(TypeID),
 	foreign key (EquippedID) references Equipped(EquippedID)
 );
-
 
 --create users and groups
 
