@@ -5,8 +5,6 @@ const passwordHasher = require('./passwordhassher');
 const cors = require('cors');
 const app = express();
 
-
-
 app.use(express.json());
 app.use(cors());
 
@@ -40,7 +38,6 @@ app.get('/login', async(req, res) => {
       var data = await pool.query(`SELECT api.fn_login('${JSON.stringify(creds)}'::json)`);
       res.json(data.rows[0]['fn_login']); //data from response of a function is always stored in <variableName>.rows[0]['name-of-function-in-DB']
   }catch (err){
-      console.error(err);
       res.status(400).send(err.message);
   }
 });
@@ -61,7 +58,6 @@ app.post('/add_admin', async(req, res) => {
     var response = await pool.query(`SELECT api.fn_add_admin('${JSON.stringify(reqBody)}'::json)`);
     res.json(response.rows[0]['fn_add_admin']);
   }catch (err){
-    res.json(response.rows[0]['fn_add_admin']);
     res.status(400).send("Bad request");
   }
 });
@@ -91,7 +87,6 @@ app.post('/update_admin_info', async(req, res) => {
     var response = await pool.query(`SELECT api.fn_update_admin_info('${JSON.stringify(new_admin_info)}')::json`);
     res.json(response.rows[0]['fn_update_admin_info']);
   }catch(err){
-    console.log(err.message);
     res.status(400).send(err.message);
   }
 });
@@ -109,7 +104,6 @@ app.post('/change_password', async(req, res) => {
     var response = await pool.query(`SELECT api.fn_change_password('${JSON.stringify(new_password)}')::json`);
     res.json(response.rows[0]['fn_change_password']);
   }catch(err){
-    console.log(err.message);
     res.status(400).send(err.message);
   }
 });
@@ -126,7 +120,29 @@ app.post('/delete_admin', async(req, res) => {
     var response = await pool.query(`SELECT api.fn_delete_admin('${JSON.stringify(userID)}')::json`);
     res.json(response.rows[0]['fn_delete_admin']);
   }catch(err){
-    console.log(err.message);
+    res.status(400).send(err.message);
+  }
+});
+
+//Add accommodation
+app.post('/add_accommodation', async(req, res) => {
+  var accomodation = req.body;
+  /*  expected body content
+  {
+    "realEstateID": "",
+    "typeID": ,
+    "equippedID": ,
+    "latitude": "",
+    "longitude": "",
+    "address": "",
+    "townID": "",
+    "active": ,
+  }
+  */
+  try{
+    var response = await pool.query(`SELECT api.fn_add_accommodation('${JSON.stringify(accomodation)}')::json`);
+    res.json(response.rows[0]['fn_add_accommodation']);
+  }catch (err){
     res.status(400).send(err.message);
   }
 });
