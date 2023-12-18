@@ -14,7 +14,8 @@ begin
 			're_id', acc.realestateid,
 			'acc_type', acctype.description,
 			'acc_eq', eq.description,
-			'address', acc.address || ', ' || t.postalcode || ', ' || t.townname
+			'address', acc.address || ', ' || t.postalcode || ', ' || t.townname,
+			'active', acc.active
 		)
 	)
 	from
