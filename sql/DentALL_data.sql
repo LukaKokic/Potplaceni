@@ -123,6 +123,15 @@ INSERT INTO Equipped (EquippedID, description)
 	(2, 'neopremljen'),
 	(3, 'djelomično opremljen');
 
+--Dodavanje VehicleType u sustav
+INSERT INTO VehicleType (typeid, description)
+	VALUES (1, 'Mini automobili'),
+	(2, 'Mali automobili'),
+	(3, 'Srednji automobili'),
+	(4, 'Veliki automobili'),
+	(5, 'Višenamjenski automobili'),
+	(6, 'SUV')
+	
 --Izrada vjerodajnica za dodane administratore	
 INSERT INTO auth.credentials(
 	username, pass, userid)
