@@ -7,29 +7,43 @@ declare
 	returnValue json;
 	
 begin
+	with
+		cte as(
+			select
+				acc.accommodationid acc_id,
+				acc.realestateid realestate_id,
+				acctype.description acc_type,
+				eq.description equipped_type,
+				acc.address || ', ' || t.postalcode || ', ' || t.townname acc_address,
+				acc.active acc_active
+			from
+				accommodation acc
+			join 
+				accommodationtype acctype
+			on	acc.typeid = acctype.typeid
+			join
+				equipped eq
+			on	eq.equippedid = acc.equippedid
+			join
+				town t
+			on	acc.townid = t.townid
+			order by
+				acc.accommodationid
+		)
 	select into 
 	returnValue json_agg(
 		json_build_object(
-			'id', acc.accommodationid,
-			're_id', acc.realestateid,
-			'acc_type', acctype.description,
-			'acc_eq', eq.description,
-			'address', acc.address || ', ' || t.postalcode || ', ' || t.townname,
-			'active', acc.active
+			'id', cte.acc_id,
+			're_id', cte.realestate_id,
+			'acc_type', cte.acc_type,
+			'acc_eq', cte.equipped_type,
+			'address', cte.acc_address,
+			'active', cte.acc_active
 		)
 	)
 	from
-		accommodation acc
-	join 
-		accommodationtype acctype
-	on	acc.typeid = acctype.typeid
-	join
-		equipped eq
-	on	eq.equippedid = acc.equippedid
-	join
-		town t
-	on	acc.townid = t.townid;
-	
+		cte;a
+		
 	return returnValue;
 end;
 	
