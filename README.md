@@ -3,7 +3,7 @@
   - popunjavanje baze sa podacima za entitete:
     Town ✔,
     Clinic ✔,
-    VehicleType,
+    VehicleType ✔,
     AccommodationType ✔,
     Equipped ✔,
     Treatment
