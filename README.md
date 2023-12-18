@@ -1,6 +1,12 @@
 # Dnevnik implementacije
   ### Inicijalno postavljanje baze
-  - popunjavanje baze sa podacima za entitete Town, Clinic, VehicleType, AccomodationType, Equipped, Treatment
+  - popunjavanje baze sa podacima za entitete:
+    Town ✔,
+    Clinic ✔,
+    VehicleType,
+    AccomodationType ✔,
+    Equipped ✔,
+    Treatment
   <br/>
   COMPLETED ❌
 
@@ -8,7 +14,7 @@
   BAZA:
   - napraviti funkciju u bazi za dodavanje novog administratora, **fn_add_admin**
     -provjera postoji li već takav administrator u bazi
-  - automatska izrada vjerodajnica za novododanog administratora, fn_create_credentials
+  - automatska izrada vjerodajnica za novododanog administratora, **fn_create_credentials**
   - popunjavanje tablice assignedrole sa dodijeljenom/dodjeljenim ulogama novom administratoru
 
   API:
@@ -54,7 +60,10 @@
     - popunjavanje relacije clinciAccomodation sa vezom novododanog smještaja i klinike
 
   API:
-  - definirati POST rutu za dodavanje novog smještaja, **../add_accomodation/**
+  - definirati POST rutu za dodavanje novog smještaja, **../add_accomodation**
+
+  IDEJA ZA FRONT:
+  - prilikom izrade forme za popunjavanje informacija o novom smješaju, treba dohvatiti iz baze polja kao što su Town, AccommodationType, Equipped, zato što se sa fronta šalje podaci o ID-u grada, accommodationtype-a i equipped. Stoga su napravljene funkcije u bazi za dohvat svih tih informacija, pa prilikom dolaska na stranicu forme trebalo bi povući te podatke i onda npr. kada se odabire grad ponuiditi dropdown listu s dohvaćenim podacima iz baze
   <br/>
   COMPLETED ❌
 
