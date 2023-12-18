@@ -1,6 +1,7 @@
 CREATE TABLE Town( --table
 	TownID bigserial primary key,
-	townName varchar(35)
+	townName varchar(35),
+	postalCode varchar(5)
 );
 
 CREATE TABLE UserRole( --table
@@ -15,7 +16,7 @@ CREATE TABLE Treatment( --table
 
 CREATE TABLE AccommodationType( --table
 	TypeID smallint primary key,
-	desciption text
+	description text
 );
 
 CREATE TABLE VehicleType( --table
@@ -30,7 +31,7 @@ CREATE TABLE Equipped( --table
 
 CREATE TABLE Clinic( --table
 	ClinicID bigserial primary key,
-	clinicName varchar(90),
+	clinicName varchar(150),
 	latitude decimal(8,6),
 	longitude decimal(9,6),
 	clinicAddress varchar (95),
