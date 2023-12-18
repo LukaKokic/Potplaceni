@@ -147,6 +147,18 @@ app.post('/add_accommodation', async(req, res) => {
   }
 });
 
+//Get list of accommodations
+app.get('/view_accommodations', async(req, res) => {
+  var accomodation = req.body;
+  try{
+    var response = await pool.query('SELECT api.fn_view_accommodations()');
+    res.json(response.rows[0]['fn_view_accommodations']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 });
