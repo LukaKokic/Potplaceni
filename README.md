@@ -81,9 +81,9 @@
   - napraviti funkciju za ažuriranje raspoloživosti smještaja u sustavu, **fn_update_accomodation_avaliability**
 
   API:
-  - definirati PUT rutu za ažuriranje raspoloživosti smještaja, **../view_accomodations/<int:accomodationID>**
+  - definirati PUT rutu za ažuriranje raspoloživosti smještaja, **../update_accomodation_avaliability**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
 
   ### UC9 - Brisanje postojećeg smještaja
   BAZA:
