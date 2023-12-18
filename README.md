@@ -4,7 +4,7 @@
     Town ✔,
     Clinic ✔,
     VehicleType,
-    AccomodationType ✔,
+    AccommodationType ✔,
     Equipped ✔,
     Treatment
   <br/>
@@ -55,12 +55,12 @@
 
   ### UC6 - Dodavanje novog smještaja
   BAZA:
-  - napraviti funkciju u bazi za dodavanje novog smještaja, **fn_add_accomodation**
+  - napraviti funkciju u bazi za dodavanje novog smještaja, **fn_add_accommodation**
     - provjera postoji li dodani smještaj u bazi
-    - popunjavanje relacije clinciAccomodation sa vezom novododanog smještaja i klinike
+    - popunjavanje relacije clinciAccommodation sa vezom novododanog smještaja i klinike
 
   API:
-  - definirati POST rutu za dodavanje novog smještaja, **../add_accomodation**
+  - definirati POST rutu za dodavanje novog smještaja, **../add_accommodation**
 
   IDEJA ZA FRONT:
   - prilikom izrade forme za popunjavanje informacija o novom smješaju, treba dohvatiti iz baze polja kao što su Town, AccommodationType, Equipped, zato što se sa fronta šalje podaci o ID-u grada, accommodationtype-a i equipped. Stoga su napravljene funkcije u bazi za dohvat svih tih informacija, pa prilikom dolaska na stranicu forme trebalo bi povući te podatke i onda npr. kada se odabire grad ponuiditi dropdown listu s dohvaćenim podacima iz baze
@@ -69,30 +69,30 @@
 
   ### UC7 - Pregled smještaja
   BAZA:
-  - napraviti funkciju za pregeledavanje podataka o svim smještajima registriranim u sustavu, **fn_view_accomodations**
+  - napraviti funkciju za pregeledavanje podataka o svim smještajima registriranim u sustavu, **fn_view_accommodations**
 
   API:
-  - definirati GET rutu za pregledavanje svih smještaja, **../view_accomodations**
+  - definirati GET rutu za pregledavanje svih smještaja, **../view_accommodations**
   <br/>
   COMPLETED ✔
 
   ### UC8 - Postavljanje raslopoživosti smještaja
   BAZA:
-  - napraviti funkciju za ažuriranje raspoloživosti smještaja u sustavu, **fn_update_accomodation_avaliability**
+  - napraviti funkciju za ažuriranje raspoloživosti smještaja u sustavu, **fn_update_accommodation_avaliability**
 
   API:
-  - definirati PUT rutu za ažuriranje raspoloživosti smještaja, **../update_accomodation_avaliability**
+  - definirati PUT rutu za ažuriranje raspoloživosti smještaja, **../update_accommodation_avaliability**
   <br/>
   COMPLETED ✔
 
   ### UC9 - Brisanje postojećeg smještaja
   BAZA:
-  - napraviti funkciju u bazi koja kaskadno briše sve entitete povezane sa obrisanim smještajem, **fn_delete_accomodation**
+  - napraviti funkciju u bazi koja kaskadno briše sve entitete povezane sa obrisanim smještajem, **fn_delete_accommodation**
 
   API:
-  - definirati DELETE rutu za brisanje smještaja, **../delete_accomodation/<int:accomodationID>**
+  - definirati DELETE rutu za brisanje smještaja, **../delete_accommodation**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
     
   ### UC10 - Dodavanje prijevoznika
   BAZA:
@@ -203,7 +203,7 @@
     
   ### UC21 - Periodičko pridijeljivanje smještaja i prijevoza pacijentima
   BAZA:
-  - funkcija u bazi kojom će se popunjavati entiteti AccomodationOccupied i VehicleOccupied prema preferencama pacijenata, ukoliko je to moguće, **fn_create_treatmenet_plan**
+  - funkcija u bazi kojom će se popunjavati entiteti AccommodationOccupied i VehicleOccupied prema preferencama pacijenata, ukoliko je to moguće, **fn_create_treatmenet_plan**
     - logika liječenja pacijenta, zauzimanje slobodnog smještaja, angažiranje prijevoza od i do smještaja te klinike
   <br/>
   COMPLETED ❌
