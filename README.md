@@ -65,7 +65,7 @@
   IDEJA ZA FRONT:
   - prilikom izrade forme za popunjavanje informacija o novom smješaju, treba dohvatiti iz baze polja kao što su Town, AccommodationType, Equipped, zato što se sa fronta šalje podaci o ID-u grada, accommodationtype-a i equipped. Stoga su napravljene funkcije u bazi za dohvat svih tih informacija, pa prilikom dolaska na stranicu forme trebalo bi povući te podatke i onda npr. kada se odabire grad ponuiditi dropdown listu s dohvaćenim podacima iz baze
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
 
   ### UC7 - Pregled smještaja
   BAZA:
