@@ -72,9 +72,9 @@
   - napraviti funkciju za pregeledavanje podataka o svim smještajima registriranim u sustavu, **fn_view_accomodations**
 
   API:
-  - definirati GET rutu za pregledavanje svih smještaja, **../view_accomodations/**
+  - definirati GET rutu za pregledavanje svih smještaja, **../view_accomodations**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
 
   ### UC8 - Postavljanje raslopoživosti smještaja
   BAZA:
