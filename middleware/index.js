@@ -158,6 +158,22 @@ app.get('/view_accommodations', async(req, res) => {
   }
 });
 
+//Updates accommodation avaliability, selected by accommodationID
+app.post('/update_accommodation_avaliability', async(req, res) => {
+  var accommodation_update = req.body;
+  /*  expected body content
+  {
+    "id": ,
+    "avaliable": 
+  }
+  */
+  try{
+    var response = await pool.query(`SELECT api.fn_update_accommodation_avaliability('${JSON.stringify(accommodation_update)}')::json`);
+    res.json(response.rows[0]['fn_update_accommodation_avaliability']);
+  }catch(err){
+    res.status(400).send(err.message);
+  }
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
