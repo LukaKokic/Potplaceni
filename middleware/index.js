@@ -179,5 +179,21 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 });
 
+//Deletes selected accommodation, selected by accommodationID
+app.post('/delete_accommodation', async(req, res) => {
+  var accommodation_ID = req.body;
+  /*  expected body content
+  {
+    "id": 
+  }
+  */
+  try{
+    var response = await pool.query(`SELECT api.fn_delete_accommodation('${JSON.stringify(accommodation_ID)}')::json`);
+    res.json(response.rows[0]['fn_delete_accommodation']);
+  }catch(err){
+    res.status(400).send(err.message);
+  }
+});
+
 //exporting function, so it can be called in front-end
 module.exports = loginFunction;
