@@ -102,6 +102,7 @@ CREATE TABLE AccommodationOccupied( --table
 
 CREATE TABLE Transporter( --table
 	TransporterID bigserial primary key,
+	orgcode varchar(10),
 	organisationName varchar(70),
 	phone varchar(20),
 	address varchar(95),
