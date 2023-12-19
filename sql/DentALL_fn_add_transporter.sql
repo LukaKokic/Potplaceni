@@ -10,11 +10,16 @@ declare
 	addr varchar := (data_in->>'address')::varchar;
 	town integer := (data_in->>'townID')::integer;
 	ac bit := (data_in->>'active')::bit;
+	
+	org_code varchar;
 
 begin
-	if (select count(*) from public.transporter where organisationname = org_name) = 0 then
-		INSERT INTO public.transporter (organisationname, phone, address, townid, active)
-		VALUES (org_name, contact, addr, town, ac);
+	select into org_code
+		'ORG-' || left(MD5(org_name),6);
+
+	if (select count(*) from public.transporter where orgcode = org_code) = 0 then			
+		INSERT INTO public.transporter (orgcode, organisationname, phone, address, townid, active)
+		VALUES (org_code, org_name, contact, addr, town, ac);
 	
 		returnValue := json_build_object(
 			'success', true,
