@@ -10,12 +10,6 @@ app.use(cors());
 
 const port = 8080;
 
-
-//TODO connect this to front and greet user with login page
-app.get('/', (req, res) => {
-  res.send('Hello World')
-});
-
 //function do be called when login button has been pressed
 function loginFunction(username, password){
   var creds = {
@@ -29,6 +23,13 @@ function loginFunction(username, password){
   return creds;
 }
 
+//################################################################# GET methods #################################################################
+
+//TODO connect this to front and greet user with login page
+app.get('/', (req, res) => {
+  res.send('Why are you here?, thi is not the fancy front page, this is crude, harsh BACKEND')
+});
+
 //Sing into application
 app.get('/login', async(req, res) => {
   const {usr, psswd} = req.query;
@@ -41,6 +42,31 @@ app.get('/login', async(req, res) => {
       res.status(400).send(err.message);
   }
 });
+
+//Sends JSON containing all entries in useradmin table
+app.get('/view_admins', async(req, res) => {
+  try{
+    var response = await pool.query('SELECT api.fn_view_admins()');
+    res.json(response.rows[0]['fn_view_admins']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
+//Get list of accommodations
+app.get('/view_accommodations', async(req, res) => {
+  var accomodation = req.body;
+  try{
+    var response = await pool.query('SELECT api.fn_view_accommodations()');
+    res.json(response.rows[0]['fn_view_accommodations']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
+//################################################################# GET methods #################################################################
+
+//################################################################# POST methods ################################################################
 
 //Add new user
 app.post('/add_admin', async(req, res) => {
@@ -59,16 +85,6 @@ app.post('/add_admin', async(req, res) => {
     res.json(response.rows[0]['fn_add_admin']);
   }catch (err){
     res.status(400).send("Bad request");
-  }
-});
-
-//Sends JSON containing all entries in useradmin table
-app.get('/view_admins', async(req, res) => {
-  try{
-    var response = await pool.query('SELECT api.fn_view_admins()');
-    res.json(response.rows[0]['fn_view_admins']);
-  }catch (err){
-    res.status(400).send(err.message);
   }
 });
 
@@ -147,17 +163,6 @@ app.post('/add_accommodation', async(req, res) => {
   }
 });
 
-//Get list of accommodations
-app.get('/view_accommodations', async(req, res) => {
-  var accomodation = req.body;
-  try{
-    var response = await pool.query('SELECT api.fn_view_accommodations()');
-    res.json(response.rows[0]['fn_view_accommodations']);
-  }catch (err){
-    res.status(400).send(err.message);
-  }
-});
-
 //Updates accommodation avaliability, selected by accommodationID
 app.post('/update_accommodation_avaliability', async(req, res) => {
   var accommodation_update = req.body;
@@ -175,10 +180,6 @@ app.post('/update_accommodation_avaliability', async(req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-});
-
 //Deletes selected accommodation, selected by accommodationID
 app.post('/delete_accommodation', async(req, res) => {
   var accommodation_ID = req.body;
@@ -193,6 +194,33 @@ app.post('/delete_accommodation', async(req, res) => {
   }catch(err){
     res.status(400).send(err.message);
   }
+});
+
+//Add accommodation
+app.post('/add_transporter', async(req, res) => {
+  var transporter = req.body;
+  /*  expected body content
+  {
+    "orgName": "",
+    "contact": "",
+    "address": "",
+    "townID": "",
+    "active": 
+  }
+  */
+  try{
+    var response = await pool.query(`SELECT api.fn_add_transporter('${JSON.stringify(transporter)}')::json`);
+    res.json(response.rows[0]['fn_add_transporter']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
+
+//################################################################# POST methods ################################################################
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
 });
 
 //exporting function, so it can be called in front-end
