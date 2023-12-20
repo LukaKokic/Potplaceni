@@ -119,9 +119,9 @@
   - napraviti funkciju u bazi koja kaskadno briše sve entitete povezane sa obrisanim prijevoznikom, **fn_delete_transporter**
 
   API:
-  - definirati DELETE rutu za brisanje prijhevoznika, **../delete_transporter/<int:transporterID>**
+  - definirati DELETE rutu za brisanje prijhevoznika, **../delete_transporter**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
     
   ### UC13 - Dodavanje vozila prijevoznika
   BAZA:
