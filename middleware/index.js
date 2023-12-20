@@ -43,7 +43,7 @@ app.get('/login', async(req, res) => {
   }
 });
 
-//Sends JSON containing all entries in useradmin table
+//GET JSON containing all entries in useradmin table
 app.get('/view_admins', async(req, res) => {
   try{
     var response = await pool.query('SELECT api.fn_view_admins()');
@@ -53,12 +53,21 @@ app.get('/view_admins', async(req, res) => {
   }
 });
 
-//Get list of accommodations
+//GET JSON containing all entries in accommodation table
 app.get('/view_accommodations', async(req, res) => {
-  var accomodation = req.body;
   try{
     var response = await pool.query('SELECT api.fn_view_accommodations()');
     res.json(response.rows[0]['fn_view_accommodations']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
+//GET JSON containing all entries in transporter table
+app.get('/view_transporters', async(req, res) => {
+  try{
+    var response = await pool.query('SELECT api.fn_view_transporters()');
+    res.json(response.rows[0]['fn_view_transporters']);
   }catch (err){
     res.status(400).send(err.message);
   }
