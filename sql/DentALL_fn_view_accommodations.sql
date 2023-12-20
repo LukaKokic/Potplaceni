@@ -42,11 +42,10 @@ begin
 		)
 	)
 	from
-		cte;a
+		cte;
 		
 	return returnValue;
 end;
-	
 $BODY$;
 
 ALTER FUNCTION api.fn_view_accommodations()
