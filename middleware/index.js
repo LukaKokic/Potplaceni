@@ -228,7 +228,7 @@ app.post('/add_transporter', async(req, res) => {
   }
 });
 
-//Deletes selected transporter, selected by transporterid
+//Deletes selected transporter, selected by transporterID
 app.post('/delete_transporter', async(req, res) => {
   var transporter_ID = req.body;
   /*  expected body content
