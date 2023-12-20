@@ -149,6 +149,9 @@ app.post('/delete_admin', async(req, res) => {
   }
 });
 
+//TODO add delete for multiple admins
+
+
 //Add accommodation
 app.post('/add_accommodation', async(req, res) => {
   var accomodation = req.body;
@@ -225,6 +228,21 @@ app.post('/add_transporter', async(req, res) => {
   }
 });
 
+//Deletes selected transporter, selected by transporterid
+app.post('/delete_transporter', async(req, res) => {
+  var transporter_ID = req.body;
+  /*  expected body content
+  {
+    "id": 
+  }
+  */
+  try{
+    var response = await pool.query(`SELECT api.fn_delete_transporter('${JSON.stringify(transporter_ID)}')::json`);
+    res.json(response.rows[0]['fn_delete_transporter']);
+  }catch(err){
+    res.status(400).send(err.message);
+  }
+});
 
 //################################################################# POST methods ################################################################
 
