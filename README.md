@@ -101,18 +101,18 @@
     - popunjavanje relacije clinicTransporter  sa vezom novododanog prijevoznika i klinike
 
   API:
-  - definirati POST rutu za dodavanje novog prijevoznika, **../add_transporter/**
+  - definirati POST rutu za dodavanje novog prijevoznika, **../add_transporter**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
     
-  ### Uc11 - Pregled prijevoznika
+  ### UC11 - Pregled prijevoznika
   BAZA:
   - napraviti funkciju za pregeledavanje podataka o svim prijevoznicima registriranim u sustavu, **fn_view_transporters**
 
   API:
-  - definirati GET rutu za pregledavanje svih prijevoznika, **../view_transporters/**
+  - definirati GET rutu za pregledavanje svih prijevoznika, **../view_transporters**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
     
   ### UC12 - Brisanje prijevoznika
   BAZA:
