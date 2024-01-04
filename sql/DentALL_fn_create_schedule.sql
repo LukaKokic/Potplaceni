@@ -1,10 +1,9 @@
-CREATE OR REPLACE FUNCTION public.fn_create_schedule()
+CREATE OR REPLACE FUNCTION public.fn_create_schedule(
+	)
     RETURNS void
     LANGUAGE 'plpgsql'
-    VOLATILE
-    PARALLEL UNSAFE
     COST 100
-    
+    VOLATILE PARALLEL UNSAFE
 AS $BODY$
 declare
 	new_vehicle_id integer;
@@ -34,7 +33,7 @@ begin
     	select 
 			dayOfWeek
     	from 
-			generate_series(1, 7) AS dayOfWeek
+			generate_series(0, 6) AS dayOfWeek
     	order by 
 			random()
     	LIMIT 5
