@@ -280,6 +280,22 @@ app.post('/add_transporter_vehicle', async(req, res) => {
   }
 })
 
+//Updates vehicle avaliability, selected by vehicleID
+app.post('/update_vehicle_avaliability', async(req, res) => {
+  var vehicle_update = req.body;
+  /*  expected body content
+  {
+    "id": ,
+    "avaliable": 
+  }
+  */
+  try{
+    var response = await pool.query(`SELECT api.fn_update_vehicle_avaliability('${JSON.stringify(vehicle_update)}')::json`);
+    res.json(response.rows[0]['fn_update_vehicle_avaliability']);
+  }catch(err){
+    res.status(400).send(err.message);
+  }
+});
 //################################################################# POST methods ################################################################
 
 app.listen(port, () => {
