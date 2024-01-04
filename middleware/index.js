@@ -296,6 +296,22 @@ app.post('/update_vehicle_avaliability', async(req, res) => {
     res.status(400).send(err.message);
   }
 });
+
+//Deletes selected vehicle, selected by vehicleID
+app.post('/delete_transporter', async(req, res) => {
+  var vehicle_ID = req.body;
+  /*  expected body content
+  {
+    "id": 
+  }
+  */
+  try{
+    var response = await pool.query(`SELECT api.fn_delete_transporter_vehicle('${JSON.stringify(vehicle_ID)}')::json`);
+    res.json(response.rows[0]['fn_delete_transporter_vehicle']);
+  }catch(err){
+    res.status(400).send(err.message);
+  }
+});
 //################################################################# POST methods ################################################################
 
 app.listen(port, () => {
