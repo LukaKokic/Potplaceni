@@ -73,6 +73,20 @@ app.get('/view_transporters', async(req, res) => {
   }
 });
 
+//GET JSON containing all entries in vehicle table corresponding to a selected transporter
+app.get('/view_transporter_vehicles/:transporterID', async(req, res) => {
+  transID = req.params.transporterID;
+  getParams = {
+    "transporterID": transID
+  };
+  try{
+    var response = await pool.query(`SELECT api.fn_view_transporter_vehicles('${JSON.stringify(getParams)}'::json)`);
+    res.json(response.rows[0]['fn_view_transporter_vehicles']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
 //################################################################# GET methods #################################################################
 
 //################################################################# POST methods ################################################################
