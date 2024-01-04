@@ -156,9 +156,9 @@
   - napraviti funkciju u bazi koja kaskadno briše sve entitete povezane sa obrisanim vozilom prijevotnika, **fn_delete_transporter_vehicle**
 
   API:
-  - definirati DELETE rutu za brisanje vozila prijevoznika, **../delete_transporter_vehicle/<int:vehicleID>**
+  - definirati DELETE rutu za brisanje vozila prijevoznika, **../delete_transporter_vehicle**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
     
   ### UC17 - Dodavanje pacijenta
   BAZA:
