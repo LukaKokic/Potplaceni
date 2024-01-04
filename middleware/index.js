@@ -244,6 +244,26 @@ app.post('/delete_transporter', async(req, res) => {
   }
 });
 
+//Add transporter vehicle
+app.post('/add_transporter_vehicle', async(req, res) => {
+  var transVehicle = req.body;
+  /*  expected body content
+  {
+    "registration": "",
+    "capacity": "",
+    "type": "",
+    "transporter_id": "",
+    "active": 
+  }
+  */
+  try{
+    var response = await pool.query(`SELECT api.fn_add_transporter_vehicle('${JSON.stringify(transVehicle)}')::json`);
+    res.json(response.rows[0]['fn_add_transporter_vehicle']);
+  }catch(err){
+    res.status(400).send(err.message);
+  }
+})
+
 //################################################################# POST methods ################################################################
 
 app.listen(port, () => {
