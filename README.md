@@ -129,9 +129,9 @@
     - također se popunjava entitet Vehicle
 
   API:
-  - definirati POST rutu za dodavanje vozila prijevozniku, **../add_transporter_vehicle/<int:transporterID>**
+  - definirati POST rutu za dodavanje vozila prijevozniku, **../add_transporter_vehicle/**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
     
   ### UC14 - Pregled vozila prijevoznika
   BAZA:
