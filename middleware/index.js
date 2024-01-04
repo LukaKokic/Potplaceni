@@ -252,6 +252,8 @@ app.post('/add_transporter_vehicle', async(req, res) => {
     "registration": "",
     "capacity": "",
     "type": "",
+    "brand": "",
+    "model": "",
     "transporter_id": "",
     "active": 
   }

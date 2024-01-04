@@ -116,6 +116,8 @@ CREATE TABLE Vehicle( --table
 	registration varchar(9) unique,
 	capacity smallint,
 	TypeID smallint,
+	brand varchar(50),
+	model varchar(50),
 	TransporterID bigserial,
 	active bit,
 	foreign key (TypeID) references VehicleType(TypeID),
