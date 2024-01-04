@@ -147,9 +147,9 @@
   - napraviti funkciju za ažuriranje raspoloživosti vozila prijevoznika u sustavu, **fn_update_vehicle_avaliability**
 
   API:
-  - definirati PUT rutu za ažuriranje raspoloživosti vozila prijevoznika, **../view_transporte_vehicle/<int:vehicleID>**
+  - definirati PUT rutu za ažuriranje raspoloživosti vozila prijevoznika, **../view_transporte_vehicle**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
     
   ### UC16 - Brisanje vozila prijevoznika
   BAZA:
