@@ -298,7 +298,7 @@ app.post('/update_vehicle_avaliability', async(req, res) => {
 });
 
 //Deletes selected vehicle, selected by vehicleID
-app.post('/delete_transporter', async(req, res) => {
+app.post('/delete_transporter_vehicle', async(req, res) => {
   var vehicle_ID = req.body;
   /*  expected body content
   {
