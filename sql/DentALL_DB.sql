@@ -113,6 +113,7 @@ CREATE TABLE Transporter( --table
 
 CREATE TABLE Vehicle( --table
 	VehicleID bigserial primary key,
+	registration varchar(9) unique,
 	capacity smallint,
 	TypeID smallint,
 	TransporterID bigserial,
