@@ -129,7 +129,7 @@
     - također se popunjava entitet Vehicle
 
   API:
-  - definirati POST rutu za dodavanje vozila prijevozniku, **../add_transporter_vehicle/**
+  - definirati POST rutu za dodavanje vozila prijevozniku, **../add_transporter_vehicle**
   <br/>
   COMPLETED ✔
     
@@ -138,9 +138,9 @@
   - napraviti funkcij u bazi za pregled postojećih vozila prijevoznika u sustavu, **fn_view_transporter_vehicles**
 
   API:
-  - definirati GET rutu za prikazivanje vozila prijevoznika, **../view_vehicles/<int:transporterID>**
+  - definirati GET rutu za prikazivanje vozila prijevoznika, **../view_vehicles/:transporterID**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
     
   ### UC15 - Postavljanje raspoloživosti vozila prijevoznika
   BAZA:
