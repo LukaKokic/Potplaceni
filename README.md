@@ -305,9 +305,9 @@
   - napraviti funkciju za pregeledavanje podataka o svim pacijentima registriranim u sustavu, **fn_view_patients**
 
   API:
-  - definirati GET rutu za pregledavanje svih pacijenata, **../view_patients/**
+  - definirati GET rutu za pregledavanje svih pacijenata, **../view_patients**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
     
   ### UC19 - Dohvaćanje informacija o tretmanu
   BAZA:
