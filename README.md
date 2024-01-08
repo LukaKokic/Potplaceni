@@ -288,7 +288,7 @@
       "pin": ,
       "firstname": "",
       "lastname": "",
-      "phone": "+",
+      "phone": "",
       "mail": "",
       "homeAddress": "",
       "typePref": ,
