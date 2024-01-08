@@ -55,15 +55,15 @@ CREATE TABLE Patient( --table
 	lastname varchar(30),
 	phone varchar(20),
 	email varchar(60),
-	redidenceAddress varchar(95)
+	residenceAddress varchar(95)
 );
 
 CREATE TABLE PatientArrival( --table
 	ArrivalID bigserial primary key,
 	PatientID bigserial,
 	TownID bigserial,
-	dateOfArrival timestamp,
-	dateOfDeparture timestamp,
+	dateOfArrival date,
+	dateOfDeparture date,
 	constraint PatientID foreign key (PatientID) references Patient(PatientID) on delete cascade,
 	foreign key (TownID) references Town(TownID)
 );
@@ -166,6 +166,8 @@ CREATE TABLE clinicTransporter( --relation
 CREATE TABLE assigned( --realtion
 	TreatmentID bigserial,
 	PatientID bigserial,
+	datefrom date,
+	dateto date,
 	foreign key (TreatmentID) references Treatment(TreatmentID),
 	foreign key (PatientID) references Patient(PatientID)
 );
