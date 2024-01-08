@@ -312,6 +312,32 @@ app.post('/delete_transporter_vehicle', async(req, res) => {
     res.status(400).send(err.message);
   }
 });
+
+//Add patient
+app.post('/add_patient', async(req, res) => {
+  var patientData = req.body;
+  /*  expected body content
+  {
+    "pin": ,
+    "firstname": "",
+    "lastname": "",
+    "phone": "+",
+    "mail": "",
+    "homeAddress": "",
+    "typePref": ,
+    "equippedPref": ,
+    "treatmentID": ,
+    "from": "YYYY-MM-DD",
+    "till": "YYYY-MM-DD"
+  }
+  */
+  try{
+    var response = await pool.query(`SELECT api.fn_add_patient('${JSON.stringify(patientData)}')::json`);
+    res.json(response.rows[0]['fn_add_patient']);
+  }catch(err){
+    res.status(400).send(err.message);
+  }
+})
 //################################################################# POST methods ################################################################
 
 app.listen(port, () => {
