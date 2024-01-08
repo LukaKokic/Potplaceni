@@ -11,6 +11,7 @@ CREATE TABLE UserRole( --table
 
 CREATE TABLE Treatment( --table
 	TreatmentID bigserial primary key,
+	treatmentName varchar(100),
 	description text
 );
 
@@ -38,7 +39,6 @@ CREATE TABLE Clinic( --table
 	TownID bigserial,
 	foreign key (TownID) references Town(TownID)
 );
-
 CREATE TABLE AdminUser( --table
 	UserID bigserial primary key,
 	PIN int,
