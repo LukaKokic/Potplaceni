@@ -19,6 +19,17 @@
 
   API:
   - definirati POST rutu za dodavanje novog administratora, **../add_admin**
+
+  Oblik očekivanog JSON-a:
+  
+    {
+      "PIN": "",
+      "firstname": "",
+      "lastname": "",
+      "phone": "",
+      "email": ""
+    }
+    
   <br/>
   COMPLETED ✔
 
@@ -41,6 +52,23 @@
   - definirati POST rutu za ažuriranje osobnih podataka o administratoru te njegove uloge, **../update_admin_info**
   - definirati POST rutu za promjenu zaporke za prijavljivanje u sustav, **../change_password**
   <br/>
+  
+  Oblik očekivanog JSON-a za **../update_admin_info**:
+  
+    {
+      "userID": "",
+      "phone": "",
+      "email": "",
+      "roleList": []
+    }
+    
+  Oblik očekivanog JSON-a za **../change_password**:
+  
+    {
+      "userID": "",
+      "pass": ""
+    }
+    
   COMPLETED ✔
 
   ### UC5 - Brisanje postojećeg korisnika
@@ -50,6 +78,13 @@
 
   API:
   - definirati POST rutu za brisanje administratora, **../delete_admin**
+
+  Oblik očekivanog JSON-a:
+  
+    {
+      "userID": ""
+    }
+    
   <br/>
   COMPLETED ✔
 
@@ -65,6 +100,20 @@
   IDEJA ZA FRONT:
   - prilikom izrade forme za popunjavanje informacija o novom smješaju, treba dohvatiti iz baze polja kao što su Town, AccommodationType, Equipped, zato što se sa fronta šalje podaci o ID-u grada, accommodationtype-a i equipped. Stoga su napravljene funkcije u bazi za dohvat svih tih informacija, pa prilikom dolaska na stranicu forme trebalo bi povući te podatke i onda npr. kada se odabire grad ponuiditi dropdown listu s dohvaćenim podacima iz baze
   <br/>
+  
+  Oblik očekivanog JSON-a:
+
+    {
+      "realEstateID": "",
+      "typeID": ,
+      "equippedID": ,
+      "latitude": "",
+      "longitude": "",
+      "address": "",
+      "townID": "",
+      "active": ,
+    }
+    
   COMPLETED ✔
 
   ### UC7 - Pregled smještaja
@@ -83,6 +132,14 @@
   API:
   - definirati PUT rutu za ažuriranje raspoloživosti smještaja, **../update_accommodation_avaliability**
   <br/>
+
+  Oblik očekivanog JSON-a:
+  
+    {
+      "id": ,
+      "avaliable": 
+    }
+    
   COMPLETED ✔
 
   ### UC9 - Brisanje postojećeg smještaja
@@ -92,6 +149,13 @@
   API:
   - definirati DELETE rutu za brisanje smještaja, **../delete_accommodation**
   <br/>
+
+  Oblik očekivanog JSON-a:
+  
+    {
+      "id": 
+    }
+    
   COMPLETED ✔
     
   ### UC10 - Dodavanje prijevoznika
@@ -103,6 +167,17 @@
   API:
   - definirati POST rutu za dodavanje novog prijevoznika, **../add_transporter**
   <br/>
+  
+  Oblik očekivanog JSON-a:
+  
+    {
+      "orgName": "",
+      "contact": "",
+      "address": "",
+      "townID": "",
+      "active": 
+    }
+    
   COMPLETED ✔
     
   ### UC11 - Pregled prijevoznika
@@ -121,6 +196,13 @@
   API:
   - definirati DELETE rutu za brisanje prijhevoznika, **../delete_transporter**
   <br/>
+  
+  Oblik očekivanog JSON-a:
+  
+    {
+      "id": 
+    }
+    
   COMPLETED ✔
     
   ### UC13 - Dodavanje vozila prijevoznika
@@ -131,6 +213,19 @@
   API:
   - definirati POST rutu za dodavanje vozila prijevozniku, **../add_transporter_vehicle**
   <br/>
+
+  Oblik očekivanog JSON-a:
+
+    {
+      "registration": "",
+      "capacity": "",
+      "type": "",
+      "brand": "",
+      "model": "",
+      "transporter_id": "",
+      "active": 
+    }
+    
   COMPLETED ✔
     
   ### UC14 - Pregled vozila prijevoznika
@@ -147,8 +242,16 @@
   - napraviti funkciju za ažuriranje raspoloživosti vozila prijevoznika u sustavu, **fn_update_vehicle_avaliability**
 
   API:
-  - definirati PUT rutu za ažuriranje raspoloživosti vozila prijevoznika, **../view_transporte_vehicle**
+  - definirati PUT rutu za ažuriranje raspoloživosti vozila prijevoznika, **../update_vehicle_avaliability**
   <br/>
+
+  Oblik očekivanog JSON-a:
+
+    {
+      "id": ,
+      "avaliable": 
+    }
+    
   COMPLETED ✔
     
   ### UC16 - Brisanje vozila prijevoznika
@@ -158,6 +261,13 @@
   API:
   - definirati DELETE rutu za brisanje vozila prijevoznika, **../delete_transporter_vehicle**
   <br/>
+
+  Oblik očekivanog JSON-a:
+  
+    {
+      "id": 
+    }
+    
   COMPLETED ✔
     
   ### UC17 - Dodavanje pacijenta
