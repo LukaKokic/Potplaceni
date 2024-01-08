@@ -87,6 +87,16 @@ app.get('/view_transporter_vehicles/:transporterID', async(req, res) => {
   }
 });
 
+//GET JSON containing all entries in patient table
+app.get('/view_patients', async(req, res) => {
+  try{
+    var response = await pool.query('SELECT api.fn_view_patients()');
+    res.json(response.rows[0]['fn_view_patients']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
 //################################################################# GET methods #################################################################
 
 //################################################################# POST methods ################################################################
