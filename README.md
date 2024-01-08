@@ -276,12 +276,29 @@
     -provjera postoji li već takav pacijent u bazi
     - popunjavanje podataka o tretmanu
     - popunjavanje podataka o preferencijama smještaja pacijenta
-  - popunjavanje entiteta assigned (entitet koji povezuje tretman i pacijenta), PatietnArrival, PatientPlan
+  - popunjavanje entiteta assigned (entitet koji povezuje tretman i pacijenta), PatientPlan
 
   API:
-    - definirati POST rutu za dodavanje novog pacijenta, **../add_patient/**
+    - definirati POST rutu za dodavanje novog pacijenta, **../add_patient**
   <br/>
-    COMPLETED ❌
+
+  Oblik očekivanog JSON-a:
+  
+    {
+      "pin": ,
+      "firstname": "",
+      "lastname": "",
+      "phone": "+",
+      "mail": "",
+      "homeAddress": "",
+      "typePref": ,
+      "equippedPref": ,
+      "treatmentID": ,
+      "from": "YYYY-MM-DD",
+      "till": "YYYY-MM-DD"
+    }
+  
+  COMPLETED ✔
     
   ### UC18 - Pregled pacijenta
   BAZA:
