@@ -6,9 +6,9 @@
     VehicleType ✔,
     AccommodationType ✔,
     Equipped ✔,
-    Treatment
+    Treatment ✔
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
 
   ### UC2 - Dodavanje novog korisnika
   BAZA:
