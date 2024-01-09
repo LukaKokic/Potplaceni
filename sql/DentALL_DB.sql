@@ -139,7 +139,7 @@ CREATE TABLE VehicleSchedule( --table
 	DOW smallint,
 	timeStart time,
 	timeEnd time,
-	foreign key (VehicleID) references Vehicle(VehicleID)
+	foreign key (VehicleID) references Vehicle(VehicleID) on delete cascade
 );
 
 CREATE TABLE assignedRole( --relation
@@ -168,26 +168,26 @@ CREATE TABLE assigned( --realtion
 	PatientID bigserial,
 	datefrom date,
 	dateto date,
-	foreign key (TreatmentID) references Treatment(TreatmentID),
-	foreign key (PatientID) references Patient(PatientID)
+	foreign key (TreatmentID) references Treatment(TreatmentID) on delete cascade,
+	foreign key (PatientID) references Patient(PatientID) on delete cascade
 );
 
 CREATE TABLE PatientPlan( --relation
 	TreatmentID bigserial,
 	ClinicID bigserial,
 	PatientID bigserial,
-	foreign key (TreatmentID) references Treatment(TreatmentID),
-	foreign key	(ClinicID) references Clinic(ClinicID),
-	foreign key (PatientID) references Patient(PatientID)
+	foreign key (TreatmentID) references Treatment(TreatmentID) on delete cascade,
+	foreign key	(ClinicID) references Clinic(ClinicID) on delete cascade,
+	foreign key (PatientID) references Patient(PatientID) on delete cascade
 );
 
 CREATE TABLE PatientPreferences( --table
 	PatientID bigserial,
 	TypeID smallint,
 	EquippedID smallint,
-	foreign key (PatientID) references Patient(PatientID),
-	foreign key (TypeID) references AccommodationType(TypeID),
-	foreign key (EquippedID) references Equipped(EquippedID)
+	foreign key (PatientID) references Patient(PatientID) on delete cascade,
+	foreign key (TypeID) references AccommodationType(TypeID) on delete cascade,
+	foreign key (EquippedID) references Equipped(EquippedID) on delete cascade
 );
 
 --create users and groups
