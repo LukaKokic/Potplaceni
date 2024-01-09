@@ -25,7 +25,7 @@ declare
 	treatment_date_till date := (patient_in->>'till')::date;
 	
 begin
-	if (select count(*) from public.patient where pin = pin_in) then
+	if (select count(*) from public.patient where pin = pin_in) = 1 then
 		return returnValue;
 	end if;
 	
