@@ -324,9 +324,16 @@
   - napraviti funkciju u bazi koja kaskadno briše sve entitete povezane sa obrisanim pacijentom, **fn_delete_patient**
 
   API:
-  - definirati DELETE rutu za brisanje pacijenta, **../delete_patient/<int:patientID>**
+  - definirati DELETE rutu za brisanje pacijenta, **../delete_patient**
   <br/>
-  COMPLETED ❌
+  
+  Oblik očekivanog JSON-a:
+  
+    {
+      "id": 
+    }
+ 
+  COMPLETED ✔
     
   ### UC21 - Periodičko pridijeljivanje smještaja i prijevoza pacijentima
   BAZA:
