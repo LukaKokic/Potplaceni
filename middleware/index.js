@@ -98,14 +98,14 @@ app.get('/view_patients', async(req, res) => {
 });
 
 //GET JSON containing all entries in PatietnPlan table corresponding to a selected patient
-app.get('/get_patient_treatment/:patientID', async(req, res) => {
+app.get('/view_patient_treatment/:patientID', async(req, res) => {
   patID = req.params.patientID;
   getParams = {
     "id": patID
   };
   try{
-    var response = await pool.query(`SELECT api.fn_get_patient_treatment('${JSON.stringify(getParams)}'::json)`);
-    res.json(response.rows[0]['fn_get_patient_treatment']);
+    var response = await pool.query(`SELECT api.fn_view_patient_treatment('${JSON.stringify(getParams)}'::json)`);
+    res.json(response.rows[0]['fn_view_patient_treatment']);
   }catch (err){
     res.status(400).send(err.message);
   }

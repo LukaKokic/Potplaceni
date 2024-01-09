@@ -30,7 +30,7 @@ INSERT INTO Town (townName, postalCode)
 	('Lovran', '51415'), 
 	('Vela Luka', '20270'), 
 	('Makarska', '21300 '), 
-	('Bio grad moru', '23210'), 
+	('Biograd na moru', '23210'), 
 	('Našice', '31500'), 
 	('Ogulin', '47300'), 
 	('Opatija', '51410'), 
@@ -51,8 +51,9 @@ INSERT INTO Town (townName, postalCode)
 	('Virovitica', '33000'), 
 	('Vukovar', '32000'), 
 	('Zabok', '49210'), 
-	('Zadar', '23000'), 
-	('Zagreb', '10000');
+	('Zadar', '23000'),
+	('Zagreb', '10000'),
+	('Sveti Martin na Muri', '40313');
 	
 	
 --Dodavanje klinika u sustav
@@ -74,10 +75,13 @@ INSERT INTO Clinic (clinicName, latitude, longitude, clinicAddress, TownID)
 	('Specijalna bolnica za medicinsku rehabilitaciju Lipik', 45.4128526, 17.1623100188203, 'Marije Terezije 13', 15),
 	('Specijalna bolnica za medicinsku rehabilitaciju Stubičke Toplice', 45.9777318648046, 15.935502298646, 'Park Matije Gupca 1', 32),
 	('Specijalna bolnica za medicinsku rehabilitaciju Varaždinske Toplice', 46.21082495, 16.4184849336697, 'Trg Slobode 1', 33),
+	('Specijalan bolnica za medicinsku rehabiliraciju Sveti Martin na Muri', 46.49478468546016, 16.3372180095144, 'Izvorska 1', 42),
 	('Specijalna bolnica za ortopediju Biograd na moru', 43.9489433, 15.4439629, 'Zadarska 62', 19),
 	('Specijalna bolnica za produženo liječenje - Duga Resa', 45.4521991, 15.5000057, 'Jozefa Jeruzalema 7', 27),
 	('Thalassotherapia Crikvenica, Specijalna bolnica za medicinsku rehabilitaciju Primorsko-goranske županije', 45.1877418, 14.6739838, 'Gajevo šetalište 1', 6),
-	('Thalassotherapija Opatija - Specijalna bolnica za medicinsku rehabilitaciju bolesti srca, pluća i reumatizma', 45.329049, 14.3007085031163, 'Maršala Tita 188/1', 22);
+	('Thalassotherapija Opatija - Specijalna bolnica za medicinsku rehabilitaciju bolesti srca, pluća i reumatizma', 45.329049, 14.3007085031163, 'Maršala Tita 188/1', 22),
+	('Privatna ordinacija dentalne medicine dr. Ida Sapun Bažant', 44.11221022338561, 15.240209013399271, 'Savarska ulica 11b', 40),
+	('Ordinacija dentalne medicine dr. Peđa Mišljenović', 44.864619479809505, 13.85201225574788, 'Mutilska ul. 4', 25);
 	
 --Dodavanje AccommodationType u sustav
 INSERT INTO AccommodationType (TypeID, description)
@@ -86,6 +90,7 @@ INSERT INTO AccommodationType (TypeID, description)
 	(3, 'iznajmljena soba'),
 	(4, 'kupljena kuća'),
 	(5, 'kupljen stan');
+	
 --Dodavanje Equipped u sustav	
 INSERT INTO Equipped (EquippedID, description)
 	VALUES (1, 'poptuno opremljen'),
@@ -99,7 +104,7 @@ INSERT INTO VehicleType (typeid, description)
 	(3, 'Srednji automobili'),
 	(4, 'Veliki automobili'),
 	(5, 'Višenamjenski automobili'),
-	(6, 'SUV')
+	(6, 'SUV');
 	
 --Izrada vjerodajnica za dodane administratore	
 INSERT INTO auth.credentials(
@@ -204,4 +209,4 @@ INSERT INTO Treatment (treatmentname, description)
     ('Korekcija usana', 'Povećanje ili oblikovanje usana filerima'),
     ('Tretmani za celulit', 'Različite tehnike za smanjenje izgleda celulita'),
     ('Otoplastika', 'Korekcija oblika ušiju'),
-    ('Postizanje oblika tijela', 'Kirurški ili nekirurški postupci za oblikovanje tijela prema željama pacijenta')
+    ('Postizanje oblika tijela', 'Kirurški ili nekirurški postupci za oblikovanje tijela prema željama pacijenta');
