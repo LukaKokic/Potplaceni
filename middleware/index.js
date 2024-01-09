@@ -288,7 +288,7 @@ app.post('/add_transporter_vehicle', async(req, res) => {
   }catch(err){
     res.status(400).send(err.message);
   }
-})
+});
 
 //Updates vehicle avaliability, selected by vehicleID
 app.post('/update_vehicle_avaliability', async(req, res) => {
@@ -347,7 +347,23 @@ app.post('/add_patient', async(req, res) => {
   }catch(err){
     res.status(400).send(err.message);
   }
-})
+});
+
+//Deletes selected patient, selected by patientid
+app.post('/delete_patient', async(req, res) => {
+  var patient_ID = req.body;
+  /*  expected body content
+  {
+    "id": 
+  }
+  */
+  try{
+    var response = await pool.query(`SELECT api.fn_delete_patient('${JSON.stringify(patient_ID)}')::json`);
+    res.json(response.rows[0]['fn_delete_patient']);
+  }catch(err){
+    res.status(400).send(err.message);
+  }
+});
 //################################################################# POST methods ################################################################
 
 app.listen(port, () => {
