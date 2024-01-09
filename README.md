@@ -276,7 +276,7 @@
     -provjera postoji li već takav pacijent u bazi
     - popunjavanje podataka o tretmanu
     - popunjavanje podataka o preferencijama smještaja pacijenta
-  - popunjavanje entiteta assigned (entitet koji povezuje tretman i pacijenta), PatientPlan
+  - popunjavanje entiteta assigned (entitet koji povezuje tretman i pacijenta), PatientPlan, PatientPreferences
 
   API:
     - definirati POST rutu za dodavanje novog pacijenta, **../add_patient**
