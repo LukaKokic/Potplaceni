@@ -23,9 +23,10 @@ declare
 	treatment_id integer := (patient_in->>'treatmentID')::integer;
 	treatment_date_from date := (patient_in->>'from')::date;
 	treatment_date_till date := (patient_in->>'till')::date;
+	clinic_id integer := (patient_in->>'clinicID')::integer;
 	
 begin
-	if (select count(*) from public.patient where pin = pin_in) = 1 then
+	if (select count(*) from public.patient where pin = pin_in) then
 		return returnValue;
 	end if;
 	
@@ -48,6 +49,9 @@ begin
 	INSERT INTO public.assigned (treatmentid, patientid, datefrom, dateto)
 	VALUES (treatment_id, patient_id, treatment_date_from, treatment_date_till);
 	
+	INSERT INTO public.patientplan (treatmentid, clinicid, patientid)
+	VALUES (treatment_id, clinic_id, patient_id);
+	
 	returnValue := json_build_object(
 		'success', true,
 		'msg', 'Patient added'
@@ -60,3 +64,12 @@ $BODY$;
 
 ALTER FUNCTION api.fn_add_patient(json)
     OWNER TO dentall_rmm2_user;
+
+GRANT EXECUTE ON FUNCTION api.fn_add_patient(json) TO PUBLIC;
+
+GRANT EXECUTE ON FUNCTION api.fn_add_patient(json) TO app_api;
+
+GRANT EXECUTE ON FUNCTION api.fn_add_patient(json) TO auth_api;
+
+GRANT EXECUTE ON FUNCTION api.fn_add_patient(json) TO dentall_rmm2_user;
+
