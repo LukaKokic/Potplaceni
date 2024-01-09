@@ -312,7 +312,7 @@
     
   ### UC19 - Dohvaćanje informacija o tretmanu
   BAZA:
-  - napraviti funkciju u bazi za dohvaćanje detalja o tretmanu pacijenta, **fn_get_patient_treatment**
+  - napraviti funkciju u bazi za dohvaćanje detalja o tretmanu pacijenta, **fn_view_patient_treatment**
     - u kojoj se klinici liječi, protiv čega se liječi i u kojem razdoblju
 
   API:
