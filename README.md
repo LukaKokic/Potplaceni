@@ -296,6 +296,7 @@
       "treatmentID": ,
       "from": "YYYY-MM-DD",
       "till": "YYYY-MM-DD"
+      "clinicID": 
     }
   
   COMPLETED ✔
@@ -312,12 +313,12 @@
   ### UC19 - Dohvaćanje informacija o tretmanu
   BAZA:
   - napraviti funkciju u bazi za dohvaćanje detalja o tretmanu pacijenta, **fn_get_patient_treatment**
-    - u kojoj se klinici liječi, protiv ćega se liječi i u kojem razdoblju
+    - u kojoj se klinici liječi, protiv čega se liječi i u kojem razdoblju
 
   API:
-  - definirati GET rutu za pregled tretmana pacijenta, **../view_patient_treatemnt/<int:patientID>**
+  - definirati GET rutu za pregled tretmana pacijenta, **../view_patient_treatemnt/:patientID**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
     
   ### UC20 - Brisanje pacijenta
   BAZA:
