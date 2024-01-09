@@ -63,7 +63,6 @@ INSERT INTO Clinic (clinicName, latitude, longitude, clinicAddress, TownID)
 	('Klinika za dječje bolesti', 45.809275, 15.9650594, 'Klaićeva 16', 41),
 	('Klinika za infektivne bolesti "Dr. Fran Mihaljević"', 45.8306009, 15.9807703, 'Mirogojska 8', 41),
 	('Klinika za ortopediju Lovran', 45.2991600999999, 14.27838097141, 'Šetalište Maršala Tita 1', 16),
-	('Klinika za psihijatriju Vrapče', 45.8168437, 15.900269, 'Bolnička cesta 32', 41),
 	('Magdalena - Klinika za kardiovaskularne bolesti Med.fakulteta u Osijeku', 46.09340995, 15.8382063713707, 'Ljudevita Gaja 2', 31),
 	('Biokovka specijalna bolnica za medicinsku rehabilitaciju - Makarska', 43.3021983, 17.0093983, 'Put Cvitačke 9', 18),
 	('Kalos Specijalna bolnica za medicinsku rehabilitaciju Vela Luka', 42.9612713, 16.7168095, 'Obala 3 br. 3', 17),

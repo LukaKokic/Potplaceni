@@ -39,6 +39,7 @@ CREATE TABLE Clinic( --table
 	TownID bigserial,
 	foreign key (TownID) references Town(TownID)
 );
+
 CREATE TABLE AdminUser( --table
 	UserID bigserial primary key,
 	PIN int,
