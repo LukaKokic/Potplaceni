@@ -110,8 +110,9 @@
       "latitude": "",
       "longitude": "",
       "address": "",
-      "townID": "",
-      "active": ,
+      "townID": ,
+      "clinicID": ,
+      "active": 
     }
     
   COMPLETED ✔
