@@ -97,7 +97,7 @@ CREATE TABLE AccommodationOccupied( --table
 	occupationID bigserial primary key,
 	PatientID bigserial,
 	AccommodationID bigserial,
-	datoFrom date,
+	dateFrom date,
 	dateTo date,
 	foreign key (PatientID) references Patient(PatientID),
 	foreign key (AccommodationID) references Accommodation(AccommodationID)
@@ -132,8 +132,8 @@ CREATE TABLE VehicleOccupied( --table
 	OrderID bigserial primary key,
 	VehicleID bigserial,
 	PatientID bigserial,
-	timeStart time,
-	timeEnd time,
+	timeStart timestamp with time zone,
+	timeEnd timestamp with time zone,
 	foreign key (VehicleID) references Vehicle(VehicleID),
 	foreign key (PatientID) references Patient(PatientID)
 );

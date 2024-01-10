@@ -31,17 +31,9 @@ begin
 	end if;
 	
 	INSERT INTO public.patient (pin, firstname, lastname, phone, email, residenceaddress)
-	VALUES (pin_in, f_name, l_name, ph, mail, home_addr);
-	
-	select
-		patientid
-	into 
-		patient_id
-	from
-		patient
-	order by
-		patientid desc
-	limit 1;
+	VALUES (pin_in, f_name, l_name, ph, mail, home_addr)
+	returning patientid into patient_id;
+
 	
 	INSERT INTO public.patientpreferences (patientid, typeid, equippedid)
 	VALUES (patient_id, acc_type_id, eq_type_id);
@@ -52,8 +44,8 @@ begin
 	INSERT INTO public.patientplan (treatmentid, clinicid, patientid)
 	VALUES (treatment_id, clinic_id, patient_id);
 	
-	INSERT INTO public.pendingpatientplan (treatmentid, clinicid, patientid)
-	VALUES (treatment_id, clinic_id, patient_id);
+	perform public.fn_create_patient_accommodation_plan(patient_id);
+	perform public.fn_create_patient_transportation_plan(patient_id);
 	
 	returnValue := json_build_object(
 		'success', true,
