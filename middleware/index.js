@@ -23,6 +23,16 @@ function loginFunction(username, password){
   return creds;
 }
 
+//function that is called every x minutes that creates treatment plan for "pending" patients
+async function createTreatmentPlan() {
+  try{
+    var response = await pool.query('SELECT api.fn_periodical_call()');
+    console.log(response.rows[0]['fn_periodical_call']);
+  }catch (err){
+    console.log(err.message);
+  }
+}
+
 //################################################################# GET methods #################################################################
 
 //TODO connect this to front and greet user with login page
@@ -73,6 +83,44 @@ app.get('/view_transporters', async(req, res) => {
   }
 });
 
+//GET JSON containing all entries in vehicle table corresponding to a selected transporter
+app.get('/view_transporter_vehicles/:transporterID', async(req, res) => {
+  transID = req.params.transporterID;
+  getParams = {
+    "transporterID": transID
+  };
+  try{
+    var response = await pool.query(`SELECT api.fn_view_transporter_vehicles('${JSON.stringify(getParams)}'::json)`);
+    res.json(response.rows[0]['fn_view_transporter_vehicles']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
+//GET JSON containing all entries in patient table
+app.get('/view_patients', async(req, res) => {
+  try{
+    var response = await pool.query('SELECT api.fn_view_patients()');
+    res.json(response.rows[0]['fn_view_patients']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
+//GET JSON containing all entries in PatietnPlan table corresponding to a selected patient
+app.get('/view_patient_treatment/:patientID', async(req, res) => {
+  patID = req.params.patientID;
+  getParams = {
+    "id": patID
+  };
+  try{
+    var response = await pool.query(`SELECT api.fn_view_patient_treatment('${JSON.stringify(getParams)}'::json)`);
+    res.json(response.rows[0]['fn_view_patient_treatment']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
 //################################################################# GET methods #################################################################
 
 //################################################################# POST methods ################################################################
@@ -80,15 +128,6 @@ app.get('/view_transporters', async(req, res) => {
 //Add new user
 app.post('/add_admin', async(req, res) => {
   var reqBody = req.body;
-  /* expected body content 
-  {
-    "PIN": "",
-    "firstname": "",
-    "lastname": "",
-    "phone": "",
-    "email": ""
-  }
-  */
   try{
     var response = await pool.query(`SELECT api.fn_add_admin('${JSON.stringify(reqBody)}'::json)`);
     res.json(response.rows[0]['fn_add_admin']);
@@ -100,14 +139,6 @@ app.post('/add_admin', async(req, res) => {
 //Updates phone, email and role/roles of a selected user, selected by userID
 app.post('/update_admin_info', async(req, res) => {
   var new_admin_info = req.body;
-  /*  expected body content
-  {
-    "userID": "",
-    "phone": "",
-    "email": "",
-    "roleList": []
-  }
-  */
   try{
     var response = await pool.query(`SELECT api.fn_update_admin_info('${JSON.stringify(new_admin_info)}')::json`);
     res.json(response.rows[0]['fn_update_admin_info']);
@@ -119,12 +150,6 @@ app.post('/update_admin_info', async(req, res) => {
 //Changes the password of selected user, selected by userID
 app.post('/change_password', async(req, res) => {
   var new_password = req.body;
-  /*  expected body content
-  {
-    "userID": "",
-    "pass": ""
-  }
-  */
   try{
     var response = await pool.query(`SELECT api.fn_change_password('${JSON.stringify(new_password)}')::json`);
     res.json(response.rows[0]['fn_change_password']);
@@ -136,11 +161,6 @@ app.post('/change_password', async(req, res) => {
 //Deletes selected user, selected by userID
 app.post('/delete_admin', async(req, res) => {
   var userID = req.body;
-  /*  expected body content
-  {
-    "userID": ""
-  }
-  */
   try{
     var response = await pool.query(`SELECT api.fn_delete_admin('${JSON.stringify(userID)}')::json`);
     res.json(response.rows[0]['fn_delete_admin']);
@@ -151,22 +171,9 @@ app.post('/delete_admin', async(req, res) => {
 
 //TODO add delete for multiple admins
 
-
 //Add accommodation
 app.post('/add_accommodation', async(req, res) => {
   var accomodation = req.body;
-  /*  expected body content
-  {
-    "realEstateID": "",
-    "typeID": ,
-    "equippedID": ,
-    "latitude": "",
-    "longitude": "",
-    "address": "",
-    "townID": "",
-    "active": ,
-  }
-  */
   try{
     var response = await pool.query(`SELECT api.fn_add_accommodation('${JSON.stringify(accomodation)}')::json`);
     res.json(response.rows[0]['fn_add_accommodation']);
@@ -178,12 +185,6 @@ app.post('/add_accommodation', async(req, res) => {
 //Updates accommodation avaliability, selected by accommodationID
 app.post('/update_accommodation_avaliability', async(req, res) => {
   var accommodation_update = req.body;
-  /*  expected body content
-  {
-    "id": ,
-    "avaliable": 
-  }
-  */
   try{
     var response = await pool.query(`SELECT api.fn_update_accommodation_avaliability('${JSON.stringify(accommodation_update)}')::json`);
     res.json(response.rows[0]['fn_update_accommodation_avaliability']);
@@ -195,11 +196,6 @@ app.post('/update_accommodation_avaliability', async(req, res) => {
 //Deletes selected accommodation, selected by accommodationID
 app.post('/delete_accommodation', async(req, res) => {
   var accommodation_ID = req.body;
-  /*  expected body content
-  {
-    "id": 
-  }
-  */
   try{
     var response = await pool.query(`SELECT api.fn_delete_accommodation('${JSON.stringify(accommodation_ID)}')::json`);
     res.json(response.rows[0]['fn_delete_accommodation']);
@@ -211,15 +207,6 @@ app.post('/delete_accommodation', async(req, res) => {
 //Add accommodation
 app.post('/add_transporter', async(req, res) => {
   var transporter = req.body;
-  /*  expected body content
-  {
-    "orgName": "",
-    "contact": "",
-    "address": "",
-    "townID": "",
-    "active": 
-  }
-  */
   try{
     var response = await pool.query(`SELECT api.fn_add_transporter('${JSON.stringify(transporter)}')::json`);
     res.json(response.rows[0]['fn_add_transporter']);
@@ -231,11 +218,6 @@ app.post('/add_transporter', async(req, res) => {
 //Deletes selected transporter, selected by transporterID
 app.post('/delete_transporter', async(req, res) => {
   var transporter_ID = req.body;
-  /*  expected body content
-  {
-    "id": 
-  }
-  */
   try{
     var response = await pool.query(`SELECT api.fn_delete_transporter('${JSON.stringify(transporter_ID)}')::json`);
     res.json(response.rows[0]['fn_delete_transporter']);
@@ -244,10 +226,65 @@ app.post('/delete_transporter', async(req, res) => {
   }
 });
 
+//Add transporter vehicle
+app.post('/add_transporter_vehicle', async(req, res) => {
+  var transVehicle = req.body;
+  try{
+    var response = await pool.query(`SELECT api.fn_add_transporter_vehicle('${JSON.stringify(transVehicle)}')::json`);
+    res.json(response.rows[0]['fn_add_transporter_vehicle']);
+  }catch(err){
+    res.status(400).send(err.message);
+  }
+});
+
+//Updates vehicle avaliability, selected by vehicleID
+app.post('/update_vehicle_avaliability', async(req, res) => {
+  var vehicle_update = req.body;
+  try{
+    var response = await pool.query(`SELECT api.fn_update_vehicle_avaliability('${JSON.stringify(vehicle_update)}')::json`);
+    res.json(response.rows[0]['fn_update_vehicle_avaliability']);
+  }catch(err){
+    res.status(400).send(err.message);
+  }
+});
+
+//Deletes selected vehicle, selected by vehicleID
+app.post('/delete_transporter_vehicle', async(req, res) => {
+  var vehicle_ID = req.body;
+  try{
+    var response = await pool.query(`SELECT api.fn_delete_transporter_vehicle('${JSON.stringify(vehicle_ID)}')::json`);
+    res.json(response.rows[0]['fn_delete_transporter_vehicle']);
+  }catch(err){
+    res.status(400).send(err.message);
+  }
+});
+
+//Add patient
+app.post('/add_patient', async(req, res) => {
+  var patientData = req.body;
+  try{
+    var response = await pool.query(`SELECT api.fn_add_patient('${JSON.stringify(patientData)}')::json`);
+    res.json(response.rows[0]['fn_add_patient']);
+  }catch(err){
+    res.status(400).send(err.message);
+  }
+});
+
+//Deletes selected patient, selected by patientid
+app.post('/delete_patient', async(req, res) => {
+  var patient_ID = req.body;
+  try{
+    var response = await pool.query(`SELECT api.fn_delete_patient('${JSON.stringify(patient_ID)}')::json`);
+    res.json(response.rows[0]['fn_delete_patient']);
+  }catch(err){
+    res.status(400).send(err.message);
+  }
+});
 //################################################################# POST methods ################################################################
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${port}`);
+  setInterval(createTreatmentPlan, 300000); //adjust time so that it doesn't break render but also doesn't let middleware to spin down
 });
 
 //exporting function, so it can be called in front-end

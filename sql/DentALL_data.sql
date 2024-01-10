@@ -30,7 +30,7 @@ INSERT INTO Town (townName, postalCode)
 	('Lovran', '51415'), 
 	('Vela Luka', '20270'), 
 	('Makarska', '21300 '), 
-	('Bio grad moru', '23210'), 
+	('Biograd na moru', '23210'), 
 	('Našice', '31500'), 
 	('Ogulin', '47300'), 
 	('Opatija', '51410'), 
@@ -51,8 +51,9 @@ INSERT INTO Town (townName, postalCode)
 	('Virovitica', '33000'), 
 	('Vukovar', '32000'), 
 	('Zabok', '49210'), 
-	('Zadar', '23000'), 
-	('Zagreb', '10000');
+	('Zadar', '23000'),
+	('Zagreb', '10000'),
+	('Sveti Martin na Muri', '40313');
 	
 	
 --Dodavanje klinika u sustav
@@ -63,39 +64,10 @@ INSERT INTO Clinic (clinicName, latitude, longitude, clinicAddress, TownID)
 	('Klinika za dječje bolesti', 45.809275, 15.9650594, 'Klaićeva 16', 41),
 	('Klinika za infektivne bolesti "Dr. Fran Mihaljević"', 45.8306009, 15.9807703, 'Mirogojska 8', 41),
 	('Klinika za ortopediju Lovran', 45.2991600999999, 14.27838097141, 'Šetalište Maršala Tita 1', 16),
-	('Klinika za psihijatriju Vrapče', 45.8168437, 15.900269, 'Bolnička cesta 32', 41),
 	('Magdalena - Klinika za kardiovaskularne bolesti Med.fakulteta u Osijeku', 46.09340995, 15.8382063713707, 'Ljudevita Gaja 2', 31),
-	('Opća bolnica "Dr. Ivo Pedišić Sisak"', 45.4767035828169, 16.3692756747487, 'J.J. Strossmayera 59', 30),
-	('Opća bolnica "Dr. Josip Benčević" Slavonski Brod', 45.1585156, 18.0234087, 'Andrije Štampara 42', 3),
-	('Opća bolnica "Dr. Tomislav Bardek" Koprivnica', 46.1633602, 16.8407022, 'Željka Selingera bb', 14),
-	('Opća bolnica "Hrvatski ponos" Knin', 44.05200465, 16.2152233791619, 'Svetoslava Suronje 12', 13),
-	('Opća bolnica Bjelovar', 45.9031527408774, 16.8466636699247, 'Mihanovićeva 8', 2),
-	('Opća bolnica Dubrovnik', 42.6477608, 18.0759532, 'Roka Mišetića 2', 9),
-	('Opća bolnica Gospić', 44.545226, 15.3726139, 'Kaniška 111', 10),
-	('Opća bolnica Karlovac', 45.4768653, 15.541137, 'Andrije Štampara 3', 12),
-	('Opća bolnica Ogulin', 45.2562116, 15.2341186, 'Bolnička 38', 21),
-	('Opća bolnica Pula', 44.86013855, 13.8373702904261, 'Aldo Negri 6', 25),
-	('Opća bolnica Šibensko-kninske županije', 43.7334808, 15.9002109, 'Stjepana Radića 83', 29),
-	('Opća bolnica Varaždin', 46.3026211100715, 16.3251549950154, 'I. Meštrovića bb', 35),
-	('Opća bolnica Vinkovci', 45.2886242, 18.8186984, 'Zvonarska 57', 36),
-	('Opća bolnica Virovitica', 45.8020223, 17.500889, 'Ljudevita Gaja 21', 37),
-	('Opća bolnica Zabok', 46.01776865, 15.9404695692508, 'Bračak 8', 39),
-	('Opća bolnica Zadar', 44.1069260999999, 15.2345375204142, 'Bože Peričića 5', 40),
-	('Opća županijska bolnica Našice', 45.5137843, 18.0601611, 'Bana Jelačića 10', 20),
-	('Opća županijska bolnica Požega', 45.3436663, 17.6994105599533, 'Osječka 107', 23),
-	('Opća županijska bolnica Vukovar', 45.3574758, 18.9957104, 'Županijska 35', 38),
-	('Županijska bolnica Čakovec', 46.3943019200017, 16.4338440753624, 'I. G. Kovačića 1E', 4),
 	('Biokovka specijalna bolnica za medicinsku rehabilitaciju - Makarska', 43.3021983, 17.0093983, 'Put Cvitačke 9', 18),
 	('Kalos Specijalna bolnica za medicinsku rehabilitaciju Vela Luka', 42.9612713, 16.7168095, 'Obala 3 br. 3', 17),
 	('Bolnica za ortopedsku kirurgiju i rehabilitaciju "Prim.dr. Martin Horvat" Rovinj', 45.09869785, 13.6363734011176, 'Ulica Luigi Monti 2', 28),
-	('Dječja bolnica Srebrnjak', 45.8251291, 15.9930483, 'Srebrnjak 100', 41),
-	('Neuropsihijatrijska bolnica "Dr. Ivan Barbot" Popovača', 45.5900452, 16.6738206, 'Jelengradska 1', 23),
-	('Psihijatrijska bolnica "Sveti Ivan"', 45.80670985, 15.8769874785713, 'Jankomir 11', 41),
-	('Psihijatrijska bolnica "Sveti Rafael" Strmac', 45.3172977, 17.3942959, 'Šumetlica 87', 5),
-	('Psihijatrijska bolnica Lopača', 45.3780550855666, 14.4409633226207, 'Lopača 11', 8),
-	('Psihijatrijska bolnica Rab', 44.7768332, 14.7279432, 'Kampor 224', 26),
-	('Psihijatrijska bolnica Ugljan', 44.112250677138, 15.1000059999076, 'Otočkih dragovoljaca 42', 34),
-	('Psihijatrijska bolnica za djecu i mladež', 45.8149159, 15.9630560411439, 'Ivana Kukuljevića 11', 41),
 	('Specijalna bolnica za kronične bolesti dječje dobi Gornja Bistra', 45.91679125, 15.9042815863824, 'Bolnička 21', 1),
 	('Specijalna bolnica za medicinsku rehabilitaciju "Naftalan" Ivanić Grad', 45.7079624, 16.3878311, 'Omladinska 23a', 11),
 	('Specijalna bolnica za medicinsku rehabilitaciju Daruvarske Toplice', 45.5975227737725, 17.2282597903022, 'Julijev park 1', 7),
@@ -103,12 +75,13 @@ INSERT INTO Clinic (clinicName, latitude, longitude, clinicAddress, TownID)
 	('Specijalna bolnica za medicinsku rehabilitaciju Lipik', 45.4128526, 17.1623100188203, 'Marije Terezije 13', 15),
 	('Specijalna bolnica za medicinsku rehabilitaciju Stubičke Toplice', 45.9777318648046, 15.935502298646, 'Park Matije Gupca 1', 32),
 	('Specijalna bolnica za medicinsku rehabilitaciju Varaždinske Toplice', 46.21082495, 16.4184849336697, 'Trg Slobode 1', 33),
+	('Specijalan bolnica za medicinsku rehabiliraciju Sveti Martin na Muri', 46.49478468546016, 16.3372180095144, 'Izvorska 1', 42),
 	('Specijalna bolnica za ortopediju Biograd na moru', 43.9489433, 15.4439629, 'Zadarska 62', 19),
-	('Specijalna bolnica za plućne bolesti', 45.8295573, 15.9821747, 'Rockefellerova 3', 41),
 	('Specijalna bolnica za produženo liječenje - Duga Resa', 45.4521991, 15.5000057, 'Jozefa Jeruzalema 7', 27),
-	('Specijalna bolnica za zaštitu djece s neurorazvojnim i motoričkim smetnjama', 45.8191614, 15.9640656, 'Goljak 2', 41),
 	('Thalassotherapia Crikvenica, Specijalna bolnica za medicinsku rehabilitaciju Primorsko-goranske županije', 45.1877418, 14.6739838, 'Gajevo šetalište 1', 6),
-	('Thalassotherapija Opatija - Specijalna bolnica za medicinsku rehabilitaciju bolesti srca, pluća i reumatizma', 45.329049, 14.3007085031163, 'Maršala Tita 188/1', 22);
+	('Thalassotherapija Opatija - Specijalna bolnica za medicinsku rehabilitaciju bolesti srca, pluća i reumatizma', 45.329049, 14.3007085031163, 'Maršala Tita 188/1', 22),
+	('Privatna ordinacija dentalne medicine dr. Ida Sapun Bažant', 44.11221022338561, 15.240209013399271, 'Savarska ulica 11b', 40),
+	('Ordinacija dentalne medicine dr. Peđa Mišljenović', 44.864619479809505, 13.85201225574788, 'Mutilska ul. 4', 25);
 	
 --Dodavanje AccommodationType u sustav
 INSERT INTO AccommodationType (TypeID, description)
@@ -117,6 +90,7 @@ INSERT INTO AccommodationType (TypeID, description)
 	(3, 'iznajmljena soba'),
 	(4, 'kupljena kuća'),
 	(5, 'kupljen stan');
+	
 --Dodavanje Equipped u sustav	
 INSERT INTO Equipped (EquippedID, description)
 	VALUES (1, 'poptuno opremljen'),
@@ -130,7 +104,7 @@ INSERT INTO VehicleType (typeid, description)
 	(3, 'Srednji automobili'),
 	(4, 'Veliki automobili'),
 	(5, 'Višenamjenski automobili'),
-	(6, 'SUV')
+	(6, 'SUV');
 	
 --Izrada vjerodajnica za dodane administratore	
 INSERT INTO auth.credentials(
@@ -144,10 +118,19 @@ INSERT INTO auth.credentials(
 --Popunjavanje tablice ulogama u aplikaciji
 INSERT INTO public.userrole(
 	roleid, rolename)
-	VALUES (1, 'accomodation_admin'),
-	(2, 'transporter_admin'),
-	(3, 'user_admin');
-	
+	VALUES (1, 'Administrator smještaja'),
+	(2, 'Administrator prijevoza'),
+	(3, 'Korisnički administrator');
+
+--Inicijalno popunjavanja tablice transporter
+INSERT INTO public.transporter(
+	orgcode, organisationname, phone, email, address, townid, active)
+	VALUES ('ORG-7df25d', 'Požuri polako d.o.o', '+3859157934', 'pozuripolako.zg@pp.hr', 'Ulica Vladimira Nazora 5' , 41, 1::bit),
+	('ORG-30cc99', 'Bottom gear d.o.o', '+3859957846', 'bttgear@gmail.com', 'Kvaternikov trg 8', 41, 1::bit),
+	('ORG-359e42', 'Brzi i oprezni d.o.o', '+3859970289', 'brziop@gmail.com', 'Grđevačka ulica 25', 41, 1::bit),
+	('ORG-004997', 'Legero Transport d.o.o', '+3859823971', 'legeroTrans@zd.hr', 'Put Dikla 54', 40, 1::bit),
+	('ORG-23e02f', 'Samo u prvoj d.o.o', '+3859844952', 'samoprva@yahoo.com', 'Ulica Rižanske skupštine 4', 25, 1::bit);
+
 --TEST pridjeljivanja, driver query
 /*
 SELECT userid, roleId
@@ -175,3 +158,64 @@ INSERT INTO public.assignedrole(
     cross join userrole ur
 ) AS randomroles
 WHERE RowNum = 1;
+
+--Dodavanje tretmana za zdravstveni turizam
+INSERT INTO Treatment (treatmentname, description)
+	VALUES ('Liječenje akni', 'Kreme ili lijekovi na recept mogu pomoći u smanjenju akni'),
+	('Akupunktura', 'Akupunktura je praksa probadanja kože iglama u svrhu liječenja stanja poput artritisa ili bolova u leđima'),
+	('Vlažna makularna degeneracija povezana sa starenjem (AMD)', 'Injekcije u oči'),
+	('Vlažna makularna degeneracija povezana sa starenjem (AMD)', 'Fotodinamička terapija (PDT) – posebna svjetlost usmjerena je na makulu kako bi se uništile abnormalne krvne žile koje uzrokuju vlažni AMD'),
+	('Alergije i zarazne bolesti', 'Dijagnostika i liječenje uobičajenih alergija'),
+	('Alergološko testiranje', 'Jednostavni testovi za određivanje imate li alergijske reakcije'),
+	('Liječenje angine', 'Koronarna angioplastika ili Operacija premosnice srca'),
+	('Artroskopija gležnja', 'Kirurški zahvat'),
+	('Zamjena gležnja', 'Zamjena gležnja je operacija kojom se uklanjaju bolesni i oštećeni dijelovi gležnja i nadomještaju umjetnim zglobom'),
+	('Liječenje ozljeda prednjeg križnog ligamenta (ACL)', 'Rekonstrukcija ACL-a, Artroskopija koljena (kirurgija ključanice) posebna vrsta operacije rekonstrukcije ACL-a'),
+	('Injekcijski tretman protiv bora', 'Sredstva za opuštanje mišića, Dermalni fileri'),
+	('Estetski tretman ruku', 'Uklanjanje viška masnoće i opuštene kože'),
+	('Artroskopija', 'Postupak za dijagnosticiranje i liječenje problema sa zglobovima'),
+	('Operacija želučanog rukavca', 'Kirurški zahvat za smanjenje želuca'),
+	('Povećanje grudi', 'Povećanje grudi pomoću različitih silikonskih ili fizioloških implantata koji odgovaraju željenom obliku i veličini'),
+	('Tretmani za pretilost', 'Orlistat, operacija mršavljenja (barijatrijska) kao što je želučana premosnica ili želučani rukav'),
+	('Zubni implantati', 'Zubni implantati nadomještaju zub ili zube koji su izvađeni zbog infekcije, karijesa ili nezgode'),
+	('Dentalna kirurgija', 'Plombe, Sinus lift, Proteza, Izbjeljivanje, Krunice'),
+	('Selektivna foto-ionska terapija', 'Trajno uklanjanje dlačica'),
+	('Masažna terapija', 'Pomaže pri oblikovanju tijala te ostavlja uzdignutu i zdravu kožu'),
+	('Termodniamička terapija', 'Pomaže pri oblikovanju tijala te ostavlja uzdignutu i zdravu kožu'),
+	('Parodontalni tretmani', 'Liječenje bolesti desni i potpornog tkiva oko zuba'),
+	('Endodoncija', 'Tretmani kanala korijena zbog spašavanja oštećenih zubiju'),
+	('Kirurško uklanjanje umnjaka', 'Kirurško uklanjanje umnjaka'),
+	('Detoksikacijski tretmani', 'Programi čišćenja organizma od toksina'),
+	('Fitnes programi', 'Personalizirani programi vježbanja uz stručni nadzor'),
+	('Nutricionističko savjetovanje', 'Individualizirane prehrambene smjernice za poboljšanje zdravlja'),
+	('Spa i wellness tretmani', 'Masaže, hidroterapija, sauna za opuštanje i obnavljanje tijela'),
+	('Mentalno wellness savjetovanje', 'Psihoterapijski i savjetodavni tretmani za mentalno zdravlje'),
+	('Lasersko uklanjanje madeža', 'Sigurno uklanjanje neželjenih madeža'),
+	('Dermatološki tretmani za pomlađivanje kože', 'Kemijski piling, mikrodermoabrazija'),
+	('Tretmani za rosaceu', 'Posebni postupci za kontrolu simptoma ove kožne bolesti'),
+	('Laser terapija za uklanjanje ožiljaka', 'Korištenje lasera za smanjenje vidljivosti ožiljaka'),
+	('Zamjena kuka', 'Kirurška zamjena oštećenog zgloba kuka umjetnim zglobom'),
+	('Zamjena koljena', 'Kirurški zahvat za zamjenu oštećenog zgloba koljena'),
+	('Fizioterapija za rehabilitaciju nakon operacija', 'Programi rehabilitacije i jačanja mišića'),
+	('Terapija udarnim valovima', 'Postupci za liječenje bolova u mišićima i zglobovima'),
+	('Ortopedski tretmani za sportske ozljede', 'Posebne terapije za ozljede uzrokovane sportskim aktivnostima'),
+	('Rinoplastika', 'Kirurška korekcija oblika nosa'),
+    ('Lifting lica', 'Postupci za zatezanje i pomlađivanje kože lica'),
+    ('Liposukcija', 'Uklanjanje viška masnog tkiva iz određenih dijelova tijela'),
+    ('Abdominoplastika', 'Kirurško uklanjanje viška kože i masnog tkiva iz trbuha'),
+    ('Blefaroplastika', 'Kirurško poboljšanje izgleda kapaka'),
+    ('Dermalni fileri', 'Injekcije za popunjavanje bora i oblikovanje lica'),
+    ('Botulinum toksin (Botox) tretmani', 'Za smanjenje dinamičkih bora'),
+    ('Thread lifting', 'Neinvazivna metoda zatezanja kože pomoću niti'),
+    ('Ginekomastija kirurgija', 'Korekcija povećanih dojki kod muškaraca'),
+    ('Karboxiterapija', 'Injekcije ugljičnog dioksida za poboljšanje elastičnosti kože'),
+    ('Kemijski piling', 'Uklanjanje gornjeg sloja kože radi poboljšanja teksture'),
+    ('Mikrodermoabrazija', 'Mehanički piling kože radi obnavljanja'),
+    ('Laser terapija za uklanjanje dlaka', 'Trajno uklanjanje dlačica'),
+    ('Tretmani za akne ožiljke', 'Laserski tretmani ili dermalni fileri za popunjavanje ožiljaka'),
+    ('Estetska kirurgija vrata', 'Kirurški zahvati za poboljšanje izgleda vrata i brade'),
+    ('Intimna estetska kirurgija', 'Estetski zahvati na genitalnom području'),
+    ('Korekcija usana', 'Povećanje ili oblikovanje usana filerima'),
+    ('Tretmani za celulit', 'Različite tehnike za smanjenje izgleda celulita'),
+    ('Otoplastika', 'Korekcija oblika ušiju'),
+    ('Postizanje oblika tijela', 'Kirurški ili nekirurški postupci za oblikovanje tijela prema željama pacijenta');

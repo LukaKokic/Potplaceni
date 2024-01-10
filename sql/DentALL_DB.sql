@@ -11,6 +11,7 @@ CREATE TABLE UserRole( --table
 
 CREATE TABLE Treatment( --table
 	TreatmentID bigserial primary key,
+	treatmentName varchar(100),
 	description text
 );
 
@@ -55,15 +56,15 @@ CREATE TABLE Patient( --table
 	lastname varchar(30),
 	phone varchar(20),
 	email varchar(60),
-	redidenceAddress varchar(95)
+	residenceAddress varchar(95)
 );
 
 CREATE TABLE PatientArrival( --table
 	ArrivalID bigserial primary key,
 	PatientID bigserial,
 	TownID bigserial,
-	dateOfArrival timestamp,
-	dateOfDeparture timestamp,
+	dateOfArrival date,
+	dateOfDeparture date,
 	constraint PatientID foreign key (PatientID) references Patient(PatientID) on delete cascade,
 	foreign key (TownID) references Town(TownID)
 );
@@ -84,14 +85,16 @@ CREATE TABLE Accommodation( --table
 	longitude decimal(9,6),
 	address varchar(95),
 	TownID bigserial,
+	ClinicID bigserial,
 	active bit,
 	foreign key (TypeID) references AccommodationType(TypeID),
 	foreign key (EquippedID) references Equipped(EquippedID),
-	foreign key (TownID) references Town(TownID)
+	foreign key (TownID) references Town(TownID),
+	foreign key (ClinicID) references Clinic(ClinicID)
 );
 
 CREATE TABLE AccommodationOccupied( --table
-	ID bigserial primary key,
+	occupationID bigserial primary key,
 	PatientID bigserial,
 	AccommodationID bigserial,
 	datoFrom date,
@@ -105,6 +108,7 @@ CREATE TABLE Transporter( --table
 	orgcode varchar(10),
 	organisationName varchar(70),
 	phone varchar(20),
+	email varchar(60),
 	address varchar(95),
 	TownID bigserial,
 	active bit,
@@ -113,8 +117,11 @@ CREATE TABLE Transporter( --table
 
 CREATE TABLE Vehicle( --table
 	VehicleID bigserial primary key,
+	registration varchar(9) unique,
 	capacity smallint,
 	TypeID smallint,
+	brand varchar(50),
+	model varchar(50),
 	TransporterID bigserial,
 	active bit,
 	foreign key (TypeID) references VehicleType(TypeID),
@@ -136,7 +143,7 @@ CREATE TABLE VehicleSchedule( --table
 	DOW smallint,
 	timeStart time,
 	timeEnd time,
-	foreign key (VehicleID) references Vehicle(VehicleID)
+	foreign key (VehicleID) references Vehicle(VehicleID) on delete cascade
 );
 
 CREATE TABLE assignedRole( --relation
@@ -163,26 +170,38 @@ CREATE TABLE clinicTransporter( --relation
 CREATE TABLE assigned( --realtion
 	TreatmentID bigserial,
 	PatientID bigserial,
-	foreign key (TreatmentID) references Treatment(TreatmentID),
-	foreign key (PatientID) references Patient(PatientID)
+	datefrom date,
+	dateto date,
+	foreign key (TreatmentID) references Treatment(TreatmentID) on delete cascade,
+	foreign key (PatientID) references Patient(PatientID) on delete cascade
 );
 
 CREATE TABLE PatientPlan( --relation
 	TreatmentID bigserial,
 	ClinicID bigserial,
 	PatientID bigserial,
-	foreign key (TreatmentID) references Treatment(TreatmentID),
-	foreign key	(ClinicID) references Clinic(ClinicID),
-	foreign key (PatientID) references Patient(PatientID)
+	foreign key (TreatmentID) references Treatment(TreatmentID) on delete cascade,
+	foreign key	(ClinicID) references Clinic(ClinicID) on delete cascade,
+	foreign key (PatientID) references Patient(PatientID) on delete cascade
+);
+
+CREATE TABLE PendingPatientPlan( --relation
+	planID bigserial primary key,
+	TreatmentID bigserial,
+	ClinicID bigserial,
+	PatientID bigserial,
+	foreign key (TreatmentID) references Treatment(TreatmentID) on delete cascade,
+	foreign key	(ClinicID) references Clinic(ClinicID) on delete cascade,
+	foreign key (PatientID) references Patient(PatientID) on delete cascade
 );
 
 CREATE TABLE PatientPreferences( --table
 	PatientID bigserial,
 	TypeID smallint,
 	EquippedID smallint,
-	foreign key (PatientID) references Patient(PatientID),
-	foreign key (TypeID) references AccommodationType(TypeID),
-	foreign key (EquippedID) references Equipped(EquippedID)
+	foreign key (PatientID) references Patient(PatientID) on delete cascade,
+	foreign key (TypeID) references AccommodationType(TypeID) on delete cascade,
+	foreign key (EquippedID) references Equipped(EquippedID) on delete cascade
 );
 
 --create users and groups

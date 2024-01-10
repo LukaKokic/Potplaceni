@@ -6,9 +6,9 @@
     VehicleType ✔,
     AccommodationType ✔,
     Equipped ✔,
-    Treatment
+    Treatment ✔
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
 
   ### UC2 - Dodavanje novog korisnika
   BAZA:
@@ -19,6 +19,18 @@
 
   API:
   - definirati POST rutu za dodavanje novog administratora, **../add_admin**
+
+  Oblik očekivanog JSON-a:
+  
+    {
+      "PIN": "",
+      "firstname": "",
+      "lastname": "",
+      "phone": "",
+      "email": "",
+      "roleList": []
+    }
+    
   <br/>
   COMPLETED ✔
 
@@ -41,6 +53,23 @@
   - definirati POST rutu za ažuriranje osobnih podataka o administratoru te njegove uloge, **../update_admin_info**
   - definirati POST rutu za promjenu zaporke za prijavljivanje u sustav, **../change_password**
   <br/>
+  
+  Oblik očekivanog JSON-a za **../update_admin_info**:
+  
+    {
+      "userID": "",
+      "phone": "",
+      "email": "",
+      "roleList": []
+    }
+    
+  Oblik očekivanog JSON-a za **../change_password**:
+  
+    {
+      "userID": "",
+      "pass": ""
+    }
+    
   COMPLETED ✔
 
   ### UC5 - Brisanje postojećeg korisnika
@@ -50,6 +79,13 @@
 
   API:
   - definirati POST rutu za brisanje administratora, **../delete_admin**
+
+  Oblik očekivanog JSON-a:
+  
+    {
+      "userID": ""
+    }
+    
   <br/>
   COMPLETED ✔
 
@@ -65,6 +101,21 @@
   IDEJA ZA FRONT:
   - prilikom izrade forme za popunjavanje informacija o novom smješaju, treba dohvatiti iz baze polja kao što su Town, AccommodationType, Equipped, zato što se sa fronta šalje podaci o ID-u grada, accommodationtype-a i equipped. Stoga su napravljene funkcije u bazi za dohvat svih tih informacija, pa prilikom dolaska na stranicu forme trebalo bi povući te podatke i onda npr. kada se odabire grad ponuiditi dropdown listu s dohvaćenim podacima iz baze
   <br/>
+  
+  Oblik očekivanog JSON-a:
+
+    {
+      "realEstateID": "",
+      "typeID": ,
+      "equippedID": ,
+      "latitude": "",
+      "longitude": "",
+      "address": "",
+      "townID": ,
+      "clinicID": ,
+      "active": 
+    }
+    
   COMPLETED ✔
 
   ### UC7 - Pregled smještaja
@@ -83,6 +134,14 @@
   API:
   - definirati PUT rutu za ažuriranje raspoloživosti smještaja, **../update_accommodation_avaliability**
   <br/>
+
+  Oblik očekivanog JSON-a:
+  
+    {
+      "id": ,
+      "avaliable": 
+    }
+    
   COMPLETED ✔
 
   ### UC9 - Brisanje postojećeg smještaja
@@ -92,6 +151,13 @@
   API:
   - definirati DELETE rutu za brisanje smještaja, **../delete_accommodation**
   <br/>
+
+  Oblik očekivanog JSON-a:
+  
+    {
+      "id": 
+    }
+    
   COMPLETED ✔
     
   ### UC10 - Dodavanje prijevoznika
@@ -103,6 +169,17 @@
   API:
   - definirati POST rutu za dodavanje novog prijevoznika, **../add_transporter**
   <br/>
+  
+  Oblik očekivanog JSON-a:
+  
+    {
+      "orgName": "",
+      "contact": "",
+      "address": "",
+      "townID": "",
+      "active": 
+    }
+    
   COMPLETED ✔
     
   ### UC11 - Pregled prijevoznika
@@ -121,6 +198,13 @@
   API:
   - definirati DELETE rutu za brisanje prijhevoznika, **../delete_transporter**
   <br/>
+  
+  Oblik očekivanog JSON-a:
+  
+    {
+      "id": 
+    }
+    
   COMPLETED ✔
     
   ### UC13 - Dodavanje vozila prijevoznika
@@ -129,36 +213,64 @@
     - također se popunjava entitet Vehicle
 
   API:
-  - definirati POST rutu za dodavanje vozila prijevozniku, **../add_transporter_vehicle/<int:transporterID>**
+  - definirati POST rutu za dodavanje vozila prijevozniku, **../add_transporter_vehicle**
   <br/>
-  COMPLETED ❌
+
+  Oblik očekivanog JSON-a:
+
+    {
+      "registration": "",
+      "capacity": "",
+      "type": "",
+      "brand": "",
+      "model": "",
+      "transporter_id": "",
+      "active": 
+    }
+    
+  COMPLETED ✔
     
   ### UC14 - Pregled vozila prijevoznika
   BAZA:
   - napraviti funkcij u bazi za pregled postojećih vozila prijevoznika u sustavu, **fn_view_transporter_vehicles**
 
   API:
-  - definirati GET rutu za prikazivanje vozila prijevoznika, **../view_vehicles/<int:transporterID>**
+  - definirati GET rutu za prikazivanje vozila prijevoznika, **../view_vehicles/:transporterID**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
     
   ### UC15 - Postavljanje raspoloživosti vozila prijevoznika
   BAZA:
   - napraviti funkciju za ažuriranje raspoloživosti vozila prijevoznika u sustavu, **fn_update_vehicle_avaliability**
 
   API:
-  - definirati PUT rutu za ažuriranje raspoloživosti vozila prijevoznika, **../view_transporte_vehicle/<int:vehicleID>**
+  - definirati PUT rutu za ažuriranje raspoloživosti vozila prijevoznika, **../update_vehicle_avaliability**
   <br/>
-  COMPLETED ❌
+
+  Oblik očekivanog JSON-a:
+
+    {
+      "id": ,
+      "avaliable": 
+    }
+    
+  COMPLETED ✔
     
   ### UC16 - Brisanje vozila prijevoznika
   BAZA:
   - napraviti funkciju u bazi koja kaskadno briše sve entitete povezane sa obrisanim vozilom prijevotnika, **fn_delete_transporter_vehicle**
 
   API:
-  - definirati DELETE rutu za brisanje vozila prijevoznika, **../delete_transporter_vehicle/<int:vehicleID>**
+  - definirati DELETE rutu za brisanje vozila prijevoznika, **../delete_transporter_vehicle**
   <br/>
-  COMPLETED ❌
+
+  Oblik očekivanog JSON-a:
+  
+    {
+      "id": 
+    }
+    
+  COMPLETED ✔
     
   ### UC17 - Dodavanje pacijenta
   BAZA:
@@ -166,40 +278,65 @@
     -provjera postoji li već takav pacijent u bazi
     - popunjavanje podataka o tretmanu
     - popunjavanje podataka o preferencijama smještaja pacijenta
-  - popunjavanje entiteta assigned (entitet koji povezuje tretman i pacijenta), PatietnArrival, PatientPlan
+  - popunjavanje entiteta assigned (entitet koji povezuje tretman i pacijenta), PatientPlan, PatientPreferences
 
   API:
-    - definirati POST rutu za dodavanje novog pacijenta, **../add_patient/**
+    - definirati POST rutu za dodavanje novog pacijenta, **../add_patient**
   <br/>
-    COMPLETED ❌
+
+  Oblik očekivanog JSON-a:
+  
+    {
+      "pin": ,
+      "firstname": "",
+      "lastname": "",
+      "phone": "",
+      "mail": "",
+      "homeAddress": "",
+      "typePref": ,
+      "equippedPref": ,
+      "treatmentID": ,
+      "from": "YYYY-MM-DD",
+      "till": "YYYY-MM-DD",
+      "clinicID": 
+    }
+  
+  COMPLETED ✔
     
   ### UC18 - Pregled pacijenta
   BAZA:
   - napraviti funkciju za pregeledavanje podataka o svim pacijentima registriranim u sustavu, **fn_view_patients**
 
   API:
-  - definirati GET rutu za pregledavanje svih pacijenata, **../view_patients/**
+  - definirati GET rutu za pregledavanje svih pacijenata, **../view_patients**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
     
   ### UC19 - Dohvaćanje informacija o tretmanu
   BAZA:
-  - napraviti funkciju u bazi za dohvaćanje detalja o tretmanu pacijenta, **fn_get_patient_treatment**
-    - u kojoj se klinici liječi, protiv ćega se liječi i u kojem razdoblju
+  - napraviti funkciju u bazi za dohvaćanje detalja o tretmanu pacijenta, **fn_view_patient_treatment**
+    - u kojoj se klinici liječi, protiv čega se liječi i u kojem razdoblju
 
   API:
-  - definirati GET rutu za pregled tretmana pacijenta, **../view_patient_treatemnt/<int:patientID>**
+  - definirati GET rutu za pregled tretmana pacijenta, **../view_patient_treatemnt/:patientID**
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
     
   ### UC20 - Brisanje pacijenta
   BAZA:
   - napraviti funkciju u bazi koja kaskadno briše sve entitete povezane sa obrisanim pacijentom, **fn_delete_patient**
 
   API:
-  - definirati DELETE rutu za brisanje pacijenta, **../delete_patient/<int:patientID>**
+  - definirati DELETE rutu za brisanje pacijenta, **../delete_patient**
   <br/>
-  COMPLETED ❌
+  
+  Oblik očekivanog JSON-a:
+  
+    {
+      "id": 
+    }
+ 
+  COMPLETED ✔
     
   ### UC21 - Periodičko pridijeljivanje smještaja i prijevoza pacijentima
   BAZA:
