@@ -85,14 +85,16 @@ CREATE TABLE Accommodation( --table
 	longitude decimal(9,6),
 	address varchar(95),
 	TownID bigserial,
+	ClinicID bigserial,
 	active bit,
 	foreign key (TypeID) references AccommodationType(TypeID),
 	foreign key (EquippedID) references Equipped(EquippedID),
-	foreign key (TownID) references Town(TownID)
+	foreign key (TownID) references Town(TownID),
+	foreign key (ClinicID) references Clinic(ClinicID)
 );
 
 CREATE TABLE AccommodationOccupied( --table
-	ID bigserial primary key,
+	occupationID bigserial primary key,
 	PatientID bigserial,
 	AccommodationID bigserial,
 	datoFrom date,
@@ -106,6 +108,7 @@ CREATE TABLE Transporter( --table
 	orgcode varchar(10),
 	organisationName varchar(70),
 	phone varchar(20),
+	email varchar(60),
 	address varchar(95),
 	TownID bigserial,
 	active bit,
@@ -174,6 +177,16 @@ CREATE TABLE assigned( --realtion
 );
 
 CREATE TABLE PatientPlan( --relation
+	TreatmentID bigserial,
+	ClinicID bigserial,
+	PatientID bigserial,
+	foreign key (TreatmentID) references Treatment(TreatmentID) on delete cascade,
+	foreign key	(ClinicID) references Clinic(ClinicID) on delete cascade,
+	foreign key (PatientID) references Patient(PatientID) on delete cascade
+);
+
+CREATE TABLE PendingPatientPlan( --relation
+	planID bigserial primary key,
 	TreatmentID bigserial,
 	ClinicID bigserial,
 	PatientID bigserial,

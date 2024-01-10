@@ -52,6 +52,9 @@ begin
 	INSERT INTO public.patientplan (treatmentid, clinicid, patientid)
 	VALUES (treatment_id, clinic_id, patient_id);
 	
+	INSERT INTO public.pendingpatientplan (treatmentid, clinicid, patientid)
+	VALUES (treatment_id, clinic_id, patient_id);
+	
 	returnValue := json_build_object(
 		'success', true,
 		'msg', 'Patient added'

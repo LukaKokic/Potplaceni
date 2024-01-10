@@ -118,10 +118,19 @@ INSERT INTO auth.credentials(
 --Popunjavanje tablice ulogama u aplikaciji
 INSERT INTO public.userrole(
 	roleid, rolename)
-	VALUES (1, 'accomodation_admin'),
-	(2, 'transporter_admin'),
-	(3, 'user_admin');
-	
+	VALUES (1, 'Administrator smještaja'),
+	(2, 'Administrator prijevoza'),
+	(3, 'Korisnički administrator');
+
+--Inicijalno popunjavanja tablice transporter
+INSERT INTO public.transporter(
+	orgcode, organisationname, phone, email, address, townid, active)
+	VALUES ('ORG-7df25d', 'Požuri polako d.o.o', '+3859157934', 'pozuripolako.zg@pp.hr', 'Ulica Vladimira Nazora 5' , 41, 1::bit),
+	('ORG-30cc99', 'Bottom gear d.o.o', '+3859957846', 'bttgear@gmail.com', 'Kvaternikov trg 8', 41, 1::bit),
+	('ORG-359e42', 'Brzi i oprezni d.o.o', '+3859970289', 'brziop@gmail.com', 'Grđevačka ulica 25', 41, 1::bit),
+	('ORG-004997', 'Legero Transport d.o.o', '+3859823971', 'legeroTrans@zd.hr', 'Put Dikla 54', 40, 1::bit),
+	('ORG-23e02f', 'Samo u prvoj d.o.o', '+3859844952', 'samoprva@yahoo.com', 'Ulica Rižanske skupštine 4', 25, 1::bit);
+
 --TEST pridjeljivanja, driver query
 /*
 SELECT userid, roleId

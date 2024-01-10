@@ -23,6 +23,16 @@ function loginFunction(username, password){
   return creds;
 }
 
+//function that is called every x minutes that creates treatment plan for "pending" patients
+async function createTreatmentPlan() {
+  try{
+    var response = await pool.query('SELECT api.fn_periodical_call()');
+    console.log(response.rows[0]['fn_periodical_call']);
+  }catch (err){
+    console.log(err.message);
+  }
+}
+
 //################################################################# GET methods #################################################################
 
 //TODO connect this to front and greet user with login page
@@ -273,7 +283,8 @@ app.post('/delete_patient', async(req, res) => {
 //################################################################# POST methods ################################################################
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${port}`);
+  setInterval(createTreatmentPlan, 300000); //adjust time so that it doesn't break render but also doesn't let middleware to spin down
 });
 
 //exporting function, so it can be called in front-end
