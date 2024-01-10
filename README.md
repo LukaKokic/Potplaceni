@@ -340,10 +340,11 @@
     
   ### UC21 - Periodičko pridijeljivanje smještaja i prijevoza pacijentima
   BAZA:
-  - funkcija u bazi kojom će se popunjavati entiteti AccommodationOccupied i VehicleOccupied prema preferencama pacijenata, ukoliko je to moguće, **fn_create_treatmenet_plan**
+  - funkcija u bazi kojom će se popunjavati entiteti AccommodationOccupied i VehicleOccupied prema preferencama pacijenata, ukoliko je to moguće
     - logika liječenja pacijenta, zauzimanje slobodnog smještaja, angažiranje prijevoza od i do smještaja te klinike
+    - napravljene funkcije **fn_create_patietn_accommodation_plan** za popunjavanje entiteta AccommodationOccupied i **fn_create_patietn_transportation_plan** za popunjavanje entiteta VehicleOccupied
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
     
   ### UC22 - Obavještavanje klijenata o uspješnom zaključenju plana
   BAZA:
