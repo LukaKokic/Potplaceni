@@ -25,7 +25,7 @@ return (
                   </div>
                   <div className='content_text_appartments'>
                     <h4 className='name_appartments'>Apartman 1</h4>
-                    <p className='profession_doctors'>Serenity Haven</p>
+                    <p className='name'>Serenity Haven</p>
                   </div>
               </div>
             </div>
@@ -40,7 +40,7 @@ return (
                   </div>
                   <div className='content_text_appartments'>
                     <h4 className='name_appartments'>Apartman 2</h4>
-                    <p className='profession_doctors'>Coastal Retreat</p>
+                    <p className='name'>Coastal Retreat</p>
                   </div>
               </div>
             </div>
@@ -55,7 +55,7 @@ return (
                   </div>
                   <div className='content_text_appartments'>
                     <h4 className='name_appartments'>Apartman 3</h4>
-                    <p className='profession_doctors'>Urban Escape</p>
+                    <p className='name'>Urban Escape</p>
                   </div>
               </div>
             </div>
@@ -70,7 +70,7 @@ return (
                   </div>
                   <div className='content_text_appartments'>
                     <h4 className='name_appartments'>Apartman 4</h4>
-                    <p className='profession_doctors'>Hotel Skyline</p>
+                    <p className='name'>Hotel Skyline</p>
                   </div>
               </div>
             </div>
@@ -85,7 +85,7 @@ return (
                   </div>
                   <div className='content_text_appartments'>
                     <h4 className='name_appartments'>Apartman 5</h4>
-                    <p className='profession_doctors'>City Lights Retreat</p>
+                    <p className='name'>City Lights Retreat</p>
                   </div>
               </div>
             </div>

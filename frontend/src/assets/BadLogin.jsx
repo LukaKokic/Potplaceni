@@ -1,5 +1,4 @@
 import React from 'react';
-import './Dashboard.css';
 import yourImage from './wrong.jpeg';
 
 
