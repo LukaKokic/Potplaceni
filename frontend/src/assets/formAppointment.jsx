@@ -16,7 +16,7 @@ const FormAppointment = () => {
                       </div>
                       <div className='col-lg-4'>
                       <label htmlFor="" className='label'>Patient Surname</label><br></br>
-                      <input type='text' className='input_box_form' />
+                      <input type='text' className='input_box_form' placeholder='Patient Surname'/>
                       </div>
                       <div className='col-lg-4'>
                       <label htmlFor="" className='label'>Transportation</label><br></br>
