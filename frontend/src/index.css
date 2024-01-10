@@ -368,8 +368,25 @@
   display: block;
   width: 80%;
   text-decoration: none;
-  margin: 23px 0px 0px 0px;
+  margin-top: 23px;
+  margin-bottom: 30px;
   padding: 19px 20px;
+  background-color: rgb(44, 140, 250);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 4px;
+  transition: 0.2s ease-in;
+  
+}
+
+.btn_title_appartmentss {
+  display: block;
+  width: 80%;
+  text-decoration: none;
+  margin: 23px 0px 0px 0px;
+  padding: 19px 15px;
   background-color: rgb(44, 140, 250);
   color: white;
   font-size: 16px;
