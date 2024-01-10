@@ -297,7 +297,7 @@
       "equippedPref": ,
       "treatmentID": ,
       "from": "YYYY-MM-DD",
-      "till": "YYYY-MM-DD"
+      "till": "YYYY-MM-DD",
       "clinicID": 
     }
   
