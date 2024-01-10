@@ -27,7 +27,8 @@
       "firstname": "",
       "lastname": "",
       "phone": "",
-      "email": ""
+      "email": "",
+      "roleList": []
     }
     
   <br/>
