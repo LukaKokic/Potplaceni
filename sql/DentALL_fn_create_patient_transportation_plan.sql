@@ -157,4 +157,4 @@ end
 $BODY$;
 
 ALTER FUNCTION public.fn_create_patient_transportation_plan(integer)
-    OWNER TO postgres;
+    OWNER TO dentall_rmm2_user;

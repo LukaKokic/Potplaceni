@@ -185,16 +185,6 @@ CREATE TABLE PatientPlan( --relation
 	foreign key (PatientID) references Patient(PatientID) on delete cascade
 );
 
-CREATE TABLE PendingPatientPlan( --relation
-	planID bigserial primary key,
-	TreatmentID bigserial,
-	ClinicID bigserial,
-	PatientID bigserial,
-	foreign key (TreatmentID) references Treatment(TreatmentID) on delete cascade,
-	foreign key	(ClinicID) references Clinic(ClinicID) on delete cascade,
-	foreign key (PatientID) references Patient(PatientID) on delete cascade
-);
-
 CREATE TABLE PatientPreferences( --table
 	PatientID bigserial,
 	TypeID smallint,
