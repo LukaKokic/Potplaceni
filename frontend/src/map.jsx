@@ -64,3 +64,23 @@ class OLMap extends React.Component {
 }
 
 export default OLMap;
+
+/*
+ovako sam pozivao u svom main.jsxu kad sam testirao
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import OLMap from './map'; // Assuming map.jsx is in the same directory
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <OLMap />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+ */
