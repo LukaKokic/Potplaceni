@@ -109,7 +109,6 @@ CREATE TABLE Transporter( --table
 	organisationName varchar(70),
 	phone varchar(20),
 	email varchar(60),
-	address varchar(95),
 	TownID bigserial,
 	active bit,
 	foreign key(TownID) references Town(TownID)
@@ -151,20 +150,6 @@ CREATE TABLE assignedRole( --relation
 	RoleID bigserial,
 	constraint UserID foreign key(UserID) references AdminUser(UserID) on delete cascade,
 	constraint RoleID foreign key(RoleID) references UserRole(RoleID) on delete cascade
-);
-
-CREATE TABLE clinicAccommodation( --relation
-	ClinicID bigserial,
-	AccommodationID bigserial,
-	foreign key (ClinicID) references Clinic(ClinicID),
-	foreign key (AccommodationID) references Accommodation(AccommodationID)
-);
-
-CREATE TABLE clinicTransporter( --relation
-	ClinicID bigserial,
-	TransporterID bigserial,
-	foreign key (ClinicID) references Clinic(ClinicID),
-	foreign key (TransporterID) references Transporter(TransporterID)
 );
 
 CREATE TABLE assigned( --realtion

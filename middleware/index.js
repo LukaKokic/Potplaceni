@@ -22,7 +22,7 @@ function loginFunction(username, password){
   creds['password'] = hashedPassword;
   return creds;
 }
-
+/*
 //function that is called every x minutes that creates treatment plan for "pending" patients
 async function createTreatmentPlan() {
   try{
@@ -32,7 +32,7 @@ async function createTreatmentPlan() {
     console.log(err.message);
   }
 }
-
+*/
 //################################################################# GET methods #################################################################
 
 //TODO connect this to front and greet user with login page
@@ -284,7 +284,7 @@ app.post('/delete_patient', async(req, res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
-  setInterval(createTreatmentPlan, 300000); //adjust time so that it doesn't break render but also doesn't let middleware to spin down
+  //setInterval(createTreatmentPlan, 300000); //adjust time so that it doesn't break render but also doesn't let middleware to spin down
 });
 
 //exporting function, so it can be called in front-end

@@ -1,4 +1,8 @@
-CREATE OR REPLACE FUNCTION public.fn_create_schedule(
+-- FUNCTION: public.fn_create_schedule()
+
+-- DROP FUNCTION IF EXISTS public.fn_create_schedule();
+
+CREATE OR REPLACE FUNCTION public.fn_create_schedule(p_vid integer
 	)
     RETURNS void
     LANGUAGE 'plpgsql'
@@ -6,7 +10,6 @@ CREATE OR REPLACE FUNCTION public.fn_create_schedule(
     VOLATILE PARALLEL UNSAFE
 AS $BODY$
 declare
-	new_vehicle_id integer;
 	dow integer;
 	time_start time;
 	time_end time;
@@ -15,16 +18,6 @@ declare
 	i integer;
 	
 begin
-	select
-		vehicleid
-	into
-		new_vehicle_id
-	from 
-		vehicle
-	order by
-		vehicleid desc
-	limit 1;
-	
 	select 
 		array_agg(dayOfWeek order by random())
 	into
@@ -56,12 +49,12 @@ begin
 				shift_break := time_end + '01:00'::interval;
 			end if;
 			INSERT INTO vehicleschedule(vehicleid, dow, timestart, timeend)
-			VALUES (new_vehicle_id, dow, time_start::time, time_end::time);
+			VALUES (p_vid, dow, time_start::time, time_end::time);
 		END LOOP;
 	END LOOP;
 end
 	
 $BODY$;
 
-ALTER FUNCTION public.fn_create_schedule()
+ALTER FUNCTION public.fn_create_schedule(integer)
     OWNER TO dentall_rmm2_user;
