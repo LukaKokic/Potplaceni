@@ -1,3 +1,79 @@
+# Funkcije na raspolaganju za FRONT forme
+  GET funkcija **../get_accommodation_equipped_info** se može pozvati prilikom kreiranja forme za dodavanje smještaja ili setiranje preferencije pacijenta. U bazi se poziva funkcija **fn_get_equipped**, a vraća se JSON:
+  
+    [
+      {
+        "id": 1,
+        "type": "poptuno opremljen"
+      },
+      { 
+        ...
+      },
+    ]
+
+  GET funkcija **../get_accommodation_type_info** se može pozvati prilikom kreiranja forme za dodavanje smještaja ili setiranje preferencije pacijenta. U bazi se poziva funkcija **fn_get_accommodation_types**, a vraća se JSON:
+
+    [
+      {
+        "id": ,
+        "type": 
+      },
+      {
+        ...
+      },
+    ]
+
+  GET funkcija **../get_roles_info** se može pozvati prilikom kreiranja forme za dodavanje novod administratora, tj. prilikom odabira uloge novog adminstratora. U bazi se poziva funkcija **fn_get_roles**, a vraća se JSON:
+
+    [
+      {
+        "id": ,
+        "rName": 
+      },
+      {
+        ...
+      },
+    ]
+
+
+  GET funkcija **../get_towns_info** se može pozvati prilikom kreiranja forme za dodavanje novog smještaja. U bazi se poziva funkcija **fn_get_towns**, a vraća se JSON:
+  
+    [
+      {
+        "id": ,
+        "townName": 
+      },
+      {
+        ...
+      },
+    ]
+
+  GET funkcija **../get_treatments_info** se može pozvati prilikom kreiranja forme za dodavanje pacijenta, tj. prilikom odabira tretmana. U bazi se poziva funkcija **fn_get_treatments**, a vraća se JSON:
+
+    [
+      {
+        "id": ,
+        "name": ,
+        "desc": 
+      },
+      {
+        ...
+      },
+    ]
+
+  GET funkcija **../get_vehicle_type_info** se može pozvati prilikom kreiranja forma za dodavanje vozila prijevoznika. U bazi se poziva funkcija **fn_get_vehicle_types**, a vraća se JSON:
+
+    [
+      {
+        "typeID": ,
+        "desc": 
+      },
+      {
+        ...
+      },
+    ]
+  ps. brand i model vozila se proizovljno upisuju, među inicijalnim podacima su unešeni brandovi kao što su Dacia, BMW, Mercedes, Volkswagen, Skoda i neki modeli tih brandova, ali to kao podaci u bazi ne postoji u zasebnom entitetu
+    
 # Dnevnik implementacije
   ### Inicijalno postavljanje baze
   - popunjavanje baze sa podacima za entitete:
