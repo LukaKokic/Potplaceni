@@ -3,8 +3,8 @@
   
     [
       {
-        "id": 1,
-        "type": "poptuno opremljen"
+        "id": ,
+        "type": ""
       },
       { 
         ...
