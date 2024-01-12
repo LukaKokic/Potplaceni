@@ -25,7 +25,8 @@ begin
 				'till', a.dateto,
 				'accAddress', acc.address || ',' || tow.postalcode || ',' || tow.townname,
 				'datefrom', accocu.datefrom,
-				'dateto', accocu.dateto
+				'dateto', accocu.dateto,
+				'transportReg', v.registration
 			)
 		)
 	from
@@ -52,6 +53,12 @@ begin
 	join
 		accommodation acc
 	on	accocu.accommodationid = acc.accommodationid
+	join
+		vehicleoccupied vo
+	on	vo.patientid = pp.patientid
+	join
+		vehicle v
+	on	vo.vehicleid = v.vehicleid
 	where
 		pp.patientid = pat_id;
 		

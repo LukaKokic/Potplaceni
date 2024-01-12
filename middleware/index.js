@@ -52,7 +52,16 @@ function notifyPatient(patientData){
 }
 
 function notifyTransporter(transporterData){
-
+  const mailData = {
+    from: 'dentall.progi@gmail.com',
+    to: transporterData['mail'],
+    subject: 'Organised transport of a patient',
+    text: `Congratulations you are transporting ${transporterData['pName']} ${transporterData['pLName']}`
+  };
+  const mailTransporter = nodemailer.createTransport(config);
+  mailTransporter.sendMail(mailData, (err, info) => {
+    if (err) console.log(err);
+  });
   return;
 }
 
@@ -358,8 +367,10 @@ app.post('/add_patient', async(req, res) => {
     var response = await pool.query(`SELECT api.fn_add_patient('${JSON.stringify(patientData)}')::json`);
     if (response.rows[0]['fn_add_patient']['success'] == 'success'){
       var patID = response.rows[0]['fn_add_patient']['id'];
-      var subresponse = await pool.query(`SELECT public.fn_get_patient_mail_info_by_id(${patID})`);
-      notifyPatient(subresponse.rows[0]['fn_get_patient_mail_info_by_id']);
+      var patientSubresponse = await pool.query(`SELECT public.fn_get_patient_mail_info_by_id(${patID})`);
+      var transporterSubresponse = await pool.query(`SELECT public.fn_get_transporter_mail_info_by_id(${patID})`);
+      notifyPatient(patientSubresponse.rows[0]['fn_get_patient_mail_info_by_id']);
+      notifyTransporter(transporterSubresponse.rows[0]['fn_get_transporter_mail_info_by_id']);
     }
     res.json(response.rows[0]['fn_add_patient']);
   }catch(err){
