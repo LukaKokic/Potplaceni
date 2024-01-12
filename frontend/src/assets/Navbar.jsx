@@ -3,7 +3,7 @@ import yourImage from './pictures/logo.webp';
 import { Link } from 'react-router-dom';
 
 
-const Dashboard = () => {
+const Navbar = () => {
   return (
     <nav className="navbar navbarEdit navbar-expand-lg">
         <div className="container-fluid">
@@ -45,4 +45,4 @@ const Dashboard = () => {
 };
 
 
-export default Dashboard;
+export default Navbar;
