@@ -38,7 +38,7 @@ function loginFunction(username, password){
 //funciton that sends mail to the patient
 function notifyPatient(patientData){
   const mailData = {
-    from: 'dentall.progi@gmail.com',
+    from: process.env.nodeMailerAcc,
     to: patientData['mail'],
     subject: 'Medical tourism plan',
     text: `Congratulations ${patientData['lName']},
@@ -51,9 +51,10 @@ function notifyPatient(patientData){
   return;
 }
 
+//funciton that sends mail to the transporter
 function notifyTransporter(transporterData){
   const mailData = {
-    from: 'dentall.progi@gmail.com',
+    from: process.env.nodeMailerAcc,
     to: transporterData['mail'],
     subject: 'Organised transport of a patient',
     text: `Congratulations you are transporting ${transporterData['pName']} ${transporterData['pLName']}`
@@ -153,13 +154,13 @@ app.get('/view_patient_treatment/:patientID', async(req, res) => {
   }
 });
 
-app.get('/test_mail', async(req, res) => {
-  const mailTransporter = nodemailer.createTransport(config);
-  mailTransporter.sendMail(mailData, (err, info) => {
-    if (err) console.log(err);
-    else res.status(200).send({"message": "Mail sent"});
-  });
-});
+// app.get('/test_mail', async(req, res) => {
+//   const mailTransporter = nodemailer.createTransport(config);
+//   mailTransporter.sendMail(mailData, (err, info) => {
+//     if (err) console.log(err);
+//     else res.status(200).send({"message": "Mail sent"});
+//   });
+// });
 
 //returns JSON containing accommodation equipped info(id, description)
 app.get('/get_accommodation_equipped_info', async(req, res) => {
@@ -215,11 +216,32 @@ app.get('/get_treatments_info', async(req, res) => {
 app.get('/get_vehicle_type_info', async(req, res) => {
   try{
     var response = await pool.query('SELECT api.fn_get_vehicle_types()');
-    res.json(response.rows[0]['fn_get_vehicle_types ']);
+    res.json(response.rows[0]['fn_get_vehicle_types']);
   }catch (err){
     res.status(400).send(err.message);
   }
 });
+
+//returns JSON containing clinic info (id, clinicname)
+app.get('/get_clinics_info', async(req, res) => {
+  try{
+    var response = await pool.query('SELECT api.fn_get_clinics()');
+    res.json(response.rows[0]['fn_get_clinics']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
+//returns JSON containing last recorded realestateID (id)
+app.get('/get_last_used_realestate_id', async(req, res) => {
+  try{
+    var response = await pool.query('SELECT api.fn_get_last_realestate_id()');
+    res.json(response.rows[0]['fn_get_last_realestate_id']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
 //################################################################# GET methods #################################################################
 
 //################################################################# POST methods ################################################################
@@ -369,10 +391,10 @@ app.post('/add_patient', async(req, res) => {
       var patID = response.rows[0]['fn_add_patient']['id'];
       var patientSubresponse = await pool.query(`SELECT public.fn_get_patient_mail_info_by_id(${patID})`);
       var transporterSubresponse = await pool.query(`SELECT public.fn_get_transporter_mail_info_by_id(${patID})`);
-      notifyPatient(patientSubresponse.rows[0]['fn_get_patient_mail_info_by_id']);
-      notifyTransporter(transporterSubresponse.rows[0]['fn_get_transporter_mail_info_by_id']);
     }
     res.json(response.rows[0]['fn_add_patient']);
+    notifyPatient(patientSubresponse.rows[0]['fn_get_patient_mail_info_by_id']);
+    notifyTransporter(transporterSubresponse.rows[0]['fn_get_transporter_mail_info_by_id']);
   }catch(err){
     res.status(400).send(err.message);
   }
