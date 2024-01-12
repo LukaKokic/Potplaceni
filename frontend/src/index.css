@@ -239,7 +239,17 @@
   margin-top: 30px;
   transition: 0.2s ease-in;
 }
-
+.viewAccommodations {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(9, 30, 62);
+  padding: 14px 38px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 30px;
+  transition: 0.2s ease-in;
+}
 .btn_form_submit:hover {
   background-color: black;
 }
@@ -368,25 +378,8 @@
   display: block;
   width: 80%;
   text-decoration: none;
-  margin-top: 23px;
-  margin-bottom: 30px;
-  padding: 19px 20px;
-  background-color: rgb(44, 140, 250);
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  border-radius: 4px;
-  transition: 0.2s ease-in;
-  
-}
-
-.btn_title_appartmentss {
-  display: block;
-  width: 80%;
-  text-decoration: none;
   margin: 23px 0px 0px 0px;
-  padding: 19px 15px;
+  padding: 19px 20px;
   background-color: rgb(44, 140, 250);
   color: white;
   font-size: 16px;
@@ -507,5 +500,27 @@
   font-size: 17px;
   font-weight: 500;
 
+}
+
+.btn_form_submit_left {
+  float: left;
+}
+
+.btn_form_delete_red {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(209, 26, 42);
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+  transition: 0.2s ease-in;
+}
+
+.btn_form_set_availability {
+  margin-top: 20px;
+}
+
+.btn_form_delete {
+  margin-top: 20px;
 }
 
