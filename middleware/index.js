@@ -165,7 +165,7 @@ app.get('/view_patient_treatment/:patientID', async(req, res) => {
 //returns JSON containing accommodation equipped info(id, description)
 app.get('/get_accommodation_equipped_info', async(req, res) => {
   try{
-    var response = await pool.query('SELECT api.fn_get_equipped()');
+    var response = await pool.query('SELECT fn_get_equipped()');
     res.json(response.rows[0]['fn_get_equipped']);
   }catch (err){
     res.status(400).send(err.message);
@@ -175,7 +175,7 @@ app.get('/get_accommodation_equipped_info', async(req, res) => {
 //returns JSON containing accommodation type info(id, description)
 app.get('/get_accommodation_type_info', async(req, res) => {
   try{
-    var response = await pool.query('SELECT api.fn_get_accommodation_types()');
+    var response = await pool.query('SELECT fn_get_accommodation_types()');
     res.json(response.rows[0]['fn_get_accommodation_types']);
   }catch (err){
     res.status(400).send(err.message);
@@ -185,7 +185,7 @@ app.get('/get_accommodation_type_info', async(req, res) => {
 //returns JSON containing roles info (id, rolename)
 app.get('/get_roles_info', async(req, res) => {
   try{
-    var response = await pool.query('SELECT api.fn_get_roles()');
+    var response = await pool.query('SELECT fn_get_roles()');
     res.json(response.rows[0]['fn_get_roles']);
   }catch (err){
     res.status(400).send(err.message);
@@ -195,7 +195,7 @@ app.get('/get_roles_info', async(req, res) => {
 //returns JSON containing town info (id, townname)
 app.get('/get_towns_info', async(req, res) => {
   try{
-    var response = await pool.query('SELECT api.fn_get_towns()');
+    var response = await pool.query('SELECT fn_get_towns()');
     res.json(response.rows[0]['fn_get_towns']);
   }catch (err){
     res.status(400).send(err.message);
@@ -205,7 +205,7 @@ app.get('/get_towns_info', async(req, res) => {
 //returns JSON containing treatment info (id, treatmentname, description)
 app.get('/get_treatments_info', async(req, res) => {
   try{
-    var response = await pool.query('SELECT api.fn_get_treatments()');
+    var response = await pool.query('SELECT fn_get_treatments()');
     res.json(response.rows[0]['fn_get_treatments']);
   }catch (err){
     res.status(400).send(err.message);
@@ -215,7 +215,7 @@ app.get('/get_treatments_info', async(req, res) => {
 //returns JSON containing vehicle type info (typeid, description)
 app.get('/get_vehicle_type_info', async(req, res) => {
   try{
-    var response = await pool.query('SELECT api.fn_get_vehicle_types()');
+    var response = await pool.query('SELECT fn_get_vehicle_types()');
     res.json(response.rows[0]['fn_get_vehicle_types']);
   }catch (err){
     res.status(400).send(err.message);
@@ -225,7 +225,7 @@ app.get('/get_vehicle_type_info', async(req, res) => {
 //returns JSON containing clinic info (id, clinicname)
 app.get('/get_clinics_info', async(req, res) => {
   try{
-    var response = await pool.query('SELECT api.fn_get_clinics()');
+    var response = await pool.query('SELECT fn_get_clinics()');
     res.json(response.rows[0]['fn_get_clinics']);
   }catch (err){
     res.status(400).send(err.message);
@@ -235,7 +235,7 @@ app.get('/get_clinics_info', async(req, res) => {
 //returns JSON containing last recorded realestateID (id)
 app.get('/get_last_used_realestate_id', async(req, res) => {
   try{
-    var response = await pool.query('SELECT api.fn_get_last_realestate_id()');
+    var response = await pool.query('SELECT fn_get_last_realestate_id()');
     res.json(response.rows[0]['fn_get_last_realestate_id']);
   }catch (err){
     res.status(400).send(err.message);
