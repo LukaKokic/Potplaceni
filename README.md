@@ -61,7 +61,7 @@
       },
     ]
 
-  GET funkcija **../get_vehicle_type_info** se može pozvati prilikom kreiranja forma za dodavanje vozila prijevoznika. U bazi se poziva funkcija **fn_get_vehicle_types**, a vraća se JSON:
+  GET funkcija **../get_vehicle_type_info** se može pozvati prilikom kreiranja forme za dodavanje vozila prijevoznika. U bazi se poziva funkcija **fn_get_vehicle_types**, a vraća se JSON:
 
     [
       {
@@ -73,6 +73,26 @@
       },
     ]
   ps. brand i model vozila se proizovljno upisuju, među inicijalnim podacima su unešeni brandovi kao što su Dacia, BMW, Mercedes, Volkswagen, Skoda i neki modeli tih brandova, ali to kao podaci u bazi ne postoji u zasebnom entitetu
+
+  GET funkcija **../get_clinics_info** se može pozvati prilikom kreiranja forme za dodavanje pacijenta, tj. prilikom odabira klinike u kojoj će se provoditi njegov tretman. U bazi se poziva funkcija **fn_get_clinics**, a vraća se JSON:
+
+    [
+      {
+        "id": ,
+        "name": 
+      },
+      {
+        ...
+      },
+    ]
+
+  GET funkcija **../get_last_used_realestate_id** se može pozvati prilikom kreiranja forme za dodavanje smještaja, tj. to polje u formi može biti non-editable ili uopće ne mora biti prikazano te se mora slati za svaki novi smještaj, ali inkrementirano (Npr. u bazi posotji 5 smještaja te zadnji realestateid je "IS-00005" te će ova funkcija vratiti taj id, ali kada bi se išao unijeti novi smještaj potrebno je dohvatiti zadnji realestateid i inkrementirati na "IS-00006"). U bazi se poziva funkcija **fn_get_last_realestate_id**, a vraća se JSON:
+  
+    [
+      {
+        "id":
+      }
+    ]
     
 # Dnevnik implementacije
   ### Inicijalno postavljanje baze
@@ -106,7 +126,8 @@
       "email": "",
       "roleList": []
     }
-    
+  u roleList se unose ID-evi uloga . U dropdown listi se mogu staviti imena uloge, a kao value asociran sa imenom uloge je roleid.
+  
   <br/>
   COMPLETED ✔
 
@@ -191,7 +212,8 @@
       "clinicID": ,
       "active": 
     }
-    
+  active bi trebao biti ili 0 ili 1.
+  
   COMPLETED ✔
 
   ### UC7 - Pregled smještaja
@@ -251,11 +273,12 @@
     {
       "orgName": "",
       "contact": "",
-      "address": "",
+      "email": "",
       "townID": "",
       "active": 
     }
-    
+  active bi trebao biti ili 0 ili 1.
+  
   COMPLETED ✔
     
   ### UC11 - Pregled prijevoznika
@@ -303,7 +326,8 @@
       "transporter_id": "",
       "active": 
     }
-    
+  active bi trebao biti ili 0 ili 1.
+  
   COMPLETED ✔
     
   ### UC14 - Pregled vozila prijevoznika
