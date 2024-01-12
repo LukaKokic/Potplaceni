@@ -1,4 +1,5 @@
 const express = require('express');
+const nodemailer = require('nodemailer');
 require('dotenv').config();
 const pool = require('./DBConfig');
 const passwordHasher = require('./passwordhassher');
@@ -9,6 +10,17 @@ app.use(express.json());
 app.use(cors());
 
 const port = 8080;
+
+const config = {
+  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  auth:{
+    user: process.env.nodeMailerAcc,
+    pass: process.env.nodeMailerPass,
+  },
+};
 
 //function do be called when login button has been pressed
 function loginFunction(username, password){
@@ -22,17 +34,28 @@ function loginFunction(username, password){
   creds['password'] = hashedPassword;
   return creds;
 }
-/*
-//function that is called every x minutes that creates treatment plan for "pending" patients
-async function createTreatmentPlan() {
-  try{
-    var response = await pool.query('SELECT api.fn_periodical_call()');
-    console.log(response.rows[0]['fn_periodical_call']);
-  }catch (err){
-    console.log(err.message);
-  }
+
+//funciton that sends mail to the patient
+function notifyPatient(patientData){
+  const mailData = {
+    from: 'dentall.progi@gmail.com',
+    to: patientData['mail'],
+    subject: 'Medical tourism plan',
+    text: `Congratulations ${patientData['lName']},
+     Your medical treatment has been organised!`
+  };
+  const mailTransporter = nodemailer.createTransport(config);
+  mailTransporter.sendMail(mailData, (err, info) => {
+    if (err) console.log(err);
+  });
+  return;
 }
-*/
+
+function notifyTransporter(transporterData){
+
+  return;
+}
+
 //################################################################# GET methods #################################################################
 
 //TODO connect this to front and greet user with login page
@@ -121,6 +144,73 @@ app.get('/view_patient_treatment/:patientID', async(req, res) => {
   }
 });
 
+app.get('/test_mail', async(req, res) => {
+  const mailTransporter = nodemailer.createTransport(config);
+  mailTransporter.sendMail(mailData, (err, info) => {
+    if (err) console.log(err);
+    else res.status(200).send({"message": "Mail sent"});
+  });
+});
+
+//returns JSON containing accommodation equipped info(id, description)
+app.get('/get_accommodation_equipped_info', async(req, res) => {
+  try{
+    var response = await pool.query('SELECT api.fn_get_equipped()');
+    res.json(response.rows[0]['fn_get_equipped']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
+//returns JSON containing accommodation type info(id, description)
+app.get('/get_accommodation_type_info', async(req, res) => {
+  try{
+    var response = await pool.query('SELECT api.fn_get_accommodation_types()');
+    res.json(response.rows[0]['fn_get_accommodation_types']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
+//returns JSON containing roles info (id, rolename)
+app.get('/get_roles_info', async(req, res) => {
+  try{
+    var response = await pool.query('SELECT api.fn_get_roles()');
+    res.json(response.rows[0]['fn_get_roles']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
+//returns JSON containing town info (id, townname)
+app.get('/get_towns_info', async(req, res) => {
+  try{
+    var response = await pool.query('SELECT api.fn_get_towns()');
+    res.json(response.rows[0]['fn_get_towns']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
+//returns JSON containing treatment info (id, treatmentname, description)
+app.get('/get_treatments_info', async(req, res) => {
+  try{
+    var response = await pool.query('SELECT api.fn_get_treatments()');
+    res.json(response.rows[0]['fn_get_treatments']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
+
+//returns JSON containing vehicle type info (typeid, description)
+app.get('/get_vehicle_type_info', async(req, res) => {
+  try{
+    var response = await pool.query('SELECT api.fn_get_vehicle_types()');
+    res.json(response.rows[0]['fn_get_vehicle_types ']);
+  }catch (err){
+    res.status(400).send(err.message);
+  }
+});
 //################################################################# GET methods #################################################################
 
 //################################################################# POST methods ################################################################
@@ -262,12 +352,20 @@ app.post('/delete_transporter_vehicle', async(req, res) => {
 //Add patient
 app.post('/add_patient', async(req, res) => {
   var patientData = req.body;
+  // var subresponse = await pool.query('SELECT public.fn_get_patient_mail_info_by_id(3)');
+  // notifyPatient(subresponse.rows[0]['fn_get_patient_mail_info_by_id']);
   try{
     var response = await pool.query(`SELECT api.fn_add_patient('${JSON.stringify(patientData)}')::json`);
+    if (response.rows[0]['fn_add_patient']['success'] == 'success'){
+      var patID = response.rows[0]['fn_add_patient']['id'];
+      var subresponse = await pool.query(`SELECT public.fn_get_patient_mail_info_by_id(${patID})`);
+      notifyPatient(subresponse.rows[0]['fn_get_patient_mail_info_by_id']);
+    }
     res.json(response.rows[0]['fn_add_patient']);
   }catch(err){
     res.status(400).send(err.message);
   }
+  // res.status(200).send({"message": "Cool!"});
 });
 
 //Deletes selected patient, selected by patientid

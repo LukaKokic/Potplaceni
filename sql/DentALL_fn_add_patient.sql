@@ -49,7 +49,8 @@ begin
 	
 	returnValue := json_build_object(
 		'success', true,
-		'msg', 'Patient added'
+		'msg', 'Patient added',
+		'id', patient_id
 	);
 	
 	return returnValue;
