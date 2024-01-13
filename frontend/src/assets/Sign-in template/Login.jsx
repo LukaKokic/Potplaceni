@@ -6,10 +6,10 @@ export const Login = () => {
         <div className="auth-form-container">
             <h1>DentAll</h1>
             <form className="login-form">
-                <label for= "">korisničko ime</label>
-                    <input type="text" placeholder= "username" lozinka="lozinka"/>
+                <label for= "">Username</label>
+                    <input type="text" placeholder= "Username" lozinka="Username"/>
                     <label for= "lozinka">lozinka</label>
-                    <input type="text" placeholder= "********" lozinka="lozinka"/>
+                    <input type="text" placeholder= "********" lozinka="Password"/>
                 <button>Log in</button>
             </form>
        </div>
