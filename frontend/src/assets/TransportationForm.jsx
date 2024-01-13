@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from "./Navbar";
 import TransportationCarrier from './TransportationCarrier';
+import Footer from './Footer';
 const TransportationForm = () => {
   const [formData, setFormData] = useState({
     registration: '',
@@ -212,6 +213,7 @@ const TransportationForm = () => {
         </div>
       </div>
       <TransportationCarrier />
+      <Footer />
     </div>
   );
   
