@@ -1,12 +1,13 @@
 import React from 'react';
 import AboutUs from './AboutUs';
 import Services from './Services';
-
+import Footer from './Footer';
 
 import Navbar from "./Navbar";
 
 const Dashboard = () => {
   return (
+    
     <div className='header'>
       {/* #1 */}
       <Navbar />
@@ -28,6 +29,8 @@ const Dashboard = () => {
       <AboutUs />
 
       <Services />
+      
+      <Footer />
       
     </div>
   );

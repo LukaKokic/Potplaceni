@@ -21,13 +21,9 @@ begin
 				trans.organisationname o_name,
 				trans.phone ph,
 				trans.email mail,
-				trans.address || ',' || t.postalcode || ',' || t.townname addr, 
 				trans.active ac
 			from
 				public.transporter trans
-			join
-				public.town t
-			on trans.townid = t.townid
 			order by
 				trans.transporterid
 		)
@@ -39,7 +35,6 @@ begin
 				'name', cte_ordered.o_name,
 				'phone', cte_ordered.ph,
 				'email', cte_ordered.mail,
-				'address', cte_ordered.addr,
 				'active', cte_ordered.ac
 			)
 		)
