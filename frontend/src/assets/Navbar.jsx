@@ -1,5 +1,5 @@
 import React from 'react';
-import yourImage from './pictures/logo.webp';
+import logo from './pictures/logo.webp';
 import { Link } from 'react-router-dom';
 
 
@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className="navbar navbarEdit navbar-expand-lg">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            <a href="/dashboard"><img src={yourImage} className='logo_img' alt='Logo Website'></img></a>
+            <a href="/dashboard"><img src={logo} className='logo_img' alt='Logo Website'></img></a>
           </a>
     
           <span className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><i className='fa fa-bars bars'></i></span>
@@ -18,7 +18,7 @@ const Navbar = () => {
       <Link to="/dashboard" className="nav-link">Home</Link>
     </li>
     <li className="nav-item">
-    <Link to="/dashboard" className="nav-link">About Us</Link>
+    <Link to="/dashboard#about" className="nav-link">About Us</Link>
     </li>
     <li className="nav-item">
     <Link to="/accommodation-management" className="nav-link">Acc. Mngmt.</Link>

@@ -1,7 +1,7 @@
 import React from "react";
 
 const AboutUs = () => {
-return(<div className='about_us'>
+return(<div className='about_us' id='about'>
       <div className='container'>
         <div className='row'>
           <div className='col-lg-6'>

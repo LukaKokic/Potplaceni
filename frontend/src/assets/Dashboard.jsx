@@ -7,7 +7,6 @@ import Navbar from "./Navbar";
 
 const Dashboard = () => {
   return (
-    
     <div className='header'>
       {/* #1 */}
       <Navbar />
@@ -25,7 +24,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      
       <AboutUs />
 
       <Services />
