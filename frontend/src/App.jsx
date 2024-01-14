@@ -1,4 +1,5 @@
-import { Link, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import Login from './assets/login/Login';
 import Dashboard from './assets/Dashboard';
 import BadLogin from './assets/login/BadLogin';
@@ -6,6 +7,25 @@ import AccommodationManagement from './assets/AccommodationManagement';
 import TransportationForm from './assets/TransportationForm';
 
 function App() {
+  const { pathname, hash, key } = useLocation();
+
+  useEffect(() => {
+    // if not a hash link, scroll to top
+    if (hash === '') {
+      window.scrollTo(0, 0);
+    }
+    // else scroll to id
+    else {
+      setTimeout(() => {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView();
+        }
+      }, 0);
+    }
+  }, [pathname, hash, key]); // do this on route change
+  
   return (
     <div>
       <Routes>
