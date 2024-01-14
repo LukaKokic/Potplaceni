@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../index.css';
 import Navbar from "./Navbar";
+import Footer from './Footer';
 const AccommodationForm = () => {
   const [formData, setFormData] = useState({
     realEstateID: '',
@@ -210,14 +211,18 @@ const AccommodationForm = () => {
                     </div>
                   </div>
                 )}
-  
+              
               </div>
               
             </div>
+            
           </div>
+          
         </div>
+        
       </div>
     </div>
+    <Footer />
     </div>
   );
   
