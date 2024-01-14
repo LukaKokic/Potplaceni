@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 async function getData(user, pass){
-  let resp = await axios.get('https://expressware.onrender.com/fn_login', {
+  let resp = await axios.get('https://expressware.onrender.com/login', {
     params: {
       usr: user,
       psswd: pass,
