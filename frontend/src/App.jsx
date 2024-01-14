@@ -5,6 +5,7 @@ import Dashboard from './assets/Dashboard';
 import BadLogin from './assets/login/BadLogin';
 import AccommodationManagement from './assets/AccommodationManagement';
 import TransportationForm from './assets/TransportationForm';
+import AddPatient from './assets/AddPatient';
 
 function App() {
   const { pathname, hash, key } = useLocation();
@@ -34,6 +35,7 @@ function App() {
         <Route path="/wrong-credentials" element={<BadLogin />} />
         <Route path="/accommodation-management" element={<AccommodationManagement />} />
         <Route path="/transporation-form" element={<TransportationForm />} />
+        <Route path="/addpatient" element={<AddPatient />} />
       </Routes>
     </div>
   )
