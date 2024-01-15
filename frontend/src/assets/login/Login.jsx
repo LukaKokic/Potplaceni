@@ -45,10 +45,10 @@ export default function Login() {
 				<h1>DentAll</h1>
 				<form className="login-form" onSubmit={handleSubmit}>
 					<label for="username">Username</label>
-					<input name="username" type="text" placeholder= "Username" lozinka="Username"/>
+					<input name="username" id="userInput" type="text" placeholder= "Username" lozinka="Username"/>
 					<label for="password">Password</label>
-					<input name="password" type="text" placeholder= "********" lozinka="Password"/>
-					<button>Log in</button>
+					<input name="password" id="passInput" type="text" placeholder= "********" lozinka="Password"/>
+					<button id="loginSubmit">Log in</button>
 				</form>
 		   </div>
 	   </div>

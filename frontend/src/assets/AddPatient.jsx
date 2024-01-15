@@ -8,10 +8,20 @@ async function getData(){
   return resp;
 }
 
-/*async function submitData() {
+/*async function submitData(formData) {
   let resp = await axios.post('https://expressware.onrender.com/add_patient', {
 	  params: {
-		  
+		  PIN: formData.PIn,
+		  firstname: formData.firstname,
+		  lastname: formData.lastname,
+		  phone: formData.phone,
+		  mail: formData.email,
+		  homeAdress: "",
+		  typePref: ,
+		  equippedPref: ,
+		  from: ,
+		  till: ,
+		  clinicID:
 	  }
   });
 }*/
