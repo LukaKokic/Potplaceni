@@ -35,7 +35,7 @@ function App() {
         <Route path="/wrong-credentials" element={<BadLogin />} />
         <Route path="/accommodation-management" element={<AccommodationManagement />} />
         <Route path="/transporation-form" element={<TransportationForm />} />
-        <Route path="/addpatient" element={<AddPatient />} />
+        <Route path="/add-patient" element={<AddPatient />} />
       </Routes>
     </div>
   )

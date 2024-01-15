@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../index.css';
 import Navbar from "./Navbar";
 import Footer from './Footer';
+import axios from 'axios';
+
 const AccommodationForm = () => {
   const [formData, setFormData] = useState({
     realEstateID: '',
@@ -38,27 +40,42 @@ const AccommodationForm = () => {
 
   
   const getEquippedOptions = async () => {
-    // Zamijeni s pravim pozivom API-ja ili funkcije
-    return [
-      { id: 1, type: 'poptuno opremljen' },
-      // ...
-    ];
+	let resp = await axios.get('https://expressware.onrender.com/get_accommodation_eqquipped_info')
+	.catch(function (error) {
+	  if (error.response.status == 404) { console.log("Error 404 getting equipment options:", error); }
+	  else { console.log("Unknown error while getting equipment options:", error); }
+	  return [
+        { id: 1, type: 'ERROR GETTING EQUIPMENT' },
+      ];
+	});
+	console.log("equipped info resp: ", resp);
+	return resp;
   };
 
   const getTypeOptions = async () => {
-    // Zamijeni s pravim pozivom API-ja ili funkcije
-    return [
-      { id: 1, type: 'nekakav tip' },
-      // ...
-    ];
+	let resp = await axios.get('https://expressware.onrender.com/get_accommodation_type_info')
+	.catch(function (error) {
+	  if (error.response.status == 404) { console.log("Error 404 getting type options:", error); }
+	  else { console.log("Unknown error while getting typeOptions:", error); }
+	  return [
+        { id: 1, type: 'ERROR GETTING TYPES' },
+      ];
+	});
+	console.log("type options resp: ", resp);
+	return resp;
   };
 
   const getTownOptions = async () => {
-    // Zamijeni s pravim pozivom API-ja ili funkcije
-    return [
-      { id: 1, townName: 'nekakav grad' },
-      // ...
-    ];
+    let resp = await axios.get('https://expressware.onrender.com/get_towns_info')
+	.catch(function (error) {
+	  if (error.response.status == 404) { console.log("Error 404 getting towns:", error); }
+	  else { console.log("Unknown error while getting towns:", error); }
+	  return [
+        { id: 1, townName: 'ERROR GETTING TOWNS' },
+      ];
+	});
+	console.log("towns info resp: ", resp);
+	return resp;
   };
 
   const handleChange = (e) => {
@@ -225,10 +242,6 @@ const AccommodationForm = () => {
     <Footer />
     </div>
   );
-  
-
-  
-  
 }
 
 export default AccommodationForm;

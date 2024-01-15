@@ -1,7 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import '../index.css';
 import Navbar from "./Navbar";
-const AccommodationForm = () => {
+import axios from 'axios';
+
+async function getData(){
+  let resp = await axios.get('https://expressware.onrender.com/view_patients');
+  return resp;
+}
+
+/*async function submitData() {
+  let resp = await axios.post('https://expressware.onrender.com/add_patient', {
+	  params: {
+		  
+	  }
+  });
+}*/
+
+
+const PatientForm = () => {
+	// Testing
+	getData()
+	.then(response => {
+		console.log("response: ", response);
+	});
+	
+	
   const [formData, setFormData] = useState({
     PIN: '',
     firstname: '',
@@ -13,7 +36,6 @@ const AccommodationForm = () => {
 
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deletePatientId, setDeletePatientId] = useState('');
-;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -49,7 +71,7 @@ const AccommodationForm = () => {
               
                 <div className='row mt-4'>
                   <div className='col-lg-12'>
-                    <a href='/' className='btn_form_submit btn_form_submit_left' onClick={handleSubmit}>VIEW PATIENTS</a>
+                    <a href='/' className='btn_form_submit btn_form_submit_left'>VIEW PATIENTS</a>
                   </div>
                 </div>
   
@@ -119,4 +141,4 @@ const AccommodationForm = () => {
   
 }
 
-export default AccommodationForm;
+export default PatientForm;
