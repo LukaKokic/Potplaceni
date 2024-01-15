@@ -32,13 +32,13 @@ const TransportationForm = () => {
   const getVehicleTypeOptions = async () => {
 	let resp = await axios.get('https://expressware.onrender.com/get_vehicle_type_info')
 	.catch(function (error) {
-	  if (error.response.status == 404) { console.log("Error 404 getting vehicle types:", error); }
-	  else { console.log("Unknown error while getting vehicle types:", error); }
+	  if (error.response.status == 404) { console.error("Error 404 getting vehicle types:", error); }
+	  else { console.error("Unknown error while getting vehicle types:", error); }
 	  return [
         { typeID: 1, desc: 'ERROR GETTING VEHICLE TYPES' },
       ];
 	});
-	console.log("vehicle types resp: ", resp);
+	//console.log("vehicle types resp: ", resp);
 	return resp;
   };
 
@@ -60,6 +60,24 @@ const TransportationForm = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  
+  async function submitFormNewVehicle(formData){
+	let resp = await axios.post('https://expressware.onrender.com/add_transporter_vehicle', {
+      params: formData
+	})
+	.catch(function (error) {
+	  if (error.response.status == 404) { console.error("Error 404 submiting new transport vehicle:", error); }
+	  else { console.error("Unknown error while submiting new transport vehicle:", error); }
+	})
+	.finally(() => {
+		console.log("tried sending: ", formData);
+	});
+    return resp;
+  };
+  const handleSubmitNewVehicle = (e) => {
+	e.preventDefault();
+	submitFormNewVehicle(formData).then(response => console.log("form submitted; response: ", response));
   };
 
   return (
@@ -186,7 +204,7 @@ const TransportationForm = () => {
                   </div>
                   <div className='row mt-4'>
                     <div className='col-lg-4'>
-                      <a href='#' className='btn_form_submit'>
+                      <a href='#' className='btn_form_submit' onClick={handleSubmitNewVehicle}>
                         SUBMIT NOW
                       </a>
                     </div>

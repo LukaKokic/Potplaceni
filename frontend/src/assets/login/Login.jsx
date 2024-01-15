@@ -9,7 +9,7 @@ async function getData(user, pass){
       usr: user,
       psswd: pass,
     },
-  })
+  });
   return resp;
 }
 

@@ -23,7 +23,7 @@ async function createRows(users) {
 	const rows = [];
 	for (let i = 0; i < users.length; i++) {
 		rows.push(
-			<div className='row mt-4'>
+			<div key={i} className='row mt-4'>
 				<label>{users[i].PIN}</label>
 				<label>{users[i].firstname}</label>
 				<label>{users[i].lastname}</label>
@@ -50,8 +50,6 @@ export default function UserList() {
 			createRows(result).then(result => setRows(result));
 		});
 	}, []);
-	console.log("users: ", users);
-	console.log("rows: ", rows);
 	return (
 		<div className='form_container_accommodation'>
 			<div className='container'>

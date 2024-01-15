@@ -42,39 +42,39 @@ const AccommodationForm = () => {
   const getEquippedOptions = async () => {
 	let resp = await axios.get('https://expressware.onrender.com/get_accommodation_eqquipped_info')
 	.catch(function (error) {
-	  if (error.response.status == 404) { console.log("Error 404 getting equipment options:", error); }
-	  else { console.log("Unknown error while getting equipment options:", error); }
+	  if (error.response.status == 404) { console.error("Error 404 getting equipment options:", error); }
+	  else { console.error("Unknown error while getting equipment options:", error); }
 	  return [
         { id: 1, type: 'ERROR GETTING EQUIPMENT' },
       ];
 	});
-	console.log("equipped info resp: ", resp);
+	//console.log("equipped info resp: ", resp);
 	return resp;
   };
 
   const getTypeOptions = async () => {
 	let resp = await axios.get('https://expressware.onrender.com/get_accommodation_type_info')
 	.catch(function (error) {
-	  if (error.response.status == 404) { console.log("Error 404 getting type options:", error); }
-	  else { console.log("Unknown error while getting typeOptions:", error); }
+	  if (error.response.status == 404) { console.error("Error 404 getting type options:", error); }
+	  else { console.error("Unknown error while getting typeOptions:", error); }
 	  return [
         { id: 1, type: 'ERROR GETTING TYPES' },
       ];
 	});
-	console.log("type options resp: ", resp);
+	//console.log("type options resp: ", resp);
 	return resp;
   };
 
   const getTownOptions = async () => {
     let resp = await axios.get('https://expressware.onrender.com/get_towns_info')
 	.catch(function (error) {
-	  if (error.response.status == 404) { console.log("Error 404 getting towns:", error); }
-	  else { console.log("Unknown error while getting towns:", error); }
+	  if (error.response.status == 404) { console.error("Error 404 getting towns:", error); }
+	  else { console.error("Unknown error while getting towns:", error); }
 	  return [
         { id: 1, townName: 'ERROR GETTING TOWNS' },
       ];
 	});
-	console.log("towns info resp: ", resp);
+	//console.log("towns info resp: ", resp);
 	return resp;
   };
 
@@ -82,11 +82,25 @@ const AccommodationForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  async function submitForm(formData){
+	let resp = await axios.post('https://expressware.onrender.com/add_accommodation', {
+      params: formData
+	})
+	.catch(function (error) {
+	  if (error.response.status == 404) { console.error("Error 404 submiting new accommodation:", error); }
+	  else { console.error("Unknown error while submiting new accommodation:", error); }
+	})
+	.finally(() => {
+		console.log("tried sending: ", formData);
+	});
+    return resp;
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     // Implementiraj logiku za slanje podataka na backend
     // Primjer:
     // submitAccommodationForm(formData).then(response => console.log(response));
+	submitForm(formData).then(response => console.log("form submitted; response: ", response));
   };
 
   const handleSetAvailabilityClick = () => {

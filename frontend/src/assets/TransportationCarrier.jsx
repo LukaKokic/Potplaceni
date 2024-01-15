@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const TransportationCarrier = () => {
   const [carrierFormData, setCarrierFormData] = useState({
-    registration: '',
-    capacity: '',
-    type: '',
-    brand: '',
-    model: '',
-    transporter_id: '',
-    active: '',
+    orgName: '',
+    contact: '',
+    email: '',
+    townID: '',
+    active: ''
   });
 
   const [carrierVehicleTypeOptions] = useState([]);
@@ -38,6 +37,25 @@ const TransportationCarrier = () => {
   const handleCarrierChange = (e) => {
     setCarrierFormData({ ...carrierFormData, [e.target.name]: e.target.value });
   };
+  
+  async function carrierSubmitForm(formData) {
+	let resp = await axios.post('https://expressware.onrender.com/add_transporter', {
+		params: formData
+	})
+	.catch(function (error) {
+	  if (error.response.status == 404) { console.error("Error 404 submiting new user:", error); }
+	  else { console.error("Unknown error while submiting new user:", error); }
+	})
+	.finally(() => {
+		console.log("tried sending: ", formData);
+	});
+	return resp;
+  };
+  const handleCarrierSubmit = (e) => {
+	e.preventDefault();
+	carrierSubmitForm(carrierFormData).then(response => console.log("form submitted; response: ", response));
+  };
+  
   return (
     <div className='form_container_appointment'>
         <div className='container'>
@@ -54,59 +72,59 @@ const TransportationCarrier = () => {
   
                   <div className='row mt-4'>
                     <div className='col-lg-4'>
-                      <label htmlFor='registration' className='label'>
+                      <label htmlFor='orgName' className='label'>
                         Organization Name
                       </label>
                       <br />
                       <input
                         type='text'
-                        name='Organization Name'
+                        name='orgName'
                         className='input_box_form'
                         placeholder='Organization Name'
-                        value={carrierFormData.registration}
+                        value={carrierFormData.orgName}
                         onChange={handleCarrierChange}
                       />
                     </div>
                     <div className='col-lg-4'>
-                      <label htmlFor='capacity' className='label'>
+                      <label htmlFor='contact' className='label'>
                         Contact
                       </label>
                       <br />
                       <input
                         type='text'
-                        name='Contact'
+                        name='contact'
                         className='input_box_form'
                         placeholder='Contact'
-                        value={carrierFormData.capacity}
+                        value={carrierFormData.contact}
                         onChange={handleCarrierChange}
                       />
                     </div>
                     <div className='col-lg-4'>
-                      <label htmlFor='brand' className='label'>
+                      <label htmlFor='address' className='label'>
                         Address
                       </label>
                       <br />
                       <input
                         type='text'
-                        name='Address'
+                        name='address'
                         className='input_box_form'
                         placeholder='Address'
-                        value={carrierFormData.brand}
+                        value={carrierFormData.address}
                         onChange={handleCarrierChange}
                       />
                     </div>
                   </div>
                   <div className='row mt-4'>
                     <div className='col-lg-4'>
-                      <label htmlFor='model' className='label'>
+                      <label htmlFor='townID' className='label'>
                         TownID
                       </label>
                       <br />
                       <input
                         type='text'
-                        name='model'
+                        name='townID'
                         className='input_box_form'
-                        value={carrierFormData.model}
+                        value={carrierFormData.townID}
                         onChange={handleCarrierChange}
                       />
                     </div>
@@ -127,7 +145,7 @@ const TransportationCarrier = () => {
                   
                   <div className='row mt-4'>
                     <div className='col-lg-4'>
-                      <a href='#' className='btn_form_submit'>
+                      <a href='#' className='btn_form_submit' onClick={handleCarrierSubmit}>
                         SUBMIT NOW
                       </a>
                     </div>

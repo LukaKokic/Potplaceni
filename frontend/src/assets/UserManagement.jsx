@@ -9,19 +9,6 @@ async function getData(){
   return resp;
 }
 
-async function submitData(formData) {
-  let resp = await axios.post('https://expressware.onrender.com/add_admin', {
-	  params: {
-		  PIN: formData.PIn,
-		  firstname: formData.firstname,
-		  lastname: formData.lastname,
-		  phone: formData.phone,
-		  mail: formData.email,
-		  roleList: []
-	  }
-  });
-}
-
 
 const UserManagement = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +17,7 @@ const UserManagement = () => {
     lastname: '',
     phone: '',
     email: '',
-    rolelist: '',
+    rolelist: [],
   });
   
   const [roleOptions, setRoleOptions] = useState([]);
@@ -46,13 +33,13 @@ const UserManagement = () => {
   const getRoleOptions = async () => {
 	let resp = await axios.get('https://expressware.onrender.com/get_roles_info')
 	.catch(function (error) {
-	  if (error.response.status == 404) { console.log("Error 404 getting role options:", error); }
-	  else { console.log("Unknown error while getting role options:", error); }
+	  if (error.response.status == 404) { console.error("Error 404 getting role options:", error); }
+	  else { console.error("Unknown error while getting role options:", error); }
 	  return [
         { id: 1, type: 'ERROR GETTING ROLES' }
       ];
 	});
-	console.log("role options resp: ", resp);
+	//console.log("role options resp: ", resp);
 	return resp;
   };
 
@@ -60,8 +47,22 @@ const UserManagement = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  async function submitForm(formData) {
+	let resp = await axios.post('https://expressware.onrender.com/add_admin', {
+		params: formData
+	})
+	.catch(function (error) {
+	  if (error.response.status == 404) { console.error("Error 404 submiting new user:", error); }
+	  else { console.error("Unknown error while submiting new user:", error); }
+	})
+	.finally(() => {
+		console.log("tried sending: ", formData);
+	});
+	return resp;
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+	submitForm(formData).then(response => console.log("form submitted; response: ", response));
   };
 
   const handleDeleteClick = () => {

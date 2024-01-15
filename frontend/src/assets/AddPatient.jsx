@@ -8,33 +8,8 @@ async function getData(){
   return resp;
 }
 
-/*async function submitData(formData) {
-  let resp = await axios.post('https://expressware.onrender.com/add_patient', {
-	  params: {
-		  PIN: formData.PIn,
-		  firstname: formData.firstname,
-		  lastname: formData.lastname,
-		  phone: formData.phone,
-		  mail: formData.email,
-		  homeAdress: "",
-		  typePref: ,
-		  equippedPref: ,
-		  from: ,
-		  till: ,
-		  clinicID:
-	  }
-  });
-}*/
-
 
 const PatientForm = () => {
-	// Testing
-	getData()
-	.then(response => {
-		console.log("response: ", response);
-	});
-	
-	
   const [formData, setFormData] = useState({
     PIN: '',
     firstname: '',
@@ -51,8 +26,22 @@ const PatientForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  async function submitForm(formData) {
+	let resp = await axios.post('https://expressware.onrender.com/add_patient', {
+		params: formData
+	})
+	.catch(function (error) {
+	  if (error.response.status == 404) { console.error("Error 404 submiting new patient:", error); }
+	  else { console.error("Unknown error while submiting new patient:", error); }
+	})
+	.finally(() => {
+		console.log("tried sending: ", formData);
+	});
+	return resp;
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+	submitForm(formData).then(response => console.log("form submitted; response: ", response));
   };
 
   const handleDeleteClick = () => {
@@ -87,8 +76,8 @@ const PatientForm = () => {
   
                 <div className='row mt-4'>
                   <div className='col-lg-4'>
-                    <label htmlFor="" className='label'>PIN:</label><br />
-                    <input type='text' name='pin' className='input_box_form' value={formData.PIN} onChange={handleChange} />
+                    <label htmlFor="PIN" className='label'>PIN:</label><br />
+                    <input type='text' name='PIN' className='input_box_form' value={formData.PIN} onChange={handleChange} />
                   </div>
                   <div className='col-lg-4'>
                   <label htmlFor="" className='label'>Firstname:</label><br />
