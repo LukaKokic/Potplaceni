@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Navbar from "./Navbar";
 import TransportationCarrier from './TransportationCarrier';
 import Footer from './Footer';
+import axios from 'axios';
+
+
 const TransportationForm = () => {
   const [formData, setFormData] = useState({
     registration: '',
@@ -13,13 +16,31 @@ const TransportationForm = () => {
     active: '',
   });
 
-  const [vehicleTypeOptions] = useState([]);
+  const [vehicleTypeOptions, setVehicleTypeOptions] = useState([]);
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deleteTransporterId, setDeleteTransporterId] = useState('');
 
   const [isAvailabilityModalOpen, setAvailabilityModalOpen] = useState(false);
   const [availabilityTransporterId, setAvailabilityTransporterId] = useState('');
   const [availability, setAvailability] = useState('');
+  
+  useEffect(() => {
+    // Pozovi funkcije za dohvaćanje opcija iz baze i postavi ih u state
+    getVehicleTypeOptions().then(options => setVehicleTypeOptions(options));
+  }, []); // Ovisno o potrebama i funkcijama koje su dostupne
+
+  const getVehicleTypeOptions = async () => {
+	let resp = await axios.get('https://expressware.onrender.com/get_vehicle_type_info')
+	.catch(function (error) {
+	  if (error.response.status == 404) { console.log("Error 404 getting vehicle types:", error); }
+	  else { console.log("Unknown error while getting vehicle types:", error); }
+	  return [
+        { typeID: 1, desc: 'ERROR GETTING VEHICLE TYPES' },
+      ];
+	});
+	console.log("vehicle types resp: ", resp);
+	return resp;
+  };
 
   const handleDeleteClick = () => {
     setDeleteModalOpen(true);
