@@ -40,7 +40,8 @@ const AccommodationForm = () => {
 
   
   const getEquippedOptions = async () => {
-	let resp = await axios.get('https://expressware.onrender.com/get_accommodation_eqquipped_info')
+	let resp = await axios.get('https://expressware.onrender.com/get_accommodation_equipped_info')
+	.then((response) => { return response.data; } )
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting equipment options:", error); }
 	  else { console.error("Unknown error while getting equipment options:", error); }
@@ -54,6 +55,7 @@ const AccommodationForm = () => {
 
   const getTypeOptions = async () => {
 	let resp = await axios.get('https://expressware.onrender.com/get_accommodation_type_info')
+	.then((response) => { return response.data; } )
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting type options:", error); }
 	  else { console.error("Unknown error while getting typeOptions:", error); }
@@ -67,6 +69,7 @@ const AccommodationForm = () => {
 
   const getTownOptions = async () => {
     let resp = await axios.get('https://expressware.onrender.com/get_towns_info')
+	.then((response) => { return response.data; } )
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting towns:", error); }
 	  else { console.error("Unknown error while getting towns:", error); }

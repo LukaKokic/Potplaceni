@@ -524,3 +524,17 @@
   margin-top: 20px;
 }
 
+.checkbox-list {
+	border: 1px dashed black;
+}
+.checkbox-div {
+	text-align:center;
+}
+input[type='checkbox'] {
+	margin-left:20px;
+}
+/*div[name='admin_smjestaja'] {
+	width:100%;
+	text-align:center;
+}*/
+

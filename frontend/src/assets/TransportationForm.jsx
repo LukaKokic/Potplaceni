@@ -24,6 +24,7 @@ const TransportationForm = () => {
   const [availabilityTransporterId, setAvailabilityTransporterId] = useState('');
   const [availability, setAvailability] = useState('');
   
+  
   useEffect(() => {
     // Pozovi funkcije za dohvaćanje opcija iz baze i postavi ih u state
     getVehicleTypeOptions().then(options => setVehicleTypeOptions(options));
@@ -31,6 +32,7 @@ const TransportationForm = () => {
 
   const getVehicleTypeOptions = async () => {
 	let resp = await axios.get('https://expressware.onrender.com/get_vehicle_type_info')
+	.then((response) => { return response.data; } )
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting vehicle types:", error); }
 	  else { console.error("Unknown error while getting vehicle types:", error); }

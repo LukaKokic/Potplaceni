@@ -42,6 +42,7 @@ const TransportationCarrier = () => {
 	let resp = await axios.post('https://expressware.onrender.com/add_transporter', {
 		params: formData
 	})
+	.then((response) => { return response.data; })
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 submiting new user:", error); }
 	  else { console.error("Unknown error while submiting new user:", error); }

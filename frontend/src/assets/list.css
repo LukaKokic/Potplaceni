@@ -1,0 +1,35 @@
+.dropdown {
+    border: 1px ridge black;
+    float: left;
+    position: relative; /* added */
+    width: 100%; /* added */
+	text-align: center;
+}
+
+.dropdown-list {
+    margin: 20px;
+	width: 100%;
+}
+
+.dropdown-list-item > p {
+	text-align: left;
+	width: 100%;
+}
+
+.item-title {
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.btn_form_delete_red {
+	margin-bottom:10px;
+}
+.btn_form_delete_red:hover {
+	background-color:rgb(192, 0, 0);
+	text-decoration: underline;
+	color:rgb(0, 0, 192);
+}
+.btn_form_delete_red:active {
+	background-color:rgb(0, 0, 0);
+}
+
