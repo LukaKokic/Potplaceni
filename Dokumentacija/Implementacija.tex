@@ -2,37 +2,31 @@
 		
 		
 		\section{Korištene tehnologije i alati}
-		
-			\textbf{\textit{dio 2. revizije}}
-			
-			 \textit{Detaljno navesti sve tehnologije i alate koji su primijenjeni pri izradi dokumentacije i aplikacije. Ukratko ih opisati, te navesti njihovo značenje i mjesto primjene. Za svaki navedeni alat i tehnologiju je potrebno \textbf{navesti internet poveznicu} gdje se mogu preuzeti ili više saznati o njima}.
-			
+
+			 U timu smo za vrijeme projekta komunicirali ponajviše preko aplikacija Whatts up\footnote{\url{https://www.whatsapp.com/}} te Discorda\footnote{\url{https://discord.com/}}, a sa asistentom i demonstratorom preko Microsoft Teams\footnote{\url{https://teams.microsoft.com/v2/}} i Microsoft Outlook\footnote{\url{https://outlook.office.com/mail/}}. Tekst u dokumentaciji smo uređivali pomoću latex-a\footnote{\url{https://www.latex-project.org/}} u editoru texStudio\footnote{\url{https://www.texstudio.org/}} te generirali PDF dokument iz latex dokumenta pomoću TexLive\footnote{\url{https://www.tug.org/texlive/}}. Dijagrame uporabe te sekvencijske dijagrame smo izradili pomoću alata Astah UML\footnote{\url{https://astah.net/products/astah-uml/}}.
+			 
+			 Nedostaje za ostale dijagrame!!!!
+			 
+			 Model baze podataka je napravljen pomoću alata ERDplus\footnote{\url{https://erdplus.com/}}. Kako bi smo zajedno mogli raditi na projektu u isto vrijeme te ujedno i pratiti razvojne verzije našeg projekta smo koristili Git\footnote{\url{https://git-scm.com/}} zajedno za udaljenim repozitorijom GitHub\footnote{\url{https://github.com/}}. Razvojna okruženja koja su korištena su Visual Studio Code\footnote{\url{https://code.visualstudio.com/}} te pgadmin\footnote{\url{https://www.pgadmin.org/}}. Frontend je napisan u programskom jezika javascript\footnote{\url{https://www.javascript.com/}} pomoću biblioteke react\footnote{\url{https://react.dev/}}, dok je za backend korišten PostgreSQL\footnote{\url{https://www.postgresql.org/}}. Unit testovi su odrađeni pomoću alata
+			 
+			 nedostaje
+			 
+			 , dok su integracijski testovi napravljeni pomoću alata Selenium\footnote{\url{https://www.postgresql.org/}} i programskog  jezika
+			 
+			 Java\footnote{\url{https://www.java.com/en/}}????
+			 
+			 Aplikacija je puštena u pogon na servisu render\footnote{\url{https://render.com/}}.
+			 
+			 Fali za latex i texStudio
 			
 			\eject 
 		
 	
 		\section{Ispitivanje programskog rješenja}
 			
-			\textbf{\textit{dio 2. revizije}}\\
-			
-			 \textit{U ovom poglavlju je potrebno opisati provedbu ispitivanja implementiranih funkcionalnosti na razini komponenti i na razini cijelog sustava s prikazom odabranih ispitnih slučajeva. Studenti trebaju ispitati temeljnu funkcionalnost i rubne uvjete.}
-	
-			
 			\subsection{Ispitivanje komponenti}
-			\textit{Potrebno je provesti ispitivanje jedinica (engl. unit testing) nad razredima koji implementiraju temeljne funkcionalnosti. Razraditi \textbf{minimalno 6 ispitnih slučajeva} u kojima će se ispitati redovni slučajevi, rubni uvjeti te izazivanje pogreške (engl. exception throwing). Poželjno je stvoriti i ispitni slučaj koji koristi funkcionalnosti koje nisu implementirane. Potrebno je priložiti izvorni kôd svih ispitnih slučajeva te prikaz rezultata izvođenja ispita u razvojnom okruženju (prolaz/pad ispita). }
-			
-			
-			
+		
 			\subsection{Ispitivanje sustava}
-			
-			 \textit{Potrebno je provesti i opisati ispitivanje sustava koristeći radni okvir Selenium\footnote{\url{https://www.seleniumhq.org/}}. Razraditi \textbf{minimalno 4 ispitna slučaja} u kojima će se ispitati redovni slučajevi, rubni uvjeti te poziv funkcionalnosti koja nije implementirana/izaziva pogrešku kako bi se vidjelo na koji način sustav reagira kada nešto nije u potpunosti ostvareno. Ispitni slučaj se treba sastojati od ulaza (npr. korisničko ime i lozinka), očekivanog izlaza ili rezultata, koraka ispitivanja i dobivenog izlaza ili rezultata.\\ }
-			 
-			 \textit{Izradu ispitnih slučajeva pomoću radnog okvira Selenium moguće je provesti pomoću jednog od sljedeća dva alata:}
-			 \begin{itemize}
-			 	\item \textit{dodatak za preglednik \textbf{Selenium IDE} - snimanje korisnikovih akcija radi automatskog ponavljanja ispita	}
-			 	\item \textit{\textbf{Selenium WebDriver} - podrška za pisanje ispita u jezicima Java, C\#, PHP koristeći posebno programsko sučelje.}
-			 \end{itemize}
-		 	\textit{Detalji o korištenju alata Selenium bit će prikazani na posebnom predavanju tijekom semestra.}
 			
 			\eject 
 		
@@ -47,12 +41,11 @@
 		
 		\section{Upute za puštanje u pogon}
 		
-			\textbf{\textit{dio 2. revizije}}\\
-		
-			 \textit{U ovom poglavlju potrebno je dati upute za puštanje u pogon (engl. deployment) ostvarene aplikacije. Na primjer, za web aplikacije, opisati postupak kojim se od izvornog kôda dolazi do potpuno postavljene baze podataka i poslužitelja koji odgovara na upite korisnika. Za mobilnu aplikaciju, postupak kojim se aplikacija izgradi, te postavi na neku od trgovina. Za stolnu (engl. desktop) aplikaciju, postupak kojim se aplikacija instalira na računalo. Ukoliko mobilne i stolne aplikacije komuniciraju s poslužiteljem i/ili bazom podataka, opisati i postupak njihovog postavljanja. Pri izradi uputa preporučuje se \textbf{naglasiti korake instalacije uporabom natuknica} te koristiti što je više moguće \textbf{slike ekrana} (engl. screenshots) kako bi upute bile jasne i jednostavne za slijediti.}
+			Aplikacija je puštena u pogon na cloud servisu Render čime smo omogućili javni pristup aplikaciji.
 			
+			\textbf{\textit{Konfiguracija frontenda}}
 			
-			 \textit{Dovršenu aplikaciju potrebno je pokrenuti na javno dostupnom poslužitelju. Studentima se preporuča korištenje neke od sljedećih besplatnih usluga: \href{https://aws.amazon.com/}{Amazon AWS}, \href{https://azure.microsoft.com/en-us/}{Microsoft Azure} ili \href{https://www.heroku.com/}{Heroku}. Mobilne aplikacije trebaju biti objavljene na F-Droid, Google Play ili Amazon App trgovini.}
+			\textbf{\textit{Konfiguracija baze/backenda}}
 			
 			
 			\eject 
