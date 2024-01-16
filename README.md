@@ -166,7 +166,9 @@
       "userID": "",
       "pass": ""
     }
-    
+
+  ps. Prilikom ažuriranja podataka administratora, trebali bi se stari podaci zadržate te ukoliko ne dođe do ažuriranja određenih podataka da se i oni šalju u JSON-u. Drugim rječima, ako je odabrana opcija ažurianja podataka za administratora "Pero Perić PIN: 34798642 sa brojem mobitela +3859264783 i mail adresom pp@gmail.com i ulogom Administrator prijevoza te se ažurira samo njegov mail na pero.peric@gmail.com, a ostali podaci ostaju isti. U tom slučaju se u gornjem JSON-u **moraju** slati i stari podaci kao što je stari broj mobitela i stara uloga."
+  
   COMPLETED ✔
 
   ### UC5 - Brisanje postojećeg korisnika
@@ -448,9 +450,11 @@
     
   ### UC22 - Obavještavanje klijenata o uspješnom zaključenju plana
   BAZA:
-  - slanje elektroničke pošte svim strankama uključenim za kreirani plan tretmana, **fn_finalize_plan**
-    - obavještavanje pacijenta gdje je i u kojem razdoblju dobio smještaj
-    - obavještavanje prijevoznika kada i gdje treba pokupiti pacijenta te kuda ga treba odvesti
+  - prilikom dodavanja pacijenta izrađuje se plan njihovog smještaja i transporta
+
+  API:
+  - definirane su funkcije **notifyPatient** i **notifyTransporter** koje obavještavaju pacijenta i prijevoznika o planu i programu tretmana odnosno prijevoza.
+  
   <br/>
-  COMPLETED ❌
+  COMPLETED ✔
 <br/>
