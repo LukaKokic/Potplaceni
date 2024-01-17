@@ -337,7 +337,7 @@
   - napraviti funkcij u bazi za pregled postojećih vozila prijevoznika u sustavu, **fn_view_transporter_vehicles**
 
   API:
-  - definirati GET rutu za prikazivanje vozila prijevoznika, **../view_vehicles/:transporterID**
+  - definirati GET rutu za prikazivanje vozila prijevoznika, **../view_transporter_vehicles/:transporterID**
   <br/>
   COMPLETED ✔
     
