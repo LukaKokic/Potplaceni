@@ -7,13 +7,7 @@
 			 
 			 Nedostaje za ostale dijagrame!!!!
 			 
-			 Model baze podataka je napravljen pomoću alata ERDplus\footnote{\url{https://erdplus.com/}}. Kako bi smo zajedno mogli raditi na projektu u isto vrijeme te ujedno i pratiti razvojne verzije našeg projekta smo koristili Git\footnote{\url{https://git-scm.com/}} zajedno za udaljenim repozitorijom GitHub\footnote{\url{https://github.com/}}. Razvojna okruženja koja su korištena su Visual Studio Code\footnote{\url{https://code.visualstudio.com/}} te pgadmin\footnote{\url{https://www.pgadmin.org/}}. Frontend je napisan u programskom jezika javascript\footnote{\url{https://www.javascript.com/}} pomoću biblioteke react\footnote{\url{https://react.dev/}}, dok je za backend korišten PostgreSQL\footnote{\url{https://www.postgresql.org/}}. Unit testovi su odrađeni pomoću alata
-			 
-			 nedostaje
-			 
-			 , dok su integracijski testovi napravljeni pomoću alata Selenium\footnote{\url{https://www.postgresql.org/}} i programskog  jezika
-			 
-			 Java\footnote{\url{https://www.java.com/en/}}????
+			 Model baze podataka je napravljen pomoću alata ERDplus\footnote{\url{https://erdplus.com/}}. Kako bi smo zajedno mogli raditi na projektu u isto vrijeme te ujedno i pratiti razvojne verzije našeg projekta smo koristili Git\footnote{\url{https://git-scm.com/}} zajedno za udaljenim repozitorijom GitHub\footnote{\url{https://github.com/}}. Razvojna okruženja koja su korištena su Visual Studio Code\footnote{\url{https://code.visualstudio.com/}} te pgAdmin4\footnote{\url{https://www.pgadmin.org/}}. Frontend je napisan u programskom jezika javascript\footnote{\url{https://www.javascript.com/}} pomoću biblioteke React\footnote{\url{https://react.dev/}}, dok je za backend korišten PostgreSQL\footnote{\url{https://www.postgresql.org/}}. Unit testovi su odrađeni pomoću alata pgTAP\footnote{\url{https://pgtap.org/}}, dok su integracijski testovi napravljeni pomoću alata Selenium\footnote{\url{https://www.postgresql.org/}} i programskog  jezika Java\footnote{\url{https://www.java.com/en/}}????
 			 
 			 Aplikacija je puštena u pogon na servisu render\footnote{\url{https://render.com/}}.
 			 
@@ -25,12 +19,283 @@
 		\section{Ispitivanje programskog rješenja}
 			
 			\subsection{Ispitivanje komponenti}
-		
-			\subsection{Ispitivanje sustava}
-			
-			\eject 
-		
-		
+				Ispitivanje jedinica je provedeno pomoću alata pgTAP. pgTAP je skup funkcija baze podataka koje olakšavaju pisanje testova. Pomoću ovog smo alata testirali izvođenje i ponašanje backenda-a ostvarenog kroz funkcije u bazi napisane plpgsql programskim jezikom. Alat nudi brojne definirane metode koje omogućuju definiranje očekivanog ispisa za određeni ulaz, uspoređivanje rezultata odrađene funkcije sa podacima iz tablica, itd.
+				\eject
+				\subsection{Ispitni slučaj 1 - funkcionalnost prijave}
+				Ovaj ispitni slučaj ispituje funkcionalnost prijave u sustav. Testovi ispitnog slučaja testiraju postoji li funkcija u bazi, je li funkcija napisana plpgsql jezikom te koji su ulazni i izlazni tipovi podataka funkcije. To se testira koristeći ugrađene funkcije pgTAP-a kao što su \textit{\texttt{has\_function}} za testiranje postoji li definirana funkcija u bazi, \textit{\texttt{function\_lang\_is}} za testiranje je li funkcija napisana plpgsql jezikom, \textit{\texttt{function\_returns}} za testiranje vraća li funkcija neki tip podataka ili je tipa void, \textit{\texttt{is\(\)}} ze provjeru dvaju argumenata te na osnovu njihovog podudaranje ili odudaranja se izbacuje rezultat. Rezultat je uvijek u obliku jednog reda sa jednom kolonom koja može sadržavati tekst \textit{ok $<$broj testa$>$ - $<$opis testa$>$} ili \textit{not ok $<$broj testa$>$ - $<$opis testa$>$}.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_1/has_func.png}
+					\caption{Pokretanje testa za provjeru postojanja funkcije}
+					\label{fig: IS1-has_function}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_1/func_lang.png}
+					\caption{Pokretanje testa za provjeru jezika kojim je napisana funkcija}
+					\label{fig: IS1-function_lang}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_1/func_return.png}
+					\caption{Pokretanje testa za provjeru povratnog tipa podatka funkcije}
+					\label{fig: IS1-function_return}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_1/success_login.png}
+					\caption{Pokretanje testa za provjeru rada same funkcije, uspijeh}
+					\label{fig: IS1-uspješni login}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_1/failure_login.png}
+					\caption{Pokretanje testa za provjeru rada same funkcije, neuspijeh}
+					\label{fig: IS1-neuspješni login}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_1/no_creds.png}
+					\caption{Pokretanje testa za provjeru rada same funkcije, neuspijeh}
+					\label{fig: IS1-login bez vjerodajnica}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_1/code.png}
+					\caption{Kod isptinog slučaja 1}
+					\label{fig: IS1-kod}
+				\end{figure}
+				\eject
+				\subsection{Ispitni slučaj 2 - funkcionalnost dodavanja novog administratora}
+				Ovaj ispitni slučaj ispituje funkcionalnost dodavanja novog administratora. Testovi ispitnog slučaja testiraju postoji li funkcija u bazi, je li funkcija napisana plpgsql jezikom te koji su ulazni i izlazni tipovi podataka funkcije. To se testira koristeći ugrađene funkcije pgTAP-a kao što su \textit{\texttt{has\_function}} za testiranje postoji li definirana funkcija u bazi, \textit{\texttt{function\_lang\_is}} za testiranje je li funkcija napisana plpgsql jezikom, \textit{\texttt{function\_returns}} za testiranje vraća li funkcija neki tip podataka ili je tipa void, \textit{\texttt{is\(\)}} ze provjeru dvaju argumenata te na osnovu njihovog podudaranje ili odudaranja se izbacuje rezultat. Rezultat je uvijek u obliku jednog reda sa jednom kolonom koja može sadržavati tekst \textit{ok $<$broj testa$>$ - $<$opis testa$>$} ili \textit{not ok $<$broj testa$>$ - $<$opis testa$>$}.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_2/has_func.png}
+					\caption{Pokretanje testa za provjeru postojanja funkcije}
+					\label{fig: IS2-has_function}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_2/func_lang.png}
+					\caption{Pokretanje testa za provjeru jezika kojim je napisana funkcija}
+					\label{fig: IS2-function_lang}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_2/func_return.png}
+					\caption{Pokretanje testa za provjeru povratnog tipa podatka funkcije}
+					\label{fig: IS2-function_return}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_2/success_invocation.png}
+					\caption{Pokretanje testa za provjeru rada same funkcije, uspijeh}
+					\label{fig: IS2-uspješno kreiran administrator}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_2/failure_invocation.png}
+					\caption{Pokretanje testa za provjeru rada same funkcije, neuspijeh}
+					\label{fig: IS2-administrator nije kreiran, već postoji isti}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_2/credentials_creation.png}
+					\caption{Pokretanje testa za provjeru automatskog kreiranja vjerodajnica za novog administratora}
+					\label{fig: IS2-kreirane vjerodajnice za novod administratora}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_2/role_assigned.png}
+					\caption{Pokretanje testa za provjeru automatskog dodjeljivanja uloge/uloga za novog administratora}
+					\label{fig: IS2-dodavanje uloga novom adminstratoru}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_2/code_part1.png}
+					\label{fig: IS2-code part 1}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_2/code_part2.png}
+					\label{fig: IS2-code part 2}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_2/code_part3.png}
+					\caption{Kod ispitnog slučaja 2}
+					\label{fig: IS2-code part 3}
+				\end{figure}
+				\eject
+				\subsection{Ispitni slučaj 3 - funkcionalnost brisanja administratora}
+				Ovaj ispitni slučaj ispituje funkcionalnost brisanja administratora. Testovi ispitnog slučaja testiraju postoji li funkcija u bazi, je li funkcija napisana plpgsql jezikom te koji su ulazni i izlazni tipovi podataka funkcije. To se testira koristeći ugrađene funkcije pgTAP-a kao što su \textit{\texttt{has\_function}} za testiranje postoji li definirana funkcija u bazi, \textit{\texttt{function\_lang\_is}} za testiranje je li funkcija napisana plpgsql jezikom, \textit{\texttt{function\_returns}} za testiranje vraća li funkcija neki tip podataka ili je tipa void, \textit{\texttt{is\(\)}} ze provjeru dvaju argumenata te na osnovu njihovog podudaranje ili odudaranja se izbacuje rezultat. Rezultat je uvijek u obliku jednog reda sa jednom kolonom koja može sadržavati tekst \textit{ok $<$broj testa$>$ - $<$opis testa$>$} ili \textit{not ok $<$broj testa$>$ - $<$opis testa$>$}.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_3/has_func.png}
+					\caption{Pokretanje testa za provjeru postojanja funkcije}
+					\label{fig: IS3-has_function}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_3/func_lang.png}
+					\caption{Pokretanje testa za provjeru jezika kojim je napisana funkcija}
+					\label{fig: IS3-function_lang}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_3/func_return.png}
+					\caption{Pokretanje testa za provjeru povratnog tipa podatka funkcije}
+					\label{fig: IS3-function_return}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_3/success_invocation.png}
+					\caption{Pokretanje testa za provjeru rada same funkcije, uspijeh}
+					\label{fig: IS3-uspješno izbrisan administrator}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_3/failure_invocation.png}
+					\caption{Pokretanje testa za provjeru rada same funkcije, neuspijeh}
+					\label{fig: IS3-administrator je već izbrisan ili ne postoji}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_3/credentials_deletion.png}
+					\caption{Pokretanje testa za provjeru automatskog brisanja vjerodajnica za izbrisanog administratora}
+					\label{fig: IS3-brisanje vjerodajnice za obrisanog administratora}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_3/role_deletion.png}
+					\caption{Pokretanje testa za provjeru automatskog brisanja pridjeljenih uloga za obrisanog administratora}
+					\label{fig: IS3-brisanje pridjeljenih uloga za obrisanog administratora}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_3/code.png}
+					\caption{Kod isptinog slučaja 3}
+					\label{fig: IS3-kod}
+				\end{figure}
+				\eject
+				\subsection{Ispitni slučaj 4 - funkcionalnost dodavanja smještaja}
+				Ovaj ispitni slučaj ispituje funkcionalnost dodavanja smještaja. Testovi ispitnog slučaja testiraju postoji li funkcija u bazi, je li funkcija napisana plpgsql jezikom te koji su ulazni i izlazni tipovi podataka funkcije. To se testira koristeći ugrađene funkcije pgTAP-a kao što su \textit{\texttt{has\_function}} za testiranje postoji li definirana funkcija u bazi, \textit{\texttt{function\_lang\_is}} za testiranje je li funkcija napisana plpgsql jezikom, \textit{\texttt{function\_returns}} za testiranje vraća li funkcija neki tip podataka ili je tipa void, \textit{\texttt{is\(\)}} ze provjeru dvaju argumenata te na osnovu njihovog podudaranje ili odudaranja se izbacuje rezultat. Rezultat je uvijek u obliku jednog reda sa jednom kolonom koja može sadržavati tekst \textit{ok $<$broj testa$>$ - $<$opis testa$>$} ili \textit{not ok $<$broj testa$>$ - $<$opis testa$>$}.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_4/has_func.png}
+					\caption{Pokretanje testa za provjeru postojanja funkcije}
+					\label{fig: IS4-has_function}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_4/func_lang.png}
+					\caption{Pokretanje testa za provjeru jezika kojim je napisana funkcija}
+					\label{fig: IS4-function_lang}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_4/func_return.png}
+					\caption{Pokretanje testa za provjeru povratnog tipa podatka funkcije}
+					\label{fig: IS4-function_return}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_4/success_invocation.png}
+					\caption{Pokretanje testa za provjeru rada same funkcije, uspijeh}
+					\label{fig: IS4-uspješno kreiran smještaj}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_4/failure_invocation.png}
+					\caption{Pokretanje testa za provjeru rada same funkcije, neuspijeh}
+					\label{fig: IS4-smještaj nije kreiran, već postoji isti}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_4/code.png}
+					\caption{Kod isptinog slučaja 4}
+					\label{fig: IS4-kod}
+				\end{figure}
+				\eject
+				\subsection{Ispitni slučaj 5 - funkcionalnost brisanja smještaja}
+				Ovaj ispitni slučaj ispituje funkcionalnost brisanja smještaja. Testovi ispitnog slučaja testiraju postoji li funkcija u bazi, je li funkcija napisana plpgsql jezikom te koji su ulazni i izlazni tipovi podataka funkcije. To se testira koristeći ugrađene funkcije pgTAP-a kao što su \textit{\texttt{has\_function}} za testiranje postoji li definirana funkcija u bazi, \textit{\texttt{function\_lang\_is}} za testiranje je li funkcija napisana plpgsql jezikom, \textit{\texttt{function\_returns}} za testiranje vraća li funkcija neki tip podataka ili je tipa void, \textit{\texttt{is\(\)}} ze provjeru dvaju argumenata te na osnovu njihovog podudaranje ili odudaranja se izbacuje rezultat. Rezultat je uvijek u obliku jednog reda sa jednom kolonom koja može sadržavati tekst \textit{ok $<$broj testa$>$ - $<$opis testa$>$} ili \textit{not ok $<$broj testa$>$ - $<$opis testa$>$}.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_5/has_func.png}
+					\caption{Pokretanje testa za provjeru postojanja funkcije}
+					\label{fig: IS5-has_function}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_5/func_lang.png}
+					\caption{Pokretanje testa za provjeru jezika kojim je napisana funkcija}
+					\label{fig: IS5-function_lang}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_5/func_return.png}
+					\caption{Pokretanje testa za provjeru povratnog tipa podatka funkcije}
+					\label{fig: IS5-function_return}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_5/success_invocation.png}
+					\caption{Pokretanje testa za provjeru rada same funkcije, uspijeh}
+					\label{fig: IS5-uspješno izbrisan smještaj}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_5/failure_invocation.png}
+					\caption{Pokretanje testa za provjeru rada same funkcije, neuspijeh}
+					\label{fig: IS5-smještaj je već izbrisan ili ne postoji}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_5/code.png}
+					\caption{Kod isptinog slučaja 5}
+					\label{fig: IS5-kod}
+				\end{figure}
+				\eject
+				\subsection{Ispitni slučaj 6 - funkcionalnost dohvaćanja posljednjeg unesenog realestateid-a}
+				Ovaj ispitni slučaj ispituje funkcionalnost dohvaćanja posljednjeg unesenog realestateid-a. Testovi ispitnog slučaja testiraju postoji li funkcija u bazi, je li funkcija napisana plpgsql jezikom te koji su ulazni i izlazni tipovi podataka funkcije. To se testira koristeći ugrađene funkcije pgTAP-a kao što su \textit{\texttt{has\_function}} za testiranje postoji li definirana funkcija u bazi, \textit{\texttt{function\_lang\_is}} za testiranje je li funkcija napisana plpgsql jezikom, \textit{\texttt{function\_returns}} za testiranje vraća li funkcija neki tip podataka ili je tipa void, \textit{\texttt{is\(\)}} ze provjeru dvaju argumenata te na osnovu njihovog podudaranje ili odudaranja se izbacuje rezultat. Rezultat je uvijek u obliku jednog reda sa jednom kolonom koja može sadržavati tekst \textit{ok $<$broj testa$>$ - $<$opis testa$>$} ili \textit{not ok $<$broj testa$>$ - $<$opis testa$>$}.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_6/has_func.png}
+					\caption{Pokretanje testa za provjeru postojanja funkcije}
+					\label{fig: IS6-has_function}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_6/func_lang.png}
+					\caption{Pokretanje testa za provjeru jezika kojim je napisana funkcija}
+					\label{fig: IS6-function_lang}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_6/func_return.png}
+					\caption{Pokretanje testa za provjeru povratnog tipa podatka funkcije}
+					\label{fig: IS6-function_return}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_6/success_invocation.png}
+					\caption{Pokretanje testa za provjeru rada same funkcije, uspijeh}
+					\label{fig: IS6-uspješno dohvaćen posljednji realestateid}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_6/failure_invocation.png}
+					\caption{Pokretanje testa za provjeru rada same funkcije, neuspijeh}
+					\label{fig: IS6-navedeni realestateid ne postoji}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/unit_tests/ut_6/code.png}
+					\caption{Kod isptinog slučaja 6}
+					\label{fig: IS6-kod}
+				\end{figure}
+				\eject
+			\eject
 		\section{Dijagram razmještaja}
 			
 			\textbf{\textit{dio 2. revizije}}
