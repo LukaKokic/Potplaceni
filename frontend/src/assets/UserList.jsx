@@ -6,15 +6,6 @@ import {ValidatePhone, ValidateEMail, ValidateRoles} from './InfoValidation';
 async function getUsers(){
   let resp = await axios.get('https://expressware.onrender.com/view_admins')
   .then(response => {
-	  if (response.data == null) {  // TESTING
-		  return [
-		    { id: 100, PIN: "", fName: "NULL", lName: "ARRAY", phone: "", email: "", roles: [] },
-			{ id:0, PIN: 1, fName: "Pero 1", lName: "Peric", phone: "0981112222", email: "pero@peric.com", roles: ["Administrator smještaja"] },
-			{ id:1, PIN: 2, fName: "Ivan 2", lName: "Ivanic", phone: "0981112222", email: "ivan@ivanic.com", roles: ["Korisnicki administrator"] },
-			{ id:2, PIN: 3, fName: "Ivan 3", lName: "Ivanic", phone: "0981112222", email: "ivan@ivanic.com", roles: ["Korisnicki administrator"] },
-			{ id:3, PIN: 4, fName: "Ivan 4", lName: "Ivanic", phone: "0981112222", email: "ivan@ivanic.com", roles: ["Korisnicki administrator"] }
-		  ];
-	  }
 	  return response.data;
   })
   .catch(function (error) {
