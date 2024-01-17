@@ -398,8 +398,7 @@
       "typePref": ,
       "equippedPref": ,
       "treatmentID": ,
-      "from": "YYYY-MM-DD",
-      "till": "YYYY-MM-DD",
+      "treatmentDate": "YYYY-MM-DD",
       "clinicID": 
     }
   
