@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import {useNavigate} from 'react-router-dom';
 import '../index.css';
 import Navbar from "./Navbar";
 import UserList from "./UserList";
 import axios from 'axios';
+// Validation
+import {ValidatePIN, ValidatePhone, ValidateEMail, ValidateNames, ValidateRoles} from './InfoValidation';
 
-async function getData(){
-  let resp = await axios.get('https://expressware.onrender.com/view_admin');
-  return resp;
+// Validation functions
+function CheckPhoneNumber(str) {
+	let phoneNum = str.substr((str.length > 0 && str[0] == '+' ? 1 : 0));
+	return !isNaN(Number(phoneNum));
+}
+function CheckEMail(str) {
+	return str.match(
+	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+	);
 }
 
 
@@ -22,12 +31,13 @@ const UserManagement = () => {
   
   const [roleOptions, setRoleOptions] = useState([]);
 
-  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [deletePatientId, setDeletePatientId] = useState('');
-
   useEffect(() => {
     // Pozovi funkcije za dohvaćanje opcija iz baze i postavi ih u state
-    getRoleOptions().then(options => setRoleOptions(options));
+    getRoleOptions().then(options => { 
+		setRoleOptions(options);
+		formData.roleList = [];
+		options.map(() => { formData.roleList.push(false); });
+		});
   }, []); // Ovisno o potrebama i funkcijama koje su dostupne
 
   const getRoleOptions = async () => {
@@ -52,45 +62,50 @@ const UserManagement = () => {
 
   async function submitForm(formData) {
 	const roles = [];
-	formData.roleList.map((val, index) => {
-		if (val) {
-			roles.push(index);
-		}
-	});
+	console.log("role options:", roleOptions, "formData.roleList:", formData.roleList);
+	roleOptions.map((role) => { if (formData.roleList[role.id]) { roles.push(role.id); } });
 	let resp = await axios.post('https://expressware.onrender.com/add_admin', {
 		  PIN: formData.PIN,
 		  firstname: formData.firstname,
           lastname: formData.lastname,
 		  phone: formData.phone,
 		  email: formData.email,
-		  roles: roles
+		  roleList: roles
 	  })
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 submiting new user:", error); }
 	  else { console.error("Unknown error while submiting new user:", error); }
 	})
 	.finally(() => {
-		console.log("tried sending: ", formData);
+		console.log("tried sending: ", formData, " -> ", {
+		  PIN: formData.PIN,
+		  firstname: formData.firstname,
+          lastname: formData.lastname,
+		  phone: formData.phone,
+		  email: formData.email,
+		  roleList: roles
+	  });
 	});
 	return resp;
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-	submitForm(formData).then(response => console.log("form submitted; response: ", response));
+	// Validate client-side info
+	if (ValidatePIN(formData.PIN) &&
+		ValidateNames(formData.firstname, formData.lastname) &&
+		ValidatePhone(formData.phone) &&
+		ValidateEMail(formData.email) &&
+		ValidateRoles(formData.roleList))
+	{
+		submitForm(formData).then(response => console.log("form submitted; response: ", response)); window.location.reload(false);
+	}
   };
-
-  const handleDeleteClick = () => {
-    setDeleteModalOpen(true);
-  };
-
-
-  
 
   return (
     <div>
       <Navbar />
 	  
-	  <UserList />
+	  <UserList roleOptions={roleOptions}/>
 	  
 		<div className='form_container_accommodation'>
 		  <div className='container'>
@@ -142,7 +157,7 @@ const UserManagement = () => {
 					  </div>
 					  
 					<div className='col-lg-4'>
-					  <a href='/' className='btn_form_submit btn_form_submit_left' onClick={handleSubmit}>SUBMIT NOW</a>
+					  <a href='/' className='btn_form_submit btn_form_submit_left' onClick={handleSubmit}>CREATE USER</a>
 					</div>
 					</div>
 				  </div>
@@ -156,16 +171,3 @@ const UserManagement = () => {
 }
 
 export default UserManagement;
-
-
-/*
-<div className='col-lg-4'>
-						<label htmlFor="" className='label'>Rolelist:</label><br />
-						<select name='roleID' className='input_box_form' value={formData.roleList} onChange={handleChange}>
-						  <option value="">Choose Type</option>
-						  {roleOptions.map(option => (
-							<option key={option.id} value={option.id}>{option.rName}</option>
-						  ))}
-						</select>
-					  </div>
-*/

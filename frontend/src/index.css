@@ -507,9 +507,30 @@
 }
 
 .btn_form_delete_red {
+  margin: 0px 10px;
   text-decoration: none;
   color: white;
   background-color: rgb(209, 26, 42);
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+  transition: 0.2s ease-in;
+}
+.btn_form_modify_gray {
+  margin: 0px 10px;
+  text-decoration: none;
+  color: black;
+  background-color: rgb(192, 192, 192);
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+  transition: 0.2s ease-in;
+}
+.btn_form_confirm_blue {
+  margin: 10px 10px;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(0, 128, 255);
   font-size: 12px;
   font-weight: 600;
   display: inline-block;
