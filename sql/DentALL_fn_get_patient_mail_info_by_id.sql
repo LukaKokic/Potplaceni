@@ -14,21 +14,27 @@ declare
 	
 begin
 	select into
-		returnValue json_agg(
+		returnValue
 			json_build_object(
 				'fName', p.firstname,
 				'lName', p.lastname,
+				'mail', p.email,
 				'tName', t.treatmentname,
 				'cName', c.clinicname,
 				'cAddress', c.clinicaddress || ',' || tow.postalcode || ',' || tow.townname,
-				'from', a.datefrom,
-				'till', a.dateto,
+				'cLat', c.latitude,
+				'cLong', c.longitude,
+				'treatmentDateTime', a.dot,
+				'treatmentTimeStart', '07:30:00',
+				'treatmentTimeEnd', '16:00:00',
 				'accAddress', acc.address || ',' || tow.postalcode || ',' || tow.townname,
+				'accLat', acc.latitude,
+				'accLong', acc.longitude,
 				'datefrom', accocu.datefrom,
 				'dateto', accocu.dateto,
-				'transportReg', v.registration
+				'transportReg', v.registration,
+				'transporterContact', trans.phone
 			)
-		)
 	from
 		patientplan pp
 	join
@@ -59,9 +65,11 @@ begin
 	join
 		vehicle v
 	on	vo.vehicleid = v.vehicleid
+	join
+		transporter trans
+	on	v.transporterid = trans.transporterid
 	where
 		pp.patientid = pat_id;
-		
 	return returnValue;
 end
 $BODY$;

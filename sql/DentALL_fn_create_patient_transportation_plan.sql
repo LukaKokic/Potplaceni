@@ -20,8 +20,8 @@ begin
 		cte_assigned as (
 			select
 				pp.*,
-				a.datefrom,
-				a.dateto,
+				a.dot datefrom,
+				a.dot dateto,
 				c.townid
 			from
 				patientplan pp
@@ -34,7 +34,7 @@ begin
 			on	pp.clinicid = c.clinicid
 			
 			where
-				pp.patientid = 8
+				pp.patientid = patient_id
 		)
 		, cte_schedule as (
 			select
@@ -84,8 +84,8 @@ with
 		cte_assigned as (
 			select
 				pp.*,
-				a.datefrom,
-				a.dateto,
+				a.dot datefrom,
+				a.dot dateto,
 				c.townid
 			from
 				patientplan pp
@@ -98,7 +98,7 @@ with
 			on	pp.clinicid = c.clinicid
 			
 			where
-				pp.patientid = 8
+				pp.patientid = patient_id
 		)
 		, cte_schedule as (
 			select

@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 const port = 8080;
-
+//gnowbwsrptchujab 
 const config = {
   service: "gmail",
   host: "smtp.gmail.com",
@@ -36,18 +36,37 @@ function loginFunction(username, password){
 }
 
 //funciton that sends mail to the patient
-function notifyPatient(patientData){
-  const mailData = {
-    from: process.env.nodeMailerAcc,
-    to: patientData['mail'],
-    subject: 'Medical tourism plan',
-    text: `Congratulations ${patientData['lName']},
-     Your medical treatment has been organised!`
-  };
-  const mailTransporter = nodemailer.createTransport(config);
-  mailTransporter.sendMail(mailData, (err, info) => {
-    if (err) console.log(err);
-  });
+function notifyPatient(patientData, onError = null){
+  if (onError != null){
+    console.log("Could not plan");
+    const mailData = {
+      from: process.env.nodeMailerAcc,
+      to: onError,
+      subject: 'Medical tourism plan - could not be realised',
+      text: `We are so sorry but your mediacl tourism plan could not be realised!
+      In return we are giving you a voucher!`
+    };
+    const mailTransporter = nodemailer.createTransport(config);
+    mailTransporter.sendMail(mailData, (err, info) => {
+      if (err) console.log(err);
+    });
+
+  }else{
+    const mailData = {
+      from: process.env.nodeMailerAcc,
+      to: patientData['mail'],
+      subject: 'Medical tourism plan',
+      text: `Dear ${patientData['lName']},
+      Your medical treatment "${patientData['tName']}" has been organised! 
+      We have booked, according to your preferences, an accommodation located at ${patientData['accAddress']} (${patientData['accLat']}, ${patientData['accLong']}) from: ${patientData['datefrom']} till: ${patientData['dateto']}. Your treatment is planned on ${patientData['treatmentDateTime']} starting from: ${patientData['treatmentTimeStart']} and ending at: ${patientData['treatmentTimeEnd']} in clinic "${patientData['cName']}". The address of the clinic is: ${patientData['cAddress']} (${patientData['cLat']}, ${patientData['cLong']}).
+      Transport has been aranged to come and pick you up from your accommodation on ${patientData['treatmentDateTime']} at 07:00:00 and transport you to the clinic. After your treatment, there will be a transport waiting for you in front of a clinic. For the day of your treatment, you will be transported by a vehicle with registraion: ${patientData['transportReg']}. If there are any probles you can contact transporter by calling: ${patientData['transporterContact']}.
+      Thank you for choosing DentALL, and we hope you have a pleasent stay!`
+    };
+    const mailTransporter = nodemailer.createTransport(config);
+    mailTransporter.sendMail(mailData, (err, info) => {
+      if (err) console.log(err);
+    });
+  }
   return;
 }
 
@@ -57,7 +76,11 @@ function notifyTransporter(transporterData){
     from: process.env.nodeMailerAcc,
     to: transporterData['mail'],
     subject: 'Organised transport of a patient',
-    text: `Congratulations you are transporting ${transporterData['pName']} ${transporterData['pLName']}`
+    text: `You are transporting ${transporterData['pName']} ${transporterData['pLName']} on ${transporterData['dateOfTreatment']} from ${transporterData['startingPoint']} to ${transporterData['destination']}.
+    You need to pick them up from their accommodation at ${transporterData['timeMorning']} and also from clinic at ${transporterData['timeNoon']}.
+    Booked vehicle with registration: ${transporterData['rgistration']}.
+    If there are any delays or probles you can contact ${transporterData['pLName']} by calling: ${transporterData['pContact']}.
+    DentALL thanks you for cooporation!`
   };
   const mailTransporter = nodemailer.createTransport(config);
   mailTransporter.sendMail(mailData, (err, info) => {
@@ -153,14 +176,6 @@ app.get('/view_patient_treatment/:patientID', async(req, res) => {
     res.status(400).send(err.message);
   }
 });
-
-// app.get('/test_mail', async(req, res) => {
-//   const mailTransporter = nodemailer.createTransport(config);
-//   mailTransporter.sendMail(mailData, (err, info) => {
-//     if (err) console.log(err);
-//     else res.status(200).send({"message": "Mail sent"});
-//   });
-// });
 
 //returns JSON containing accommodation equipped info(id, description)
 app.get('/get_accommodation_equipped_info', async(req, res) => {
@@ -383,18 +398,32 @@ app.post('/delete_transporter_vehicle', async(req, res) => {
 //Add patient
 app.post('/add_patient', async(req, res) => {
   var patientData = req.body;
+  var patientMail = patientData['mail'];
+  //console.log("PatientMail", patientMail);
   // var subresponse = await pool.query('SELECT public.fn_get_patient_mail_info_by_id(3)');
   // notifyPatient(subresponse.rows[0]['fn_get_patient_mail_info_by_id']);
   try{
     var response = await pool.query(`SELECT api.fn_add_patient('${JSON.stringify(patientData)}')::json`);
-    if (response.rows[0]['fn_add_patient']['success'] == 'success'){
+    if (response.rows[0]['fn_add_patient']['success']){
       var patID = response.rows[0]['fn_add_patient']['id'];
+      //console.log("PatientID", patID);
       var patientSubresponse = await pool.query(`SELECT public.fn_get_patient_mail_info_by_id(${patID})`);
       var transporterSubresponse = await pool.query(`SELECT public.fn_get_transporter_mail_info_by_id(${patID})`);
+      if (patientSubresponse.rows[0]['fn_get_patient_mail_info_by_id'] != null && transporterSubresponse.rows[0]['fn_get_transporter_mail_info_by_id'] != null){
+        //console.log("PAtient MAIL: ", patientSubresponse.rows[0]['fn_get_patient_mail_info_by_id']);
+        //console.log("Transporter MAIL: ", transporterSubresponse.rows[0]['fn_get_transporter_mail_info_by_id']);
+        notifyPatient(patientSubresponse.rows[0]['fn_get_patient_mail_info_by_id']);
+        notifyTransporter(transporterSubresponse.rows[0]['fn_get_transporter_mail_info_by_id']);
+        res.json(response.rows[0]['fn_add_patient']);
+      }else{
+        console.log("Calling notifyPatient with: ", patientMail);
+        notifyPatient(null, patientMail);
+        //console.log("Could not book accommodation or transport, so sorry, here is a voucher!");
+        res.json({"success": false, "msg": "Could not book accommodation or transport, so sorry, here is a voucher!"});
+      }
+    }else{
+      res.json(response.rows[0]['fn_add_patient']);
     }
-    res.json(response.rows[0]['fn_add_patient']);
-    notifyPatient(patientSubresponse.rows[0]['fn_get_patient_mail_info_by_id']);
-    notifyTransporter(transporterSubresponse.rows[0]['fn_get_transporter_mail_info_by_id']);
   }catch(err){
     res.status(400).send(err.message);
   }

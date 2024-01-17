@@ -20,8 +20,8 @@ begin
 	select
 		pp.patientid,
 		acc.accommodationid,
-		a.datefrom,
-		a.dateto
+		a.dot - '1 DAY'::interval,
+		a.dot + '2 DAY'::interval
 	from
 		patientplan pp
 	join
@@ -39,7 +39,7 @@ begin
 	left join
 		accommodationoccupied accocu
 	on	accocu.accommodationid = acc.accommodationid
-	and	daterange(a.datefrom, a.dateto) && daterange(accocu.datefrom, accocu.dateto)
+	and	daterange((a.dot - '1 DAY'::interval)::date, (a.dot + '2 DAY'::interval)::date) && daterange(accocu.datefrom, accocu.dateto)
 	where pp.patientid = patient_id
 	and	accocu.accommodationid is null
 	limit 1;

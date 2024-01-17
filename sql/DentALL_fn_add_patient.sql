@@ -21,9 +21,9 @@ declare
 	acc_type_id integer := (patient_in->>'typePref')::integer;
 	eq_type_id integer := (patient_in->>'equippedPref')::integer;
 	treatment_id integer := (patient_in->>'treatmentID')::integer;
-	treatment_date_from date := (patient_in->>'from')::date;
-	treatment_date_till date := (patient_in->>'till')::date;
+	treatment_date date := (patient_in->>'treatmentDate')::date;
 	clinic_id integer := (patient_in->>'clinicID')::integer;
+
 	
 begin
 	if (select count(*) from public.patient where pin = pin_in) then
@@ -34,12 +34,11 @@ begin
 	VALUES (pin_in, f_name, l_name, ph, mail, home_addr)
 	returning patientid into patient_id;
 
-	
 	INSERT INTO public.patientpreferences (patientid, typeid, equippedid)
 	VALUES (patient_id, acc_type_id, eq_type_id);
 	
-	INSERT INTO public.assigned (treatmentid, patientid, datefrom, dateto)
-	VALUES (treatment_id, patient_id, treatment_date_from, treatment_date_till);
+	INSERT INTO public.assigned (treatmentid, patientid, dot)
+	VALUES (treatment_id, patient_id, treatment_date);
 	
 	INSERT INTO public.patientplan (treatmentid, clinicid, patientid)
 	VALUES (treatment_id, clinic_id, patient_id);

@@ -155,8 +155,7 @@ CREATE TABLE assignedRole( --relation
 CREATE TABLE assigned( --realtion
 	TreatmentID bigserial,
 	PatientID bigserial,
-	datefrom date,
-	dateto date,
+	dot date, --date of treatment, dot
 	foreign key (TreatmentID) references Treatment(TreatmentID) on delete cascade,
 	foreign key (PatientID) references Patient(PatientID) on delete cascade
 );
