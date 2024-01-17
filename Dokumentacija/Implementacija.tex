@@ -306,11 +306,55 @@
 		
 		\section{Upute za puštanje u pogon}
 		
-			Aplikacija je puštena u pogon na cloud servisu Render čime smo omogućili javni pristup aplikaciji.
+			Aplikacija je puštena u pogon na cloud servisu Render čime smo omogućili javni pristup aplikaciji. Render nudi brojne planove i mogućnosti, ali također nudi i besplatni plan za pokretanje malih testnih aplikacija. Za besplatni plan ne posotji mogućnost odabira virtualnog računala na kojem će se vrtiti aplikacije, baza i bilo što što se pusti u pogon. S tom informacijom nama kao krajnjem korisniku nije poznati na kojoj se mašini vrti samo znamo da raspolažemo s 1 GiB porstora za pohranu baze podataka te RAMom od 256 MB i CPU 100m. Sve potrebno za pokretanje instanci baze podataka ili drugih aplikacija je dostupno i podržani su brojni razvojni okviri i jezici.
+			
+			\break
 			
 			\textbf{\textit{Konfiguracija frontenda}}
 			
+				Za pokretanje frontend-a potrebno je odabrati opciju pokretanja web servisa na Redner-u.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/render_web_service.png}
+					\caption{Odabir opcije pokretanja instance web servisa}
+					\label{fig: Render web service instance front}
+				\end{figure}
+				Nakon popunjavanja obaveznih podataka kao što su ime servisa, regija, grana repozitorija sa koje će se preuzeti kod i najvažnije "Runtime". U našem smo slučaju koristili Node te za "Build Command" smo koristili yarn.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/create_web_service_part1.png}
+					\label{fig: Render create web service part 1 front}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/create_web_service_part2.png}
+					\caption{Popunjavanje forme za kreiranje instance web servisa}
+					\label{fig: Render create web service part 2 front}
+				\end{figure}
+				
 			\textbf{\textit{Konfiguracija baze/backenda}}
 			
-			
+				Kako je cijeli backend napisan unutar same baze, u našem je slučaju samo bilo potrebno na Renderu pokrenuti instancu baze podataka. 
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/render_new_instance.png}
+					\caption{Odabir opcije pokretanja instance baze podataka}
+					\label{fig: Render new instance}
+				\end{figure}
+				Naša baza podataka je PostgreSQL verzija 15 te još neke od mogućih opcija su odabir regije, za koju smo odabrali Frankfurt pošto je to najbliže. Može se specificirati i korisnik baze. Nakon što su obavezni podaci uneseni, klikon na gumb "Create Databse" pokreće se postupak instanciranja baze i nedugo nakon toga su omogućene konekcije prema bazi. Onda se bilo kojim alamtom, u našem slučaju PgAdmin4, može spojiti na bazu i početi s radom.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/create_db_form.png}
+					\caption{Popunjavanje forme za kreiranje instance baze podataka}
+					\label{fig: Render create new DB}
+				\end{figure}
+				Nadalje, kako bi se osigurala komunikacija između backenda i frontenda bilo je potrebno napraviti API koji će primati zahtjeve i prosljeđivati ih backendu. Za pokretanje API-ija potrebno je bilo odabrati opciju pokretanja web servisa (slika 5.42)koji se kasnije poveže sa GitHub repozitorijem te od tamo preuzim sav potreban kod.
+				Nakon toga je potrebno unijeti obavezne podatke kao što su ime servisa, regija, grana repozitorija sa koje će se preuzeti kod te ono najvažnije koji je "Runtime" našeg web servisa (slika 5.43). U našem slučaju smo odabrali Node te za "Build Command" smo koristili yarn. Također se mogu dodati posebne Environemntal variable koje omogućuju kontrolu verzije već instaliranog Node-a ili bilo kojeg drugog "Runtime-a". U slučaju Node-a najvažnije je da se u repozitoriju nalazi datoteka package.json koja omogućuje Renderu da preuzme sve potrebne biblioteke za pokretanje našeg API-ija.
+				Na samome kraju kada se povuče kod sa repozitorija, moguće je pristupiti konzoli zaduženoj za upravljanje radom web servisa.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{slike/render_deploy_status.png}
+					\caption{Pristup konzoli za deploy}
+					\label{fig: Render deploz console back}
+				\end{figure}
 			\eject 

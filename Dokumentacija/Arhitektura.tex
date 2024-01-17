@@ -138,7 +138,7 @@
 				\break
 				
 				%Assigned
-				\textbf{Assigned} Ovaj entitet sadrži podatke o pridjeljenim tretmanima pacijentima te datum od kada to kada je koji pacijent na kojem tretmanu.Atributi su: TreatmentID (foreign key), PatientID (foreign key), datefrom, dateto. Ovaj je entitet u vezi One-to-Many sa entitetom Patient preko atributa PatientID te u vezi One-to-Many sa entitetom Treatment preko atributa TreatmentID.
+				\textbf{Assigned} Ovaj entitet sadrži podatke o pridjeljenim tretmanima pacijentima te datum od kada to kada je koji pacijent na kojem tretmanu.Atributi su: TreatmentID (foreign key), PatientID (foreign key), dot. Ovaj je entitet u vezi One-to-Many sa entitetom Patient preko atributa PatientID te u vezi One-to-Many sa entitetom Treatment preko atributa TreatmentID.
 				
 				\begin{longtblr}[
 					label=none,
@@ -151,8 +151,7 @@
 					\hline \SetCell[c=3]{c}{\textbf{Assigned}}	 \\ \hline[3pt]
 					\SetCell{LightBlue}TreatmentID & BIGSERIAL & Jedinstveni identifikator tretmana \\ \hline
 					\SetCell{LightBlue}PatientID & BIGSERIAL & Jedinstveni identifikator pacijenta \\ \hline
-					datefrom & DATE & Datum početka tretmana \\ \hline
-					dateto & DATE & Datum kraja tretmana \\ \hline
+					dot & DATE & Datum tretmana \\ \hline
 				\end{longtblr}
 				
 				%AssignedRole
