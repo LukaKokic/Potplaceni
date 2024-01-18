@@ -18,7 +18,6 @@ const Dashboard = () => {
 
                 <div className='btns_media_home pt-4'>
                     <a href='#' className='btn_home'>Get Started</a>
-                    <a href='#' className='play_btn playButton'><i className='fa fa-play'></i></a> <span className='play_btn_span'>Watch Video</span>
                 </div>
             </div>
         </div>
