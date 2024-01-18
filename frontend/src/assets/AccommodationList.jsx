@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef, Label} from 'react'
 import './list.css';
 import axios from 'axios';
 import {ValidatePhone, ValidateEMail, ValidateRoles} from './InfoValidation';
+import OLMap from './map';
 
 async function deleteAcc(id) {
 	//console.log("deleting", id);
@@ -36,8 +37,8 @@ function displayAcc(data, index, page, isOpen, openFunc, delFunc, activeFunc) {
 				{isOpen == index ? (
 				// Open
 				<div>
-					<button value={index} onClick={((e) => openFunc(e, index))}>
-						<div className="item-title">{data.street}, {data.zip} {data.town}</div>
+						<div value={index}>
+						<button className="item-title" value={index} onClick={((e) => openFunc(e, index))}>{data.street}, {data.zip} {data.town}</button>
 						<ul className="dropdown-list">
 							<li className="dropdown-list-item">
 								<p><b>Real Estate ID</b>: {data.re_id}</p>
@@ -50,10 +51,13 @@ function displayAcc(data, index, page, isOpen, openFunc, delFunc, activeFunc) {
 							</li>
 							<li className="dropdown-list-item">
 								<label htmlFor="activeBox" className="list-label"><b>Active</b>:</label>
-								<input id="item_activeCheckbox" type="checkbox" name="activeBox" defaultChecked={data.active == "1"}/>
+								<input id="item_activeCheckbox" disabled type="checkbox" name="activeBox" defaultChecked={data.active == "1"}/>
 							</li>
 						</ul>
-					</button>
+						<div>
+							<OLMap longitude={17.8081} latitude={43.3355}/> {/*tu ne smije biti hardkodirano, nego se nekako lijepo moraju predati koordinate */}
+						</div>
+					</div>
 					<br/>
 					<button className='btn_form_delete_red' onClick={((e) => delFunc(e, data.id))}>DELETE</button>
 					<button className='btn_form_modify_gray' onClick={((e) => activeFunc(e, data.id, data.active == "0", data))}>{data.active == "1" ? "DEACTIVATE" : "ACTIVATE"}</button>

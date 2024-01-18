@@ -9,13 +9,16 @@ import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
+//import { defaults as defaultControls, ZoomSlider, Rotate } from 'ol/control';
 
 class OLMap extends React.Component {
     map = null;
 
     componentDidMount() {
-        const longitude = 16.107182;
-        const latitude = 45.857587;
+        //longitude = 17.8081;                // Mostar
+        //latitude = 43.3355;                 // Mostar
+
+        const { longitude, latitude } = this.props;
 
         // Create a point feature for the marker
         const marker = new Feature({
@@ -52,13 +55,13 @@ class OLMap extends React.Component {
             view: new View({
                 center: fromLonLat([longitude, latitude]),
                 zoom: 17
-            })
+            }),
+            controls: []        // ovo mijenja one gumbe za zoom i rotaciju
         });
     }
 
     render() {
-        return (
-            <div ref="mapContainer" style={{ width: '99%', height: '500px', border: '5px solid black' }}></div>
+        return (<div ref="mapContainer" style={{ width: '99%', height: '50vh', border: '5px solid black' }}></div>
         );
     }
 }
@@ -84,3 +87,4 @@ class App extends React.Component {
 
 ReactDOM.render(<App />, document.getElementById('root'));
  */
+            
