@@ -1,8 +1,8 @@
--- FUNCTION: api.fn_get_patient_treatment(json)
+-- FUNCTION: api.fn_view_patient_treatment(json)
 
--- DROP FUNCTION IF EXISTS api.fn_get_patient_treatment(json);
+-- DROP FUNCTION IF EXISTS api.fn_view_patient_treatment(json);
 
-CREATE OR REPLACE FUNCTION api.fn_get_patient_treatment(
+CREATE OR REPLACE FUNCTION api.fn_view_patient_treatment(
 	patient json)
     RETURNS json
     LANGUAGE 'plpgsql'
@@ -20,8 +20,7 @@ begin
 				'tID', pp.treatmentid,
 				'tName', t.treatmentname,
 				'cName', c.clinicname,
-				'from', a.datefrom,
-				'till', a.dateto
+				'treatmentDate', a.dot
 			)
 		)
 	from
@@ -44,14 +43,14 @@ end
 	
 $BODY$;
 
-ALTER FUNCTION api.fn_get_patient_treatment(json)
+ALTER FUNCTION api.fn_view_patient_treatment(json)
     OWNER TO dentall_rmm2_user;
 
-GRANT EXECUTE ON FUNCTION api.fn_get_patient_treatment(json) TO PUBLIC;
+GRANT EXECUTE ON FUNCTION api.fn_view_patient_treatment(json) TO PUBLIC;
 
-GRANT EXECUTE ON FUNCTION api.fn_get_patient_treatment(json) TO app_api;
+GRANT EXECUTE ON FUNCTION api.fn_view_patient_treatment(json) TO app_api;
 
-GRANT EXECUTE ON FUNCTION api.fn_get_patient_treatment(json) TO auth_api;
+GRANT EXECUTE ON FUNCTION api.fn_view_patient_treatment(json) TO auth_api;
 
-GRANT EXECUTE ON FUNCTION api.fn_get_patient_treatment(json) TO dentall_rmm2_user;
+GRANT EXECUTE ON FUNCTION api.fn_view_patient_treatment(json) TO dentall_rmm2_user;
 

@@ -99,8 +99,8 @@ CREATE TABLE AccommodationOccupied( --table
 	AccommodationID bigserial,
 	dateFrom date,
 	dateTo date,
-	foreign key (PatientID) references Patient(PatientID),
-	foreign key (AccommodationID) references Accommodation(AccommodationID)
+	constraint PatientID foreign key (PatientID) references Patient(PatientID) on delete cascade,
+	constraint AccommodationID foreign key (AccommodationID) references Accommodation(AccommodationID) on delete cascade
 );
 
 CREATE TABLE Transporter( --table
@@ -133,8 +133,8 @@ CREATE TABLE VehicleOccupied( --table
 	PatientID bigserial,
 	timeStart timestamp with time zone,
 	timeEnd timestamp with time zone,
-	foreign key (VehicleID) references Vehicle(VehicleID),
-	foreign key (PatientID) references Patient(PatientID)
+	constraint VehicleID foreign key (VehicleID) references Vehicle(VehicleID),
+	constraint PatientID foreign key (PatientID) references Patient(PatientID) on delete cascade
 );
 
 CREATE TABLE VehicleSchedule( --table

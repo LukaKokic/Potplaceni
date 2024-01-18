@@ -43,7 +43,7 @@ function notifyPatient(patientData, onError = null){
       from: process.env.nodeMailerAcc,
       to: onError,
       subject: 'Medical tourism plan - could not be realised',
-      text: `We are so sorry but your mediacl tourism plan could not be realised!
+      text: `We are so sorry but your medical tourism plan could not be realised!
       In return we are giving you a voucher!`
     };
     const mailTransporter = nodemailer.createTransport(config);
@@ -79,7 +79,7 @@ function notifyTransporter(transporterData){
     text: `You are transporting ${transporterData['pName']} ${transporterData['pLName']} on ${transporterData['dateOfTreatment']} from ${transporterData['startingPoint']} to ${transporterData['destination']}.
     You need to pick them up from their accommodation at ${transporterData['timeMorning']} and also from clinic at ${transporterData['timeNoon']}.
     Booked vehicle with registration: ${transporterData['rgistration']}.
-    If there are any delays or probles you can contact ${transporterData['pLName']} by calling: ${transporterData['pContact']}.
+    If there are any delays or problems you can contact ${transporterData['pLName']} by calling: ${transporterData['pContact']}.
     DentALL thanks you for cooporation!`
   };
   const mailTransporter = nodemailer.createTransport(config);
