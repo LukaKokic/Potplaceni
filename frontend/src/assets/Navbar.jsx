@@ -36,7 +36,6 @@ const Navbar = () => {
 </div>
           {/* 2 */}
           <div className='navbar_media'>
-            <span className='icon_media'><i className='fa fa-phone phone_media'></i></span> <span className='number'>(+385) 958 278 126</span>
             <a href='/' className='btn_media_navbar bookNow' id="nav_logOut">Log out</a>
           </div>
         </div>
