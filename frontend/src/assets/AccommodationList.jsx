@@ -38,7 +38,7 @@ function displayAcc(data, index, page, isOpen, openFunc, delFunc, activeFunc) {
 				// Open
 				<div>
 						<div value={index}>
-						<button className="item-title" value={index} onClick={((e) => openFunc(e, index))}>{data.street}, {data.zip} {data.town}</button>
+						<button className="item-title" value={index} onClick={((e) => openFunc(e, index))}>{data.address}, {data.tPostal} {data.tName}</button>
 						<ul className="dropdown-list">
 							<li className="dropdown-list-item">
 								<p><b>Real Estate ID</b>: {data.re_id}</p>
@@ -55,7 +55,7 @@ function displayAcc(data, index, page, isOpen, openFunc, delFunc, activeFunc) {
 							</li>
 						</ul>
 						<div>
-							<OLMap longitude={17.8081} latitude={43.3355}/> {/*tu ne smije biti hardkodirano, nego se nekako lijepo moraju predati koordinate */}
+							<OLMap longitude={data.long} latitude={data.lat}/>
 						</div>
 					</div>
 					<br/>
@@ -65,7 +65,7 @@ function displayAcc(data, index, page, isOpen, openFunc, delFunc, activeFunc) {
 					) : (
 				// Closed
 					<button value={index} onClick={((e) => openFunc(e, index))}>
-						{data.street}, {data.town}
+						{data.address}, {data.tName}
 					</button>)}
 			</div>
 		</div>
@@ -84,6 +84,7 @@ export default function AccommodationList({accs, accsUpdate, page, setPage}) {
 			console.error("Error deleting accommodation (id ", id, ")");
 		})
 		.then((result) => {
+			//window.alert("Accommodation successfully deleted.");
 			setIsOpen(-1);
 			accsUpdate();
 		});

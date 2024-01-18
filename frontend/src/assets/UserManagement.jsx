@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {useNavigate} from 'react-router-dom';
 import '../index.css';
 import Navbar from "./Navbar";
+import Footer from './Footer';
 import UserList from "./UserList";
 import UserForm from "./UserForm";
 import axios from 'axios';
@@ -45,7 +46,7 @@ const UserManagement = () => {
 
 	const usersUpdate = () => {
 		getUsers().then(result => {
-			console.log("users update", result);
+			//console.log("users update", result);
 			setUsers(result);
 			let pageSize = 6;
 			setPage([page[0], result == null ? 0 : ((result.length % pageSize == 0) ? (result.length / pageSize) : (Math.floor(result.length / pageSize) + 1)), pageSize]);
@@ -65,6 +66,7 @@ const UserManagement = () => {
 		  <UserList users={users} usersUpdate={usersUpdate} page={page} setPage={setPage} roleOptions={roleOptions}/>
 		  <UserForm usersUpdate={usersUpdate} roleOptions={roleOptions}/>
 		  
+		  <Footer />
 		</div>
 	);
 }

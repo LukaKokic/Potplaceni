@@ -146,27 +146,11 @@ const AccommodationForm = ({accsUpdate}) => {
 	{
 		submitForm(formData).then(response => {
 			console.log("form submitted; response: ", response);
-			accsUpdate(); //window.location.reload(false);
+			window.alert("Accommodation created successfully.");
+			accsUpdate();
 		});
 	}
   };
-
-  const handleSetAvailabilityClick = () => {
-    setAvailabilityModalOpen(true);
-  };
-
-  const handleDeleteClick = () => {
-    setDeleteModalOpen(true);
-  };
-
-  const handleDeleteAccommodation = () => {   
-    setDeleteModalOpen(false);
-  };
-
-  const handleSetAvailability = () => {
-    setAvailabilityModalOpen(false);
-  };
-
 
   return (
     <div className='form_container_accommodation'>
@@ -176,13 +160,6 @@ const AccommodationForm = ({accsUpdate}) => {
             <div className='content_form'>
               <div className='container'>
                 <h4 className='heading_form accommodation'>ADD <span>ACCOMMODATION</span></h4>
-  
-              
-                <div className='row mt-4'>
-                  <div className='col-lg-12'>
-                    <a href='/' className='btn_form_submit btn_form_submit_left' onClick={handleSubmit}>VIEW ACCOMMODATIONS</a>
-                  </div>
-                </div>
   
                 <div className='row mt-4'>
                   <div className='col-lg-4'>
@@ -252,39 +229,6 @@ const AccommodationForm = ({accsUpdate}) => {
                 <div className='col-lg-4'>
                   <a href='/' className='btn_form_submit btn_form_submit_left' onClick={handleSubmit}>CREATE ACCOMMODATION</a>
                 </div>
-                <div className='row mt-4'>
-                  <div className='col-lg-4'>
-                    <button className='btn_form_set_availabilityy' onClick={handleSetAvailabilityClick}>SET AVAILABILITY</button>
-                  </div>
-                  <div className='col-lg-4'>
-                    <button className='btn_form_delete_red' onClick={handleDeleteClick}>DELETE</button>
-                  </div>
-                </div>
-                {isDeleteModalOpen && (
-                  <div className='delete-modal' style={{ position: 'absolute', top: '20px', right: '20px', width: '300px', padding: '20px' }}>
-                    <div className='modal-content'>
-                    <span className='close' onClick={() => setDeleteModalOpen(false)}>&times;</span>
-                    <label htmlFor="deleteAccommodationId">Enter Accommodation ID to delete:</label>
-                    <input type="text" id="deleteAccommodationId" value={deleteAccommodationId} onChange={(e) => setDeleteAccommodationId(e.target.value)} />
-                    <button onClick={handleDeleteAccommodation}>Delete</button>
-                  </div>
-                </div>
-              )}
-                {isAvailabilityModalOpen && (
-                  <div className='availability-modal'>
-                    <div className='modal-content'>
-                      <span className='close' onClick={() => setAvailabilityModalOpen(false)}>×</span>
-                      <label htmlFor="availabilityAccommodationId">Enter Accommodation ID:</label>
-                      <input type="text" id="availabilityAccommodationId" value={availabilityAccommodationId} onChange={(e) => setAvailabilityAccommodationId(e.target.value)} />
-                      <label htmlFor="availability">Set Availability:</label>
-                      <select id="availability" value={availability} onChange={(e) => setAvailability(e.target.value)}>
-                        <option value="true">Available</option>
-                        <option value="false">Not Available</option>
-                      </select>
-                      <button onClick={handleSetAvailability}>Set Availability</button>
-                    </div>
-                  </div>
-                )}
               
               </div>
               
