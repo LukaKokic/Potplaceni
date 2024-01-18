@@ -419,7 +419,7 @@
     - u kojoj se klinici liječi, protiv čega se liječi i u kojem razdoblju
 
   API:
-  - definirati GET rutu za pregled tretmana pacijenta, **../view_patient_treatemnt/:patientID**
+  - definirati GET rutu za pregled tretmana pacijenta, **../view_patient_treatment/:patientID**
   <br/>
   COMPLETED ✔
     
