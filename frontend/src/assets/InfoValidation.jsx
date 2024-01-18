@@ -1,3 +1,21 @@
+export function ValidateNumber(val, name) {
+	if (val.length == 0)
+		{ window.alert("No " + name + " entered."); return false; }
+	if (isNaN(val))
+		{ window.alert(name + " invalid."); }
+	return true;
+}
+export function ValidateString(val, name) {
+	if (val.length == 0)
+		{ window.alert("No " + name + " entered."); return false; }
+	return true;
+}
+export function ValidateDropdown(val, name) {
+	if (val == "")
+		{ window.alert(name + " not chosen."); return false; }
+	return true;
+}
+
 export function ValidatePIN(str) {
 	if (str.length != 8 || isNaN(Number(str)))
 		{ window.alert("Invalid PIN."); return false; }
@@ -26,7 +44,7 @@ export function ValidateNames(first, last) {
 	return true;
 }
 export function ValidateRoles(roleList) {
-	if (!roleList[0] && !roleList[1] && !roleList[2])
+	if (!roleList[1] && !roleList[2] && !roleList[3])
 		{ window.alert("No role chosen"); return false; }
 	return true;
 }

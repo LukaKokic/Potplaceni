@@ -5,6 +5,9 @@
   text-decoration: none;
   font-family: "Poppins", sans-serif;
 }
+u {
+  text-decoration: italic;
+}
 
 .header {
   width: 100%;
@@ -500,6 +503,10 @@
   font-size: 17px;
   font-weight: 500;
 
+}
+
+.list-label {
+	text-align:left;
 }
 
 .btn_form_submit_left {

@@ -3,25 +3,8 @@ import './list.css';
 import axios from 'axios';
 import {ValidatePhone, ValidateEMail, ValidateRoles} from './InfoValidation';
 
-async function getUsers(){
-  let resp = await axios.get('https://expressware.onrender.com/view_admins')
-  .then(response => {
-	  return response.data;
-  })
-  .catch(function (error) {
-	if (error.response != undefined && error.response.status == 404) { console.log("Error 404 getting users:", error); }
-	else { console.log("Unknown error while getting users:", error); }
-	return [
-	  { PIN: 1, firstname: "Pero", lastname: "Peric", phone: "0981112222", email: "pero@peric.com", roles: [0] },
-	  { PIN: 2, firstname: "Ivan", lastname: "Ivanic", phone: "0981112222", email: "ivan@ivanic.com", roles: [0] }
-	];
-  }); 
-  console.log("users resp: ", resp);
-  return resp;
-}
-
 async function deleteUser(id) {
-	console.log("deleting", id);
+	//console.log("deleting", id);
 	let resp = await axios.post('https://expressware.onrender.com/delete_admin', { userID: id })
 	.catch((error) => {
 		if (error.response.status == 404) { console.error("Error 404 deleting user:", error); }
@@ -31,7 +14,7 @@ async function deleteUser(id) {
 	return resp;
 }
 async function modifyUser(newData, roleOptions) {
-	console.log("modifying", newData);
+	//console.log("modifying", newData);
 	const roles = [];
 	roleOptions.map((role) => { if (newData.roleList[role.id]) { roles.push(role.id); } });
 	let resp = await axios.post('https://expressware.onrender.com/update_admin_info', {
@@ -159,8 +142,8 @@ function displayUser(data, index, page, isOpen, openFunc, delFunc, isModFunc, mo
 
 
 
-export default function UserList({roleOptions}) {
-	const [users, setUsers] = useState([]);
+export default function UserList({users, usersUpdate, page, setPage, roleOptions}) {
+	//const [users, setUsers] = useState([]);
 	const [isOpen, setIsOpen] = useState(-1);
 	const [modding, setModding] = useState([false, 0]);
 	const [newData, setNewData] = useState({
@@ -169,31 +152,16 @@ export default function UserList({roleOptions}) {
 		email: "",
 		roleList: []
 	});
-	const [page, setPage] = useState([0, -1, 0]);
-	
-	const usersUpdate = (result) => {
-		console.log("users update", result);
-		setUsers(result);
-		let pageSize = 6;
-		setPage([page[0], result == null ? 0 : (pageSize == 1 ? result.length : (Math.floor(result.length / pageSize) + 1)), pageSize]);
-	};
-	useEffect(() => {
-		getUsers().then(result => { usersUpdate(result); });
-	}, []);
-	/*useEffect(() => {
-		//if (firstRefresh) { firstRefresh = false; return; }
-		console.log("update modding[1]");
-		modding[1] = 0;
-	}, [modding[1]]);*/
 	
 	const handleDelete = (e, index) => {
-		console.log("handleDelete ", index);
+		//console.log("handleDelete ", index);
 		deleteUser(users[index].id)
 		.catch((error) => {
 			console.error("Error deleting user (index ", index, ")");
 		})
 		.then((result) => {
-			console.log("Successfully deleted target user");
+			setIsOpen(-1);
+			usersUpdate();
 		});
 	};
 	const handleModify = (e, index, newData) => {
@@ -202,16 +170,14 @@ export default function UserList({roleOptions}) {
 			ValidateEMail(newData.email) &&
 			ValidateRoles(newData.roleList))
 		{
-			window.alert("PASS");
-			/*modifyUser(newData, roleOptions)
+			modifyUser(newData, roleOptions)
 			.catch((error) => {
 				console.error("Error modifying user (index ", index, ")", error);
 			})
 			.then((response) => {
-				getUsers().then(result => { usersUpdate(result); });
-				console.log("modify response:", response);
+				usersUpdate();
 			});
-			setModding([false, 0]);*/
+			setModding([false, 0]);
 		}
 	};
 	
@@ -227,8 +193,10 @@ export default function UserList({roleOptions}) {
 	};
 	const handlePageChange = (e) => {
 		let delta = e.target.value;
-		if (delta == -1 && page[0] > 0) { setPage([page[0] - 1, page[1], page[2]]); }
-		else if (delta == 1 && page[0] < page[1] - 1) { setPage([page[0] + 1, page[1], page[2]]); }
+		if (delta == -1 && page[0] > 0) 
+			{ setPage([page[0] - 1, page[1], page[2]]); setIsOpen(-1); }
+		else if (delta == 1 && page[0] < page[1] - 1) 
+			{ setPage([page[0] + 1, page[1], page[2]]); setIsOpen(-1); }
 	};
 	
 	
