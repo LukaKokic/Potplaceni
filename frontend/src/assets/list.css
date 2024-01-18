@@ -70,3 +70,13 @@
 	font-size:16px;
 }
 
+.input_box_form_date {
+  padding: 6px 8px;
+  margin-right: 6px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.459);
+  font-size: 14px;
+  background-color: rgba(240, 240, 240, 1);
+  color: rgba(0, 0, 0, 0.67);
+}
+

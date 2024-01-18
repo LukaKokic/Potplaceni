@@ -17,7 +17,7 @@ export function ValidateDropdown(val, name) {
 }
 
 export function ValidatePIN(str) {
-	if (str.length != 8 || isNaN(Number(str)))
+	if (str.length != 8 || str[0] == '0' || isNaN(Number(str)))
 		{ window.alert("Invalid PIN."); return false; }
 	return true;
 }

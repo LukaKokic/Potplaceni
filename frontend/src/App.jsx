@@ -5,7 +5,7 @@ import Dashboard from './assets/Dashboard';
 import BadLogin from './assets/login/BadLogin';
 import AccommodationManagement from './assets/AccommodationManagement';
 import TransportationForm from './assets/TransportationForm';
-import AddPatient from './assets/AddPatient';
+import PatientManagement from './assets/PatientManagement';
 import UserManagement from './assets/UserManagement';
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
         <Route path="/accommodation-management" element={<AccommodationManagement />} />
         <Route path="/transporation-form" element={<TransportationForm />} />
 		<Route path="/user-management" element={<UserManagement />} />
-        <Route path="/add-patient" element={<AddPatient />} />
+        <Route path="/patient-management" element={<PatientManagement />} />
       </Routes>
     </div>
   )

@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import '../index.css';
 import axios from 'axios';
 // Validation
-import {ValidatePIN, ValidatePhone, ValidateEMail, ValidateNames, ValidateRoles} from './InfoValidation';
+import {ValidatePIN, ValidatePhone, ValidateEMail, ValidateString, ValidateRoles} from './InfoValidation';
 
 
 const UserForm = ({usersUpdate, roleOptions}) => {
@@ -60,7 +60,8 @@ const UserForm = ({usersUpdate, roleOptions}) => {
     e.preventDefault();
 	// Validate client-side info
 	if (ValidatePIN(formData.PIN) &&
-		ValidateNames(formData.firstname, formData.lastname) &&
+		ValidateString(formData.firstname, "First name") &&
+		ValidateString(formData.lastname, "Last name") &&
 		ValidatePhone(formData.phone) &&
 		ValidateEMail(formData.email) &&
 		ValidateRoles(formData.roleList))
@@ -68,7 +69,7 @@ const UserForm = ({usersUpdate, roleOptions}) => {
 		submitForm(formData).then(response => { 
 			console.log("form submitted; response: ", response);
 			window.alert("User created successfully.");
-			usersUpdate(); //window.location.reload(false);
+			usersUpdate();
 		});
 	}
   };
