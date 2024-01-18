@@ -28,7 +28,7 @@ class OLMap extends React.Component {
         // Set the style of the marker
         marker.setStyle(new Style({
             image: new Icon({
-                anchor: [0.5, 1],
+                //anchor: [0.5, 1],
                 src: '/images/prib.png',
                 scale: 0.05
             })
