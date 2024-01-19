@@ -61,7 +61,7 @@ const UserForm = ({usersUpdate, roleOptions}) => {
 	{
 		submitForm(formData).then(response => { 
 			console.log("form submitted; response: ", response);
-			window.alert("User created successfully.");
+			window.alert(response.data["msg"]);
 			usersUpdate();
 		});
 	}
@@ -110,9 +110,9 @@ const UserForm = ({usersUpdate, roleOptions}) => {
 								<label htmlFor="admin_prijevoza" className='label'>Administrator prijevoza</label>
 								<input type="checkbox" name="admin_prijevoza" value="2" onClick={handleRoleCheckbox}/>
 							</div>
-							<div name="admin_prijevoza" className="checkbox-div">
-								<label htmlFor="smjestajni_admin" className='label'>Korisnicki administrator</label>
-								<input type="checkbox" name="admin_prijevoza" value="3" onClick={handleRoleCheckbox}/>
+							<div name="korisnicki_admin" className="checkbox-div">
+								<label htmlFor="korisnicki_admin" className='label'>Korisnicki administrator</label>
+								<input type="checkbox" name="korisnicki_admin" value="3" onClick={handleRoleCheckbox}/>
 							</div>
 						</div>
 					  </div>
