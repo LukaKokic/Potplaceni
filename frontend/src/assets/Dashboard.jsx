@@ -1,15 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import AboutUs from './AboutUs';
 import Services from './Services';
 import Footer from './Footer';
-
 import Navbar from "./Navbar";
+import {GetUser} from "./login/Login"
 
-const Dashboard = () => {
+export default function Dashboard() {
+	const [user, setUser] = useState(null);
+	// Get user
+	useEffect(() => {
+		setUser(GetUser());
+	}, []);
+  
+	
   return (
     <div className='header'>
-      {/* #1 */}
       <Navbar />
+	  
       <div className="banner-section">
         <div className='container'>
             <div className='content_banner'>
@@ -32,6 +39,3 @@ const Dashboard = () => {
     </div>
   );
 };
-
-
-export default Dashboard;

@@ -191,7 +191,7 @@ u {
   box-shadow: 0px 0px 14px 9px rgba(0, 0, 0, 0.063);
   padding: 32px;
   border-radius: 6px;
-  
+  margin-bottom:60px;
 }
 
 .heading_form {
@@ -224,8 +224,11 @@ u {
   margin: 9px 0px;
   font-size: 13px;
   font-weight: 600;
-
 }
+.user_label {
+	margin:10px;
+}
+
 .input_box_form {
   width: 100%;
   padding: 9px 16px;

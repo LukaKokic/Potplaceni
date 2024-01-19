@@ -71,6 +71,8 @@ a {
   height: 4rem;
   display: grid;
   grid-template-columns: 3fr 6fr 1fr 1fr 1fr;
+  position: fixed;
+  bottom: 0px;
 }
 
 /* Extra small devices (phones, 600px and down) */

@@ -29,9 +29,23 @@ async function getRoleOptions() {
 	});
 	//console.log("role options resp.data: ", resp);
 	return resp.data;
-  };
+};
 
 export default function UserManagement() {
+	// Check for permissions
+	let user = JSON.parse(localStorage.getItem("user"));
+	let roles = user.roles;
+	if (!user.roles.includes(1)) {  // Block
+		return (
+			<div>
+				<Navbar />			
+				<h2 className="permission_block">You do not have permission to view this page.</h2>
+				<Footer />
+			</div>
+		);
+	}
+	
+	// Pass
 	const [users, setUsers] = useState([]);
 	const [page, setPage] = useState([0, -1, 0]);
   
