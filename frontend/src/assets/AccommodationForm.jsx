@@ -135,8 +135,11 @@ const AccommodationForm = ({accsUpdate}) => {
 	{
 		submitForm(formData).then(response => {
 			console.log("form submitted; response: ", response);
-			window.alert("Accommodation created successfully.");
-			accsUpdate();
+			if (response.data.success) { 
+				window.alert("Accommodation added successfully.");
+				accsUpdate();;
+			}
+			else { window.alert("FAILURE: Failed to add accommodation."); }
 		});
 	}
   };

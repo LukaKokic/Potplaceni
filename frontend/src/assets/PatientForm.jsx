@@ -166,8 +166,11 @@ const PatientForm = ({patientsUpdate}) => {
 	{
 		submitForm(formData).then(response => { 
 			console.log("form submitted; response: ", response);
-			window.alert("Patient created successfully.");
-			patientsUpdate();
+			if (response.data.success) { 
+				window.alert("Patient registered successfully.");
+				patientsUpdate();
+			}
+			else { window.alert("FAILURE: Failed to register patient."); }		
 		});
 	}
   };
@@ -179,7 +182,7 @@ const PatientForm = ({patientsUpdate}) => {
           <div className='col-lg-12 parent_container_content_form'>
             <div className='content_form'>
               <div className='container'>
-                <h4 className='heading_form spanMainClr'>ADD <span> PATIENT </span></h4>
+                <h4 className='heading_form spanMainClr'>REGISTER <span>PATIENT</span></h4>
   
                 <div className='row mt-4'>
                   <div className='col-lg-4'>
@@ -269,9 +272,8 @@ const PatientForm = ({patientsUpdate}) => {
                       ))}
                     </select>
                   </div>
-				</div>
-				
-                <a href='/' className='btn_form_submit btn_form_submit_left' onClick={handleSubmit}>ADD PATIENT</a>
+				</div>	
+                <a href='/' className='btn_form_submit btn_form_submit_left' onClick={handleSubmit}>SUBMIT</a>
               </div>
             </div>
           </div>
