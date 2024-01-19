@@ -17,7 +17,7 @@ async function getVehicles(transId) {
 	if (error != null) { console.error("Error " + error.response.status + " getting vehicles:", error); }
 	else { console.log("Unknown error while getting vehicles:", error); }
   }); 
-  console.log("vehicles resp: ", resp);
+  //console.log("vehicles resp: ", resp);
   return resp;
 }
 

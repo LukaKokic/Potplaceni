@@ -10,9 +10,6 @@ const getEquippedOptions = async () => {
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting equipment options:", error); }
 	  else { console.error("Unknown error while getting equipment options:", error); }
-	  return [
-        { id: 1, type: 'ERROR GETTING EQUIPMENT' },
-      ];
 	});
 	//console.log("equipped info resp: ", resp);
 	return resp;
@@ -23,9 +20,6 @@ const getTypeOptions = async () => {
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting type options:", error); }
 	  else { console.error("Unknown error while getting typeOptions:", error); }
-	  return [
-        { id: 1, type: 'ERROR GETTING TYPES' },
-      ];
 	});
 	//console.log("type options resp: ", resp);
 	return resp;
@@ -36,9 +30,6 @@ const getTowns = async () => {
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting towns:", error); }
 	  else { console.error("Unknown error while getting towns:", error); }
-	  return [
-        { id: 1, townName: 'ERROR GETTING TOWNS' },
-      ];
 	});
 	//console.log("towns info resp: ", resp);
 	return resp;
@@ -49,9 +40,6 @@ const getClinics = async () => {
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting clinics:", error); }
 	  else { console.error("Unknown error while getting clinics:", error); }
-	  return [
-        { id: 1, name: 'ERROR GETTING CLINICS' },
-      ];
 	});
 	//console.log("clinics info resp: ", resp);
 	return resp;
@@ -116,13 +104,10 @@ const AccommodationForm = ({accsUpdate}) => {
 	  if (error.response.status == 404) { console.error("Error 404 submiting new accommodation:", error); }
 	  else { console.error("Unknown error while submiting new accommodation:", error); }
 	})
-	.finally(() => {
-		console.log("tried sending: ", data);
-	});
+	;//.finally(() => { console.log("tried sending: ", data); });
     return resp;
   };
   const handleSubmit = (e) => {
-	//console.log(formData);
     e.preventDefault();
 	if (ValidateNumber(formData.realEstateID, "Real Estate ID") &&
 		ValidateDropdown(formData.typeID, "Type") &&
@@ -134,7 +119,6 @@ const AccommodationForm = ({accsUpdate}) => {
 		ValidateDropdown(formData.clinicID, "Clinic")) 
 	{
 		submitForm(formData).then(response => {
-			console.log("form submitted; response: ", response);
 			window.alert(response.data["msg"]);
 			accsUpdate();
 		});

@@ -15,9 +15,6 @@ const getEquippedOptions = async () => {
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting equipment options:", error); }
 	  else { console.error("Unknown error while getting equipment options:", error); }
-	  return [
-        { id: 1, type: 'ERROR GETTING EQUIPMENT' },
-      ];
 	});
 	//console.log("equipped info resp: ", resp);
 	return resp;
@@ -28,9 +25,6 @@ const getTypeOptions = async () => {
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting type options:", error); }
 	  else { console.error("Unknown error while getting typeOptions:", error); }
-	  return [
-        { id: 1, type: 'ERROR GETTING TYPES' },
-      ];
 	});
 	//console.log("type options resp: ", resp);
 	return resp;
@@ -41,9 +35,6 @@ const getTreatments = async () => {
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting type options:", error); }
 	  else { console.error("Unknown error while getting typeOptions:", error); }
-	  return [
-        { id: 1, name: 'ERROR GETTING TYPES' },
-      ];
 	});
 	//console.log("treatments resp: ", resp);
 	return resp;
@@ -54,9 +45,6 @@ const getClinics = async () => {
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting clinics:", error); }
 	  else { console.error("Unknown error while getting clinics:", error); }
-	  return [
-        { id: 1, name: 'ERROR GETTING CLINICS' },
-      ];
 	});
 	//console.log("clinics info resp: ", resp);
 	return resp;
@@ -113,9 +101,6 @@ const PatientForm = ({patientsUpdate}) => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const handleDateChange = (e) => {
-    //setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   async function submitForm(formData) {
 	// Set date
@@ -126,7 +111,7 @@ const PatientForm = ({patientsUpdate}) => {
 	let day = dates[formData.month - 1][1][formData.day - 1];
 	if (day < 10) { date += "0"; }
 	date += day;
-	let finalData = {
+	let data = {
 		pin: formData.pin,
 		firstname: formData.firstname,
 		lastname: formData.lastname,
@@ -139,14 +124,12 @@ const PatientForm = ({patientsUpdate}) => {
 		treatmentDate: date,
 		clinicID: formData.clinicID
 	};
-	let resp = await axios.post('https://expressware.onrender.com/add_patient', finalData)
+	let resp = await axios.post('https://expressware.onrender.com/add_patient', data)
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 submiting new patient:", error); }
 	  else { console.error("Unknown error while submiting new patient:", error); }
 	})
-	.finally(() => {
-		console.log("tried sending: ", finalData);
-	});
+	;//.finally(() => { console.log("tried sending: ", data); });
 	return resp;
   };
   const handleSubmit = (e) => {
@@ -165,7 +148,6 @@ const PatientForm = ({patientsUpdate}) => {
 		)
 	{
 		submitForm(formData).then(response => { 
-			console.log("form submitted; response: ", response);
 			window.alert(response.data["msg"]);
 			patientsUpdate();	
 		});

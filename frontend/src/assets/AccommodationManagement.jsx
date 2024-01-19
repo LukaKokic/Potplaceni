@@ -17,11 +17,8 @@ async function getAccs(){
 	.catch(function (error) {
 		if (error.response != undefined && error.response.status == 404) { console.log("Error 404 getting users:", error); }
 		else { console.log("Unknown error while getting users:", error); }
-		return [
-		  { id: 1, re_id: "IS-00001", acc_type: "iznajmljena kuća", acc_eq: "djelomično opremljen", address: "Ilica 9", active: "1" }
-		];
 	}); 
-	console.log("accs resp: ", resp);
+	//console.log("accs resp: ", resp);
 	return resp;
 };
 

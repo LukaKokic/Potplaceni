@@ -16,12 +16,8 @@ async function getUsers() {
   .catch(function (error) {
 	if (error.response != undefined && error.response.status == 404) { console.log("Error 404 getting users:", error); }
 	else { console.log("Unknown error while getting users:", error); }
-	return [
-	  { PIN: 1, firstname: "Pero", lastname: "Peric", phone: "0981112222", email: "pero@peric.com", roles: [0] },
-	  { PIN: 2, firstname: "Ivan", lastname: "Ivanic", phone: "0981112222", email: "ivan@ivanic.com", roles: [0] }
-	];
   }); 
-  console.log("users resp: ", resp);
+  //console.log("users resp: ", resp);
   return resp;
 }
 
@@ -30,15 +26,12 @@ async function getRoleOptions() {
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting role options:", error); }
 	  else { console.error("Unknown error while getting role options:", error); }
-	  return [
-        { id: 1, rName: 'ERROR GETTING ROLES' }
-      ];
 	});
 	//console.log("role options resp.data: ", resp);
 	return resp.data;
   };
 
-const UserManagement = () => {
+export default function UserManagement() {
 	const [users, setUsers] = useState([]);
 	const [page, setPage] = useState([0, -1, 0]);
   
@@ -51,13 +44,11 @@ const UserManagement = () => {
 			let pageSize = 6;
 			setPage([page[0], result == null ? 0 : ((result.length % pageSize == 0) ? (result.length / pageSize) : (Math.floor(result.length / pageSize) + 1)), pageSize]);
 		});
-		
 	};
 	useEffect(() => {
 		getRoleOptions().then(options => setRoleOptions(options));
 		usersUpdate();
 	}, []);
-
 
 	return (
 		<div>
@@ -69,6 +60,4 @@ const UserManagement = () => {
 		  <Footer />
 		</div>
 	);
-}
-
-export default UserManagement;
+};

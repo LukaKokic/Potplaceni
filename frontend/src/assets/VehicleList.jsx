@@ -3,7 +3,7 @@ import './list.css';
 import axios from 'axios';
 
 async function deleteVehicle(id) {
-	console.log("deleting", id);
+	//console.log("deleting", id);
 	let resp = await axios.post('https://expressware.onrender.com/delete_transporter_vehicle', { id: id })
 	.catch((error) => {
 		if (error != null) { console.error("Error " + error.response.status + " deleting transporter:", error); }
@@ -13,7 +13,7 @@ async function deleteVehicle(id) {
 	return resp;
 }
 async function setAvailableVehicle(id, val) {
-	console.log("setAvailableVehicle", id, val);
+	//console.log("setAvailableVehicle", id, val);
 	let resp = await axios.post('https://expressware.onrender.com/update_vehicle_avaliability',
 		{ id: id, avaliable: (val == true ? "1" : "0") }
 	)
@@ -71,7 +71,6 @@ export default function VehicleList({transID, vehicles, vehiclesUpdate, page, se
 	const [isOpen, setIsOpen] = useState(-1);
 	
 	const handleDelete = (e, id) => {
-		console.log("handleDelete ", id);
 		deleteVehicle(id)
 		.catch((error) => {
 			console.error("Error deleting vehicle (id ", id, ")");

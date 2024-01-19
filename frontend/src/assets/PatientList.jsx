@@ -3,7 +3,7 @@ import './list.css';
 import axios from 'axios';
 
 async function deletePatient(id) {
-	console.log("deleting", id);
+	//console.log("deleting", id);
 	let resp = await axios.post('https://expressware.onrender.com/delete_patient', { id: id })
 	.catch((error) => {
 		if (error != null) { console.error("Error " + error.response.status + " deleting patient:", error); }
@@ -13,14 +13,14 @@ async function deletePatient(id) {
 	return resp;
 }
 async function getPatientTreatment(id) {
-	console.log("fetching patient treatment", id);
+	//console.log("fetching patient treatment", id);
 	let resp = await axios.get('https://expressware.onrender.com/view_patient_treatment/' + id)
 	.catch((error) => {
 		if (error.response.status == 404) { console.error("Error 404 getting patient info:", error); }
 		else { console.error("Unknown error getting patient info:", error); }
 	})
 	.then((response) => { return response; });
-	console.log(resp);
+	//console.log(resp);
 	return resp;
 }
 

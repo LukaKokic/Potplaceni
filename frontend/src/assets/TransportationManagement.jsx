@@ -17,7 +17,7 @@ async function getTransporters() {
 	if (error.response != undefined && error.response.status == 404) { console.log("Error 404 getting patients:", error); }
 	else { console.log("Unknown error while getting patients:", error); }
   }); 
-  console.log("transporters resp: ", resp);
+  //console.log("transporters resp: ", resp);
   return resp;
 }
 
@@ -32,7 +32,6 @@ export default function TransportationManagement () {
 			let pageSize = 8;
 			setPage([page[0], result == null ? 0 : ((result.length % pageSize == 0) ? (result.length / pageSize) : (Math.floor(result.length / pageSize) + 1)), pageSize]);
 		});
-		
 	};
 	useEffect(() => {
 		transportersUpdate();

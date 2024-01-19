@@ -18,7 +18,6 @@ const UserForm = ({usersUpdate, roleOptions}) => {
 
   useEffect(() => {
 	roleOptions.map((r) => {formData.roleList[r.id] = false; });
-	console.log(roleOptions);
   }, [roleOptions]);
 
   const handleChange = (e) => {
@@ -26,7 +25,6 @@ const UserForm = ({usersUpdate, roleOptions}) => {
   };
   const handleRoleCheckbox = (e) => {
 	formData.roleList[e.target.value] = e.target.checked;
-	console.log("change", formData);
   };
 
   async function submitForm(formData) {
@@ -45,9 +43,7 @@ const UserForm = ({usersUpdate, roleOptions}) => {
 	  if (error.response.status == 404) { console.error("Error 404 submiting new user:", error); }
 	  else { console.error("Unknown error while submiting new user:", error); }
 	})
-	.finally(() => {
-		console.log("tried sending: ", formData, " -> ", data);
-	});
+	;//.finally(() => { console.log("tried sending: ", data); });
 	return resp;
   };
   const handleSubmit = (e) => {
@@ -62,7 +58,6 @@ const UserForm = ({usersUpdate, roleOptions}) => {
 		ValidateCheckArray(formData.roleList, indsToCheck, "Role"))
 	{
 		submitForm(formData).then(response => { 
-			console.log("form submitted; response: ", response);
 			window.alert(response.data["msg"]);
 			usersUpdate();
 		});

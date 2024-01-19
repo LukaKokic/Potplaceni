@@ -12,9 +12,6 @@ const getTowns = async () => {
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting towns:", error); }
 	  else { console.error("Unknown error while getting towns:", error); }
-	  return [
-        { id: 1, townName: 'ERROR GETTING TOWNS' },
-      ];
 	});
 	//console.log("towns info resp: ", resp);
 	return resp;
@@ -55,9 +52,7 @@ const TransporterForm = ({transportersUpdate}) => {
 	  if (error.response.status == 404) { console.error("Error 404 submiting new transport vehicle:", error); }
 	  else { console.error("Unknown error while submiting new transport vehicle:", error); }
 	})
-	.finally(() => {
-		console.log("tried sending: ", formData);
-	});
+	;//.finally(() => { console.log("tried sending: ", formData); });
     return resp;
   };
   const handleSubmit = (e) => {
@@ -69,7 +64,6 @@ const TransporterForm = ({transportersUpdate}) => {
 		)
 	{
 		submitForm(formData).then(response => { 
-			console.log("form submitted; response: ", response);
 			window.alert(response.data["msg"]);
 			transportersUpdate();
 		});

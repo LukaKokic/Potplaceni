@@ -3,7 +3,7 @@ import axios from 'axios';
 import {ValidateRegistration, ValidateString, ValidateDropdown} from './InfoValidation';
 
 
-const VehicleForm = ({transID, transName, vehiclesUpdate}) => {
+export default function VehicleForm ({transID, transName, vehiclesUpdate}) {
   const [formData, setFormData] = useState({
     registration: '',
     capacity: '',
@@ -17,15 +17,13 @@ const VehicleForm = ({transID, transName, vehiclesUpdate}) => {
   useEffect(() => {
     getVehicleTypeOptions().then(options => setVehicleTypeOptions(options));
   }, []);
+  
   const getVehicleTypeOptions = async () => {
 	let resp = await axios.get('https://expressware.onrender.com/get_vehicle_type_info')
 	.then((response) => { return response.data; } )
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting vehicle types:", error); }
 	  else { console.error("Unknown error while getting vehicle types:", error); }
-	  return [
-        { typeID: 1, desc: 'ERROR GETTING VEHICLE TYPES' },
-      ];
 	});
 	//console.log("vehicle types resp: ", resp);
 	return resp;
@@ -56,9 +54,7 @@ const VehicleForm = ({transID, transName, vehiclesUpdate}) => {
 	  if (error.response.status == 404) { console.error("Error 404 submiting new transport vehicle:", error); }
 	  else { console.error("Unknown error while submiting new transport vehicle:", error); }
 	})
-	.finally(() => {
-		console.log("tried sending: ", data);
-	});
+	;//.finally(() => { console.log("tried sending: ", data); });
     return resp;
 };
   const handleSubmitNewVehicle = (e) => {
@@ -71,7 +67,6 @@ const VehicleForm = ({transID, transName, vehiclesUpdate}) => {
 		)
 	{
 		submitFormNewVehicle(formData).then(response => { 
-			console.log("form submitted; response: ", response);
 			window.alert(response.data["msg"]);
 			vehiclesUpdate();
 		});
@@ -146,5 +141,3 @@ const VehicleForm = ({transID, transName, vehiclesUpdate}) => {
   
   
 };
-
-export default VehicleForm;

@@ -4,7 +4,7 @@ import './list.css';
 import axios from 'axios';
 
 async function deleteTransporter(id) {
-	console.log("deleting", id);
+	//console.log("deleting", id);
 	let resp = await axios.post('https://expressware.onrender.com/delete_transporter', { id: id })
 	.catch((error) => {
 		if (error != null) { console.error("Error " + error.response.status + " deleting transporter:", error); }
@@ -77,7 +77,6 @@ export default function TransporterList({transporters, transportersUpdate, page,
 	
 	const navigate = useNavigate();
 	const handleViewVehicles = (e, index, id) => {
-		console.log("view vehicles of id = ", id);
 		navigate("/vehicle-management/" + id + "?name=" + transporters[index].name);
 	}
 	

@@ -17,7 +17,7 @@ async function getUsers() {
 	if (error.response != undefined && error.response.status == 404) { console.log("Error 404 getting patients:", error); }
 	else { console.log("Unknown error while getting patients:", error); }
   }); 
-  console.log("patients resp: ", resp);
+  //console.log("patients resp: ", resp);
   return resp;
 }
 
@@ -26,9 +26,6 @@ async function getRoleOptions() {
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 getting role options:", error); }
 	  else { console.error("Unknown error while getting role options:", error); }
-	  return [
-        { id: 1, rName: 'ERROR GETTING ROLES' }
-      ];
 	});
 	//console.log("role options resp.data: ", resp);
 	return resp.data;
