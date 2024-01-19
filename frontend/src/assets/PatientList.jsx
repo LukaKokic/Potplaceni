@@ -83,6 +83,10 @@ export default function UserList({patients, patientsUpdate, page, setPage}) {
 		getPatientTreatment(id)
 		.catch((error) => {
 			console.error("Error getting patient treatment info (id ", id, ")");
+		})
+		.then((response) => {
+			let treat = response.data[0];
+			window.alert("Tretman:   " + treat.tName + "\nKlinika:      " + treat.cName + "\nTermin:      " + treat.treatmentDate);
 		});
 	}
 	

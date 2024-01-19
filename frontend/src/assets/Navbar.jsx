@@ -9,7 +9,6 @@ export default function Navbar() {
 	// Get user
 	useEffect(() => {
 		setUser(GetUser());
-		console.log(user);
 	}, []);
 
 	const navigate = useNavigate();
