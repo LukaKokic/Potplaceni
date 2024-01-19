@@ -2,8 +2,8 @@
 	padding:10px;
     border: 1px ridge black;
     float: left;
-    position: relative; /* added */
-    width: 100%; /* added */
+    position: relative;
+    width: 100%;
 	text-align: center;
 }
 
@@ -79,4 +79,3 @@
   background-color: rgba(240, 240, 240, 1);
   color: rgba(0, 0, 0, 0.67);
 }
-

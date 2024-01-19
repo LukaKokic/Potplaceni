@@ -4,6 +4,59 @@ import axios from 'axios';
 // Validation
 import {ValidateNumber, ValidateString, ValidateDropdown} from './InfoValidation';
 
+const getEquippedOptions = async () => {
+	let resp = await axios.get('https://expressware.onrender.com/get_accommodation_equipped_info')
+	.then((response) => { return response.data; } )
+	.catch(function (error) {
+	  if (error.response.status == 404) { console.error("Error 404 getting equipment options:", error); }
+	  else { console.error("Unknown error while getting equipment options:", error); }
+	  return [
+        { id: 1, type: 'ERROR GETTING EQUIPMENT' },
+      ];
+	});
+	//console.log("equipped info resp: ", resp);
+	return resp;
+};
+const getTypeOptions = async () => {
+	let resp = await axios.get('https://expressware.onrender.com/get_accommodation_type_info')
+	.then((response) => { return response.data; } )
+	.catch(function (error) {
+	  if (error.response.status == 404) { console.error("Error 404 getting type options:", error); }
+	  else { console.error("Unknown error while getting typeOptions:", error); }
+	  return [
+        { id: 1, type: 'ERROR GETTING TYPES' },
+      ];
+	});
+	//console.log("type options resp: ", resp);
+	return resp;
+};
+const getTowns = async () => {
+    let resp = await axios.get('https://expressware.onrender.com/get_towns_info')
+	.then((response) => { return response.data; } )
+	.catch(function (error) {
+	  if (error.response.status == 404) { console.error("Error 404 getting towns:", error); }
+	  else { console.error("Unknown error while getting towns:", error); }
+	  return [
+        { id: 1, townName: 'ERROR GETTING TOWNS' },
+      ];
+	});
+	//console.log("towns info resp: ", resp);
+	return resp;
+ };
+const getClinics = async () => {
+	let resp = await axios.get('https://expressware.onrender.com/get_clinics_info')
+	.then((response) => { return response.data; } )
+	.catch(function (error) {
+	  if (error.response.status == 404) { console.error("Error 404 getting clinics:", error); }
+	  else { console.error("Unknown error while getting clinics:", error); }
+	  return [
+        { id: 1, name: 'ERROR GETTING CLINICS' },
+      ];
+	});
+	//console.log("clinics info resp: ", resp);
+	return resp;
+};
+
 const AccommodationForm = ({accsUpdate}) => {
   const [formData, setFormData] = useState({
     realEstateID: "",
@@ -39,60 +92,6 @@ const AccommodationForm = ({accsUpdate}) => {
 	getClinics().then(result => setClinics(result));
   }, []);
 
-  
-  const getEquippedOptions = async () => {
-	let resp = await axios.get('https://expressware.onrender.com/get_accommodation_equipped_info')
-	.then((response) => { return response.data; } )
-	.catch(function (error) {
-	  if (error.response.status == 404) { console.error("Error 404 getting equipment options:", error); }
-	  else { console.error("Unknown error while getting equipment options:", error); }
-	  return [
-        { id: 1, type: 'ERROR GETTING EQUIPMENT' },
-      ];
-	});
-	//console.log("equipped info resp: ", resp);
-	return resp;
-  };
-  const getTypeOptions = async () => {
-	let resp = await axios.get('https://expressware.onrender.com/get_accommodation_type_info')
-	.then((response) => { return response.data; } )
-	.catch(function (error) {
-	  if (error.response.status == 404) { console.error("Error 404 getting type options:", error); }
-	  else { console.error("Unknown error while getting typeOptions:", error); }
-	  return [
-        { id: 1, type: 'ERROR GETTING TYPES' },
-      ];
-	});
-	//console.log("type options resp: ", resp);
-	return resp;
-  };
-  const getTowns = async () => {
-    let resp = await axios.get('https://expressware.onrender.com/get_towns_info')
-	.then((response) => { return response.data; } )
-	.catch(function (error) {
-	  if (error.response.status == 404) { console.error("Error 404 getting towns:", error); }
-	  else { console.error("Unknown error while getting towns:", error); }
-	  return [
-        { id: 1, townName: 'ERROR GETTING TOWNS' },
-      ];
-	});
-	//console.log("towns info resp: ", resp);
-	return resp;
-  };
-  const getClinics = async () => {
-    let resp = await axios.get('https://expressware.onrender.com/get_clinics_info')
-	.then((response) => { return response.data; } )
-	.catch(function (error) {
-	  if (error.response.status == 404) { console.error("Error 404 getting clinics:", error); }
-	  else { console.error("Unknown error while getting clinics:", error); }
-	  return [
-        { id: 1, name: 'ERROR GETTING CLINICS' },
-      ];
-	});
-	//console.log("clinics info resp: ", resp);
-	return resp;
-  };
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -101,7 +100,7 @@ const AccommodationForm = ({accsUpdate}) => {
   };
 
   async function submitForm(formData){
-	console.log("sending", {
+	let data = {
 		realEstateID: formData.realEstateID,
 		typeID: formData.typeID,
 		equippedID: formData.equippedID,
@@ -111,24 +110,14 @@ const AccommodationForm = ({accsUpdate}) => {
 		townID: formData.townID,
 		clinicID: formData.clinicID,
 		active: (formData.active == true ? "1" : "0")
-	});
-	let resp = await axios.post('https://expressware.onrender.com/add_accommodation', {
-		realEstateID: formData.realEstateID,
-		typeID: formData.typeID,
-		equippedID: formData.equippedID,
-		latitude: formData.latitude,
-		longitude: formData.longitude,
-		address: formData.address,
-		townID: formData.townID,
-		clinicID: formData.clinicID,
-		active: (formData.active == true ? "1" : "0")
-	})
+	};
+	let resp = await axios.post('https://expressware.onrender.com/add_accommodation', {data})
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 submiting new accommodation:", error); }
 	  else { console.error("Unknown error while submiting new accommodation:", error); }
 	})
 	.finally(() => {
-		console.log("tried sending: ", formData);
+		console.log("tried sending: ", data);
 	});
     return resp;
   };
@@ -153,13 +142,13 @@ const AccommodationForm = ({accsUpdate}) => {
   };
 
   return (
-    <div className='form_container_accommodation'>
+    <div className='container-form'>
       <div className='container'>
         <div className='row'>
           <div className='col-lg-12 parent_container_content_form'>
             <div className='content_form'>
               <div className='container'>
-                <h4 className='heading_form accommodation'>ADD <span>ACCOMMODATION</span></h4>
+                <h4 className='heading_form spanMainClr'>ADD <span>ACCOMMODATION</span></h4>
   
                 <div className='row mt-4'>
                   <div className='col-lg-4'>
@@ -227,7 +216,7 @@ const AccommodationForm = ({accsUpdate}) => {
                 </div>
   
                 <div className='col-lg-4'>
-                  <a href='/' className='btn_form_submit btn_form_submit_left' onClick={handleSubmit}>CREATE ACCOMMODATION</a>
+                  <a href='/' className='btn_form_submit btn_form_submit_left' onClick={handleSubmit}>SUBMIT</a>
                 </div>
               
               </div>

@@ -17,7 +17,7 @@ async function getUsers() {
 	if (error.response != undefined && error.response.status == 404) { console.log("Error 404 getting patients:", error); }
 	else { console.log("Unknown error while getting patients:", error); }
   }); 
-  //console.log("patients resp: ", resp);
+  console.log("patients resp: ", resp);
   return resp;
 }
 

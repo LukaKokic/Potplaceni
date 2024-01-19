@@ -75,13 +75,13 @@ const UserForm = ({usersUpdate, roleOptions}) => {
   };
 
   return (
-		<div className='form_container_accommodation'>
+		<div className='container_form'>
 		  <div className='container'>
 			<div className='row'>
 			  <div className='col-lg-12 parent_container_content_form'>
 				<div className='content_form'>
 				  <div className='container'>
-					<h4 className='heading_form accommodation'>CREATE <span> USER </span></h4>
+					<h4 className='heading_form spanMainClr'>CREATE <span> USER </span></h4>
 					
 					<div className='row mt-4'>
 					  <div className='col-lg-4'>

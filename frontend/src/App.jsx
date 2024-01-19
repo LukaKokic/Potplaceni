@@ -4,7 +4,8 @@ import Login from './assets/login/Login';
 import Dashboard from './assets/Dashboard';
 import BadLogin from './assets/login/BadLogin';
 import AccommodationManagement from './assets/AccommodationManagement';
-import TransportationForm from './assets/TransportationForm';
+import TransportationManagement from './assets/TransportationManagement';
+import VehicleManagement from './assets/VehicleManagement';
 import PatientManagement from './assets/PatientManagement';
 import UserManagement from './assets/UserManagement';
 
@@ -35,7 +36,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/wrong-credentials" element={<BadLogin />} />
         <Route path="/accommodation-management" element={<AccommodationManagement />} />
-        <Route path="/transporation-form" element={<TransportationForm />} />
+        <Route path="/transportation-management" element={<TransportationManagement />} />
+		<Route path="/vehicle-management/:transID" element={<VehicleManagement />} />
 		<Route path="/user-management" element={<UserManagement />} />
         <Route path="/patient-management" element={<PatientManagement />} />
       </Routes>

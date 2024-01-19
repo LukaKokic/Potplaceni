@@ -63,7 +63,7 @@ function displayUser(data, index, page, isOpen, openFunc, delFunc, isModFunc, mo
 	};
 	
 	return (
-		<div key={data.PIN} className='row mt-4'>
+		<div key={data.id} className='row mt-4'>
 			<div className="dropdown">
 				{isOpen == index ? (
 				modding[0] ? (
@@ -203,13 +203,13 @@ export default function UserList({users, usersUpdate, page, setPage, roleOptions
 	
 	
 	return (
-		<div className='form_container_accommodation'>
+		<div className='container_list'>
 			<div className='container'>
 				<div className='row'>
 					<div className='col-lg-12 parent_container_content_form'>
 						<div className='content_form'>
 							<div className='container'>
-								<h4 className='heading_form accommodation'>USERS</h4>
+								<h4 className='heading_form'>USERS</h4>
 								
 								{ users == null ? (<div className='row mt-4'>No users registered.</div>) : (users.length == 0 ? 
 									<div className='row mt-4'>Fetching users...</div> : 
@@ -224,7 +224,7 @@ export default function UserList({users, usersUpdate, page, setPage, roleOptions
 										<button type="button" className="btn_page_change_disabled" value="-1" onClick={handlePageChange} disabled>-</button>
 										)
 									}
-									<label>{page[0] + 1}</label>
+									<label>{page[0] + 1} / {page[1]}</label>
 									{ page[0] < page[1] - 1 ? (
 										<button type="button" className="btn_page_change" value="1" onClick={handlePageChange}>+</button>
 										) : (
