@@ -15,7 +15,7 @@ async function deleteVehicle(id) {
 	return resp;
 }
 async function setAvailableVehicle(id, val) {
-	//console.log("setAvailableVehicle", id, val);
+	console.log("setAvailableVehicle", id, val);
 	let resp = await axios.post('https://expressware.onrender.com/update_vehicle_avaliability',
 		{ id: id, avaliable: (val == true ? "1" : "0") }
 	)
@@ -56,7 +56,7 @@ function displayVehicle(data, index, page, isOpen, openFunc, delFunc, availFunc)
 					</button>
 					<br/>
 					<button className='btn_form_delete_red' onClick={((e) => delFunc(e, data.vehicleID))}>DELETE</button>
-					<button className='btn_form_modify_gray' onClick={((e) => availFunc(e, data.id, data.active == "0"))}>{data.active == "1" ? "SET UNAVAILABLE" : "SET AVAILABLE"}</button>
+					<button className='btn_form_modify_gray' onClick={((e) => availFunc(e, data.vehicleID, data.active == "0"))}>{data.active == "1" ? "SET UNAVAILABLE" : "SET AVAILABLE"}</button>
 				</div>) : (
 					<button value={index} onClick={((e) => openFunc(e, index))}>
 						{data.registration}

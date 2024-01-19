@@ -30,29 +30,22 @@ const UserForm = ({usersUpdate, roleOptions}) => {
 
   async function submitForm(formData) {
 	const roles = [];
-	//console.log("role options:", roleOptions, "formData.roleList:", formData.roleList);
 	roleOptions.map((role) => { if (formData.roleList[role.id]) { roles.push(role.id); } });
-	let resp = await axios.post('https://expressware.onrender.com/add_admin', {
-		  PIN: formData.PIN,
-		  firstname: formData.firstname,
-          lastname: formData.lastname,
-		  phone: formData.phone,
-		  email: formData.email,
-		  roleList: roles
-	  })
+	let data = {
+		PIN: formData.PIN,
+		firstname: formData.firstname,
+        lastname: formData.lastname,
+		phone: formData.phone,
+		email: formData.email,
+		roleList: roles
+	};
+	let resp = await axios.post('https://expressware.onrender.com/add_admin', data)
 	.catch(function (error) {
 	  if (error.response.status == 404) { console.error("Error 404 submiting new user:", error); }
 	  else { console.error("Unknown error while submiting new user:", error); }
 	})
 	.finally(() => {
-		console.log("tried sending: ", formData, " -> ", {
-		  PIN: formData.PIN,
-		  firstname: formData.firstname,
-          lastname: formData.lastname,
-		  phone: formData.phone,
-		  email: formData.email,
-		  roleList: roles
-	  });
+		console.log("tried sending: ", formData, " -> ", data);
 	});
 	return resp;
   };
@@ -111,15 +104,15 @@ const UserForm = ({usersUpdate, roleOptions}) => {
 						<div className='checkbox-list'>
 							<div name="admin_smjestaja" className="checkbox-div">
 								<label htmlFor="admin_smjestaja" className='label'>Administrator smještaja</label>
-								<input type="checkbox" name="admin_smjestaja" value="0" onClick={handleRoleCheckbox}/>
+								<input type="checkbox" name="admin_smjestaja" value="1" onClick={handleRoleCheckbox}/>
 							</div>
 							<div name="admin_prijevoza" className="checkbox-div">
 								<label htmlFor="admin_prijevoza" className='label'>Administrator prijevoza</label>
-								<input type="checkbox" name="admin_prijevoza" value="1" onClick={handleRoleCheckbox}/>
+								<input type="checkbox" name="admin_prijevoza" value="2" onClick={handleRoleCheckbox}/>
 							</div>
 							<div name="admin_prijevoza" className="checkbox-div">
 								<label htmlFor="smjestajni_admin" className='label'>Korisnicki administrator</label>
-								<input type="checkbox" name="admin_prijevoza" value="2" onClick={handleRoleCheckbox}/>
+								<input type="checkbox" name="admin_prijevoza" value="3" onClick={handleRoleCheckbox}/>
 							</div>
 						</div>
 					  </div>
