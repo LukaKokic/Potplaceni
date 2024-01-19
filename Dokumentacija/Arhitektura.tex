@@ -499,10 +499,12 @@
 			\eject 
 		
 		\section{Dijagram aktivnosti}
-			
-			\textbf{\textit{dio 2. revizije}}\\
-			
-			 \textit{Potrebno je priložiti dijagram aktivnosti s pripadajućim opisom. Dijagram aktivnosti treba prikazivati značajan dio sustava.}
+			Na slici 4.4 prikazan je dijagram aktivnosti. Prikazan je postupak periodičkog dodjeljivanja smještaja i prijevoza pacijentima. Korisnički administrator unosi podatke pacijenta, a sustav provjerava točnost podataka. Ako su podaci točni, sustav dodjeljuje dostupan smještaj, a ako smještaj nije dostupan, sustav periodički provjerava dostupnost dok ne nađe odgovarajući smještaj. Sličan proces se odvija i za prijevoz pacijenata - ako je prijevoz dostupan, sustav ga dodjeljuje; ako nije, sustav čeka i ponovno provjerava. Nakon uspješnog dodjeljivanja smještaja i prijevoza, podaci se ažuriraju u bazi podataka, a korisnički administrator se obavještava o uspješnom završetku procesa.
+			\begin{figure}[H]
+				\includegraphics[width=\textwidth]{slike/UML_ActivityDiagram.png} %veličina u odnosu na širinu linije
+				\caption{Dijagram aktivnosti}
+				\label{fig:Dijagram aktivnosti} %label mora biti drugaciji za svaku sliku
+			\end{figure}
 			
 			\eject
 		\section{Dijagram komponenti}
