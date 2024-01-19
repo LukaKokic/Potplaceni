@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useRef, Label} from 'react'
 import './list.css';
 import axios from 'axios';
-import {ValidatePhone, ValidateEMail, ValidateRoles} from './InfoValidation';
 import OLMap from './map';
 
 async function deleteAcc(id) {

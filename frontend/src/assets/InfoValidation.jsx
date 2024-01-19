@@ -15,6 +15,14 @@ export function ValidateDropdown(val, name) {
 		{ window.alert(name + " not chosen."); return false; }
 	return true;
 }
+export function ValidateCheckArray(arr, indeces, name) {
+	console.log("indeces:", indeces);
+	for (const i of indeces) {
+		if (arr[i]) { return true; }
+	}
+	window.alert("No " + name.toLowerCase() + " chosen");
+	return false;
+}
 
 export function ValidatePIN(str) {
 	if (str.length != 8 || str[0] == '0' || isNaN(Number(str)))
@@ -41,11 +49,6 @@ export function ValidateNames(first, last) {
 		{ window.alert("No first name entered."); return false; }
 	if (last.length == 0)
 		{ window.alert("No last name entered."); return false; }
-	return true;
-}
-export function ValidateRoles(roleList) {
-	if (!roleList[1] && !roleList[2] && !roleList[3])
-		{ window.alert("No role chosen"); return false; }
 	return true;
 }
 export function ValidateRegistration(str) {

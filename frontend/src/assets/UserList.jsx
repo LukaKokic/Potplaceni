@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef, Label} from 'react'
 import './list.css';
 import axios from 'axios';
-import {ValidatePhone, ValidateEMail, ValidateRoles} from './InfoValidation';
+import {ValidatePhone, ValidateEMail, ValidateCheckArray} from './InfoValidation';
 
 async function deleteUser(id) {
 	//console.log("deleting", id);
@@ -166,9 +166,10 @@ export default function UserList({users, usersUpdate, page, setPage, roleOptions
 	};
 	const handleModify = (e, index, newData) => {
 		// Validate client-side info
+		let indsToCheck = []; roleOptions.map((r) => indsToCheck.push(r.id));
 		if (ValidatePhone(newData.phone) &&
 			ValidateEMail(newData.email) &&
-			ValidateRoles(newData.roleList))
+			ValidateCheckArray(newData.roleList, indsToCheck, "Role"))
 		{
 			modifyUser(newData, roleOptions)
 			.catch((error) => {

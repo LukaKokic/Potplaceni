@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import '../index.css';
 import axios from 'axios';
 // Validation
-import {ValidatePIN, ValidatePhone, ValidateEMail, ValidateString, ValidateRoles} from './InfoValidation';
+import {ValidatePIN, ValidatePhone, ValidateEMail, ValidateString, ValidateCheckArray} from './InfoValidation';
 
 
 const UserForm = ({usersUpdate, roleOptions}) => {
@@ -17,15 +17,16 @@ const UserForm = ({usersUpdate, roleOptions}) => {
   });
 
   useEffect(() => {
-    formData.roleList = [];
-	roleOptions.map(() => { formData.roleList.push(false); });
-  }, []);
+	roleOptions.map((r) => {formData.roleList[r.id] = false; });
+	console.log(roleOptions);
+  }, [roleOptions]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleRoleCheckbox = (e) => {
 	formData.roleList[e.target.value] = e.target.checked;
+	console.log("change", formData);
   };
 
   async function submitForm(formData) {
@@ -51,21 +52,18 @@ const UserForm = ({usersUpdate, roleOptions}) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+	let indsToCheck = []; roleOptions.map((r) => indsToCheck.push(r.id));
 	// Validate client-side info
 	if (ValidatePIN(formData.PIN) &&
 		ValidateString(formData.firstname, "First name") &&
 		ValidateString(formData.lastname, "Last name") &&
 		ValidatePhone(formData.phone) &&
 		ValidateEMail(formData.email) &&
-		ValidateRoles(formData.roleList))
+		ValidateCheckArray(formData.roleList, indsToCheck, "Role"))
 	{
 		submitForm(formData).then(response => { 
 			console.log("form submitted; response: ", response);
-			if (response.data.success) { 
-				window.alert("User created successfully."); 
-				usersUpdate();
-			}
-			else { window.alert("FAILURE: Failed to create user."); }
+			window.alert(response.data["msg"]);
 		});
 	}
   };

@@ -1,8 +1,6 @@
 import React, {useState, useEffect, Label} from 'react'
-import {useNavigate} from 'react-router-dom';
 import './list.css';
 import axios from 'axios';
-import {ValidatePhone, ValidateEMail, ValidateRoles} from './InfoValidation';
 
 async function deleteVehicle(id) {
 	console.log("deleting", id);
