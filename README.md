@@ -6,11 +6,11 @@
 ```markdown
 | Username |  Password  |
 | -------- | ---------- |
-| JD5678   | 12345678   |
-| AS5432   | 98765432   |
-| BJ6789   | 23456789   |
+| LK5678   | 12345678   |
+| IM5432   | 98765432   |
+| MM6789   | 55883960   |
 | EB7890   | 34567890   |
-| MW8901   | 45678901   |
+| BM8901   | 45678901   |
 | KB9012   | 56789012   |
 ```
 ######  Ako se želi postići nevaljali login može se unijeti bilo koja kombinacija suername i password osim navedenih.
