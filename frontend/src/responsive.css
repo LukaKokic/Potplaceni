@@ -1,0 +1,224 @@
+@media (max-width:2000px) {
+  .header, .form_container_appointment, .about_us,
+  .timeline_section,
+  .services,
+  .our_appartments {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width:1420px) {
+  .navbar {
+    width: 100%;
+    padding: 5px 23px;
+  }
+  .nav-item {
+    margin: 0px 4px;
+  }
+  .heading_ourappartment_container {
+    font-size: 37px;
+    font-weight: 800;
+    line-height: 50px;
+    margin: 15px 0px 0px 0px;
+  }
+
+  .container_titles_ourappartments {
+    width: 100%;
+    height: 520px;
+    background-color: rgb(252, 253, 252);
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+@media (max-width :1200px) {
+  .navbar_media {
+    display:none;
+  }
+
+  .navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+  }
+
+  .navbar {
+    padding: 5px 63px;
+  }
+  .content_banner {
+    max-width: 65%;
+  
+  }
+
+  .services {
+    padding: 70px 20px 90px 20px !important;
+  }
+
+  .container_titles_ourappartments {
+    padding: 21px;
+  }
+
+  .heading_title {
+    font-size: 18px;
+    font-weight: 800;
+
+  }
+
+  .heading_ourappartment_container {
+    font-size: 29px;
+    font-weight: 900;
+    line-height: 40px;
+
+  }
+  .btn_title_appartments {
+    padding: 12px 15px;
+    font-size: 14px;
+    font-weight: 600;
+
+  }
+}
+
+@media (max-width:992px) {
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .nav-item {
+    margin: 10px 0px;
+  }
+
+  .bars {
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+    background-color: purple;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+  }
+
+  .heading_home {
+    font-size: 57px;
+
+  }
+  .service-3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .service_content_3 {
+    width: 340px !important;
+    height: 280px !important;
+  }
+
+  .icon_container::after {
+    display: none;
+  }
+  .container_titles_ourappartments {
+    background-color: transparent;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+
+  }
+
+  .btn_title_appartments {
+    display: none;
+  }
+  .our_appartments {
+    padding: 100px 40px;
+  }
+
+  .heading_title {
+    text-align: center;
+  }
+
+  .heading_ourappartment_container {
+    text-align: center;
+    font-size: 43px;
+    font-weight: 900;
+    line-height: 62px;
+    margin-bottom: 20px;
+  }
+
+  .tablet-mode {
+    display: none;
+  }
+}
+
+@media (max-width:768px) {
+  .banner-section {
+    background-image: linear-gradient(90deg, #ffffffd8 100%, #1d030900 63%), url(pictures/banner_background.jpg);
+    opacity: 1;
+  }
+
+  .content_banner {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+  }
+
+  .heading_home {
+    text-align: center;
+    font-size: 56px;
+    line-height: 74px;
+    margin: 10px 0px;
+  }
+
+  .paragraph_home {
+    text-align: center;
+  }
+
+  .heading_about {
+    text-align: center;
+  }
+  .para_about {
+    text-align: center;
+    font-size: 17px;
+  }
+
+  .services {
+    padding: 70px 0px 70px 0px !important;
+  
+  }
+  .services_content {
+    padding: 0px 10px;
+    text-align: center;
+  }
+  .service_content_3 {
+    width: 240px;
+    height: 120px;
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .heading_ourappartment_container {
+    font-size: 33px;
+    line-height: 46px;
+    margin-bottom: 20px;
+    
+  }
+}
+
+@media (max-width: 576px) {
+  .heading_home {
+    font-size: 48px;
+    line-height: 60px;
+
+  }
+
+  
+}
