@@ -61,11 +61,7 @@ const UserForm = ({usersUpdate, roleOptions}) => {
 	{
 		submitForm(formData).then(response => { 
 			console.log("form submitted; response: ", response);
-			if (response.data.success) { 
-				window.alert("User created successfully."); 
-				usersUpdate();
-			}
-			else { window.alert("FAILURE: Failed to create user."); }
+			window.alert(response.data["msg"]);
 		});
 	}
   };
