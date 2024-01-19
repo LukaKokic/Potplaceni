@@ -70,8 +70,11 @@ const TransporterForm = ({transportersUpdate}) => {
 	{
 		submitForm(formData).then(response => { 
 			console.log("form submitted; response: ", response);
-			window.alert("Transporter created successfully.");
-			transportersUpdate();
+			if (response.data.success) { 
+				window.alert("Transporter registered successfully.");
+				transportersUpdate();
+			}
+			else { window.alert("FAILURE: Failed to register transporter."); }
 		});
 	}
   };
@@ -114,9 +117,7 @@ const TransporterForm = ({transportersUpdate}) => {
                   </div>
                   <div className='row mt-4'>
                     <div className='col-lg-4'>
-                      <a href='#' className='btn_form_submit' onClick={handleSubmit}>
-                        SUBMIT NOW
-                      </a>
+                      <a href='#' className='btn_form_submit' onClick={handleSubmit}>SUBMIT</a>
                     </div>
                   </div>
                 </div>
