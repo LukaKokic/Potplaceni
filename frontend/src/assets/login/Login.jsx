@@ -47,7 +47,7 @@ export default function Login() {
 					<label for="username">Username</label>
 					<input name="username" id="userInput" type="text" placeholder= "Username" lozinka="Username"/>
 					<label for="password">Password</label>
-					<input name="password" id="passInput" type="text" placeholder= "********" lozinka="Password"/>
+					<input name="password" id="passInput" type="password" placeholder= "********" lozinka="Password"/>
 					<button id="loginSubmit">Log in</button>
 				</form>
 		   </div>

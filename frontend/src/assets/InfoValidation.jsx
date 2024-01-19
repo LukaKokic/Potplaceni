@@ -1,13 +1,13 @@
 export function ValidateNumber(val, name) {
 	if (val.length == 0)
-		{ window.alert("No " + name + " entered."); return false; }
+		{ window.alert("No " + name.toLowerCase() + " entered."); return false; }
 	if (isNaN(val))
 		{ window.alert(name + " invalid."); }
 	return true;
 }
 export function ValidateString(val, name) {
 	if (val.length == 0)
-		{ window.alert("No " + name + " entered."); return false; }
+		{ window.alert("No " + name.toLowerCase() + " entered."); return false; }
 	return true;
 }
 export function ValidateDropdown(val, name) {
@@ -47,4 +47,11 @@ export function ValidateRoles(roleList) {
 	if (!roleList[1] && !roleList[2] && !roleList[3])
 		{ window.alert("No role chosen"); return false; }
 	return true;
+}
+export function ValidateRegistration(str) {
+	let valid = str.match(
+	/([A-Z]{2})([0-9]{4})([A-Z]{2})/
+	);
+	if (!valid) { window.alert("Invalid registration"); }
+	return valid;
 }

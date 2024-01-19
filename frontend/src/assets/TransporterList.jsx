@@ -1,62 +1,46 @@
-import React, {useState, useEffect, useRef, Label} from 'react'
+import React, {useState, useEffect, Label} from 'react'
+import {useNavigate} from 'react-router-dom';
 import './list.css';
 import axios from 'axios';
 import {ValidatePhone, ValidateEMail, ValidateRoles} from './InfoValidation';
 
-async function deletePatient(id) {
+async function deleteTransporter(id) {
 	console.log("deleting", id);
-	let resp = await axios.post('https://expressware.onrender.com/delete_patient', { id: id })
+	let resp = await axios.post('https://expressware.onrender.com/delete_transporter', { id: id })
 	.catch((error) => {
-		if (error != null) { console.error("Error " + error.response.status + " deleting patient:", error); }
-		else { console.error("Unknown error while deleting user:", error); }
+		if (error != null) { console.error("Error " + error.response.status + " deleting transporter:", error); }
+		else { console.error("Unknown error while deleting transporter:", error); }
 	})
 	.then((response) => { return response; });
-	return resp;
-}
-async function getPatientTreatment(id) {
-	console.log("fetching patient treatment", id);
-	let resp = await axios.get('https://expressware.onrender.com/view_patient_treatment/' + id)
-	.catch((error) => {
-		if (error.response.status == 404) { console.error("Error 404 getting patient info:", error); }
-		else { console.error("Unknown error getting patient info:", error); }
-	})
-	.then((response) => { return response; });
-	console.log(resp);
 	return resp;
 }
 
-function displayPatient(data, index, page, isOpen, openFunc, delFunc, getPatTreat) {
+function displayTransporter(data, index, page, isOpen, openFunc, delFunc, vehFunc) {
 	// Check if in page
 	if (index < (page[0] * page[2]) || index > ((page[0] * page[2]) + page[2] - 1)) { return null; }
 	
 	return (
-		<div key={data.patientID} className='row mt-4'>
+		<div key={data.id} className='row mt-4'>
 			<div className="dropdown">
 				{isOpen == index ? (
 				<div>
 					<button value={index} onClick={((e) => openFunc(e, index))}>
-						<div className="item-title">{data.fName} {data.lName}</div>
+						<div className="item-title">{data.name}</div>
 						<ul className="dropdown-list">
 							<li className="dropdown-list-item">
-								<p><b>PIN</b>: {data.PIN}</p>
-							</li>
-							<li className="dropdown-list-item">
-								<p><b>Phone number</b>: {data.contact}</p>
+								<p><b>Phone number</b>: {data.phone}</p>
 							</li>
 							<li className="dropdown-list-item">
 								<p><b>E-mail</b>: {data.email}</p>
 							</li>
-							<li className="dropdown-list-item">
-								<p><b>Home address</b>: {data.HomeAddress}</p>
-							</li>
 						</ul>
 					</button>
 					<br/>
-					<button className='btn_form_delete_red' onClick={((e) => delFunc(e, data.patientID))}>DELETE</button>
-					<button className='btn_form_modify_gray' onClick={((e) => getPatTreat(e, data.patientID))}>TREATMENT INFO</button>
+					<button className='btn_form_delete_red' onClick={((e) => delFunc(e, data.id))}>DELETE</button>
+					<button className='btn_form_modify_gray' onClick={((e) => vehFunc(e, index, data.id))}>VIEW VEHICLES</button>
 				</div>) : (
 					<button value={index} onClick={((e) => openFunc(e, index))}>
-						{data.lName}, {data.fName}
+						{data.name}
 					</button>)}
 			</div>
 		</div>
@@ -65,27 +49,21 @@ function displayPatient(data, index, page, isOpen, openFunc, delFunc, getPatTrea
 
 
 
-export default function UserList({patients, patientsUpdate, page, setPage}) {
-	//const [patients, setPatients] = useState([]);
+export default function TransporterList({transporters, transportersUpdate, page, setPage}) {
+	//const [transporters, setTransporters] = useState([]);
 	const [isOpen, setIsOpen] = useState(-1);
 	
 	const handleDelete = (e, id) => {
 		//console.log("handleDelete ", id);
-		deletePatient(id)
+		deleteTransporter(id)
 		.catch((error) => {
-			console.error("Error deleting patient (id ", id, ")");
+			console.error("Error deleting transporter (id ", id, ")");
 		})
 		.then((result) => {
 			setIsOpen(-1);
-			patientsUpdate();
+			transportersUpdate();
 		});
 	};
-	const handleGetPatientTreatment = (e, id) => {
-		getPatientTreatment(id)
-		.catch((error) => {
-			console.error("Error getting patient treatment info (id ", id, ")");
-		});
-	}
 	
 	const handleOpen = (e, index) => {
 		setIsOpen(isOpen == index ? -1 : index);
@@ -98,6 +76,12 @@ export default function UserList({patients, patientsUpdate, page, setPage}) {
 			{ setPage([page[0] + 1, page[1], page[2]]); setIsOpen(-1); }
 	};
 	
+	const navigate = useNavigate();
+	const handleViewVehicles = (e, index, id) => {
+		console.log("view vehicles of id = ", id);
+		navigate("/vehicle-management/" + id + "?name=" + transporters[index].name);
+	}
+	
 	return (
 		<div className='container_list'>
 			<div className='container'>
@@ -105,11 +89,11 @@ export default function UserList({patients, patientsUpdate, page, setPage}) {
 					<div className='col-lg-12 parent_container_content_form'>
 						<div className='content_form'>
 							<div className='container'>
-								<h4 className='heading_form spanMainClr'>PATIENTS</h4>
+								<h4 className='heading_form accommodation'>TRANSPORTERS</h4>
 								
-								{ patients == null ? (<div className='row mt-4'>No patients registered.</div>) : (patients.length == 0 ? 
-									<div className='row mt-4'>Fetching patients...</div> : 
-									patients.map((item, index) => (displayPatient(item, index, page, isOpen, handleOpen, handleDelete, handleGetPatientTreatment)))) 
+								{ transporters == null ? (<div className='row mt-4'>No transporters registered.</div>) : (transporters.length == 0 ? 
+									<div className='row mt-4'>Fetching transporters...</div> : 
+									transporters.map((item, index) => (displayTransporter(item, index, page, isOpen, handleOpen, handleDelete, handleViewVehicles)))) 
 								}
 							</div>
 							{ page[1] > 1 ? (

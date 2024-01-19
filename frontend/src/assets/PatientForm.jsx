@@ -166,20 +166,20 @@ const PatientForm = ({patientsUpdate}) => {
 	{
 		submitForm(formData).then(response => { 
 			console.log("form submitted; response: ", response);
-			window.alert("User created successfully.");
+			window.alert("Patient created successfully.");
 			patientsUpdate();
 		});
 	}
   };
 
   return (
-    <div className='form_container_accommodation'>
+    <div className='container_form'>
       <div className='container'>
         <div className='row'>
           <div className='col-lg-12 parent_container_content_form'>
             <div className='content_form'>
               <div className='container'>
-                <h4 className='heading_form accommodation'>ADD <span> PATIENT </span></h4>
+                <h4 className='heading_form spanMainClr'>ADD <span> PATIENT </span></h4>
   
                 <div className='row mt-4'>
                   <div className='col-lg-4'>
