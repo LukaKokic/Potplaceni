@@ -47,7 +47,7 @@ function displayAcc(data, index, page, isOpen, openFunc, delFunc, activeFunc) {
 								<p><b>Type</b>: {data.acc_type}</p>
 							</li>
 							<li className="dropdown-list-item">
-								<p><b>Equipment</b>: {data.acc_type}</p>
+								<p><b>Equipment</b>: {data.acc_eq}</p>
 							</li>
 							<li className="dropdown-list-item">
 								<label htmlFor="activeBox" className="list-label"><b>Active</b>:</label>
