@@ -1,11 +1,11 @@
 --Dodavanje administratora u sustav
 INSERT INTO public.adminuser(
 	pin, firstname, lastname, phone, email)
-	VALUES ('12345678', 'John', 'Doe', '+1234567890', 'john.doe@example.com'),
-	('98765432', 'Alice', 'Smith', '+9876543210', 'alice.smith@example.com'),
-	('23456789', 'Bob', 'Johnson', '+2345678901', 'bob.johnson@example.com'),
-	('34567890', 'Eva', 'Brown', '+3456789012', 'eva.brown@example.com'),
-	('45678901', 'Michael', 'Williams', '+4567890123', 'michael.williams@example.com'),
+	VALUES ('12345678', 'Luka', 'Kokić', '+1234567890', 'luka.kokic@fer.hr'),
+	('98765432', 'Ian', 'Marković', '+9876543210', 'ian.markovic@fer.hr'),
+	('23456789', 'Mateo', 'Martić', '+2345678901', 'mateo.martic@fer.hr'),
+	('34567890', 'Teo', 'Musa', '+3456789012', 'teo.musa@fer.hr'),
+	('45678901', 'Bruno', 'Milaković', '+4567890123', 'bruno.milakovic@fer.hr'),
 	('56789012', 'Karlo', 'Baljak', '+7890123456', 'kb53813@fer.hr'),
 	('55883960', 'Mislav', 'Matić', '+5598741358', 'mm46587@fer.hr');
 	

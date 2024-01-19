@@ -48,7 +48,7 @@ CREATE TABLE AdminUser( --table
 	phone varchar(20),
 	email varchar(60)
 );
-
+drop table adminuser cascade
 CREATE TABLE Patient( --table
 	PatientID bigserial primary key,
 	PIN int,
