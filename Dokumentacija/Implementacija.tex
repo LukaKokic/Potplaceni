@@ -14,7 +14,7 @@
 				Ispitivanje jedinica je provedeno pomoću alata pgTAP. pgTAP je skup funkcija baze podataka koje olakšavaju pisanje testova. Pomoću ovog smo alata testirali izvođenje i ponašanje backenda-a ostvarenog kroz funkcije u bazi napisane plpgsql programskim jezikom. Alat nudi brojne definirane metode koje omogućuju definiranje očekivanog ispisa za određeni ulaz, uspoređivanje rezultata odrađene funkcije sa podacima iz tablica, itd.
 				\eject
 				\subsection{Ispitni slučaj 1 - funkcionalnost prijave}
-				Ovaj ispitni slučaj ispituje funkcionalnost prijave u sustav. Testovi ispitnog slučaja testiraju postoji li funkcija u bazi, je li funkcija napisana plpgsql jezikom te koji su ulazni i izlazni tipovi podataka funkcije. To se testira koristeći ugrađene funkcije pgTAP-a kao što su \textit{\texttt{has\_function}} za testiranje postoji li definirana funkcija u bazi, \textit{\texttt{function\_lang\_is}} za testiranje je li funkcija napisana plpgsql jezikom, \textit{\texttt{function\_returns}} za testiranje vraća li funkcija neki tip podataka ili je tipa void, \textit{\texttt{is\(\)}} ze provjeru dvaju argumenata te na osnovu njihovog podudaranje ili odudaranja se izbacuje rezultat. Rezultat je uvijek u obliku jednog reda sa jednom kolonom koja može sadržavati tekst \textit{ok $<$broj testa$>$ - $<$opis testa$>$} ili \textit{not ok $<$broj testa$>$ - $<$opis testa$>$}.
+				Ovaj ispitni slučaj ispituje funkcionalnost prijave u sustav. Testovi ispitnog slučaja testiraju postoji li funkcija u bazi, je li funkcija napisana plpgsql jezikom te koji su ulazni i izlazni tipovi podataka funkcije. To se testira koristeći ugrađene funkcije pgTAP-a kao što su \textit{\texttt{has\_function}} za testiranje postoji li definirana funkcija u bazi, \textit{\texttt{function\_lang\_is}} za testiranje je li funkcija napisana plpgsql jezikom, \textit{\texttt{function\_returns}} za testiranje vraća li funkcija neki tip podataka ili je tipa void, \textit{\texttt{is\(\)}} za provjeru dvaju argumenata te na osnovu njihovog podudaranje ili odudaranja se izbacuje rezultat. Rezultat je uvijek u obliku jednog reda sa jednom kolonom koja može sadržavati tekst \textit{ok $<$broj testa$>$ - $<$opis testa$>$} ili \textit{not ok $<$broj testa$>$ - $<$opis testa$>$}.
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_1/has_func.png}
@@ -36,25 +36,25 @@
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_1/success_login.png}
-					\caption{Pokretanje testa za provjeru rada same funkcije, uspijeh}
+					\caption{Pokretanje testa za provjeru rada same funkcije, uspjeh}
 					\label{fig: IS1-uspješni login}
 				\end{figure}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_1/failure_login.png}
-					\caption{Pokretanje testa za provjeru rada same funkcije, neuspijeh}
+					\caption{Pokretanje testa za provjeru rada same funkcije, neuspjeh}
 					\label{fig: IS1-neuspješni login}
 				\end{figure}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_1/no_creds.png}
-					\caption{Pokretanje testa za provjeru rada same funkcije, neuspijeh}
+					\caption{Pokretanje testa za provjeru rada same funkcije, neuspjeh}
 					\label{fig: IS1-login bez vjerodajnica}
 				\end{figure}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_1/code.png}
-					\caption{Kod isptinog slučaja 1}
+					\caption{Kod ispitnog slučaja 1}
 					\label{fig: IS1-kod}
 				\end{figure}
 				\eject
@@ -81,13 +81,13 @@
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_2/success_invocation.png}
-					\caption{Pokretanje testa za provjeru rada same funkcije, uspijeh}
+					\caption{Pokretanje testa za provjeru rada same funkcije, uspjeh}
 					\label{fig: IS2-uspješno kreiran administrator}
 				\end{figure}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_2/failure_invocation.png}
-					\caption{Pokretanje testa za provjeru rada same funkcije, neuspijeh}
+					\caption{Pokretanje testa za provjeru rada same funkcije, neuspjeh}
 					\label{fig: IS2-administrator nije kreiran, već postoji isti}
 				\end{figure}
 				\begin{figure}[H]
@@ -142,13 +142,13 @@
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_3/success_invocation.png}
-					\caption{Pokretanje testa za provjeru rada same funkcije, uspijeh}
+					\caption{Pokretanje testa za provjeru rada same funkcije, uspjeh}
 					\label{fig: IS3-uspješno izbrisan administrator}
 				\end{figure}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_3/failure_invocation.png}
-					\caption{Pokretanje testa za provjeru rada same funkcije, neuspijeh}
+					\caption{Pokretanje testa za provjeru rada same funkcije, neuspjeh}
 					\label{fig: IS3-administrator je već izbrisan ili ne postoji}
 				\end{figure}
 				\begin{figure}[H]
@@ -166,7 +166,7 @@
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_3/code.png}
-					\caption{Kod isptinog slučaja 3}
+					\caption{Kod ispitnog slučaja 3}
 					\label{fig: IS3-kod}
 				\end{figure}
 				\eject
@@ -193,19 +193,19 @@
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_4/success_invocation.png}
-					\caption{Pokretanje testa za provjeru rada same funkcije, uspijeh}
+					\caption{Pokretanje testa za provjeru rada same funkcije, uspjeh}
 					\label{fig: IS4-uspješno kreiran smještaj}
 				\end{figure}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_4/failure_invocation.png}
-					\caption{Pokretanje testa za provjeru rada same funkcije, neuspijeh}
+					\caption{Pokretanje testa za provjeru rada same funkcije, neuspjeh}
 					\label{fig: IS4-smještaj nije kreiran, već postoji isti}
 				\end{figure}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_4/code.png}
-					\caption{Kod isptinog slučaja 4}
+					\caption{Kod ispitnog slučaja 4}
 					\label{fig: IS4-kod}
 				\end{figure}
 				\eject
@@ -232,19 +232,19 @@
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_5/success_invocation.png}
-					\caption{Pokretanje testa za provjeru rada same funkcije, uspijeh}
+					\caption{Pokretanje testa za provjeru rada same funkcije, uspjeh}
 					\label{fig: IS5-uspješno izbrisan smještaj}
 				\end{figure}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_5/failure_invocation.png}
-					\caption{Pokretanje testa za provjeru rada same funkcije, neuspijeh}
+					\caption{Pokretanje testa za provjeru rada same funkcije, neuspjeh}
 					\label{fig: IS5-smještaj je već izbrisan ili ne postoji}
 				\end{figure}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_5/code.png}
-					\caption{Kod isptinog slučaja 5}
+					\caption{Kod ispitnog slučaja 5}
 					\label{fig: IS5-kod}
 				\end{figure}
 				\eject
@@ -271,19 +271,19 @@
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_6/success_invocation.png}
-					\caption{Pokretanje testa za provjeru rada same funkcije, uspijeh}
+					\caption{Pokretanje testa za provjeru rada same funkcije, uspjeh}
 					\label{fig: IS6-uspješno dohvaćen posljednji realestateid}
 				\end{figure}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_6/failure_invocation.png}
-					\caption{Pokretanje testa za provjeru rada same funkcije, neuspijeh}
+					\caption{Pokretanje testa za provjeru rada same funkcije, neuspjeh}
 					\label{fig: IS6-navedeni realestateid ne postoji}
 				\end{figure}
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/unit_tests/ut_6/code.png}
-					\caption{Kod isptinog slučaja 6}
+					\caption{Kod ispitnog slučaja 6}
 					\label{fig: IS6-kod}
 				\end{figure}
 				\eject
@@ -303,20 +303,20 @@
 		
 		\section{Upute za puštanje u pogon}
 		
-			Aplikacija je puštena u pogon na cloud servisu Render čime smo omogućili javni pristup aplikaciji. Render nudi brojne planove i mogućnosti, ali također nudi i besplatni plan za pokretanje malih testnih aplikacija. Za besplatni plan ne posotji mogućnost odabira virtualnog računala na kojem će se vrtiti aplikacije, baza i bilo što što se pusti u pogon. S tom informacijom nama kao krajnjem korisniku nije poznati na kojoj se mašini vrti samo znamo da raspolažemo s 1 GiB porstora za pohranu baze podataka te RAMom od 256 MB i CPU 100m. Sve potrebno za pokretanje instanci baze podataka ili drugih aplikacija je dostupno i podržani su brojni razvojni okviri i jezici.
+			Aplikacija je puštena u pogon na cloud servisu Render čime smo omogućili javni pristup aplikaciji. Render nudi brojne planove i mogućnosti, ali također nudi i besplatni plan za pokretanje malih testnih aplikacija. Za besplatni plan ne postoji mogućnost odabira virtualnog računala na kojem će se vrtiti aplikacije, baza i bilo što što se pusti u pogon. S tom informacijom nama kao krajnjem korisniku nije poznato na kojoj se mašini vrti, samo znamo da raspolažemo s 1 GiB prostora za pohranu baze podataka te RAM-om od 256 MB i CPU 100m. Sve potrebno za pokretanje instanci baze podataka ili drugih aplikacija je dostupno i podržani su brojni razvojni okviri i jezici.
 			
 			\break
 			
 			\textbf{\textit{Konfiguracija frontenda}}
 			
-				Za pokretanje frontend-a potrebno je odabrati opciju pokretanja web servisa na Redner-u.
+				Za pokretanje frontend-a potrebno je odabrati opciju pokretanja web servisa na Render-u.
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/render_web_service.png}
 					\caption{Odabir opcije pokretanja instance web servisa}
 					\label{fig: Render web service instance front}
 				\end{figure}
-				Nakon popunjavanja obaveznih podataka kao što su ime servisa, regija, grana repozitorija sa koje će se preuzeti kod i najvažnije "Runtime". U našem smo slučaju koristili Node te za "Build Command" smo koristili yarn.
+				Zatim popunjavamo polja obaveznih podataka kao što su ime servisa, regija, grana repozitorija sa koje će se preuzeti kod, Runtime koji je u našem slučaju Node te "Build Command" gdje smo odabrali yarn. Poslije toga odabiremo besplatnu opciju instance te kreiramo web servis.
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/create_web_service_part1.png}
@@ -338,15 +338,15 @@
 					\caption{Odabir opcije pokretanja instance baze podataka}
 					\label{fig: Render new instance}
 				\end{figure}
-				Naša baza podataka je PostgreSQL verzija 15 te još neke od mogućih opcija su odabir regije, za koju smo odabrali Frankfurt pošto je to najbliže. Može se specificirati i korisnik baze. Nakon što su obavezni podaci uneseni, klikon na gumb "Create Databse" pokreće se postupak instanciranja baze i nedugo nakon toga su omogućene konekcije prema bazi. Onda se bilo kojim alamtom, u našem slučaju PgAdmin4, može spojiti na bazu i početi s radom.
+				Naša baza podataka je PostgreSQL verzija 15 te još neke od mogućih opcija su odabir regije, za koju smo odabrali Frankfurt pošto je to najbliže. Može se specificirati i korisnik baze. Nakon što su obavezni podaci uneseni, klikom na gumb "Create Database" pokreće se postupak instanciranja baze i nedugo nakon toga su omogućene konekcije prema bazi. Onda se bilo kojim alatom, u našem slučaju PgAdmin4, može spojiti na bazu i početi s radom.
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=\textwidth]{slike/create_db_form.png}
 					\caption{Popunjavanje forme za kreiranje instance baze podataka}
 					\label{fig: Render create new DB}
 				\end{figure}
-				Nadalje, kako bi se osigurala komunikacija između backenda i frontenda bilo je potrebno napraviti API koji će primati zahtjeve i prosljeđivati ih backendu. Za pokretanje API-ija potrebno je bilo odabrati opciju pokretanja web servisa (slika 5.42)koji se kasnije poveže sa GitHub repozitorijem te od tamo preuzim sav potreban kod.
-				Nakon toga je potrebno unijeti obavezne podatke kao što su ime servisa, regija, grana repozitorija sa koje će se preuzeti kod te ono najvažnije koji je "Runtime" našeg web servisa (slika 5.43). U našem slučaju smo odabrali Node te za "Build Command" smo koristili yarn. Također se mogu dodati posebne Environemntal variable koje omogućuju kontrolu verzije već instaliranog Node-a ili bilo kojeg drugog "Runtime-a". U slučaju Node-a najvažnije je da se u repozitoriju nalazi datoteka package.json koja omogućuje Renderu da preuzme sve potrebne biblioteke za pokretanje našeg API-ija.
+				Nadalje, kako bi se osigurala komunikacija između backenda i frontenda bilo je potrebno napraviti API koji će primati zahtjeve i prosljeđivati ih backendu. Za pokretanje API-ija potrebno je bilo odabrati opciju pokretanja web servisa(slika 5.42) koji se kasnije poveže sa GitHub repozitorijem te od tamo preuzmemo sav potreban kod.
+				Nakon toga je potrebno unijeti obavezne podatke kao što su ime servisa, regija, grana repozitorija sa koje će se preuzeti kod te ono najvažnije, koji je "Runtime" našeg web servisa (slika 5.43). U našem slučaju smo odabrali Node, a za "Build Command" smo koristili yarn. Također se mogu dodati posebne Environmental variable koje omogućuju kontrolu verzije već instaliranog Node-a ili bilo kojeg drugog "Runtime-a". U slučaju Node-a najvažnije je da se u repozitoriju nalazi datoteka package.json koja omogućuje Render-u da preuzme sve potrebne biblioteke za pokretanje našeg API-ija.
 				Na samome kraju kada se povuče kod sa repozitorija, moguće je pristupiti konzoli zaduženoj za upravljanje radom web servisa.
 				\begin{figure}[H]
 					\centering
