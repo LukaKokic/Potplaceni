@@ -70,11 +70,8 @@ const TransporterForm = ({transportersUpdate}) => {
 	{
 		submitForm(formData).then(response => { 
 			console.log("form submitted; response: ", response);
-			if (response.data.success) { 
-				window.alert("Transporter registered successfully.");
-				transportersUpdate();
-			}
-			else { window.alert("FAILURE: Failed to register transporter."); }
+			window.alert(response.data["msg"]);
+			transportersUpdate();
 		});
 	}
   };

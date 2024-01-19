@@ -72,11 +72,8 @@ const VehicleForm = ({transID, transName, vehiclesUpdate}) => {
 	{
 		submitFormNewVehicle(formData).then(response => { 
 			console.log("form submitted; response: ", response);
-			if (response.data.success) { 
-				window.alert("Vehicle registered successfully.");
-				vehiclesUpdate();
-			}
-			else { window.alert("FAILURE: Failed to register vehicle."); }
+			window.alert(response.data["msg"]);
+			vehiclesUpdate();
 		});
 	}
   };

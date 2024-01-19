@@ -166,11 +166,8 @@ const PatientForm = ({patientsUpdate}) => {
 	{
 		submitForm(formData).then(response => { 
 			console.log("form submitted; response: ", response);
-			if (response.data.success) { 
-				window.alert("Patient registered successfully.");
-				patientsUpdate();
-			}
-			else { window.alert("FAILURE: Failed to register patient."); }		
+			window.alert(response.data["msg"]);
+			patientsUpdate();	
 		});
 	}
   };
