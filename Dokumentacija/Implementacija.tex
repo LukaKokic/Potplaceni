@@ -288,6 +288,139 @@
 				\end{figure}
 				\eject
 			\eject
+			
+			\subsection{Ispitivanje sustava}
+			Ispitivanje sustava provedeno je s pomoću radnog okvira Selenium, konkretnije s pomoću dodatka za preglednik Selenium IDE. 
+			\\U prvom ispitnom slučaju je ispitan slučaj dodavanja novog prijevoznika. Svi ulazni podaci su ispravni i očekivani izlaz je uspješno dodan prijevoznik.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/transport testovi/registerTransportationGood_parameters.png"}
+				\caption{Parametri prvog ispitnog slučaja}
+				\label{fig: registerTransportationGood_parameters}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/transport testovi/registerTransportationGood_results.png"}
+				\caption{Rezultat prvog ispitnog slučaja}
+				\label{fig: registerTransportationGood_result}
+			\end{figure}
+			\eject
+			U drugom ispitnom slučaju je ispitan slučaj dodavanja postojećeg prijevoznika. Svi ulazni podaci su ispravni (i identični kao u prethodnom ispitnom slučaju) te očekivani izlaz je neuspješno dodavanje prijevoznika jer ne može se dodati postojeći prijevoznik.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/transport testovi/registerTransportationAgain_parameters.png"}
+				\caption{Parametri drugog ispitnog slučaja}
+				\label{fig: registerTransportationAgain_parameters}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/transport testovi/registerTransportationAgain_results.png"}
+				\caption{Rezultat drugog ispitnog slučaja}
+				\label{fig: registerTransportationAgain_result}
+			\end{figure}
+			\eject
+			U trećem ispitnom slučaju je ispitan slučaj dodavanja novog prijevoznika. Postoji jedan neispravan ulazni podatak (e-mail adresa je neispravna) te očekivani izlaz je neuspješno dodavanje prijevoznika jer svi ulazni podaci moraju biti ispravni kako bi se prijevoznik dodao.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/transport testovi/registerTransportationBad_parameters.png"}
+				\caption{Parametri trećeg ispitnog slučaja}
+				\label{fig: registerTransportationBad_parameters}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/transport testovi/registerTransportationBad_results.png"}
+				\caption{Rezultat trećeg ispitnog slučaja}
+				\label{fig: registerTransportationBad_result}
+			\end{figure}
+			\eject
+			U četvrtom ispitnom slučaju je ispitan slučaj dodavanja novog vozila. Svi ulazni podaci su ispravni te očekivani izlaz je uspješno dodavanje vozila.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/transport testovi/addVehicleGood_parametri.png"}
+				\caption{Parametri četvrtog ispitnog slučaja}
+				\label{fig: addVehicleGood_parametri}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/transport testovi/addVehicleGood_rezultat.png"}
+				\caption{Rezultat četvrtog ispitnog slučaja}
+				\label{fig: addVehicleGood_rezultat}
+			\end{figure}
+			\eject
+			U petom ispitnom slučaju je ispitan slučaj dodavanja postojećeg vozila. Svi ulazni podaci su ispravni (i identični kao u prethodnom ispitnom slučaju) te očekivani izlaz je neuspješno dodavanje vozila jer ne može se dodati postojeće vozilo.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/transport testovi/addVehicleAgain_parametri.png"}
+				\caption{Parametri petog ispitnog slučaja}
+				\label{fig: addVehicleAgain_parametri}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/transport testovi/addVehicleAgain_rezultat.png"}
+				\caption{Rezultat petog ispitnog slučaja}
+				\label{fig: addVehicleAgain_rezultat}
+			\end{figure}
+			\eject
+			U šestom ispitnom slučaju je ispitan slučaj dodavanja novog vozila. Postoji jedan neispravan ulazni podatak (registracija je neispravna) te očekivani izlaz je neuspješno dodavanje vozila jer svi ulazni podaci moraju biti ispravni kako bi se vozilo dodalo.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/transport testovi/addVehicleBad_parametri.png"}
+				\caption{Parametri šestog ispitnog slučaja}
+				\label{fig: addVehicleBad_parametri}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/transport testovi/addVehicleBad_rezultat.png"}
+				\caption{Rezultat šestog ispitnog slučaja}
+				\label{fig: addVehicleBad_rezultat}
+			\end{figure}
+			\eject
+			U sedmom ispitnom slučaju je ispitan slučaj dodavanja novog pacijenta. Svi ulazni podaci su ispravni te očekivani izlaz je uspješno dodavanje pacijenta.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/pacijent testovi/registerPatientGood_parameters.png"}
+				\caption{Parametri sedmog ispitnog slučaja}
+				\label{fig: registerPatientGood_parameters}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/pacijent testovi/registerPatientGood_results0.png"}
+				\includegraphics[width=\textwidth]{"slike/Selenium/pacijent testovi/registerPatientGood_results1.png"}
+				\caption{Rezultat sedmog ispitnog slučaja}
+				\label{fig: registerPatientGood_results}
+			\end{figure}
+			\eject
+			U osmom ispitnom slučaju je ispitan slučaj dodavanja postojećeg pacijenta. Svi ulazni podaci su ispravni (i identični kao u prethodnom ispitnom slučaju) te očekivani izlaz je neuspješno dodavanje pacijenta jer ne može se dodati postojeći pacijent.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/pacijent testovi/registerPatientAgain_parameters.png"}
+				\caption{Parametri osmog ispitnog slučaja}
+				\label{fig: registerPatientAgain_parameters}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/pacijent testovi/registerPatientAgain_results0.png"}
+				\includegraphics[width=\textwidth]{"slike/Selenium/pacijent testovi/registerPatientAgain_results1.png"}
+				\caption{Rezultat osmog ispitnog slučaja}
+				\label{fig: registerPatientAgain_results}
+			\end{figure}
+			\eject
+			U devetom ispitnom slučaju je ispitan slučaj dodavanja novog pacijenta. Postoji jedan neispravan ulazni podatak (e-mail adresa je neispravna) te očekivani izlaz je neuspješno dodavanje pacijenta jer svi ulazni podaci moraju biti ispravni kako bi se pacijent dodao.
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/pacijent testovi/registerPatientBad_parameters.png"}
+				\caption{Parametri devetog ispitnog slučaja}
+				\label{fig: registerPatientBad_parameters}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth]{"slike/Selenium/pacijent testovi/registerPatientBad_results0.png"}
+				\includegraphics[width=\textwidth]{"slike/Selenium/pacijent testovi/registerPatientBad_results1.png"}
+				\caption{Rezultat devetog ispitnog slučaja}
+				\label{fig: registerPatientBad_results}
+			\end{figure}
+			\eject
+			
 		\section{Dijagram razmještaja}
 			
 			Na slici 5.42 prikazan je dijagram razmještaja. Sustav je baziran na arhitekturi “klijent-poslužitelj”. Korisnički pristup aplikaciji odvija se preko web preglednika. Na platformi Render smješteni su poslužitelji za frontend i middleware te baza podataka koja služi kao backend. Preko HTTP protokola ostvarena je komunikacija između korisnika i poslužitelja za frontend, te poslužitelja za frontend i poslužitelja za backend.
