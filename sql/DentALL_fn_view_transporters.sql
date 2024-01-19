@@ -21,6 +21,7 @@ begin
 				trans.organisationname o_name,
 				trans.phone ph,
 				trans.email mail,
+				trans.townid town_id,
 				trans.active ac
 			from
 				public.transporter trans
@@ -35,6 +36,7 @@ begin
 				'name', cte_ordered.o_name,
 				'phone', cte_ordered.ph,
 				'email', cte_ordered.mail,
+				'townID', cte_ordered.town_id,
 				'active', cte_ordered.ac
 			)
 		)

@@ -124,7 +124,7 @@ CREATE TABLE Vehicle( --table
 	TransporterID bigserial,
 	active bit,
 	foreign key (TypeID) references VehicleType(TypeID),
-	foreign key (TransporterID) references Transporter(TransporterID)
+	constraint TransporterID foreign key (TransporterID) references Transporter(TransporterID) on delete cascade
 );
 
 CREATE TABLE VehicleOccupied( --table
@@ -133,7 +133,7 @@ CREATE TABLE VehicleOccupied( --table
 	PatientID bigserial,
 	timeStart timestamp with time zone,
 	timeEnd timestamp with time zone,
-	constraint VehicleID foreign key (VehicleID) references Vehicle(VehicleID),
+	constraint VehicleID foreign key (VehicleID) references Vehicle(VehicleID) on delete cascade,
 	constraint PatientID foreign key (PatientID) references Patient(PatientID) on delete cascade
 );
 
@@ -142,7 +142,7 @@ CREATE TABLE VehicleSchedule( --table
 	DOW smallint,
 	timeStart time,
 	timeEnd time,
-	foreign key (VehicleID) references Vehicle(VehicleID) on delete cascade
+	constraint VehicleID foreign key (VehicleID) references Vehicle(VehicleID) on delete cascade
 );
 
 CREATE TABLE assignedRole( --relation

@@ -1,10 +1,13 @@
-CREATE OR REPLACE FUNCTION api.fn_view_transporter_vehicles(IN transporter_in json)
+-- FUNCTION: api.fn_view_transporter_vehicles(json)
+
+-- DROP FUNCTION IF EXISTS api.fn_view_transporter_vehicles(json);
+
+CREATE OR REPLACE FUNCTION api.fn_view_transporter_vehicles(
+	transporter_in json)
     RETURNS json
     LANGUAGE 'plpgsql'
-    VOLATILE
-    PARALLEL UNSAFE
     COST 100
-    
+    VOLATILE PARALLEL UNSAFE
 AS $BODY$
 declare
 	returnValue json;
@@ -19,7 +22,8 @@ select into
 			'brand', v.brand,
 			'model', v.model,
 			'capacity', v.capacity,
-			'type', vt.description
+			'type', vt.description,
+			'active', v.active
 		)
 	)
 from
@@ -36,3 +40,12 @@ $BODY$;
 
 ALTER FUNCTION api.fn_view_transporter_vehicles(json)
     OWNER TO dentall_rmm2_user;
+
+GRANT EXECUTE ON FUNCTION api.fn_view_transporter_vehicles(json) TO PUBLIC;
+
+GRANT EXECUTE ON FUNCTION api.fn_view_transporter_vehicles(json) TO app_api;
+
+GRANT EXECUTE ON FUNCTION api.fn_view_transporter_vehicles(json) TO auth_api;
+
+GRANT EXECUTE ON FUNCTION api.fn_view_transporter_vehicles(json) TO dentall_rmm2_user;
+
