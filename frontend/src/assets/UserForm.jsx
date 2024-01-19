@@ -61,7 +61,7 @@ const UserForm = ({usersUpdate, roleOptions}) => {
 	{
 		submitForm(formData).then(response => { 
 			console.log("form submitted; response: ", response);
-			window.alert(response.data["msg"]);
+			window.alert("User created successfully.");
 			usersUpdate();
 		});
 	}
